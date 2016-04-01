@@ -1,0 +1,145 @@
+<header data-am-widget="header"
+        class="am-header am-header-default index-header detail-header">
+    <a href="javascript:history.back(-1)"><i class="am-icon-angle-left am-icon-sm"></i></a>
+    <h1 class="am-header-title">
+        土地需求
+    </h1>
+
+    <div class="am-header-right am-header-nav">
+        #if($passport)
+            <a href="$mobileContent.getURI("loginout")" class="">
+                <i class="am-header-icon am-icon-sign-out"></i>
+            </a>
+        #else
+            <a href="login" class="">
+                <i class="am-header-icon icon-account"></i>
+            </a>
+        #end
+    </div>
+    </div>
+</header>
+<hr style="margin-bottom: 0;margin-top: 0;">
+<div class="detail-title mt-10">
+    <h1>$!landDemand.title</h1>
+    <div class="publishTime">发布时间：
+        #if($!landDemand.lastUpdateTime)
+        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landDemand.lastUpdateTime)
+    #else
+        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landDemand.approveTime)
+    #end
+    </div>
+</div>
+<div class="require-title-outer">
+    <span class="require-title">基本信息</span>
+</div>
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2 index-tabs detail-tabs" style="margin-top: 0;">
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-tabs-bd" >
+        <!--列表标题-->
+        <div data-tab-panel-0 class="am-list-news-bd am-tab-panel am-active">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                <!--列表标题-->
+                <div class="am-list-news-bd">
+                    <ul class="am-list">
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">所在地区</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landDemand.provinceName $!landDemand.cityName $!landDemand.districtName</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">位置</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landDemand.landLocation</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">预算金额(万元)</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landDemand.amount</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">规划用途</span>
+                            <span class="am-list-date am-vertical-align-middle">$!selectPurpose.get($!landDemand.planUse)</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">合作方式</span>
+                            <span class="am-list-date am-vertical-align-middle">$!selectCollaborateMethod.get($!landDemand.cooperationMode)</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">使用年限</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landDemand.year</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">占地面积(万平方米)</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landDemand.demandArea</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">联系人</span>
+                            <span class="am-list-date am-vertical-align-middle">
+                                #if($passport)
+                                $!landDemand.contactName
+                            #else
+                                登录后查看联系人
+                            #end</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">联系电话</span>
+                            <span class="am-list-date am-vertical-align-middle">
+                                #if($passport)
+                                    #if($role=='SENIORMEMBER')
+                                        $!landDemand.contactPhone
+                                    #else
+                                        升级高级会员查看联系电话
+                                    #end
+                                #else
+                                    登录后查看联系电话
+                                #end
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<span class="require-title">详细介绍</span>
+<div class="require-detail-content">
+    #noescape() $!landDemand.content #end
+</div>
+<footer data-am-widget="footer"
+        class="am-footer am-footer-default"
+        data-am-footer="{  }">
+##    <div class="am-footer-switch">
+##    <span class="am-footer-ysp" data-rel="mobile"
+##          data-am-modal="{target: '#am-switch-mode'}">
+##          手机版
+##    </span>
+##        <span class="am-footer-divider"> | </span>
+##        <a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+##            电脑版
+##        </a>
+##    </div>
+    <div class="am-footer-miscs ">
+        <p><a href="http://www.yunland.cn/" title="云地网"
+                target="_blank" class="">云地网</a>
+            </p>
+        <p>浙ICP备06018569号-2</p>
+    </div>
+</footer>
+
+<div id="am-footer-modal"
+     class="am-modal am-modal-no-btn am-switch-mode-m am-switch-mode-m-default">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd am-modal-footer-hd">
+            <a href="javascript:void(0)" data-dismiss="modal" class="am-close am-close-spin " data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            您正在浏览的是
+        <span class="am-switch-mode-owner">
+            手机版
+        </span>
+        <span class="am-switch-mode-slogan">
+              为您当前手机订制的移动网站。
+        </span>
+        </div>
+    </div>
+</div>
+

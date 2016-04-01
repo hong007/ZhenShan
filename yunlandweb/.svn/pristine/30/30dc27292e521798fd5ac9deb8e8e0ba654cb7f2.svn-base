@@ -1,0 +1,42 @@
+<html ng-app="myApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>无标题</title>
+	<link rel="stylesheet" type="text/css" href="../directive/style.css">
+	<link rel="stylesheet" type="text/css" href="../spm_modules/xn-icon-common/1.0.4/iconfont.css">
+    <script type="text/javascript" src="../spm_modules/jquery/1.7.2/jquery.js"></script>
+	<script type="text/javascript" src="../spm_modules/xn-angular/1.0.0/angular.js"></script>
+	<script type="text/javascript" src="../spm_modules/angular-ui/1.0.0/bootstraptpls.js"></script>
+	<script type="text/javascript" src="../directive/commons.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../spm_modules/xn-markdown/0.0.2/style/thinker.min.css">
+    <script type="text/javascript" src="../spm_modules/xn-markdown/0.0.2/script/thinker-md.js"></script>
+</head>
+<body ng-controller="MyController">
+    <div type="checkbox" xn-checkbox-list  checkbox-list="{{list}}" ng-model="val"></div>
+
+
+
+    <input type="hidden" style="width:300px" xn-tag-input="multi" ng-model="multi2Value"/>
+
+
+    <textarea name="content" xn-markdown ng-model="markdownValue" rows="10"></textarea>
+
+
+    <a href="javascript:void(0)" ng-click="show()">click me</a>
+</body>
+<script type="text/javascript">
+	angular.module("myApp", ["ui.bootstrap", "xn.directive.common"])
+	.controller("MyController", ["$scope", function($scope) {
+		$scope.list = [];
+		$scope.list.push({key:"Jason", value:1});
+		$scope.list.push({key:"Tom", value:2});
+		$scope.list.push({key:"Marry", value:3});
+
+        $scope.multi2Value = '';
+        $scope.show = function() {
+            alert($scope.markdownValue);
+        };
+    }]);
+</script>
+</html>

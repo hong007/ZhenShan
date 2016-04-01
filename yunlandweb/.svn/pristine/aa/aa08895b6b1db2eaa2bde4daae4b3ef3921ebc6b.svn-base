@@ -1,0 +1,242 @@
+body{
+	background:url(../images/Registered/registered-bg.jpg) no-repeat center top;
+}
+a{
+	text-decoration:none;
+}
+/*顶部样式*/
+.header{
+	width:1000px;
+	margin:0 auto;
+	padding:40px 0;
+	overflow:hidden;
+}
+.header .logo a{
+	display:block;
+	width:315px;
+	height:65px;
+	background:url(../images/Registered/logo-phone.png) no-repeat;
+}
+.header .login{
+	margin-top:40px;
+}
+.header .login a{
+	font-size:18px;
+	color:#05d4f9;
+}
+/*left-内容*/
+.content{
+	width:1000px;
+	margin:0 auto;
+	overflow:hidden;
+	float: none;
+}
+.content .left-tab{
+	width:580px;
+	color:#fff;
+	position:relative;
+}
+.content .tabNav{
+	height:50px;
+	padding-left:70px;
+}
+.content .tabContent .hide{
+	display:none;
+}
+.content .tabNav ul li{
+	display:block;
+	width:146px;
+    height:50px;
+	float:left;
+	line-height:50px;
+	font-size:18px;
+	text-align:center;
+}
+.content .tabNav ul li.selected{
+	background:url(../images/Registered/selected-button.png) no-repeat;
+	cursor:default; 
+	height:50px;
+}
+.Transparent_bg{
+	width:580px;
+	height:100%;
+	background-color: #fff; 
+	filter:alpha(opacity=5); 
+	-moz-opacity:0.05; 
+	opacity:0.05;
+	position:absolute;
+	top:50px;
+	left:0px;
+	z-index:-1;
+}
+.content .tabContent{
+	border:solid 1px #fff;
+	margin-top:-1px;
+}
+.content .tabContent a.more{
+	height:40px;
+	line-height:40px;
+	display:block;
+	text-align:right;
+	color:#fff;
+	padding:0 15px;
+}
+.content .tabContent li{
+	width:553px;
+	height:56px;
+	margin:0 auto;
+	background:url(../images/Registered/Dotted-line.png) repeat-x bottom;
+}
+.content .tabContent ul li.con_title span{
+	display:block;
+	float:left;
+	word-break:keep-all; 
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	height:44px;
+	line-height:44px;
+	text-align:center;
+	font-size:15px;
+}
+.content .tabContent ul li span{
+	display:block;
+	float:left;
+	word-break:keep-all; 
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	height:56px;
+	line-height:56px;
+	text-align:center;
+}
+.content .tabContent span.img{
+	width:40px;
+	height:40px;
+	margin:0 17px 0 15px;
+	padding-top:8px;
+}
+.content .tabContent span.plot{
+	width:180px;
+	margin-right:10px;
+}
+.content .tabContent span.location{
+	width:170px;
+	margin:0 10px;
+}
+.content .tabContent span.type{
+	width:160px;
+	margin-left:10px;
+}
+
+/*right-内容*/
+.content .right-login{
+	width:380px;
+	height:360px;
+	background:#fff;
+	-moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border-radius:5px; 	
+}
+.content .right-login h2{
+	width:380px; 
+	height:30px; 
+	overflow: hidden; 
+	padding:14px 0 10px; 
+	color: #333; 
+	text-align: center; 
+	font-size:22px;
+}
+.content .right-login ul li{
+	width:320px;
+	margin:0 auto;
+	padding-bottom:10px;
+}
+/*手机号码输入框*/
+.content .right-login ul li.wy p{
+	width: 318px;
+	height:40px;
+	border-radius: 5px;
+    border: 1px solid #c5c5c5;
+	background:#f7f7f7;
+}
+.content .right-login ul li.wy p span{
+	display:block;
+	float:left;
+	width:44px;
+	height:32px;
+	margin-top:4px;
+	border-right:1px solid #dfdfdf;
+}
+.content .right-login ul li.wy p span.tele_icon{
+	background:url(../images/Registered/Telephone-icon.png) no-repeat center center;
+	}
+.content .right-login ul li.wy p span.lock_icon{
+	background:url(../images/Registered/lock.png) no-repeat center center;
+}
+.content .right-login ul li .text_Telephone{
+  font-size: 16px;
+  width: 262px;
+  padding: 5px 0 6px;
+  margin-left:10px;
+  vertical-align: middle;
+  border:0;
+  line-height: 29px;
+  height: 29px;
+  outline:none;
+  float:left;
+  background:#f7f7f7;
+}
+/*验证码*/
+.content .right-login ul li .yzmButton{
+	height:40px; 
+	width:138px; 
+	display: inline-block;
+	vertical-align: top; 
+	line-height:40px; 
+	text-align: center; 
+	color: #05d4f9; 
+	font-size:16px;
+	border-radius: 5px;
+    border: 1px solid #c5c5c5;
+	background:#efefef;
+}
+.content .right-login ul li .yzmButton:hover{
+	color:#E11E31;
+}
+.content .right-login ul li .text_Verification{
+	border-radius: 5px;
+    border: 1px solid #c5c5c5;
+	background:#f7f7f7;
+	padding: 5px 0 6px 8px;
+	margin-left:6px;
+	width:159px;
+	height: 29px;
+	line-height: 29px;
+	font-size: 16px;
+	outline:none;
+}
+/*立即注册*/
+.content .right-login ul li .zcButton{
+	display:block;
+	width:320px;
+	height:40px;
+	line-height:40px;
+	font-size:18px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+	background:#05d4f9;
+	border-radius: 5px;
+	
+}
+.content .right-login ul li p{
+	text-align:center;
+}
+.content .right-login ul li p a{
+	color:#666;
+}
+.content .right-login ul li p a:hover{
+	color:#333;
+	text-decoration:underline;
+}

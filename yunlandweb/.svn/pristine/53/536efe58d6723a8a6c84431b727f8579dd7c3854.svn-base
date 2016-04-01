@@ -1,0 +1,786 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云地报告-详情页</title>
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+<link rel="stylesheet" type="text/css" href="../../../styles/popup.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+<script type="text/javascript" src="../../../scripts/jquery.media.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                                    <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" alt="云地网">
+            </a>
+        </div>
+        <div class="header-search" id="search-tab">
+            <div class="search-nav">
+                <ul>
+                    <li class="active cur" id="one1" onclick="setTab('one',1)">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="one2" onclick="setTab('one',2)">
+                        <a>土地招拍挂</a>
+                    </li>
+                    <li id="one3" onclick="setTab('one',3)">
+                        <a>土地转让</a>
+                    </li>
+                    <li id="one4" onclick="setTab('one',4)">
+                        <a>项目转让</a>
+                    </li>
+                    <li id="one5" onclick="setTab('one',5)">
+                        <a>土地动态</a>
+                    </li>
+                    <li id="one6" onclick="setTab('one',6)">
+                        <a>求购意向</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        <div class="select menudiv">
+                            <form>
+                                 <div class="select-wrap">
+                                     <input onclick="hidep('province_input')" type="text" value="省份" id="province" class="select-input" readonly />
+    
+                                     <div id="province_input" style="display:none " class="select-content"></div>
+                                 </div>
+                                 <div class="select-wrap">
+                                     <input onclick="hidec('city_input')" type="text" value="城市" id="city" class="select-input" readonly/>
+                                     <div id="city_input" style="display:none " class="select-content"></div>
+                                 </div>
+                                 
+                                 <div id="con_one_1" class="tab-con clearfix f-left" style="display:block;">
+                                      <select class=" select-input2">
+                                             <option>规划用途</option>
+                                             <option>住宅用地</option>
+                                             <option>商业/办公用地</option>
+                                             <option>工业用地</option>
+                                             <option>综合用地</option>
+                                             <option>全部用途</option>
+                                      </select>
+                                      <select class=" select-input2">
+                                             <option>面积规模</option>
+                                             <option>50万平米以上</option>
+                                             <option>10万-50万平方以上</option>
+                                             <option>10万平米以下</option>
+                                             <option>全部</option>
+                                      </select>
+                                 </div>
+                            </form>
+                                 <div id="con_one_2" class="tab-con clearfix f-left" style="display:none;">
+                                     <form>
+                                          <select class=" select-input2">
+                                                 <option>规划用途</option>
+                                                 <option>住宅用地</option>
+                                                 <option>商业/办公用地</option>
+                                                 <option>工业用地</option>
+                                                 <option>综合用地</option>
+                                                 <option>全部用途</option>
+                                          </select>
+                                          <select class=" select-input2">
+                                                 <option>成交状态</option>
+                                                 <option>未成交</option>
+                                                 <option>已成交</option>
+                                                 <option>流拍</option>
+                                                 <option>全部状态</option>
+                                          </select>
+                                     </form>
+                                 </div>
+                            <div id="con_one_3" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>规划用途</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部用途</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_4" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>物业类型</option>
+                                         <option>住宅</option>
+                                         <option>商业/办公</option>
+                                         <option>全部类型</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_5" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>规划用途</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部用途</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_6" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>项目类型</option>
+                                         <option>住宅</option>
+                                         <option>商业/办公</option>
+                                         <option>仓库/厂房</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部类型</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                        </div>
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li>
+                    <a href="http://www.yunland.cn/index.htm" target="_self">云地网首页</a>
+                </li>
+                <li>
+                    <a href="recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="sell/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">项目转让</a>
+                </li>
+                <li >
+                    <a href="transfer/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="active">
+                    <a href="transfer/index.html" target="_self">云地报告</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<div class="xn-width auto clearfix">
+   <div class="promote-con-left docking-view f-left">
+        <div class="dynamic-title">云地网登陆中国土地第一展</div>
+         <div class="source clearfix">
+           <div class="f-left" style="line-height:30px;">yunland.com&nbsp;&nbsp;&nbsp;&nbsp;云地网&nbsp;&nbsp;&nbsp;&nbsp;2015-08-21 17:25&nbsp;&nbsp;&nbsp;&nbsp;来源：云地网 </div>
+           <div class="bdsharebuttonbox share_icondiv button-bg f-right"><a href="#" class="bds_more  share_icon" data-cmd="more"></a>分享</div>
+           <div class="download-bg button-bg f-right"><a href="javascript:;">下载</a></div>
+        </div>
+        <div class="download-xx">
+            <span>阅读量：66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下载量：5</span>
+            <span class=" f-right">文件大小：2454KB</span>
+        </div>
+        <div class="land-intro-verticleList" id="forSupply">
+            <div class="land-data mt_10" id="landSupplysData">
+                <!-- pdf -->
+               <script type="text/javascript">  
+                $(function() {  
+                    $('a.media').media({width:828, height:510});  
+                });  
+               </script>
+                <a class=media href="../../../scripts/.pdf"></a>
+               <!-- pdf end-->
+            </div>
+        </div>
+        <div class="copyright"><span class="f-left">版权声明：</span><p>本报告由云地网撰写发布，如需转载或了解更详细信息请云地网客服联系，联系电话0571-81902006，欢迎致电联系,如发现非法刊登转载，我们将依法追究其法律责任。</p></div>
+    <div class="clearfix"></div>
+    </div>
+    <div class="promote-con-right docking-list f-right">
+         <div class="login">
+            <div style="color:#ff7a29">加入会员，轻松下载!</div>
+            <div><img src="../../../images/login-tu.png" width="66" height="63" style="padding-left:135px;"/></div>
+            <div class="login-registered-bt">
+                <div style="overflow:hidden;border-radius:17px;-moz- border-radius:17px;-webkit- border-radius:17px;">
+                    <a class="login-btn login_active" href="javascript:;">登录</a>
+                    <a href="javascript:;">注册</a>
+                </div>
+            </div>
+        </div>
+        <div class="list-con">
+            <h3>云地对接活动公告</h3>
+            <ul>
+               <li class="mt_10">
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+               <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+              <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+               <li class="mb_10">
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+            </ul>
+        </div>
+        <div class="list-con">
+            <h3>其他对接活动公告</h3>
+            <ul>
+               <li class="mt_10">
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+               <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+              <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+               <li class="mb_10">
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="120" height="80"/></a></div>
+                   <div class="content">
+                       <div class="text-con">美国德克萨斯顿地球之旅7132土地约</br>人民币9893万起<a class="xq" href="#">[详情]</a></div>
+                       <div class="date">2015-12-12</div>
+                   </div>
+               </li>
+            </ul>
+        </div>
+        <div class="docking-weixin">
+            <div class="f-left"><img src="../../../images/erweima-2.png" width="90" height="90" alt="微信"/></div>
+            <div class="f-left ml-10">
+                <div class="scan">扫一扫关注微信</div>
+                <div>地关注微信地关注微信地关注微信</br>地关注微信地关注微信</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+	$("div.login-registered-bt a").click(function(){
+	$(this).addClass("login_active").siblings().removeClass("login_active");
+	});
+	});
+</script>
+<script type="text/javascript" src="../../../scripts/shaixuan6.js"></script>
+<script type="text/javascript" src="../../../vendor/mmgrid/json2.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tab = new $.fn.tab({
+            tabList: "#demo1 .ui-tab-container .ui-tab-list li",
+            contentList: "#demo1 .ui-tab-container .ui-tab-content"
+        });
+        var tab = new $.fn.tab({
+            tabList: "#demo1 .ui-tab-container .ui-tab-list2 li",
+            contentList: "#demo1 .ui-tab-container .ui-tab-content2"
+        });
+        $(".land-intro-list li:last").css("margin-right", "0px");
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $("#selectList").find(".more").toggle(function () {
+            $(this).addClass("more_bg");
+            $(".more-none").show();
+        }, function () {
+            $(this).removeClass("more_bg");
+            $(".more-none").hide();
+        });
+        $()
+    });
+	
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    var getPlanUse = function(value){
+        if(!value){
+            return "";
+        }
+        // 查询用途
+        var planuses = [
+            {key:'tud',value:'土地'},{key:'xiangm',value:'项目'}
+        ]
+        for(var i=0;i<planuses.length;i++){
+            var planuse = planuses[i];
+            if(planuse&&planuse.key==value){
+                return ""+planuse.value;
+            }
+        }
+        return "其他";
+    }
+    var getCooperationMode = function(value){
+        if(!value){
+            return "";
+        }
+        // 查询用途
+        var cooperationModes = [
+                            {key:'1',value:'整体转让'},
+                            {key:'2',value:'控股权转让'},
+                            {key:'3',value:'部分转让'},
+                            {key:'4',value:'股权转让'},
+                            {key:'5',value:'项目融资'},
+                            {key:'6',value:'债权融资'},
+                            {key:'7',value:'租赁融资'},
+                    ]
+        for(var i=0;i<cooperationModes.length;i++){
+            var cooperationMode = cooperationModes[i];
+            if(cooperationMode&&cooperationMode.key==value){
+                return ""+cooperationMode.value;
+            }
+        }
+    }
+    function pageselectCallback1(page_index, jq){
+        load_list1(page_index);
+        return false;
+    }
+    function createPagination1(page_index, count) {
+        $("#orgpagination1").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries:count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback1
+        });
+    }
+    //写土地供应表格
+    var writeDemandTable1 = function(data){
+        $('#landSupplysData').children(".single-outer").remove();
+        var result = data.result;
+        $(result).each(function(index,item){
+            var html = '<div class="single-land clearfix">'+
+                    '<a href="supplydetail?id='+item.id+'"><img src="'+(item.picturePath?item.picturePath:"")+'" width="165" height="108" alt="土地信息"></a>'+
+                    '<div class="single-middle">'+
+                    '<div class="title"><a href="supplydetail?id='+item.id+'">'+item.name+'</a></div>'+
+                    '<div class="place-area">'+
+                    '<i class="icon-location"></i>'+
+                    '<span>'+(item.provinceName?item.provinceName:'')+'</span>'+
+                    '<span>'+(item.cityName&&item.cityName!='-请选择市-'?item.cityName:'')+'</span>'+
+                    '<span>'+(item.districtName&&item.districtName!='-请选择区-'&&item.districtName!='区'?item.districtName:'')+'</span>'+
+                    '</div>'+
+                    '<div class="place-area">发布时间：'+(item.approveTime?item.approveTime:'')+'</div>'+
+                        '<div class="clearfix"></div>'+
+                        '<div>'+
+                    '<span class="tab">'+getCooperationMode(item.cooperationMode)+'</span>'+
+                    '<span class="tab">'+getPlanUse(item.planUse)+'</span>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="single-inner-right-special">'+
+                    '<div class="area">'+item.floorSpace +'万平米</div>'+
+                    '<div class="tenure">使用年限：'+item.sellYear+' 年 </div>'+
+                    '</div>'+
+                    '</div>'
+            $('#landSupplysData').append(html);
+        })
+    }
+    function load_list1(page_index){
+        var keyword = $('#query').data('keyword')?$('#query').data('keyword'):'';
+        var businessType = '';
+        var select = $('#query').data('selectvalue');
+        //var type = $('#query').data('type')?$('#query').data('type'):'supply';
+        if(!select){
+            select = {};
+            var provice = ''
+            if(""!=provice){
+                select.region = '';
+            }
+            if(""!=''){
+                select.cityId = '';
+            }
+            if(""!=''){
+                select.districtId = '';
+            }
+            if(""!=''){
+                select.purpose='';
+            }
+            if(""!=''){
+                select.sellMethod='';
+            }
+        }
+        var data = {};
+        var type = 'supply';
+        data.keyword = keyword;
+        data.selectvalue = select;
+        data.businessType = businessType;
+        data.type = type;
+        $.post('/transfer/api.do',{
+            method:'api.transfer.land.info.find',
+            data:JSON.stringify(data),
+            pageSize:10,
+            pageNumber:(page_index+1),
+            type:type
+            },function(data1){
+            writeDemandTable1(data1);
+            createPagination1(page_index, data1.totalCount);
+            if(data.keyword!=""||!$.isEmptyObject(data.selectvalue)||data.businessType!=""){
+                $("html,body").animate({scrollTop:$("#individual-search").offset().top},500);
+            }
+        },'json');
+    }
+
+    function pageselectCallback2(page_index, jq){
+        load_list2(page_index);
+        return false;
+    }
+    function createPagination2(page_index, count) {
+        $("#orgpagination2").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries:count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback2
+        });
+    }
+    //写土地需求表格
+    var writeDemandTable2 = function(data){
+        $('#landDemandsData').children(".single-outer").remove();
+        var result = data.result;
+        $(result).each(function(index,item){
+            //var useInf
+            var html = '<div class="single-outer">'+
+                    /*'<a href="requiredetail?id='+item.id+'"><img src="'+item.picturePath+'" width="200" height="110" alt="土地信息"></a>'+*/
+                    '<div class="single-inner-middle1">'+
+                    '<div class="title"><a href="requiredetail?id='+item.id+'">'+item.title+'</a></div>'+
+                    '<div class="place-area f-left">'+
+                    '<i class="icon-location"></i>'+
+                    '<span>'+(item.provinceName?item.provinceName:'')+'</span>'+
+                    '<span>'+(item.cityName&&item.cityName!='-请选择市-'?item.cityName:'')+'</span>'+
+                    '<span>'+(item.districtName&&item.districtName!='-请选择区-'&&item.districtName!='区'?item.districtName:'')+'</span>'+
+                    '</div>'+
+                    '<div class="place-area f-left ml-20">发布时间：'+(item.approveTime?item.approveTime:'')+'</div>'+
+                        '<div class="clearfix"></div>'+
+                        '<div class="clearfix">'+
+                    '<span class="tab">'+getCooperationMode(item.cooperationMode)+'</span>'+
+                    '<span class="tab">'+getPlanUse(item.planUse)+'</span>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="single-inner-right-special">'+
+                    '<div class="area">'+item.demandArea +'万平米</div>'+
+                    '<div class="tenure">使用年限：'+item.year+' 年 </div>'+
+                    '</div>'+
+                    '</div>'
+            $('#landDemandsData').append(html);
+        })
+    }
+    function load_list2(page_index){
+        var keyword = $('#query').data('keyword')?$('#query').data('keyword'):'';
+        var businessType = '';
+        var select = $('#query').data('selectvalue');
+        if(!select){
+            select = {};
+            var provice = ''
+            if(""!=provice){
+                select.region = '';
+            }
+            if(""!=''){
+                select.cityId = '';
+            }
+            if(""!=''){
+                select.districtId = '';
+            }
+            if(""!=''){
+                select.purpose='';
+            }
+            if(""!=''){
+                select.sellMethod='';
+            }
+        }
+        var type = 'demand';
+        var data = {};
+        data.keyword = keyword;
+        data.selectvalue = select;
+        data.businessType = businessType;
+        data.type = type;
+
+        $.post('/transfer/api.do',{
+            method:'api.transfer.land.info.find',
+            data:JSON.stringify(data),
+            pageSize:10,
+            pageNumber:(page_index+1),
+            type:type
+        },function(data){
+            writeDemandTable2(data);
+            createPagination2(page_index, data.totalCount);
+        },'json');
+    }
+    function dochangeTab(obj,eleShow,eleHide,currenttab){
+        $(obj).addClass('active');
+        $(obj).siblings().removeClass('active');
+        $('#'+eleShow).show();
+        $('#'+eleHide).hide();
+        $("#query").data("type",currenttab);
+        if(currenttab=='demand'){
+            load_list2(0);
+        }else{
+            load_list1(0);
+        }
+    }
+    $(document).ready(function () {
+
+        var showType = "supply";
+
+        $('#aSupply').click();
+
+        var tab = new $.fn.tab({
+            tabList: "#demo1 .ui-tab-container .ui-tab-list li",
+            contentList: "#demo1 .ui-tab-container .ui-tab-content"
+        });
+        var tab = new $.fn.tab({
+            tabList: "#demo1 .ui-tab-container .ui-tab-list2 li",
+            contentList: "#demo1 .ui-tab-container .ui-tab-content2"
+        });
+        $(".land-intro-list li:last").css("margin-right", "0px");
+        $("#selectList").find(".more").toggle(function () {
+            $(this).addClass("more_bg");
+            $(".more-none").show()
+        }, function () {
+            $(this).removeClass("more_bg");
+            $(".more-none").hide();
+        });
+
+        var taboy_box = $(".lefttable-list");
+        taboy_box.children("tbody").find("tr:gt(2)").hide();
+        $(".leftbox-morea").toggle(function () {
+                    $(this).parent().prev().find("tr").show();
+                    $(this).addClass("more-i")
+                }, function () {
+                    $(this).removeClass("more-i");
+                    $(this).parent().prev().children("tbody").find("tr:gt(2)").hide();
+                }
+        );
+
+        load_list1(0);
+        load_list2(0);
+        $("#query").click(function(){
+            //拼装查询结果
+            var keyword = $('#mykeyword').val();
+            var data = "{'keyword':\""+keyword+"\",'selectvalue':\""+selectResult()+"\"}";
+            $('#query').data('keyword',keyword);
+            $('#query').data('selectvalue',selectResult())
+            load_list1(0);
+            load_list2(0);
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            window.location.href = '$mobileContent.getURI("/index")';
+        }
+    }
+    $(function () {
+        $(".toShowAllTd").hover(function () {
+            $(this).find('div').show();
+        }, function () {
+            $(this).find('div').hide();
+        });
+        browserRedirect();
+    });
+    //信息hover显示
+//    $(function(){
+//
+//        $(".index-img-con").find(".tip").css("display","none");
+//        $(".supply li").hover(function(){
+//            var indexli= $(this).index();
+//            $(this).find(".tip").show().siblings().find(".tip").hide();
+//        },function(){
+//            $(".index-img-con").find(".tip").css("display","none");
+//        });
+//    })
+</script>
+<style type="text/css">
+    .screenBox dl dd span {
+
+        margin: 0px 12px 0px 0px;
+        color: #666;
+        overflow: hidden;
+        text-decoration: none;
+        float: left;
+        display: block;
+        vertical-align: middle;
+		line-height: 24px;
+    }
+    .screenBox dl dd {
+        position: relative;
+        padding-left: 0px;
+        float: left;
+        padding-top: 0px;
+        vertical-align: middle;
+    }
+    .screenBox dl dt {
+        text-align: left;
+        width: 65px;
+        font-weight: 400;
+		color: #9b9b9b;
+        padding-top: 2px;
+    }
+</style>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<!--footer start -->
+<iframe src="../../control/footer.html" frameborder=0 width=100% height=305 marginheight=0 marginwidth=0 scrolling=no></iframe>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/site.js?v=1.0-SNAPSHOT"></script>
+<!-- 日期控件 -->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/My97DatePicker/WdatePicker.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/datejs.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/ui.tab.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/plugins.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/json2.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmGrid.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmPaginator.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/pagination/jquery.pagination.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/s3Slider/s3Slider.js?v=1.0-SNAPSHOT"></script>
+
+</html>

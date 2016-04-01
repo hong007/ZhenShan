@@ -1,0 +1,44 @@
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好,$!passport.userName， 欢迎来到云地，咨询热线：</span>
+                <span class="phone">
+                    <img src="$homeContent.getURI('/images/phone.png')" width="16" height="15" alt="电话">
+                    0571-81902006
+                </span>
+            </div>
+            <div class="f-right column-nav">
+                #if($passport)
+                    <a class="pr-20" href="$baseContent.getURI("loginout")">注销</a>
+                #end
+                <i class="vertical-line bg-color-1"></i>
+                <a href="">新手指引</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="nav">
+    <div class="xn-width auto member-nav clearfix">
+        <div class="nav-left">
+            <a href="$homeLink.setTarget("index")" class="xn-text-center">
+                <img src="$homeContent.getURI('/images/logo.png')" width="125" height="81" alt="云地网">
+            </a>
+            <i class="vertical-line"></i>
+            <div class="nav-name">
+                <h2>我 的 云 地</h2>
+                <span>领先的土地推介平台</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="$homeLink.setTarget("index")">首页</a></li>
+                <li><a href="$homeLink.setTarget("recommend/index")">土地推介</a></li>
+                <li><a href="$homeLink.setTarget("sell/index")">土地出让</a></li>
+                <li><a href="$homeLink.setTarget("transfer/index")">土地转让</a></li>
+                <li><a href="$homeLink.setTarget("news/index")">云地动态</a></li>
+                <li><a href="$homeLink.setTarget("statistic/index")">云地大数据</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

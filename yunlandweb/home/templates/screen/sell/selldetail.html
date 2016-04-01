@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>地块信息-详情页面</title>
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                                    <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" alt="云地网">
+            </a>
+        </div>
+        <div class="header-search" id="search-tab">
+            <div class="search-nav">
+                <ul>
+                    <li class="active cur" id="one1" onclick="setTab('one',1)">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="one2" onclick="setTab('one',2)">
+                        <a>土地招拍挂</a>
+                    </li>
+                    <li id="one3" onclick="setTab('one',3)">
+                        <a>土地转让</a>
+                    </li>
+                    <li id="one4" onclick="setTab('one',4)">
+                        <a>项目转让</a>
+                    </li>
+                    <li id="one5" onclick="setTab('one',5)">
+                        <a>土地动态</a>
+                    </li>
+                    <li id="one6" onclick="setTab('one',6)">
+                        <a>求购意向</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        <div class="select menudiv">
+                            <form>
+                                 <div class="select-wrap">
+                                     <input onclick="hidep('province_input')" type="text" value="省份" id="province" class="select-input" readonly />
+    
+                                     <div id="province_input" style="display:none " class="select-content"></div>
+                                 </div>
+                                 <div class="select-wrap">
+                                     <input onclick="hidec('city_input')" type="text" value="城市" id="city" class="select-input" readonly/>
+                                     <div id="city_input" style="display:none " class="select-content"></div>
+                                 </div>
+                                 
+                                 <div id="con_one_1" class="tab-con clearfix f-left" style="display:block;">
+                                      <select class=" select-input2">
+                                             <option>规划用途</option>
+                                             <option>住宅用地</option>
+                                             <option>商业/办公用地</option>
+                                             <option>工业用地</option>
+                                             <option>综合用地</option>
+                                             <option>全部用途</option>
+                                      </select>
+                                      <select class=" select-input2">
+                                             <option>面积规模</option>
+                                             <option>50万平米以上</option>
+                                             <option>10万-50万平方以上</option>
+                                             <option>10万平米以下</option>
+                                             <option>全部</option>
+                                      </select>
+                                 </div>
+                            </form>
+                                 <div id="con_one_2" class="tab-con clearfix f-left" style="display:none;">
+                                     <form>
+                                          <select class=" select-input2">
+                                                 <option>规划用途</option>
+                                                 <option>住宅用地</option>
+                                                 <option>商业/办公用地</option>
+                                                 <option>工业用地</option>
+                                                 <option>综合用地</option>
+                                                 <option>全部用途</option>
+                                          </select>
+                                          <select class=" select-input2">
+                                                 <option>成交状态</option>
+                                                 <option>未成交</option>
+                                                 <option>已成交</option>
+                                                 <option>流拍</option>
+                                                 <option>全部状态</option>
+                                          </select>
+                                     </form>
+                                 </div>
+                            <div id="con_one_3" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>规划用途</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部用途</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_4" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>物业类型</option>
+                                         <option>住宅</option>
+                                         <option>商业/办公</option>
+                                         <option>全部类型</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_5" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>规划用途</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部用途</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_6" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>项目类型</option>
+                                         <option>住宅</option>
+                                         <option>商业/办公</option>
+                                         <option>仓库/厂房</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部类型</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                        </div>
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="http://www.yunland.cn/index.htm" target="_self">云地网首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="sell/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">云地报告</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<!--头部 结束-->
+<div class="collect-success">收藏成功！</div>
+<div class="xn-width auto mt_20">
+    <div class="detail-content-left">
+        <div class="con-title2">
+            <div class="title-outer">
+                <div class="title">
+                    重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管告字[2015]51号)  
+                </div>
+                <div class="update-time">更新时间：
+                    2015-11-12
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <h3 class="editContent-h3">基本信息</h3>
+        <table class="detail-table2 word-breakAll">
+            <tr>
+                <td class="table-label xn-center">宗地编号</td>
+                <td class="table-column-double">
+                   四川省
+                                            /
+                                        成都市
+                </td>
+                <td class="table-label xn-center">所在地区</td>
+                <td class="table-column-double">简阳市十里坝工业园区（成都第二国际机场）</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">规划用途</td>
+                <td class="table-column-double">
+                   ZB-10498791
+                </td>
+                <td class="table-label xn-center">宗地座落于</td>
+                <td class="table-column-double">41.46</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">出让年限</td>
+                <td class="table-column-double">居住70年；商业40年</td>
+                <td class="table-label xn-center">建筑密度(%)</td>
+                <td class="table-column-double">≤1.2</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center"><div>宗地总面积</div>(万平方米)</td>
+                <td class="table-column-double">20.0 </td>
+                <td class="table-label xn-center">建筑限高(米)</td>
+                <td class="table-column-double">35</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">容积率</td>
+                <td class="table-column-double">100</td>
+                <td class="table-label xn-center">  绿化率(%)</td>
+                <td class="table-column-double focus">住宅用地</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">起始价(万元)</td>
+                <td class="table-column-double">未成交</td>
+                <td class="table-label xn-center">保证金(万元)</td>
+                <td class="table-column-double">2016-12-12</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">估价报告备案号</td>
+                <td class="table-column-double">1</td>
+                <td class="table-label xn-center"><div>投资强度</div>(万元/公顷)</td>
+                <td class="table-column-double">1</td>
+            </tr>
+             <tr>
+                <td class="table-label xn-center">加价幅度</td>
+                <td class="table-column-double">1</td>
+                <td class="table-label xn-center">截至日期</td>
+                <td class="table-column-double">1</td>
+            </tr>
+        </table>
+        <h3 class="editContent-h3">位置地图</h3>
+        <div class="map-content">
+            <div id="allmap"></div>
+        </div>
+    </div>
+    <div class="detail-content-right">
+        <div class="sell-title">你可能感兴趣的供应信息</div>
+            <div class="sell-intro-outer">
+                <div class="sell-intro-inner">
+                    <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/664615334174920704.jpg" width="254" height="160" alt="土地信息">
+                    <div class="title">四川成都第二国际机场14万平米高标仓储物流园转让</div>
+                    <div class="place-area">位置：简阳市十里坝工业园区（成都第二国际机场）</div>
+                    <div class="place-area">面积：20.0 万平方米</div>
+                </div>
+                <a class="btn btn-warning1" href="supplydetail.htm?id=664615798983495680">点击详情</a>
+            </div>
+                                            <div class="sell-intro-outer">
+                <div class="sell-intro-inner">
+                    <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/664242120626147328.jpg" width="254" height="160" alt="土地信息">
+                    <div class="title">四川成都青白江区70亩住宅用地整体转让</div>
+                    <div class="place-area">位置：凤凰西八路以东、凤凰大道以南、凤凰西七路以西、凤祥大道以北</div>
+                    <div class="place-area">面积：4.66 万平方米</div>
+                </div>
+                <a class="btn btn-warning1" href="supplydetail.htm?id=664242586147753984">点击详情</a>
+            </div>
+                                            <div class="sell-intro-outer">
+                <div class="sell-intro-inner">
+                    <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/646153500958789632.jpg" width="254" height="160" alt="土地信息">
+                    <div class="title">四川眉山国家级新区工业用地145亩整体转让</div>
+                    <div class="place-area">位置：天府新区青龙镇</div>
+                    <div class="place-area">面积：9.6671 万平方米</div>
+                </div>
+                <a class="btn btn-warning1" href="supplydetail.htm?id=646154379359293440">点击详情</a>
+            </div>
+    </div>
+    <input type="hidden" id="supplyId" value="664615798983495680">
+    <input type="hidden" id="supplytitle" value="四川成都第二国际机场14万平米高标仓储物流园转让">
+    <div class="clearfix"></div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript">
+    // 判断是否已经收藏
+    var isCollection = '';
+    var collect = function(){
+        if(isCollection&&isCollection=='true'){
+            $(".collect-success").html("您已收藏!");
+            $(".collect-success").show();
+            setTimeout(function() {
+                $(".collect-success").hide();
+            }, 3000);
+            return;
+        }
+        // 收藏
+        isCollection = 'true';
+        var objectId = $('#supplyId').val();
+        var objectTitle = $('#supplytitle').val();
+        $(".collect-click-icon").show();
+        $(".collect-icon").hide();
+        $.post('api.do',{method:'api.transfer.collection',data:"{'objectType':'SUPPLY','objectId':'"+objectId+"','objectTitle':'"+objectTitle+"'}"},function(){
+            $(".collect-success").html("收藏成功!");
+            $(".collect-icon").hide();
+            $(".collect-success").show();
+            $(".collect-click-icon").show();
+            setTimeout(function() {
+                $(".collect-success").hide();
+            }, 3000);
+        },"json");
+    }
+
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "云地网提示" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:""
+    }
+    //添加控件和比例尺
+    var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+    var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+    map.addControl(top_left_control);
+    map.addControl(top_left_navigation);
+    map.addControl(top_right_navigation);
+    map.disableScrollWheelZoom();
+    map.addEventListener("click", function(){
+        map.enableScrollWheelZoom();
+    });
+    var new_point = new BMap.Point(116.404, 39.915);
+    var marker;
+    var point = '';
+    if(!point==''){
+        var temppoint = point.split(',');
+        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+        map.centerAndZoom(new_point, 11);  //根据经纬度定中心点
+        marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        map.panTo(new_point);
+        var infoWindow = new BMap.InfoWindow("土地名称:四川成都第二国际机场14万平米高标仓储物流园转让", opts);  // 创建信息窗口对象
+        marker.addEventListener("click", function(){
+            map.openInfoWindow(infoWindow,new_point); //开启信息窗口
+        });
+    }else{
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("四川省成都市-请选择区-简阳市十里坝工业园区（成都第二国际机场）", function(point){
+            if (point) {
+                map.centerAndZoom(point, 16);
+                marker = new BMap.Marker(point);  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+                var infoWindow = new BMap.InfoWindow("土地名称:四川成都第二国际机场14万平米高标仓储物流园转让", opts);  // 创建信息窗口对象
+                marker.addEventListener("click", function(){
+                    map.openInfoWindow(infoWindow,point); //开启信息窗口
+                });
+            }
+        }, "成都市");
+    }
+</script>
+<div id="BDBridgeFixedWrap"></div>
+        
+<!-- 提示弹窗 样式 -->
+
+
+</body>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?964c0b848a4967d8fc64a70619474a9b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="../../../scripts/site.js"></script>
+</html>

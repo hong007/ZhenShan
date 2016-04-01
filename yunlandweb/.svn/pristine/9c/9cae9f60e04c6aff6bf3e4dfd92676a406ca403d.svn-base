@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>云地网-互联网土地市场-修改版</title>
+<link rel="stylesheet" type="text/css" href="../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/p3Slider/zsucai.css">
+
+<script  type="text/javascript"  src="../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../scripts/jsAddress.js"></script>
+
+
+
+<!--<script>
+function $(ID){
+return document.getElementById(ID)
+}
+function showTab(ID){
+for(var i=1;i<7;i++){
+if(ID==i){
+$('search-tab'+i).blur();
+$("search-tab"+i).className="active";
+$("cont"+i).style.display="block";
+}else{
+$("search-tab"+i).className="off";
+$("cont"+i).style.display="none";
+}
+}
+return false;
+}
+</script>-->
+
+<script type="text/javascript">
+function setTab(name,cursel){
+cursel_0=cursel;
+for(var i=1; i<=links_len; i++){
+var menu = document.getElementById(name+i);
+var menudiv = document.getElementById("con_"+name+"_"+i);
+if(i==cursel){
+menu.className="active";
+menudiv.style.display="block";
+}
+else{
+menu.className="";
+menudiv.style.display="none";
+}
+}
+}
+function Next(){
+cursel_0++;
+if (cursel_0>links_len)cursel_0=1
+setTab(name_0,cursel_0);
+}
+ 
+var name_0='one';
+var cursel_0=1;
+var links_len,iIntervalId;
+onload=function(){
+var links = document.getElementById("search-tab").getElementsByTagName('li')
+links_len=links.length;
+for(var i=0; i<links_len; i++){
+links[i].onmouseover=function(){
+clearInterval(iIntervalId);
+this.onmouseout=function(){
+iIntervalId = setInterval(Next,ScrollTime);;
+}
+}
+}
+document.getElementById("con_"+name_0+"_"+links_len).parentNode.onmouseover=function(){
+clearInterval(iIntervalId);
+this.onmouseout=function(){
+iIntervalId = setInterval(Next,ScrollTime);;
+}
+}
+setTab(name_0,cursel_0);
+iIntervalId = setInterval(Next,ScrollTime);
+}
+</script>
+
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                                    <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../images/logo-3.png" alt="云地网">
+            </a>
+        </div>
+        <div class="header-search" id="search-tab">
+            <div class="search-nav">
+                <ul>
+                    <li class="active cur" id="one1" onclick="setTab('one',1)">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="one2" onclick="setTab('one',2)">
+                        <a>土地招拍挂</a>
+                    </li>
+                    <li id="one3" onclick="setTab('one',3)">
+                        <a>土地转让</a>
+                    </li>
+                    <li id="one4" onclick="setTab('one',4)">
+                        <a>项目转让</a>
+                    </li>
+                    <li id="one5" onclick="setTab('one',5)">
+                        <a>土地动态</a>
+                    </li>
+                    <li id="one6" onclick="setTab('one',6)">
+                        <a>求购意向</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        <div class="select menudiv">
+                            <form>
+                                 <div class="select-wrap">
+                                     <input onclick="hidep('province_input')" type="text" value="省份" id="province" class="select-input" readonly />
+    
+                                     <div id="province_input" style="display:none " class="select-content"></div>
+                                 </div>
+                                 <div class="select-wrap">
+                                     <input onclick="hidec('city_input')" type="text" value="城市" id="city" class="select-input" readonly/>
+                                     <div id="city_input" style="display:none " class="select-content"></div>
+                                 </div>
+                                 
+                                 <div id="con_one_1" class="tab-con clearfix f-left" style="display:block;">
+                                      <select class=" select-input2">
+                                             <option>规划用途</option>
+                                             <option>住宅用地</option>
+                                             <option>商业/办公用地</option>
+                                             <option>工业用地</option>
+                                             <option>综合用地</option>
+                                             <option>全部用途</option>
+                                      </select>
+                                      <select class=" select-input2">
+                                             <option>面积规模</option>
+                                             <option>50万平米以上</option>
+                                             <option>10万-50万平方以上</option>
+                                             <option>10万平米以下</option>
+                                             <option>全部</option>
+                                      </select>
+                                 </div>
+                            </form>
+                                 <div id="con_one_2" class="tab-con clearfix f-left" style="display:none;">
+                                     <form>
+                                          <select class=" select-input2">
+                                                 <option>规划用途</option>
+                                                 <option>住宅用地</option>
+                                                 <option>商业/办公用地</option>
+                                                 <option>工业用地</option>
+                                                 <option>综合用地</option>
+                                                 <option>全部用途</option>
+                                          </select>
+                                          <select class=" select-input2">
+                                                 <option>成交状态</option>
+                                                 <option>未成交</option>
+                                                 <option>已成交</option>
+                                                 <option>流拍</option>
+                                                 <option>全部状态</option>
+                                          </select>
+                                     </form>
+                                 </div>
+                            <div id="con_one_3" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>规划用途</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部用途</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_4" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>物业类型</option>
+                                         <option>住宅</option>
+                                         <option>商业/办公</option>
+                                         <option>全部类型</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_5" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>规划用途</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部用途</option>
+                                  </select>
+                            </form>
+                            </div>
+                            <div id="con_one_6" class="tab-con clearfix f-left" style="display:none;">
+                            <form>
+                                  <select class=" select-input2">
+                                         <option>项目类型</option>
+                                         <option>住宅</option>
+                                         <option>商业/办公</option>
+                                         <option>仓库/厂房</option>
+                                         <option>住宅用地</option>
+                                         <option>商业/办公用地</option>
+                                         <option>工业用地</option>
+                                         <option>综合用地</option>
+                                         <option>全部类型</option>
+                                  </select>
+                                  <select class=" select-input2">
+                                         <option>面积规模</option>
+                                         <option>50万平米以上</option>
+                                         <option>10万-50万平方以上</option>
+                                         <option>10万平米以下</option>
+                                         <option>全部</option>
+                                  </select>
+                            </form>
+                            </div>
+                        </div>
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+        </div>
+        <div class="header-QRCode">
+            <img src="../../images/erweima-2.png" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="http://www.yunland.cn/index.htm" target="_self">首&nbsp;&nbsp;&nbsp;页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="recommend/index.html" target="_self">云地热推</a>
+                </li>
+                <li class="$activesell">
+                    <a href="sell/index.html" target="_self">招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">二级市场</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="statistic/index.html" target="_self">云地大数据</a>
+                </li>
+            </ul>            
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    addressInit('cmbProvince', 'cmbCity', 'cmbArea','86');
+    //加载所有的数据
+    var sellmethod = function(type){
+        if(type=="sell") {
+            var options = '<select class="form-control wp-100" name="sellmethod" id="sellmethod"><option value="">出让方式</option>';
+                            options += '<option value="21"> 招标 </option>'
+                            options += '<option value="22"> 拍卖 </option>'
+                            options += '<option value="23"> 挂牌 </option>'
+                            options += '<option value="1"> 划拨 </option>'
+                            options += '<option value="2"> 招拍挂 </option>'
+                            options += '<option value="3"> 协议 </option>'
+                            options += '<option value="4"> 租赁 </option>'
+                            options += '<option value="5"> 作价出资或入 </option>'
+                            options += '<option value="6"> 授权经营 </option>'
+                            options +='</select>'
+        }else if(type=="transfer"){
+            var options = '<select class="form-control wp-100" name="sellmethod" id="sellmethod"><option value="">合作方式</option>';
+                            options += '<option value="1"> 整体转让 </option>'
+                            options += '<option value="2"> 控股权转让 </option>'
+                            options += '<option value="3"> 部分转让 </option>'
+                            options += '<option value="4"> 股权转让 </option>'
+                            options += '<option value="5"> 项目融资 </option>'
+                            options += '<option value="6"> 债权融资 </option>'
+                            options += '<option value="7"> 租赁融资 </option>'
+                            options +='</select>'
+        }
+        $("#sellMethod_li").append(options);
+    }
+    var businessType = '';
+//    alert(businessType);
+    $(function(){
+        if($("#nav-"+businessType)){
+            $("#nav-"+businessType).addClass('active');
+            $("#nav-"+businessType).siblings().removeClass('active');
+            if(businessType=='news'){
+                $("#forLandNews").show();
+                $("#forLandInfo").hide();
+            }else{
+                $("#forLandNews").hide();
+                $("#forLandInfo").show();
+                if(businessType=='sell'||businessType=='transfer'){
+                    $("#sellMethod_li").empty();
+                    sellmethod(businessType);
+                }
+            }
+        }
+        $("#keyword").val('');
+        $("#cmbProvince").val('');
+        $("#cmbCity").val('');
+        $("#cmbArea").val('');
+        $("#purpose").val('');
+        $("#sellmethod").val('');
+        var cp = '';
+        if(''!=cp || null!=cp){
+            addressInit('cmbProvince', 'cmbCity', 'cmbArea','','','');
+        }
+        $("#businessType").data("currenttab",'');
+    });
+
+</script>
+<!--<iframe src="../control/header.html" frameborder=0 width=100% height=193 marginheight=0 marginwidth=0 scrolling=no></iframe>-->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/validate/jquery.validate.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="$homeContent.getURI('vendor/validate/jquery.validate.js')"></script>
+</html>

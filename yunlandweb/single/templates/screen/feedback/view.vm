@@ -1,0 +1,46 @@
+$page.setTitle("留言查看")
+<div class="xn-breadcrumb xn-width auto clearfix" ng-controller="FeedbackAuditController">
+    <h3 class="title"> 管理导航：
+        <a  href="$singleLink.setTarget("feedback/index")">反馈管理</a>
+    </h3>
+    <div class="form-layout clearfix">
+        <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate  name="validateForm">
+            <div class="form-group clearfix">
+                <label class="form-title " for="name"><span class="required">*</span>标题:</label>
+                 <div class="form-control">
+                     {{vm.subject}}
+                </div>
+
+            <div class="form-group clearfix">
+                <label class="form-title " for="name">联系人:</label>
+                <div class="form-control">
+                    {{vm.contactName}}
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="name">性别:</label>
+                <div class="form-control">
+                    {{vm.contactSex |sex}}
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="name">电话:</label>
+                <div class="form-control">
+                    {{vm.contactPhone }}
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="form-title " for="content">内容:</label>
+                <pre class="form-control">
+                    {{vm.content }}
+                </pre>
+            </div>
+            <div class="form-group-submit clearfix">
+                <button type="submit" class="btn btn-primary mr_45" xn-submit-enter = "doAudit(1)">审核通过</button>
+                <button type="submit" class="btn btn-primary mr_45" xn-submit-enter = "doAudit(0)">审核不通过</button>
+                <a href="$singleLink.setTarget("feedback/index")" class="btn btn-default" >返回</a>
+            </div>
+        </form>
+    </div>
+</div>

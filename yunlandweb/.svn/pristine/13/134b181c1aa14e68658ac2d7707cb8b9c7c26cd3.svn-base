@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册页面</title>
+<link rel="stylesheet" type="text/css" href="../../styles/list.css"/>
+<link href="../../styles/Registered.css" rel="stylesheet" type="text/css">
+
+<script  type="text/javascript"  src="../../scripts/jquery.min.js"></script>
+<!--滑动门 代码-->
+<script type="text/javascript">
+$(document).ready(function(){
+	var $tab_li = $('#tab ul li');
+	$tab_li.hover(function(){
+		$(this).addClass('selected').siblings().removeClass('selected');
+		var index = $tab_li.index(this);
+		$('div.tabContent > div').eq(index).show().siblings().hide();
+	});	
+});
+</script>
+</head>
+<body>
+<div class="header">
+   <div class="logo fl">
+       <a href="#" title="云地-互联网土地市场，服务热线：0571-81902006"></a>
+   </div>
+   <div class="login fr"><a href="#" target="_blank">已有账号，去登录 ></a></div>
+</div>
+
+<div class="content">
+    <div class="left-tab fl">
+        <div  id="tab" class="tabNav">
+            <ul>
+               <li class="selected">找土地</li>
+               <li>找资金</li>
+               <li>合作机构</li>
+            </ul>
+        </div>
+        <div class="tabContent">
+            <div class="land">
+                <ul>
+                   <li class="con_title" style="height:44px;">
+                      <!--<span class="img" style="padding-top:0;"></span>-->
+                      <span class="plot">地块</span>
+                      <span class="location">位置</span>
+                      <span class="type">类型</span>
+                   </li>
+                   <li>
+                      <span class="plot">理工大学4、6号地</span>
+                      <span class="location">北京市/房山区 </span>
+                      <span class="type">商业用地</span>
+                   </li>
+                   <li>
+                      <span class="plot">永川新城北部片区</span>
+                      <span class="location">重庆市/永川区</span>
+                      <span class="type">住宅用地</span>
+                   </li>
+                   <li>
+                      <span class="plot">汉口北站东地块</span>
+                      <span class="location">湖北省/武汉市</span>
+                      <span class="type">旅游用地</span>
+                   </li>
+                   <li>
+                      <span class="plot">沿海工业城C-03-2地块</span>
+                      <span class="location">浙江省/台州市</span>
+                      <span class="type">批发零售用地</span>
+                   </li>
+                </ul>
+                <a href="#" class="more">查看更多>></a>
+            </div>
+            <div class="hide">
+                <ul>
+                   <li class="con_title" style="height:44px;">
+                      <span class="plot">地块</span>
+                      <span class="location">位置</span>
+                      <span class="type">类型</span>
+                   </li>
+                   <li>
+                      <span class="plot">凤凰西八路以东</span>
+                      <span class="location">四川省/成都市</span>
+                      <span class="type">住宅用地</span>
+                   </li>
+                   <li>
+                      <span class="plot">浦东龙东大道北</span>
+                      <span class="location">上海市/浦东区</span>
+                      <span class="type">工业用地</span>
+                   </li>
+                   <li>
+                      <span class="plot">白云山名胜风景区</span>
+                      <span class="location">广东省/广州市</span>
+                      <span class="type">旅游用地</span>
+                   </li>
+                   <li>
+                      <span class="plot">天祥道与荣乌高速交口</span>
+                      <span class="location">天津市/津南区</span>
+                      <span class="type"> 工业用地</span>
+                   </li>
+                </ul>
+                <a href="#" class="more">查看更多>></a>
+            </div>
+            <div class="hide">
+                <div style="padding:10px 10px 6px 10px;">
+                    <img src="../../images/Registered/hezuo-tu.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="Transparent_bg"></div>
+    </div>
+    <div class="right-login fr">
+        <h2>免费注册，进入互联网土地市场</h2>
+        <ul>
+           <li class="wy">
+              <p>
+                <span class="tele_icon"></span>
+                <input title="手机号码" type="text" name="" id="" class="text_Telephone" tip="输入您的手机号码" value="输入您的手机号码" onblur="if(this.value==''){this.value='输入您的手机号码';this.style.color='#999'}" onfocus="if(this.value=='输入您的手机号码'){this.value='';this.style.color='#000'}" style="color:#999">
+              </p>
+           </li>
+           
+           <li class="wy">
+              <p>
+                <span class="lock_icon"></span>
+                <input title="密码" type="text" name="" id="" class="text_Telephone" tip="密码" value="密码" onblur="if(this.value==''){this.value='密码';this.style.color='#999'}" onfocus="if(this.value=='密码'){this.value='';this.style.color='#000'}" style="color:#999">
+              </p>
+           </li>
+           
+           <li class="wy">
+              <p>
+                <span class="lock_icon"></span>
+                <input title="确认密码" type="text" name="" id="" class="text_Telephone" tip="确认密码" value="确认密码" onblur="if(this.value==''){this.value='确认密码';this.style.color='#999'}" onfocus="if(this.value=='确认密码'){this.value='';this.style.color='#000'}" style="color:#999">
+              </p>
+           </li>
+           
+           <li>
+              <a href="###" id="" class="yzmButton">获取验证码</a>
+              <input name="" title="验证码" type="text" class="text_Verification" tip="请输入验证码" value="请输入验证码" maxlength="6" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#999'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#000'}" style="color:#999">
+           </li>
+           <li>
+              <a href="###" class="zcButton">立即注册</a>
+           </li>
+           <li>
+              <p class="agreement">
+                 <input name="" title="云地，互联网土地市场" type="checkbox" id="" checked="checked">
+                 <a href="#">我已同意云地服务协议</a>
+              </p>
+           </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

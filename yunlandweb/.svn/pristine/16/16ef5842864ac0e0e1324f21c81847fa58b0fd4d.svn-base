@@ -1,0 +1,176 @@
+<div class="recommend-image" style="background: url('$!landRecommend.headImagepath') center top no-repeat;">
+##    <img src="$!landRecommend.headImagepath" width="100%" height="500" alt="头部推介图片">
+</div>
+<div class="xn-width auto mt_20">
+    <h3 class="editContent-h3">基本信息</h3>
+    <table class="detail-table word-breakAll">
+        <tr>
+            <td class="table-label xn-center">土地名称</td>
+            <td class="table-column-tripple" colspan="3">$landRecommend.name</td>
+            <td class="table-label xn-center">所在区域</td>
+            <td class="table-column-tripple">$landRecommend.cityName/$landRecommend.districtName</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">宗地编号</td>
+            <td class="table-column-tripple">$landRecommend.landNumber</td>
+            <td class="table-label xn-center">宗地总面积(万平方米)</td>
+            <td class="table-column-tripple">$landRecommend.floorSpace</td>
+            <td class="table-label xn-center">宗地坐落</td>
+            <td class="table-column-tripple">$landRecommend.landLocation</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">出让年限</td>
+            <td class="table-column-tripple">$landRecommend.sellYear</td>
+            <td class="table-label xn-center">容积率</td>
+            <td class="table-column-tripple">$landRecommend.plotRatio</td>
+            <td class="table-label xn-center">建筑密度(%)</td>
+            <td class="table-column-tripple">$landRecommend.buildingDensity</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">绿化率(%)</td>
+            <td class="table-column-tripple">$landRecommend.greeningRate</td>
+            <td class="table-label xn-center">建筑限高(米)</td>
+            <td class="table-column-tripple">$landRecommend.maxHeight</td>
+            <td class="table-label xn-center">土地用途</td>
+            <td class="table-column-tripple">$!selectPurpose.get($!landRecommend.planUse)</td>
+        </tr>
+    </table>
+    <h3 class="editContent-h3">位置地图</h3>
+    <div class="map-content">
+        <div id="allmap"></div>
+    </div>
+    <h3 class="editContent-h3">详细介绍</h3>
+    <div class="simple-edit-content">
+        <div class="detail-intro-inner">
+            <div class="moreIntro">
+                #*<div class="more-title">
+                    <span></span>
+                    <h3>更多详情介绍</h3>
+                </div>*#
+                <div class="more-content">
+                   #noescape()  $!landRecommend.content #end
+                </div>
+            </div>
+            #if($!landRecommend.picPathList)
+                <div class="morePicture">
+                    #*<div class="more-title">
+                        <span></span>
+                        <h3>更多图片介绍</h3>
+                    </div>*#
+                    <ul>
+                        #foreach($!picture in $!landRecommend.picPathList)
+                            <li><img src="$!picture" width="100%" height="500" alt="地块图片"></li>
+                        #end
+                    </ul>
+                </div>
+            #end
+        </div>
+    </div>
+    ##<div class="simple-edit-content mb-50">
+    ##    <div class="detail-intro-inner">
+    ##        #noescape()  $landRecommend.content #end
+    ##    </div>
+    ##</div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "云地网提示" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:""
+    }
+    //添加控件和比例尺
+    var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+    var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+    map.addControl(top_left_control);
+    map.addControl(top_left_navigation);
+    map.addControl(top_right_navigation);
+    map.disableScrollWheelZoom();
+    map.addEventListener("click", function(){
+        map.enableScrollWheelZoom();
+    });
+    var new_point = new BMap.Point(116.404, 39.915);
+    var marker;
+    var point = '$!landRecommend.location';
+    if(!point==''){
+        var temppoint = point.split(',');
+        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+        map.centerAndZoom(new_point, 11);  //根据经纬度定中心点
+        marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        map.panTo(new_point);
+        var infoWindow = new BMap.InfoWindow("土地名称:$landRecommend.name", opts);  // 创建信息窗口对象
+        marker.addEventListener("click", function(){
+            map.openInfoWindow(infoWindow,new_point); //开启信息窗口
+        });
+
+        // 根据采集的点绘制图形（折线）
+        var points = '$!landRecommend.points';
+        if(points != null && points !=""){
+            var pointXYArr = points.split(",");
+            var pointsArr = [];
+            var a = [];
+            for(var i=0; i<pointXYArr.length; i++){
+                var _pointXYArr = pointXYArr[i].split("|");
+                pointsArr.push(_pointXYArr);
+            }
+            for(var p in pointsArr){
+                a.push(new BMap.Point(pointsArr[p][1],pointsArr[p][0]));
+                console.log(pointsArr[p][0] + "========" + pointsArr[p][1]);
+            }
+            var polygon = new BMap.Polygon(
+                    a,
+                    {strokeColor:"red", strokeWeight:3, strokeOpacity:0.9, fillColor:"orange"}); // 创建折线
+            map.addOverlay(polygon);
+
+            marker.addEventListener("click", function(){
+                map.openInfoWindow(infoWindow,point); //开启信息窗口
+            });
+        }
+
+    }else{
+        // 创建地址解析器实例
+       var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+       myGeo.getPoint("$landRecommend.provinceName$landRecommend.cityName$landRecommend.districtName$landRecommend.address", function(point){
+            if (point) {
+                map.centerAndZoom(point, 16);
+                marker = new BMap.Marker(point);  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+                var infoWindow = new BMap.InfoWindow("土地名称:$landRecommend.name", opts);  // 创建信息窗口对象
+                marker.addEventListener("click", function(){
+                    map.openInfoWindow(infoWindow,point); //开启信息窗口
+                });
+            }
+        }, "$landRecommend.cityName");
+
+        // 根据采集的点绘制图形（折线）
+        var points = '$!landRecommend.points';
+        if(points != null && points !=""){
+            var pointXYArr = points.split(",");
+            var pointsArr = [];
+            var a = [];
+            for(var i=0; i<pointXYArr.length; i++){
+                var _pointXYArr = pointXYArr[i].split("|");
+                pointsArr.push(_pointXYArr);
+            }
+            for(var p in pointsArr){
+                a.push(new BMap.Point(pointsArr[p][1],pointsArr[p][0]));
+                console.log(pointsArr[p][0] + "========" + pointsArr[p][1]);
+            }
+            var polygon = new BMap.Polygon(
+                    a,
+                    {strokeColor:"red", strokeWeight:3, strokeOpacity:0.9, fillColor:"orange"}); // 创建折线
+            map.addOverlay(polygon);
+
+            marker.addEventListener("click", function(){
+                map.openInfoWindow(infoWindow,point); //开启信息窗口
+            });
+        }
+    }
+</script>

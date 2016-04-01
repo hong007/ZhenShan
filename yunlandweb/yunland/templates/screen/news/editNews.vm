@@ -1,0 +1,116 @@
+$page.setTitle("编辑云地动态")
+<div class="xn-breadcrumb xn-width auto clearfix">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page"  href="$yunlandLink.setTarget('index')"></a> </li>
+        <li><a class="icon2"  href="$yunlandLink.setTarget('news/index')">云地动态</a> </li>
+        <li class="active">编辑云地动态</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" ng-controller="EditNewsController">
+    <form class="form-horizontal xn-form"  role="form"   xn-form-validate  novalidate name="validateForm">
+        <div class="news-editContent">
+            <div class="sidebar-description pt_30">
+                <div class="sidebar-description clearfix">
+                    ##<div class="recommend-editContent-h4"><label class="xn-input">云地动态图片 <span class="recommend-size">建议尺寸：200*100</span></label></div>
+                    ##<div>
+                    ##    <div class="xn-input-line  clearfix">
+                    ##        <ul class="xn-upload-img clearfix" >
+                    ##            <input type="file" id="pictureFile" name="pictureFile" ng-click="showPicture()" width="114" height="85"
+                    ##                   contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                    ##            <li class="clearfix" ng-if="dynamic.picturePath == null" onclick="pictureFile.click()">
+                    ##                <i class="icon icon-add"></i>
+                    ##                <div class="upload-add-title ng-binding">云地动态图片</div>
+                    ##            </li>
+                    ##            <li class="clearfix" ng-if="dynamic.picturePath != null" onclick="pictureFile.click()">
+                    ##                <img class="view-img imgFile" id="spanImage" alt="请选择图片"
+                    ##                     width="180" height="110" ng-src="{{dynamic.picturePath}}"/>
+                    ##            </li>
+                    ##        </ul>
+                    ##    </div>
+                    ##</div>
+                        <div class="form-group col-md-12 col-md-offset-1 clearfix">
+                            <label class="col-md-5 xn-label"><span class="f-right">云地动态图片：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                            <div class="col-md-7 l-h-34">
+                                建议尺寸：200*100
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-md-offset-1 clearfix advertise-editContent">
+                            <ul class="xn-upload-img clearfix" >
+                                <ul class="xn-upload-img clearfix" >
+                                    <input type="file" id="pictureFile" name="pictureFile" ng-click="showPicture()" width="114" height="85"
+                                           contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                    <li class="clearfix" ng-if="dynamic.picturePath == null" onclick="pictureFile.click()">
+                                        <i class="icon icon-add"></i>
+                                        <div class="upload-add-title ng-binding">广告图片</div>
+                                    </li>
+                                    <img ng-if="dynamic.picturePath != null" onclick="pictureFile.click()" class="view-img imgFile" id="spanImage" alt="请选择图片"
+                                         width="234" height="120" ng-src="{{dynamic.picturePath}}"/>
+                                </ul>
+                            </ul>
+                        </div>
+                </div>
+                <div class="sidebar-description clearfix">
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">类型：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input">
+                            <select class="form-control" name="category" ng-model="dynamic.type" required="required">
+                                <option value="">-- 请选择类型 --</option>
+                                <option value="notice">公告</option>
+                                <option value="inlineInformation">行业资讯</option>
+                                <option value="activityForecast">活动预告</option>
+                                <option value="specialReport">专题报道</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-description   clearfix">
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">标题：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input">
+                            <input type="text"
+                                   class="form-control" name="title" ng-model="dynamic.title" required="required">
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">作者及来源：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input">
+                            <input type="text"
+                                   class="form-control" name="title" ng-model="dynamic.author" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line clearfix">
+                        <label class="xn-label"><span class="f-right">摘要：</span></label>
+                        <div class="xn-input news-summary">
+                            <textarea type="text" rows="3"
+                                      class="form-control" name="summary" ng-model="dynamic.remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-description   clearfix">
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">内容：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input news-summary">
+                        #*<textarea type="text" rows="10"
+                                  class="form-control" name="content" ng-model="dynamic.content" required="required"></textarea>*#
+                            <textarea class="form-control" rows="15" name="landIntro" id="landIntro" ng-model="dynamic.content"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mt_12 ng-hide news-error" ng-show="validateForm.$errors.length > 0">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="alert alert-danger ng-binding"><i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="xn-input-line xn_btn_group mt_20 xn-center btw-100">
+            <a class="btn btn-primary" xn-disabled xn-form-submit="doSave()">保存</a>
+            <a class="btn btn-warning ml_15" xn-disabled xn-form-submit="doPublish()">发布</a>
+            <a class="btn btn-default ml_15" ng-href="$yunlandLink.setTarget('news/index')">取消</a>
+        </div>
+    </form>
+</div>

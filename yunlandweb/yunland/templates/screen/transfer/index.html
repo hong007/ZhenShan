@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>土地转让</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/yunland/images/favicon.ico"  type="image/x-icon"  >
+<link href="../../../dist/styles/global.min.css" rel="stylesheet">
+<link href="../../../dist/styles/local.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="xn-breadcrumb xn-width auto clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li class="active">土地转让</li>
+    </ul>
+</div>
+<div class="xn-main auto xn-width clearfix" ng-controller="TransferIndexController">
+    <!--搜索部分-->
+    <div class="xn-search clearfix">
+        <form class="form-horizontal clearfix xn-form" name="searchForm" xn-form-validate novalidate role="form">
+            <div class="height-search-box auto">
+                <div class="xn-input-line  clearfix">
+                    <label for="orderdate" class="xn-label">发布时间：</label>
+                    <div class="xn-input-sm">
+                        <div class="input-group openData">
+                            <input type="text" class="form-control" id="startDate" ng-model="vm.startDate" name="regularDate"
+                                   datepicker-popup="yyyy-MM-dd" is-open="startDate" max-date="maxDate"  datepicker-options="dateOptions"
+                                   date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </div>
+                    </div>
+                    <label for="number" class="xn-label">到：</label>
+                    <div class="xn-input-sm">
+                        <div class="input-group openData">
+                            <input type="text" class="form-control" id="endDate" ng-model="vm.endDate" name="regularDate"
+                                   datepicker-popup="yyyy-MM-dd" is-open="endDate" min-date="minDate"  datepicker-options="dateOptions"
+                                   date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"  ng-click="openEndDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label for="accountId" class="xn-label">土地名称：</label>
+                    <div class="xn-input-sm">
+                        <input class="form-control xn-click-input" type="text" name="title" ng-model="vm.name">
+                    </div>
+                    <label class="xn-label" >类型：</label>
+                    <div class="xn-input-sm">
+                        <select class="xn-click-input form-control" name="place" ng-model="vm.type" >
+                            <option value="" selected="selected"> --请选择-- </option>
+                            <option value="SUPPLY" selected="selected">土地供应</option>
+                            <option value="DEMAND">土地需求</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label for="accountId" class="xn-label">状态：</label>
+                    <div class="xn-input-sm">
+                        <select class="xn-click-input form-control" name="place" ng-model="state">
+                            <option value="" selected="selected">--请选择--</option>
+                            <option value="WEB_SHOW">审核通过</option>
+                            <option value="UNPUBLISHED">待审核</option>
+                            <option value="CANCELED">审核失败</option>
+                            <option value="TOP">置顶</option>
+                        </select>
+                    </div>
+                    <label class="xn-label"></label>
+                    <div class="xn-input-sm">
+                        <button type="button" class="btn btn-success f-right w_90" xn-submit-enter="doFind()">查询</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!--搜索部分结束-->
+
+    <div class="xn-width mb_10 pl_10 clearfix">
+        <a class="btn btn-primary btn-sm" ng-click="doApproved()">审核通过</a>
+        <a class="btn btn-primary btn-sm" ng-click="doCancel()">审核失败</a>
+        <a class="btn btn-primary btn-sm" ng-click="doTop()">设为置顶</a>
+        <a class="btn btn-primary btn-sm" ng-click="doCancelTop()">取消置顶</a>
+    </div>
+
+    <!--土地供应-->
+    <div ng-if="vm.type=='SUPPLY'" class="xn-table" >
+        <table  class="table table-bordered table-striped xn-word-breakAll">
+            <thead>
+            <tr>
+                <th class="col-md-1 xn-center"></th>
+                <th class="col-md-2 xn-center">发布时间</th>
+                <th class="col-md-1 xn-center">状态</th>
+                <th class="col-md-2 xn-center">地块名称</th>
+                <th class="col-md-1 xn-center">联系电话</th>
+                <th class="col-md-1 xn-center">创建会员名</th>
+                <th class="col-md-2 xn-center">操作</th>
+            </tr>
+            </thead>
+            <tbody id="tbody" >
+            <tr>
+                <td class="xn-center">
+                    <input type="checkbox" ng-model="supply.isSelected" ng-click="supply.isSelected=supply.isSelected"/>
+                </td>
+                <td class="xn-center">2015-11-19 13:29:39</td>
+                <td ng-if="supply.isApproved && supply.approveResult=='AGREED' && !supply.isTop" class="xn-center">审核通过</td>
+                <td ng-if="!supply.isApproved" class="xn-center">待审核</td>
+                <td ng-if="supply.approveResult=='DISAGREED' " class="xn-center">审批失败</td>
+                <td ng-if="supply.isTop" class="xn-center">置顶</td>
+                <td class="xn-center">北京市通州区于家务工业用地厂房 急售！！！</td>
+                <td class="xn-center">13406888581</td>
+                <td class="xn-center">13184120818</td>
+                <td class="xn-center">
+                    <a ng-href="$homeLink.setTarget('transfer/supplydetail')?id={{supply.id}}" target="_blank">查看</a>
+                    <a class="view-a" ng-click="openRecord(supply)" target="_blank">操作记录</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="xn-center">
+                    <input type="checkbox" ng-model="supply.isSelected" ng-click="supply.isSelected=supply.isSelected"/>
+                </td>
+                <td class="xn-center">2015-11-19 13:29:39</td>
+                <td ng-if="supply.isApproved && supply.approveResult=='AGREED' && !supply.isTop" class="xn-center">审核通过</td>
+                <td ng-if="!supply.isApproved" class="xn-center">待审核</td>
+                <td ng-if="supply.approveResult=='DISAGREED' " class="xn-center">审批失败</td>
+                <td ng-if="supply.isTop" class="xn-center">置顶</td>
+                <td class="xn-center">北京市通州区于家务工业用地厂房 急售！！！</td>
+                <td class="xn-center">13406888581</td>
+                <td class="xn-center">13184120818</td>
+                <td class="xn-center">
+                    <a ng-href="$homeLink.setTarget('transfer/supplydetail')?id={{supply.id}}" target="_blank">查看</a>
+                    <a class="view-a" ng-click="openRecord(supply)" target="_blank">操作记录</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="xn-center">
+                    <input type="checkbox" ng-model="supply.isSelected" ng-click="supply.isSelected=supply.isSelected"/>
+                </td>
+                <td class="xn-center">2015-11-19 13:29:39</td>
+                <td ng-if="supply.isApproved && supply.approveResult=='AGREED' && !supply.isTop" class="xn-center">审核通过</td>
+                <td ng-if="!supply.isApproved" class="xn-center">待审核</td>
+                <td ng-if="supply.approveResult=='DISAGREED' " class="xn-center">审批失败</td>
+                <td ng-if="supply.isTop" class="xn-center">置顶</td>
+                <td class="xn-center">北京市通州区于家务工业用地厂房 急售！！！</td>
+                <td class="xn-center">13406888581</td>
+                <td class="xn-center">13184120818</td>
+                <td class="xn-center">
+                    <a ng-href="$homeLink.setTarget('transfer/supplydetail')?id={{supply.id}}" target="_blank">查看</a>
+                    <a class="view-a" ng-click="openRecord(supply)" target="_blank">操作记录</a>
+                </td>
+            </tr>
+            <tr  ng-if="vm.totalCount == 0"><td colspan="12" class="center">无法找到相应的记录</td></tr>
+            </tbody>
+        </table>
+        <div class="f-left mt_20 mb_20 ng-binding">共{{vm.totalCount}}条</div>
+        <div class="f-right clearfix">
+            <pagination ng-show="vm.totalCount>vm.pageSize" ng-change="doFind()" max-size="maxPageSize"
+                        total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                        class="pagination-sm pagination-item" boundary-links="true" previous-text="&lsaquo;"
+                        next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+    </div>
+    <!--土地供应-->
+
+    <!--土地需求-->
+    <div ng-if="vm.type=='DEMAND'" class="xn-table" >
+        <table  class="table table-bordered table-striped xn-word-breakAll">
+            <thead>
+            <tr>
+                <th class="col-md-1 xn-center"></th>
+                <th class="col-md-2 xn-center">发布时间</th>
+                <th class="col-md-1 xn-center">状态</th>
+                <th class="col-md-2 xn-center">地块名称</th>
+                <th class="col-md-1 xn-center">联系电话</th>
+                <th class="col-md-1 xn-center">创建会员名</th>
+                <th class="col-md-2 xn-center">操作</th>
+            </tr>
+            </thead>
+            <tbody id="tbody" >
+            <tr >
+                                <td class="xn-center">
+                    <input type="checkbox" ng-model="demand.isSelected" ng-click="demand.isSelected=demand.isSelected"/>
+                </td>
+                <td class="xn-center">2015-11-03 15:41:55</td>
+                <td ng-if="demand.isApproved && demand.approveResult=='AGREED' && !demand.isTop&& !demand.isDeleted" class="xn-center">审核通过</td>
+                <td ng-if="!demand.isApproved && !demand.isDeleted" class="xn-center">待审核</td>
+                <td ng-if="demand.approveResult=='DISAGREED'&& !demand.isDeleted " class="xn-center">审批失败</td>
+                <td ng-if="demand.isTop&& !demand.isDeleted" class="xn-center">置顶</td>
+                    <td ng-if="demand.isDeleted" class="xn-center">已删除</td>
+                <td class="xn-center">求购南山科技园土地建总部大厦_商业地块_土地转让信息</td>
+                <td class="xn-center">13530632525</td>
+                <td class="xn-center">ggbm</td>
+                <td class="xn-center">
+                    <a ng-href="http://www.yunland.cn/transfer/requiredetail.htm?id={{demand.id}}" target="_blank">查看</a>
+                    <a class="view-a" ng-click="openRecord(demand)" target="_blank">操作记录</a>
+                </td>
+            </tr>
+            <tr >
+                                <td class="xn-center">
+                    <input type="checkbox" ng-model="demand.isSelected" ng-click="demand.isSelected=demand.isSelected"/>
+                </td>
+                <td class="xn-center">2015-11-03 15:41:55</td>
+                <td ng-if="demand.isApproved && demand.approveResult=='AGREED' && !demand.isTop&& !demand.isDeleted" class="xn-center">审核通过</td>
+                <td ng-if="!demand.isApproved && !demand.isDeleted" class="xn-center">待审核</td>
+                <td ng-if="demand.approveResult=='DISAGREED'&& !demand.isDeleted " class="xn-center">审批失败</td>
+                <td ng-if="demand.isTop&& !demand.isDeleted" class="xn-center">置顶</td>
+                    <td ng-if="demand.isDeleted" class="xn-center">已删除</td>
+                <td class="xn-center">求购南山科技园土地建总部大厦_商业地块_土地转让信息</td>
+                <td class="xn-center">13530632525</td>
+                <td class="xn-center">ggbm</td>
+                <td class="xn-center">
+                    <a ng-href="http://www.yunland.cn/transfer/requiredetail.htm?id={{demand.id}}" target="_blank">查看</a>
+                    <a class="view-a" ng-click="openRecord(demand)" target="_blank">操作记录</a>
+                </td>
+            </tr>
+            <tr >
+                                <td class="xn-center">
+                    <input type="checkbox" ng-model="demand.isSelected" ng-click="demand.isSelected=demand.isSelected"/>
+                </td>
+                <td class="xn-center">2015-11-03 15:41:55</td>
+                <td ng-if="demand.isApproved && demand.approveResult=='AGREED' && !demand.isTop&& !demand.isDeleted" class="xn-center">审核通过</td>
+                <td ng-if="!demand.isApproved && !demand.isDeleted" class="xn-center">待审核</td>
+                <td ng-if="demand.approveResult=='DISAGREED'&& !demand.isDeleted " class="xn-center">审批失败</td>
+                <td ng-if="demand.isTop&& !demand.isDeleted" class="xn-center">置顶</td>
+                    <td ng-if="demand.isDeleted" class="xn-center">已删除</td>
+                <td class="xn-center">求购南山科技园土地建总部大厦_商业地块_土地转让信息</td>
+                <td class="xn-center">13530632525</td>
+                <td class="xn-center">ggbm</td>
+                <td class="xn-center">
+                    <a ng-href="http://www.yunland.cn/transfer/requiredetail.htm?id={{demand.id}}" target="_blank">查看</a>
+                    <a class="view-a" ng-click="openRecord(demand)" target="_blank">操作记录</a>
+                </td>
+            </tr>
+            <tr  ng-if="vm.totalCount == 0"><td colspan="12" class="center">无法找到相应的记录</td></tr>
+            </tbody>
+        </table>
+        <div class="f-left mt_10 mb_10">共{{vm.totalCount}}条</div>
+        <div class="f-right clearfix">
+            <pagination ng-show="vm.totalCount>vm.pageSize" ng-change="doFind()" max-size="maxPageSize"
+                        total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                        class="pagination-sm pagination-item" boundary-links="true" previous-text="&lsaquo;"
+                        next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+    </div>
+    <!--土地需求-->
+</div>
+<script type="text/ng-template" id="OpenLogs.html">
+    <form  class="form-horizontal xn-form clearfix" role="form"  xn-form-validate novalidate  name="validateForm" >
+        <div class="modal-header">
+            <h3 class="modal-title">操作记录</h3>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="xn-table" >
+            <table  class="table table-bordered table-striped xn-word-breakAll">
+                <thead>
+                <tr>
+                    <th class="xn-center col-md-1"></th>
+                    <th class="xn-center col-md-2">操作人</th>
+                    <th class="xn-center col-md-5">操作名称</th>
+                    <th class="xn-center col-md-2">操作日期</th>
+                    <th class="xn-center col-md-2">备注</th>
+                </tr>
+                </thead>
+                <tbody id="tbody" >
+                <tr ng-repeat="log in logList" >
+                    <td class="xn-center">{{(vm.pageNumber-1)*vm.pageSize+$index+1}}</td>
+                    <td class="xn-center">{{log.createName}}</td>
+                    <td class="xn-text-left">{{log.logContent}}</td>
+                    <td class="xn-text-left">{{log.creationTime}}</td>
+                    <td class="xn-text-left">{{log.remarks}}</td>
+                </tr>
+                <tr  ng-if="vm.totalCount == 0"><td colspan="12" class="center">无法找到相应的操作记录</td></tr>
+                </tbody>
+            </table>
+            <div class="clearfix" >
+                <div class="f-left mt_20 mb_10">共{{vm.totalCount}}条</div>
+                <pagination  ng-show="vm.totalCount>vm.pageSize"  ng-change="getList()"  max-size="maxPageSize" total-items="vm.totalCount"
+                             ng-model="vm.pageNumber" items-per-page="vm.pageSize"  class="pagination-sm"  boundary-links="true"
+                             previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a ng-click="clean()"  class="btn btn-primary">关闭</a>
+        </div>
+    </form>
+</script>
+
+<div id="footer" class="xn-width auto clearfix">
+    <span>浙江臻善科技有限公司</span><br/>
+    <span>浙ICP备06018569号-2</span><br/>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='float: center;'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256144657%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</div>
+
+<!-- 引用服务站点的JS文件 -->
+
+<div class="xn-back-to-top"   data-feedback-url=$config.getServiceUrl("feedback/create.htm")>
+</div>
+    <div xn-nprogress></div>
+
+</body>
+<script src="../../../dist/scripts/base.min.js"></script>
+<script src="../../../dist/scripts/global.min.js"></script>
+<script src="../../../dist/scripts/local.min.js"></script>
+<script type="text/javascript" src="../../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    /*犀牛ng-app的运用*/
+    angular.element(document).ready(function() {
+        initApp();
+        angular.bootstrap(document.body, ['xn']);
+    });
+    var uploadjson =  'http://www.yunland.cn/base/fileUploadJson.do';
+    var uploadmamagerjson = 'http://www.yunland.cn/base/fileUploadManager.do';
+</script>
+</html>

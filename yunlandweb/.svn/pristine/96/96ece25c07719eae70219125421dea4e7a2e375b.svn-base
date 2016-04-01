@@ -1,0 +1,54 @@
+<div class="login-header">
+    <div class="am-g">
+        <a href="javascript:history.back(-1)"><span class="am-icon-angle-left am-icon-lg"></span></a>
+        <span class="login-header-title">会员注册</span>
+    </div>
+</div>
+#macro (registerMessage $field)
+    #if (!$field.valid) $field.message #end
+#end
+
+<div class="am-g login-content register-content">
+    <div>
+        <form action="" method="post" class="am-form">
+            #set ($group = $form.register.defaultInstance)
+            $group.mapTo($group)
+            <input type="hidden" name="action" value="register"/>
+            <input type="hidden" name="mobilePhone" value="$!mobilePhone">
+            <div class="login-input-line">
+                <input class="form-control" type="text" placeholder="账号" name="$group.account.key" value="$group.account.value">
+                <div style="color: red">#registerMessage($group.account)
+                #registerMessage ($group.registerError)
+                </div>
+            </div>
+            <div class="login-input-line">
+                <input class="form-control" type="password" placeholder="设置密码"  name="$group.password.key" value="$group.password.value">
+                <div style="color: red">#registerMessage ($group.password)</div>
+            </div>
+            <div class="login-input-line">
+                <input class="form-control" type="password" placeholder="确认密码"  name="$group.confirmpassword.key"
+                       value="$group.confirmpassword.value">
+                <div style="color: red">#registerMessage ($group.confirmpassword)</div>
+            </div>
+            <div class="login-input-line">
+                <input class="form-control" type="text" placeholder="公司/个人名称" name="$group.name.key" value="$group.name.value">
+                <div style="color: red">#registerMessage ($group.name)</div>
+            </div>
+            <div class="login-input-line">
+                <input class="form-control" type="text" placeholder="联系人" name="$group.contactName.key"
+                       value="$group.contactName.value">
+                <div style="color: red">#registerMessage ($group.contactName)</div>
+            </div>
+            <div class="login-input-line">
+                <input class="form-control" type="text" placeholder="联系电话" name="$group.contactPhone.key"
+                       value="$group.contactPhone.value">
+                <div style="color: red">#registerMessage ($group.contactPhone)</div>
+            </div>
+            <div class="login-input-line">
+                <input class="form-control" type="text" placeholder="联系地址" name="$group.address.key" value="$group.address.value">
+                <div style="color: red">#registerMessage ($group.address)</div>
+            </div>
+            <input type="submit" class="am-btn am-btn-primary am-btn-block am-radius mt-20 mb-20" name="event_submit_do_register" value="完成注册"></input>
+        </form>
+    </div>
+</div>

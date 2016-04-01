@@ -1,0 +1,96 @@
+$page.setTitle("土地详情")
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("transfer/index")">土地转让</a></li>
+        <li class="active">土地详情</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="ViewDemandLandController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix">
+            <div class="edit-content">
+                <div class="land-title">
+                    <h1 class="mb_20">{{demandLand.title}}</h1>
+                    <h5>更新时间：{{demandLand.lastUpdateTime}}</h5>
+                </div>
+                <h4 class="recommend-editContent-h4">土地基本信息</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">所在地区：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.provinceName}}{{demandLand.cityName}}{{demandLand.districtName}}
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">位置：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.landLocation}}
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">预算金额（万元）：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.amount}}
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">规划用途：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.planUse|planUse}}
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">合作方式：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.cooperationMode|cooperationMode}}
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">使用年限：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.year}}年
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">需求面积(万平方米)：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.demandArea}}
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">联系人：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.contactName}}
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">联系电话：</span></label>
+                        <div class="xn-input-sm">
+                            {{demandLand.contactPhone}}
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">详细介绍</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <p ng-bind-html="demandLand.content"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0 ">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5"
+                                                       ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix xn-text-center">
+            #*<button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doApproved()">审核通过</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doCancel()">审核失败</button>*#
+            <a ng-href="$yunlandLink.setTarget('transfer/index')"  class="btn btn-default col-md-2" style="float: none;">返回</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>

@@ -1,0 +1,101 @@
+<script type="text/javascript">
+    var selectModel = [
+        #foreach($param in ${selectLandPurpose.keySet()})
+            {id:"$param",name:'${selectLandPurpose.get($param)}'},
+        #end
+    ]
+
+</script>
+
+<div id="content" class="mb-50">
+    <div class="member-content statistic-content xn-width auto clearfix">
+        <div class="statistic-nav">
+            <div class="f-left column-nav">
+                <a href="$homeContent.getURI("../statistic/index")">排行榜</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a href="$homeContent.getURI("../statistic/trendChart")">走势图</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a class="active" href="$homeContent.getURI("../statistic/intelligence")">情报站</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content-left">
+            <h3>分类</h3>
+            <ul class="member-my">
+                <li id="map" class="click"><a href="#">地图</a></li>
+                <li id="table"><a href="#">列表</a></li>
+            </ul>
+        </div>
+
+        <div class="content-right">
+            <div class="search-div">
+                <div class="input-line">
+                    <label>地产商名称：</label>
+                    <input id="user" type="text" class="form-control w-208"/>
+                    <div class="tip"></div>
+                    <label>地&nbsp;&nbsp;区：</label>
+                    <select class="form-control w-100 mr_20" id="cmbProvinces" name="cmbProvinces"></select>
+                    <select class="form-control w-100 mr_20" id="cmbCitys" name="cmbCitys"></select>
+                    <select class="form-control w-100" id="cmbAreas" name="cmbAreas"></select>
+                </div>
+                <div class="input-line">
+                    <label>规划用途：</label>
+                    <select id="landType" class="form-control w-233" id="" name="">
+                        <option value="">-- 请选择规划用途 --</option>
+                        #foreach($param in ${selectLandPurpose.keySet()})
+                            <option value="$param">${selectLandPurpose.get($param)}</option>
+                        #end
+                    </select>
+                    <div class="tip"></div>
+                    <label>出让方式：</label>
+                    <select id="sellWay" class="form-control w-208" id="" name="">
+                        <option value="">-- 请选择出让方式 --</option>
+                        #foreach($param in ${selectSupplyMethod.keySet()})
+                            <option value="$param">${selectSupplyMethod.get($param)}</option>
+                        #end
+                    </select>
+                    <a id="query" class="btn btn-short ml-20">查询</a>
+                </div>
+            </div>
+            <div class="map-content" id="mainMap">
+                <div id="allmap"></div>
+            </div>
+            <div id="mainTable" >
+                <div class="content-main" >
+                    <table cellpadding="0" cellspacing="0" id="resourceTable" class="mmg" width="100%" #*class="statistic word-breakAll"*#>
+
+                    </table>
+                </div>
+                <div id="pg" style="text-align: right;"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript"  src="$homeContent.getURI('scripts/statistic/intelligence.js')"></script>
+<script type="text/javascript">
+    addressInit2('cmbProvinces', 'cmbCitys', 'cmbAreas','86');
+    var selectModelType = [
+        #foreach($param in ${selectLandPurpose.keySet()})
+            {id:"$param",name:'${selectLandPurpose.get($param)}'},
+        #end
+    ]
+    var getLandPurose = function(value){
+        if(!value){
+            return "";
+        }
+        // 查询用途
+        var planuseModes = [
+            #foreach($param in ${selectLandPurpose.keySet()})
+                {key:'$param',value:'${selectLandPurpose.get($param)}'},
+            #end
+        ]
+        for(var i=0;i<planuseModes.length;i++){
+            var planuseMode = planuseModes[i];
+            if(planuseMode&&planuseMode.key==value){
+                return ""+planuseMode.value;
+            }
+        }
+    }
+</script>

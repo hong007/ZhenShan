@@ -1,0 +1,531 @@
+<style type="text/css">
+.bg{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 1;  opacity:100;  filter: alpha(opacity=100);}
+.show{display: none;  position: fixed;  top: 1%;  left: 1%;  width: 95%;  height: 92%;  padding: 8px;  border: 8px solid #E8E9F7;  background-color: white;  z-index:1002;  overflow: auto;}
+</style>
+<div class="recommend-image" style="background: url('$!recommendCityDetail.picturePath') center top no-repeat;"></div>
+<div class="xn-width auto">
+    #*<div class="login-head detail-slider excludeIndex" id="focus">
+        <div id="trippleArrowLeft2" class="arrow-left"></div>
+        <div id="trippleArrowRight2" class="arrow-right"></div>
+        <ul>
+            #foreach($!recommendbuttom in $!recommendbuttoms)
+                <li>
+                    <a href="$!recommendbuttom.url">
+                    <img src="$!recommendbuttom.picturePath" width="100%" height="400" alt="$!recommendbuttom.name">
+                    </a>
+                </li>
+            #end
+        </ul>
+        <div class="btnBg xn-width auto">
+            <div class="list-circle">
+                #foreach($!recommendbuttom in $!recommendbuttoms)
+                    <span></span>
+                #end
+            </div>
+        </div>
+    </div>*#
+    <!--城市地图 -->
+    <div class="land-recommend-title">
+        <span class="recommend-mark fl"></span> <span class="fl">城市地图</span>
+    </div>
+    <div class="map-content" id="mainMap">
+        <div style="width: 100%;z-index: 999;right: 0;position: relative;text-align: right">
+            <input id="btnclose"
+                   style="display:none;height: 20px;margin-right: 20px;padding: 0;background: #be3b41;color: #fff;border: 1px solid #dcdcdc;height: 30px;line-height: 30px;/*display: inline-block*/;padding: 0 10px;margin-bottom: -20px;border-radius: 4px;"
+                   type="button" value="关闭" />
+        </div>
+
+        <div id="allmap">
+        </div>
+    </div>
+    #*<div class="land-intro-list clearfix">
+        <div class="map-content">
+            <div id="mapdetail"></div>
+        </div>
+    </div>*#
+    <div class="land-recommend-list mt_10">
+        <div class="land-recommend-condition">
+            <form action="" method="get">
+               条件切换：
+                <label><input name="condition" type="radio" value="name" />土地名称 </label>
+                <label><input name="condition" type="radio" value="floorSpace" />宗地面积 </label>
+                <label><input name="condition" type="radio" value="plotRatio" />容积率 </label>
+                <span class="ml-20"> 土地用途：</span>
+                <label><input name="conditioncheckbox" type="checkbox" value="zhuz" />住宅用地</label>
+                <label><input name="conditioncheckbox" type="checkbox" value="shangy" />商业/办公用地</label>
+                <label><input name="conditioncheckbox" type="checkbox" value="gongy" />工业用地</label>
+                <label><input name="conditioncheckbox" type="checkbox" value="zhongh" />综合用地</label>
+                <a id="full" class="ml-20">全屏显示</a>
+                <label class="ml-20" ><input id="markercheckbox" name="markercheckbox" type="checkbox" value="1" />隐藏坐标</label>
+            </form>
+        </div>
+    </div>
+
+    <!--地块信息 -->
+    <div class="land-recommend-title">
+        <span class="recommend-mark fl"></span> <span class="fl">地块信息</span>
+    </div>
+    #*<div class="land-recommend-list mt_10 land-recommend-height">*#
+        <div class="land-intro-list">
+            <ul id="landRecommend">
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div id="orgpagination" class="pagination">
+        </div>
+    #*</div>*#
+
+    <!--详细介绍 -->
+    #if($!recommendCityDetail.generalContent != '' || $!recommendCityDetail.landvalueContent != '' || $!recommendCityDetail.planContent !='' || $!recommendCityDetail.browseContent != '')
+    <div class="land-recommend-title clearfix">
+        <span class="recommend-mark fl"></span> <span class="fl">详细介绍</span>
+    </div>
+    <div class="land-recommend-list clearfix">
+        <div class="land-recommend-tab-title position-relative">
+            <ul class="clearfix">
+                <li class="on">城市概况</li>
+                <li>城市规划</li>
+                <li>土地价值</li>
+                <li>土地出让一览表</li>
+            </ul>
+        </div>
+        <div class="land-recommend-tab-con mt_10">
+          <div class="land-detail">#noescape() $!recommendCityDetail.generalContent #end</div>
+          <div class="land-detail display-none">#noescape()  $!recommendCityDetail.planContent #end</div>
+          <div class="land-detail display-none">#noescape()  $!recommendCityDetail.landvalueContent #end</div>
+          <div class="land-detail display-none">#noescape()  $!recommendCityDetail.browseContent #end</div>
+        </div>
+    </div>
+    #end
+
+    <div class="clearfix mt_20"></div>
+
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".land-detail").each(function(index,element){
+           if($(this).html()=="  " || $(this).html()=="" || $(this).html()==" " || $(this).html()=="   "){
+               $(this).hide();
+               $(".land-recommend-tab-title ul li").eq(index).hide();
+               if($(".land-recommend-tab-title ul li").eq(index).hasClass("on")){
+                   $(".land-recommend-tab-title ul li").eq(index +1).addClass("on");
+                   $(".land-recommend-tab-con").find(".land-detail").hide().eq(index+1).show();
+               }
+           }
+        });
+        //tab
+        $(".land-recommend-tab-title ul li").on("click",function(){
+            $(".land-recommend-tab-title ul li").removeClass("on");
+            $(this).addClass("on");
+            var index= $(this).index();
+            $(".land-recommend-tab-con").find(".land-detail").hide().eq(index).show();
+
+        });
+       /* $(".land-recommend-tab-title ul li").css("border-right","none");*/
+        $(".land-recommend-tab-title ul li:last-child").css("border-right","1px solid #dcdcdc");
+
+
+
+        //轮播
+        var sWidth = $(".land-recommend-banner").width();
+        var len  =$(".land-recommend-banner").find('ul').length;
+        var liIndex  = 0;
+        var Timer;
+
+        $(".land-recommend-banner").find('.arrow-right').click(function(){
+            clearInterval(Timer);
+            liIndex++;
+            if(liIndex == len){liIndex = 0;}
+            Tony(liIndex);
+        });
+        $(".land-recommend-banner").find('.arrow-left').click(function(){
+            clearInterval(Timer);
+            if(liIndex == 0){
+                liIndex = len-1;
+            }else{
+                liIndex--;
+            }
+            Tony(liIndex);
+        });
+
+        $('.land-recommend-banner').hover(function(){
+            clearInterval(Timer);
+        },function(){
+            Timer=setInterval(function(){
+                Tony(liIndex);
+                liIndex++;
+                if(len == liIndex){liIndex = 0;}
+            }, 2000)
+        }).trigger("mouseleave");
+
+        function Tony(liIndex){
+            var new_width = -liIndex * sWidth;
+            $(".land-recommend-banner").find('.land-recommend-ul-con').stop(true,false).animate({'left' : new_width},300);
+            $(".land-recommend-banner").find('.land-recommend-dot span').stop(true,false).eq(liIndex).addClass('on').siblings().removeClass('on');
+        };
+
+    });
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+
+<script type="text/javascript">
+    function pageselectCallback(page_index, jq){
+        load_list(page_index);
+        return false;
+    }
+    function createPagination(page_index, count) {
+        $("#orgpagination").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 9,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback
+        });
+    }
+    function writeTable (data) {
+        $('#landRecommend').children("li").remove();
+        var result = data.result;
+        $(result).each(function (index, item) {
+            var html = "";
+            if((index+1) %3 ==0){
+                html = '<li>' +
+                '<div class="sell-intro-outer">' +
+                '<div class="sell-intro-inner">' +
+                '<div class="land-index-img-con clearfix">'+
+                '<img src="' + (item.headImagepath?item.headImagepath:'') + '" width="330" height="185" alt="土地信息" style="display: block;">' +
+                '</div>'+
+                '<div class="title">' + (item.name?item.name:'') + '</div>' +
+                '<div class="place-area">位置：' + (item.address?item.address:'') + '</div>' +
+                '<div class="place-area">面积：' + (item.floorSpace?item.floorSpace:'') + '万平方米</div>' +
+                '</div>' +
+                '<a class="btn btn-warning" href="detail?id=' + item.id + '">查看详情</a>' +
+                '</div>' +
+                '</li>'
+            }else{
+                html = '<li class="mr-29">' +
+                '<div class="sell-intro-outer">' +
+                '<div class="sell-intro-inner">' +
+                '<div class="land-index-img-con clearfix">'+
+                '<img src="' + (item.headImagepath?item.headImagepath:'') + '" width="330" height="185" alt="土地信息"  style="display: block;">' +
+                '</div>'+
+                '<div class="title">' + (item.name?item.name:'') + '</div>' +
+                '<div class="place-area">位置：' + (item.address?item.address:'') + '</div>' +
+                '<div class="place-area">面积：' + (item.floorSpace?item.floorSpace:'') + '万平方米</div>' +
+                '</div>' +
+                '<a class="btn btn-warning" href="detail?id=' + item.id + '">查看详情</a>' +
+                '</div>' +
+                '</li>'
+            }
+
+            $('#landRecommend').append(html);
+        });
+    }
+    function load_list(page_index){
+        var keyword = $('#query').data('keyword') ? $('#query').data('keyword') : '$!keyword';
+        var businessType = '$!businessType';
+        var select = $('#query').data('selectvalue');
+        if(!select){
+            select = {};
+            var provice = '$!cmbProvince'
+            if(""!=provice){
+                select.region = '$!cmbProvince';
+            }
+            if(""!='$!cmbCity'){
+                select.cityId = '$!cmbCity';
+            }
+            if(""!='$!cmbArea'){
+                select.districtId = '$!cmbArea';
+            }
+            if(""!='$!purpose'){
+                select.purpose='$!purpose';
+            }
+        }
+        var data = {};
+        data.keyword = keyword;
+        select.cityId = $!recommendCity.cityId;
+        data.selectvalue = select;
+        data.businessType = businessType;
+        $.post('/recommend/api.do', {
+            method: 'api.recommend.land.info.find',
+            data: JSON.stringify(data),
+            pageSize: 9,
+            pageNumber: (page_index + 1)
+        }, function (data) {
+            writeTable(data);
+            createPagination(page_index, data.totalCount);
+        }, 'json');
+    }
+    $(document).ready(function () {
+        var taboy_box = $(".lefttable-list");
+        taboy_box.children("tbody").find("tr:gt(2)").hide();
+        $(".leftbox-morea").toggle(function () {
+                    $(this).parent().prev().find("tr").show();
+                    $(this).addClass("more-i");
+                }, function () {
+                    $(this).removeClass("more-i");
+                    $(this).parent().prev().children("tbody").find("tr:gt(2)").hide();
+                }
+        );
+
+        load_list(0);
+
+        load_map();
+
+    });
+
+    // 百度地图API功能
+    var map = new BMap.Map("allmap",{mapType: BMAP_HYBRID_MAP});
+    map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+    map.disableScrollWheelZoom();
+    map.addEventListener("click", function(){
+        map.enableScrollWheelZoom();
+    });
+    map.centerAndZoom(new BMap.Point(116.417854,39.921988), 11);
+    var myIcon = new BMap.Icon("../home/images/mapMarker.png", new BMap.Size(32,38));
+    var navigationControl = new BMap.NavigationControl({
+        // 靠左上角位置
+        anchor: BMAP_ANCHOR_TOP_LEFT,
+        // LARGE类型
+        type: BMAP_NAVIGATION_CONTROL_LARGE,
+        // 启用显示定位
+        enableGeolocation: true
+    });
+    map.addControl(navigationControl);
+
+    function load_map(){
+        var keyword = $('#query').data('keyword') ? $('#query').data('keyword') : '$!keyword';
+        var businessType = '$!businessType';
+        var select = $('#query').data('selectvalue');
+        if(!select){
+            select = {};
+            var provice = '$!cmbProvince'
+            if(""!=provice){
+                select.region = '$!cmbProvince';
+            }
+            if(""!='$!cmbCity'){
+                select.cityId = '$!cmbCity';
+            }
+            if(""!='$!cmbArea'){
+                select.districtId = '$!cmbArea';
+            }
+            if(""!='$!purpose'){
+                select.purpose='$!purpose';
+            }
+        }
+        var data = {};
+        data.keyword = keyword;
+        select.cityId = $!recommendCity.cityId;
+        data.selectvalue = select;
+        data.businessType = businessType;
+        getMapData(data);
+    }
+
+    // 复选框事件
+    var mapData = {};
+    var mapSelect = {};
+    mapData.keyword = $('#query').data('keyword') ? $('#query').data('keyword') : '$!keyword';
+    mapSelect.cityId = $!recommendCity.cityId;
+    mapData.selectvalue = mapSelect;
+    mapData.planUseArr = '';
+    /*$("input[name='conditioncheckbox']:checked").each(function(){
+        mapData.planUse.push($(this).val());
+    });*/
+    $("[name='conditioncheckbox']:checkbox").bind("click",function(){
+        var obj = document.getElementsByName("conditioncheckbox");
+        for(var i=0;i<obj.length;i++){
+            if(obj[i].checked) //取到对象数组后，我们来循环检测它是不是被选中
+                mapData.planUseArr += obj[i].value + ',';   //如果选中，将value添加到变量中
+        }
+        getMapData(mapData);
+        mapData.planUseArr = '';
+    });
+
+    // 隐藏坐标的复选框事件
+    var isMarkerShow = 1;
+    $("#markercheckbox").bind("click",function(){
+        if($("#markercheckbox").is(':checked')){
+            isMarkerShow = 0;
+        }else{
+            isMarkerShow = 1;
+        }
+        getMapData(mapData)
+    });
+
+    // 单选事件
+    var radioType = 'name';
+    $("input:radio[name='condition']").change(function () {
+        radioType = $("input[name='condition']:checked").val();
+        getMapData(mapData);
+    });
+
+    // 全屏遮罩层
+    $('#full').click(function(){
+        $('#allmap').addClass("show");
+        $('#mainMap').removeClass().addClass("bg");
+        document.getElementById("allmap").style.display ="block";
+        document.getElementById("mainMap").style.display ="block";
+        $('#btnclose').show();
+    });
+
+    $('#btnclose').click(function(){
+        $('#allmap').removeClass();
+        $('#mainMap').removeClass().addClass("map-content");
+        $('#btnclose').hide();
+    });
+
+    var getMapData = function(data){
+        $.ajax({ type: "post",//使用get方法访问后台
+            dataType: "json",//返回json格式的数据
+            url:'/recommend/api.do',
+            data:{method:'api.recommend.land.info.find','data':JSON.stringify(data)},
+            success: function(msg){
+                map.clearOverlays();
+                $.each(msg.result, function (i, item) {
+                    var address = (item.provinceName?item.provinceName:'')+(item.cityName?item.cityName:'')+(item.districtName?item.districtName:"")+(item.address?item.address:"");
+                    var point = item.location;
+                    if(!point==''){
+                        var temppoint = point.split(',');
+                        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+                        map.centerAndZoom(new_point, 11);  //根据经纬度定中心点
+                        marker = new BMap.Marker(new_point);  // 创建标注
+                        if(isMarkerShow == 1){
+                            map.addOverlay(marker);              // 将标注添加到地图中
+                        }
+
+                        // 根据采集的点绘制图形（折线）
+                        var points = item.points;
+                        if(points != null && points !=""){
+                            var pointXYArr = points.split(",");
+                            var pointsArr = [];
+                            var a = [];
+                            for(var i=0; i<pointXYArr.length; i++){
+                                var _pointXYArr = pointXYArr[i].split("|");
+                                pointsArr.push(_pointXYArr);
+                            }
+                            for(var p in pointsArr){
+                                a.push(new BMap.Point(pointsArr[p][1],pointsArr[p][0]));
+                                console.log(pointsArr[p][0] + "========" + pointsArr[p][1]);
+                            }
+                            var polygon = new BMap.Polygon(
+                                    a,
+                                    {strokeColor:"red", strokeWeight:3, strokeOpacity:0.9, fillColor:"orange"}); // 创建折线
+                            map.addOverlay(polygon);
+
+                            marker.addEventListener("click", function(){
+                                map.openInfoWindow(infoWindow,point); //开启信息窗口
+                            });
+                        }
+
+                        map.panTo(new_point);
+                        var infoWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">地产商名称：</td>'+
+                        '<td><h4>'+(item.user?item.user:"")+'</h4></td></tr>'+
+                        '<tr><td style="text-align: right;">地块名称：</td><td>'+(item.name?item.name:"")+'</td></tr> '+
+                        '<tr><td style="text-align: right;">面积：</td><td>'+(item.floorSpace?item.floorSpace:'')+'万平方米</td></tr>' +
+                        '<tr><td style="text-align: right;">地址：</td><td id="address_td">'+address+'</td></tr></table>' +
+                        '</div>');
+                        var nameWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">地块名称：</td>'+
+                        '<td><h4>'+(item.name?item.name:"")+'</h4></td></tr>'+
+                        '</table>' + '</div>');
+                        var floorSpaceWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">出让面积：</td>'+
+                        '<td><h4>'+(item.floorSpace?item.floorSpace:"")+'</h4></td></tr>'+
+                        '</table>' + '</div>');
+                        var plotRatioWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">容积率：</td>'+
+                        '<td><h4>'+(item.plotRatio?item.plotRatio:"")+'</h4></td></tr>'+
+                        '</table>' + '</div>');
+                        var label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                        if(radioType == 'name'){
+                            label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                        }else if(radioType == 'floorSpace'){
+                            label = new window.BMap.Label(item.floorSpace?item.floorSpace:"", { offset: new window.BMap.Size(20, -10) });
+                        }else{
+                            label = new window.BMap.Label(item.plotRatio?item.plotRatio:"", { offset: new window.BMap.Size(20, -10) });
+                        }
+                        marker.setLabel(label);
+                        marker.addEventListener("click", function(){
+                            map.openInfoWindow(infoWindow,new_point); //开启信息窗口
+                        });
+                    }else{
+                        // 创建地址解析器实例
+                        var myGeo = new BMap.Geocoder();
+                        // 将地址解析结果显示在地图上,并调整地图视野
+                        myGeo.getPoint(address, function(point){
+                            if (point) {
+                                map.centerAndZoom(point, 11);
+                                marker = new BMap.Marker(point);  // 创建标注
+                                if(isMarkerShow == 1){
+                                    map.addOverlay(marker);              // 将标注添加到地图中
+                                }
+                                var infoWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">地产商名称：</td>'+
+                                '<td><h4>'+(item.user?item.user:"")+'</h4></td></tr>'+
+                                '<tr><td style="text-align: right;">地块名称：</td><td>'+(item.name?item.name:"")+'</td></tr> '+
+                                '<tr><td style="text-align: right;">面积：</td><td>'+(item.floorSpace?item.floorSpace:'')+'万平方米</td></tr>' +
+                                '<tr><td style="text-align: right;">地址：</td><td id="address_td">'+address+'</td></tr></table>' +
+                                '</div>');
+                                var nameWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">地块名称：</td>'+
+                                '<td><h4>'+(item.name?item.name:"")+'</h4></td></tr>'+
+                                '</table>' + '</div>');
+                                var floorSpaceWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">出让面积：</td>'+
+                                '<td><h4>'+(item.floorSpace?item.floorSpace:"")+'</h4></td></tr>'+
+                                '</table>' + '</div>');
+                                var plotRatioWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">容积率：</td>'+
+                                '<td><h4>'+(item.plotRatio?item.plotRatio:"")+'</h4></td></tr>'+
+                                '</table>' + '</div>');
+                                var label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                                if(radioType == 'name'){
+                                    label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                                }else if(radioType == 'floorSpace'){
+                                    label = new window.BMap.Label(item.floorSpace?item.floorSpace:"", { offset: new window.BMap.Size(20, -10) });
+                                }else{
+                                    label = new window.BMap.Label(item.plotRatio?item.plotRatio:"", { offset: new window.BMap.Size(20, -10) });
+                                }
+
+                                marker.setLabel(label);
+
+                                // 根据采集的点绘制图形（折线）
+                                var points = item.points;
+                                if(points != null && points !=""){
+                                    var pointXYArr = points.split(",");
+                                    var pointsArr = [];
+                                    var a = [];
+                                    for(var i=0; i<pointXYArr.length; i++){
+                                        var _pointXYArr = pointXYArr[i].split("|");
+                                        pointsArr.push(_pointXYArr);
+                                    }
+                                    for(var p in pointsArr){
+                                        a.push(new BMap.Point(pointsArr[p][1],pointsArr[p][0]));
+                                        console.log(pointsArr[p][0] + "========" + pointsArr[p][1]);
+                                    }
+                                    var polygon = new BMap.Polygon(
+                                            a,
+                                            {strokeColor:"red", strokeWeight:3, strokeOpacity:0.9, fillColor:"orange"}); // 创建折线
+                                    map.addOverlay(polygon);
+
+                                    marker.addEventListener("click", function(){
+                                        map.openInfoWindow(infoWindow,point); //开启信息窗口
+                                    });
+                                }
+
+                            }
+                        }, "$landSupply.cityName");
+                    }
+                });
+            }
+        });
+    };
+
+
+</script>
+

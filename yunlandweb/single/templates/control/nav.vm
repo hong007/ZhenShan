@@ -1,0 +1,8 @@
+<div class="menu-layout">
+     <div class="menu"  ng-repeat="menu in menuList" >
+        <h5 ng-class="{'open':menu.state}"   ng-click="menu.state=!menu.state"  ng-bind="menu.title"></h5>
+        <ul class="sub-menu" ng-show="menu.state">
+            <li ng-repeat="subMenu in menu.childList"><a ng-href="{{subMenu.url}}" ng-bind="subMenu.title" target="main"></a></li>
+        </ul>
+    </div>
+</div>

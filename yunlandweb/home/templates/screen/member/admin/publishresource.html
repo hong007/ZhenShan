@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我要发布</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/home/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../styles/base.css"></link>
+<link rel="stylesheet" href="../../../../styles/index.css"></link>
+<link rel="stylesheet" href="../../../../styles/other.css"></link>
+<link rel="stylesheet" href="../../../../vendor/kindeditor/themes/default/default.css"></link>
+<script  type="text/javascript"  src="../../../../scripts/jquery.min.js"></script>
+
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好, bear ，欢迎来到云地，咨询热线：</span>
+                <span class="phone">
+                    <img src="http://www.yunland.cn/home/images/phone.png" width="16" height="15" alt="电话">
+                    0571-81902006
+                </span>
+            </div>
+            <div class="f-right column-nav">
+                                                            <a class="pr-20" href="http://www.yunland.cn/home/../member/admin/index">我的云地</a>
+                        <i class="vertical-line bg-color-1"></i>
+                    
+                    </a>
+                
+                                    <a class="pr-20" href="http://www.yunland.cn/base/loginout">注销</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="">新手指引</a>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<script type="text/javascript" src="../../../../scripts/member/publishresource.js"></script>
+<link rel="stylesheet" href="../../../../vendor/screenshot/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../vendor/screenshot/css/cropper.min.css">
+<link rel="stylesheet" href="../../../../vendor/screenshot/css/main.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+            <img src="http://www.yunland.cn/home/images/logo.png" width="125" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>发布土地信息</span>
+    </div>
+</div>
+<div  id="crop-avatar" class="forPublishresource">
+    <form action="" method="post">
+        <input type="hidden" name="action" value="PublishResource"/>
+                
+        <div class="edit-content xn-width auto">
+            <div class="edit-content-inner">
+                <div class="input-line clearfix">
+                    <div class="input-line-left">
+                        <div class="avatar-view" title="Change the avatar" style=" position:relative;">
+                            <div style="position:absolute; top:60px; left:110px; color:#555555;">请选择上传图片</div>
+                            <img id="pictureURL" width="268" height="150"/>
+                            <input type="hidden" id="tmppiture" name="_fm.p._0.pic" value="">
+                        </div>
+                    </div>
+                    <div style="text-align:left;margin-left: 10px" ><i class="xn-required-i"></i><font style="color: red">如不清楚如何填写以下信息，可拨打我们客服电话： 0571-81902006</font></div>
+                    <div class="input-line-right" style="margin-top: 100px">
+
+                        <div class="mb-10"><i class="xn-required-i"></i>项目/地块名称 ：</div>
+                        <input type="text" class="form-control" style="width: 490px" name="_fm.p._0.n" value="">
+                        <input type="hidden" id="picture" name="_fm.p._0.pi" value=""/>
+                        <div class="error-area">    </div>
+                    </div>
+                </div>
+                <h3 class="editContent-h3">地块基本信息</h3>
+
+                <div class="input-line">
+                    <div class="mb-10"><i class="xn-required-i"></i>土地所在地区：</div>
+                    <select class="form-control w-150 mr-50" style="width: 150px;display: inline-block;" id="cmbProvince" name="_fm.p._0.p" value=""></select>
+                    <select class="form-control w-150 mr-50" style="width: 150px;display: inline-block;" id="cmbCity" name="_fm.p._0.c" value=""></select>
+                    <select class="form-control w-150 mr-50" style="width: 150px;display: inline-block;" id="cmbArea" name="_fm.p._0.d" value=""></select>
+                    <div class="error-area">
+                                                                                                </div>
+                </div>
+
+                <input type="hidden" id="provinceName" name="_fm.p._0.pr" value="">
+                <input type="hidden" id="cityName" name="_fm.p._0.ci" value="">
+                <input type="hidden" id="districtName" name="_fm.p._0.di" value="">
+                <div class="input-line clearfix">
+                    <div class="input-line-left">
+                        <div class="mb-5">位置：</div>
+                        <input type="text" class="form-control" id="address" name="_fm.p._0.a"
+                               value="">
+                        <input type="hidden" id="coordinate" name="coordinate">
+                        <div class="error-area">    </div>
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5" style="margin-top: 9px;">预算金额 (万元)：</div>
+                        <input type="text" class="form-control" name="_fm.p._0.f"
+                               value="">
+                        <div class="error-area">    </div>
+                    </div>
+                </div>
+                <div class="input-line clearfix">
+                    <div class="input-line-left">
+                        <div class="mb-5">规划用途：</div>
+                                            <select id="planUse" class="form-control" name="_fm.p._0.pl" value="">
+                            <option value="zhuz">住宅用地</option>
+                            <option value="shangy">商业/办公用地</option>
+                            <option value="gongy">工业用地</option>
+                            <option value="zhongh">综合用地</option>
+                            <option value="other">其他</option>
+                        </select>
+                        <div class="error-area">    </div>
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5"></i>合作方式：</div>
+                        
+    <select name="_fm.p._0.co">
+    <option value="">-- 请选择合作方式 --</option>
+
+            <option value="1" >整体转让</option>
+            <option value="2" >控股权转让</option>
+            <option value="3" >部分转让</option>
+            <option value="4" >股权转让</option>
+            <option value="5" >项目融资</option>
+            <option value="6" >债权融资</option>
+            <option value="7" >租赁融资</option>
+            <option value="0" >其他/面谈</option>
+    
+</select>
+
+                        <div class="error-area">    </div>
+                                                            </div>
+                </div>
+                <div class="input-line clearfix">
+                    <div class="input-line-left">
+                        <div class="mb-5">使用年限：</div>
+                        <input type="text" class="form-control" name="_fm.p._0.s" value="">
+                        <div class="error-area">    </div>
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5">占地面积 (平方米)：</div>
+                        <input type="text" class="form-control" name="_fm.p._0.fl"
+                               value="">
+                        <div class="error-area">    </div>
+                    </div>
+                </div>
+                <div class="input-line clearfix">
+                    <div class="input-line-left">
+                        <div class="mb-5"><i class="xn-required-i"></i>联系人：</div>
+                        <input type="text" class="form-control" name="_fm.p._0.con"
+                               value="">
+                        <div class="error-area">    </div>
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5"><i class="xn-required-i"></i>联系电话：</div>
+                        <input type="text" class="form-control" name="_fm.p._0.cont"
+                               value="">
+                        <div class="error-area">    </div>
+                    </div>
+                </div>
+                <h3 class="editContent-h3">地块位置</h3>
+
+                <div class="map-content">
+                    <div id="allmap"></div>
+                </div>
+                <h3 class="editContent-h3">地块描述</h3>
+                <div class="map-content">
+                    <textarea class="form-control" rows="20" name="_fm.p._0.conte" value=""
+                              id="landIntro"></textarea>
+                    <div class="error-area">    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-line xn-center clearfix mt-60">
+            <input type="submit" class="btn btn-warning" style="margin-left: 34.333333%;" name="event_submit_do_submit" value="提交"></input>
+            <input type="submit" class="btn btn-primary ml-50 " name="event_submit_do_save" value="保存"></input>
+            <a class="btn btn-default ml-50" href="javascript:history.back(-1)">取消</a>
+        </div>
+    </form>
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="avatar-form" action="" enctype="multipart/form-data" method="post">
+                    <div class="modal-header">
+                        <button id="closeButton" type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="avatar-modal-label">请选择上传图片</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="avatar-body">
+
+                            <!-- Upload image and data -->
+                            <div class="avatar-upload">
+                                <input type="hidden" class="avatar-src" name="avatar_src">
+                                <input type="hidden" class="avatar-data" name="avatar_data">
+                                <label for="avatarInput">本地图片</label>
+                                <input type="file" class="avatar-input" id="avatarInput" name="avatar_file">
+                            </div>
+
+                            <!-- Crop and preview -->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div id="avatarImg" class="avatar-wrapper"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="imgLg" class="avatar-preview preview-lg"></div>
+                                    <div class="avatar-preview preview-md"></div>
+                                    <div class="avatar-preview preview-sm"></div>
+                                </div>
+                            </div>
+
+                            <div class="row avatar-btns">
+                                <div class="col-md-9">
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="" onclick="upload_pic2()" class="btn btn-primary btn-block avatar-save">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+    <!-- Loading state -->
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+</div>
+<script src="http://www.yunland.cn/home/vendor/screenshot/js/jquery.min.js"></script>
+<script src="http://www.yunland.cn/home/vendor/screenshot/js/bootstrap.min.js"></script>
+<script src="http://www.yunland.cn/home/vendor/screenshot/js/cropper.min.js"></script>
+<script src="http://www.yunland.cn/home/vendor/screenshot/js/main.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script>
+    $(function(){
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea', '江苏省', '苏州市','太仓市');
+
+        var editItem = [
+            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/','image','multiimage','|',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'link', 'unlink', '|', 'about'
+        ];
+        var editor = KindEditor.create('#landIntro',
+                {
+                    width: "100%",
+                    height: "210px",
+                    items: editItem,
+                    allowFileManager: false,
+                    uploadJson: '../../upload/fileUploadJson.do',
+                    afterBlur: function(){this.sync();}
+                }
+        );
+
+        $("#pictureURL").attr("src",'');
+        $("#tmppiture").val('');
+
+        var provinceName ;
+        var cityName ;
+        var districtName ;
+
+
+        $("#cmbProvince").val('');
+        changeProvince();
+        $("#cmbCity").val('');
+        changeCity();
+        $("#cmbArea").val('');
+        mapInit('allmap', 'cmbProvince', 'cmbCity', 'cmbArea', 'address', 'coordinate');
+
+        $("#cmbProvince").change(function() {
+            var proviceId = $("#cmbProvince  option:selected").val();
+            provinceName = $("#cmbProvince  option:selected").html();
+            selectArea();
+        });
+        $("#cmbCity").change(function() {
+            selectArea();
+        });
+        $("#cmbArea").change(function() {
+            selectArea();
+        });
+
+        var selectArea = function(){
+            provinceName = $("#cmbProvince  option:selected").html();
+            cityName = $("#cmbCity  option:selected").html();
+            districtName =  $("#cmbArea  option:selected").html();
+            $("#cityName").val(cityName);
+            $("#districtName").val(districtName);
+            $("#provinceName").val(provinceName);
+        }
+
+        $('select').addClass('form-control');
+
+        // 表单验证失败 回显 zxl
+        // 富文本
+        //try{
+        editor.html("");
+        //}catch(err){}
+        // 用途
+        $("#planUse").find("option[value=]").attr("selected",true);
+    })
+</script>
+
+</body>
+<script  type="text/javascript"  src="../../../../scripts/jsAddress.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/site.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/map.js"></script>
+<script type="text/javascript" src="../../../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="../../../../vendor/kindeditor/lang/zh_CN.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/jquery.form.js"></script>
+</html>

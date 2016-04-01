@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.statistic-content .theme-line{
+	width: 970px;
+    height: 0;
+    border-bottom: 1px solid #cccccc;
+	float: left;
+	margin: 2px 0 10px;
+}
+
+.statistic-content .yun-homeland .theme{
+    background: url(../images/title-icon.png) left center no-repeat;
+    padding-left: 15px;
+    /*padding-top: 2px;*/
+    font-size: 20px;
+    font-weight: 500;
+    color: #333333;
+}
+
+/*内容*/
+.statistic-content .content-right .land-intro-verticleList .homeland_box{
+}
+.statistic-content .content-right .institutions_con .dotted-line{
+	width: 970px;
+    height: 0;
+    border-bottom: 1px dashed #cccccc;
+	float: left;
+	margin-bottom: 15px;
+}
+.statistic-content .content-right .institutions_con dl{
+	float: left;
+}
+.statistic-content .content-right .institutions_con dl dt{
+	width: 184px;
+	height: 184px;
+	border: 1px solid #eeeeee;
+	margin-left: 10px;
+	text-align: center;
+}
+.statistic-content .content-right .institutions_con dl dd{
+	text-align: center;
+	padding: 10px 0;
+}
+.statistic-content .content-right .institutions_con .homeland_box dl dt a{
+	width: 130px;
+	height: 130px;
+	display: inline-block;
+	overflow: hidden;
+	margin: 24px auto 0 auto;
+	-webkit-border-radius:65px; 
+	-moz-border-radius:65px; 
+	-o-border-radius:65px; 
+	border-radius:65px; 
+}
+.statistic-content .content-right .institutions_con .developers_box dl dt a{
+	width: 130px;
+	height: 130px;
+	display: inline-block;
+	overflow: hidden;
+	margin: 24px auto 0 auto;
+}
+
+.statistic-content .content-right .institutions_con dl:hover dt{
+	border: 1px solid #ff7a29;
+}
+.statistic-content .content-right .institutions_con dl:hover dd{
+	color: #ff7a29;
+}

@@ -1,0 +1,196 @@
+<div class="xn-width auto">
+
+    <!--城市地图 -->
+
+    <div class="map-content-full" id="mainMap">
+        <div id="allmap"></div>
+    </div>
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        load_map();
+
+    });
+
+    // 百度地图API功能
+    var map = new BMap.Map("allmap",{mapType: BMAP_HYBRID_MAP});
+    map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+    map.disableScrollWheelZoom();
+    map.addEventListener("click", function(){
+        map.enableScrollWheelZoom();
+    });
+    map.centerAndZoom(new BMap.Point(116.417854,39.921988), 11);
+    var myIcon = new BMap.Icon("../home/images/mapMarker.png", new BMap.Size(32,38));
+    var navigationControl = new BMap.NavigationControl({
+        // 靠左上角位置
+        anchor: BMAP_ANCHOR_TOP_LEFT,
+        // LARGE类型
+        type: BMAP_NAVIGATION_CONTROL_LARGE,
+        // 启用显示定位
+        enableGeolocation: true
+    });
+    map.addControl(navigationControl);
+
+    function load_map(){
+        var keyword = $('#query').data('keyword') ? $('#query').data('keyword') : '$!keyword';
+        var businessType = '$!businessType';
+        var select = $('#query').data('selectvalue');
+        if(!select){
+            select = {};
+            var provice = '$!cmbProvince'
+            if(""!=provice){
+                select.region = '$!cmbProvince';
+            }
+            if(""!='$!cmbCity'){
+                select.cityId = '$!cmbCity';
+            }
+            if(""!='$!cmbArea'){
+                select.districtId = '$!cmbArea';
+            }
+            if(""!='$!purpose'){
+                select.purpose='$!purpose';
+            }
+        }
+        var data = {};
+        data.keyword = keyword;
+        select.cityId = $!recommendCity.cityId;
+        data.selectvalue = select;
+        data.businessType = businessType;
+        getMapData(data);
+    }
+
+    // 复选框事件
+    var mapData = {};
+    var mapSelect = {};
+    mapData.keyword = $('#query').data('keyword') ? $('#query').data('keyword') : '$!keyword';
+    mapSelect.cityId = $!recommendCity.cityId;
+    mapData.selectvalue = mapSelect;
+    mapData.planUseArr = '';
+    /*$("input[name='conditioncheckbox']:checked").each(function(){
+        mapData.planUse.push($(this).val());
+    });*/
+    $("[name='conditioncheckbox']:checkbox").bind("click",function(){
+        var obj = document.getElementsByName("conditioncheckbox");
+        for(var i=0;i<obj.length;i++){
+            if(obj[i].checked) //取到对象数组后，我们来循环检测它是不是被选中
+                mapData.planUseArr += obj[i].value + ',';   //如果选中，将value添加到变量中
+        }
+        getMapData(mapData);
+        mapData.planUseArr = '';
+    });
+
+    // 单选事件
+    var radioType = 'name';
+    $("input:radio[name='condition']").change(function () {
+        radioType = $("input[name='condition']:checked").val();
+        getMapData(mapData);
+    });
+
+    var getMapData = function(data){
+        $.ajax({ type: "post",//使用get方法访问后台
+            dataType: "json",//返回json格式的数据
+            url:'/recommend/api.do',
+            data:{method:'api.recommend.land.info.find','data':JSON.stringify(data)},
+            success: function(msg){
+                map.clearOverlays();
+                $.each(msg.result, function (i, item) {
+                    var address = (item.provinceName?item.provinceName:'')+(item.cityName?item.cityName:'')+(item.districtName?item.districtName:"")+(item.address?item.address:"");
+                    var point = item.location;
+                    if(!point==''){
+                        var temppoint = point.split(',');
+                        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+                        map.centerAndZoom(new_point, 11);  //根据经纬度定中心点
+                        marker = new BMap.Marker(new_point);  // 创建标注
+                        map.addOverlay(marker);              // 将标注添加到地图中
+                        map.panTo(new_point);
+                        var infoWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">地产商名称：</td>'+
+                        '<td><h4>'+(item.user?item.user:"")+'</h4></td></tr>'+
+                        '<tr><td style="text-align: right;">地块名称：</td><td>'+(item.name?item.name:"")+'</td></tr> '+
+                        '<tr><td style="text-align: right;">面积：</td><td>'+(item.floorSpace?item.floorSpace:'')+'万平方米</td></tr>' +
+                        '<tr><td style="text-align: right;">地址：</td><td id="address_td">'+address+'</td></tr></table>' +
+                        '</div>');
+                        var nameWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">地块名称：</td>'+
+                        '<td><h4>'+(item.name?item.name:"")+'</h4></td></tr>'+
+                        '</table>' + '</div>');
+                        var floorSpaceWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">出让面积：</td>'+
+                        '<td><h4>'+(item.floorSpace?item.floorSpace:"")+'</h4></td></tr>'+
+                        '</table>' + '</div>');
+                        var plotRatioWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">容积率：</td>'+
+                        '<td><h4>'+(item.plotRatio?item.plotRatio:"")+'</h4></td></tr>'+
+                        '</table>' + '</div>');
+                        var label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                        if(radioType == 'name'){
+                            label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                        }else if(radioType == 'floorSpace'){
+                            label = new window.BMap.Label(item.floorSpace?item.floorSpace:"", { offset: new window.BMap.Size(20, -10) });
+                        }else{
+                            label = new window.BMap.Label(item.plotRatio?item.plotRatio:"", { offset: new window.BMap.Size(20, -10) });
+                        }
+                        marker.setLabel(label);
+                        marker.addEventListener("click", function(){
+                            map.openInfoWindow(infoWindow,new_point); //开启信息窗口
+                        });
+                    }else{
+                        // 创建地址解析器实例
+                        var myGeo = new BMap.Geocoder();
+                        // 将地址解析结果显示在地图上,并调整地图视野
+                        myGeo.getPoint(address, function(point){
+                            if (point) {
+                                map.centerAndZoom(point, 11);
+                                marker = new BMap.Marker(point);  // 创建标注
+                                map.addOverlay(marker);              // 将标注添加到地图中
+                                var infoWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">地产商名称：</td>'+
+                                '<td><h4>'+(item.user?item.user:"")+'</h4></td></tr>'+
+                                '<tr><td style="text-align: right;">地块名称：</td><td>'+(item.name?item.name:"")+'</td></tr> '+
+                                '<tr><td style="text-align: right;">面积：</td><td>'+(item.floorSpace?item.floorSpace:'')+'万平方米</td></tr>' +
+                                '<tr><td style="text-align: right;">地址：</td><td id="address_td">'+address+'</td></tr></table>' +
+                                '</div>');
+                                var nameWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">地块名称：</td>'+
+                                '<td><h4>'+(item.name?item.name:"")+'</h4></td></tr>'+
+                                '</table>' + '</div>');
+                                var floorSpaceWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">出让面积：</td>'+
+                                '<td><h4>'+(item.floorSpace?item.floorSpace:"")+'</h4></td></tr>'+
+                                '</table>' + '</div>');
+                                var plotRatioWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">容积率：</td>'+
+                                '<td><h4>'+(item.plotRatio?item.plotRatio:"")+'</h4></td></tr>'+
+                                '</table>' + '</div>');
+                                var label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                                if(radioType == 'name'){
+                                    label = new window.BMap.Label(item.name?item.name:"", { offset: new window.BMap.Size(20, -10) });
+                                }else if(radioType == 'floorSpace'){
+                                    label = new window.BMap.Label(item.floorSpace?item.floorSpace:"", { offset: new window.BMap.Size(20, -10) });
+                                }else{
+                                    label = new window.BMap.Label(item.plotRatio?item.plotRatio:"", { offset: new window.BMap.Size(20, -10) });
+                                }
+
+                                marker.setLabel(label);
+                                marker.addEventListener("click", function(){
+                                    map.openInfoWindow(infoWindow,point); //开启信息窗口
+                                });
+                            }
+                        }, "$landSupply.cityName");
+                    }
+                });
+            }
+        });
+    };
+
+
+</script>
+

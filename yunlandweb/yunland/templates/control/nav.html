@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>导航</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/yunland/images/favicon.ico"  type="image/x-icon"  >
+<link href="../../dist/styles/global.min.css" rel="stylesheet">
+<link href="../../dist/styles/local.min.css" rel="stylesheet">
+<link href="../../vendor/kindeditor/themes/default/default.css" rel="stylesheet">
+</head>
+
+<body >
+<div id="nav" class="xn_nav">
+    <div class="xn-nav xn-nav-2">
+        <div class="xn-width auto inner_div clearfix">
+            <div class="logo xn-logo clearfix">
+                <a href="http://www.yunland.cn/yunland/index.htm">
+                    <div class="logo-title">
+                        <span class="logo-title-word">后台管理</span>
+                    </div>
+                </a>
+            </div>
+
+<ul class="clearfix title-ul">
+                <li ng-class="navShow===1?'nav-li-hover':'nav-li'">
+                    <a href="/yunland/index/ads_slider.htm" target="_self">首页</a>
+                </li>
+                    <li ng-class="navShow===2?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown2=false;" ng-init="showDropdown2=false;" ng-mouseenter="showDropdown2=true;">
+                        <a href="/yunland/recommend/index.htm" target="_self">土地推介<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-show="showDropdown2">
+                            <li><a href="/yunland/recommend/index.htm">推介管理</a></li>
+                            <li><a href="/yunland/recommend/city.htm">城市维护</a></li>
+                            <li><a href="/yunland/recommend/advertise_maintain.htm">广告维护</a></li>
+                        </ul>
+                    </li>
+                     <li ng-class="navShow===3?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown3=false;" ng-init="showDropdown3=false;" ng-mouseenter="showDropdown3=true;">
+                        <a href="/yunland/sell/index.htm" target="_self">云地出让<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-show="showDropdown3">
+                            <li><a href="/yunland/sell/index.htm">出让管理</a></li>
+                            <li><a href="/yunland/sell/advertise_maintain.htm">广告维护</a></li>
+                        </ul>
+                    </li>
+                    <li ng-class="navShow===4?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown4=false;" ng-init="showDropdown4=false;" ng-mouseenter="showDropdown4=true;">
+                        <a href="/yunland/transfer/index.htm" target="_self">土地转让<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-show="showDropdown4">
+                            <li><a href="/yunland/transfer/index.htm">转让管理</a></li>
+                            <li><a href="/yunland/transfer/advertise_maintain.htm">广告维护</a></li>
+                            <li><a href="/yunland/transfer/post_record.htm">投递记录</a></li>
+                        </ul>
+                    </li>
+                    
+                <li ng-class="navShow===5?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown5=false;" ng-init="showDropdown5=false;" ng-mouseenter="showDropdown5=true;">
+                    <a href="/yunland/news/index.htm" target="_self">云地动态<span class="caret"></span></a>
+                    <ul class="dropdown-menu" ng-show="showDropdown5">
+                        <li><a href="/yunland/news/index.htm">云地动态</a></li>
+                        <li><a href="/yunland/news/footer_maintain.htm">底部信息维护</a></li>
+                    </ul>
+                </li>
+                <li ng-class="navShow===6?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown6=false;" ng-init="showDropdown6=false;" ng-mouseenter="showDropdown6=true;">
+                    <a href="/yunland/member/index.htm" target="_self">用户管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu" ng-show="showDropdown6">
+                        <li><a href="/yunland/member/index.htm">会员列表</a></li>
+                        <li><a href="/yunland/member/accounts_management.htm">系统账号</a></li>
+                    </ul>
+                </li>
+                <li ng-class="navShow===7?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown7=false;" ng-init="showDropdown7=false;" ng-mouseenter="showDropdown7=true;">
+                    <a href="/yunland/news/index.htm" target="_self">更多管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu" ng-show="showDropdown7">
+                        <li><a href="/yunland/news/index.htm">合作机构</a></li>
+                        <li><a href="/yunland/news/footer_maintain.htm">加四个字</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-li">
+                    <a href="#" target="_blank">网站预览</a>
+                </li>
+            </ul>
+
+            <div class="xn-header-right info_div">
+                <span class="xn-name f-right welcome">欢迎您
+                    <a class="name_a" href="javascript:" ng-init="showSetting=false" ng-click="showSetting=!showSetting;" ng-mouseenter="showSetting=true;" ng-mouseleave="showSetting=false;">
+                        <span>sysadmin</span><span class="icon icon-downward-2"></span>
+                    </a>
+                </span>
+                <div class="hideSetting" ng-class="showSetting?'showSetting':''" ng-mouseenter="showSetting=true;" ng-mouseleave="showSetting=false;">
+                    <div class="hideSetting-top">
+                    </div>
+                    <div class="hideSetting-content clearfix">
+                        <ul>
+                            <li>
+                                <a title="修改密码" href="$yunlandLink.setTarget("password/change")">
+                                    <i class="icon icon-tubiaoxiugaimima01"></i>修改密码
+                                </a>
+                            </li>
+                        </ul>
+                        <a class="btn f-right exit btn-danger" href="$baseLink.setTarget("loginout")">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="xn-breadcrumb xn-width auto clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="http://www.yunland.cn/yunland/index.htm"></a></li>
+    </ul>
+</div>
+    <div id="footer" class="xn-width auto clearfix">
+    <span>浙江臻善科技有限公司</span><br/>
+    <span>浙ICP备06018569号-2</span><br/>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253874607'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1253874607%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+<!-- 引用服务站点的JS文件 -->
+
+<div class="xn-back-to-top"   data-feedback-url=$config.getServiceUrl("feedback/create.htm")>
+    <ul>
+        <li class="backToTop">
+            <a ng-click="backToTop(header,0)">
+            <span class="gotop-icon icon  icon-up-1"></span><span class="gotop-font">返回<br>顶部</span></a>
+        </li>
+        <li>
+            <a ng-href="$config.getServiceUrl(&quot;feedback/create.htm&quot;)" target="_blank" href="$config.getServiceUrl(&quot;feedback/create.htm&quot;)">
+            <span class="gotop-icon icon icon-idea"></span><span class="gotop-font">反馈<br>建议</span></a>
+        </li>
+    </ul>
+</div>
+    <div xn-nprogress></div>
+<script src="../../dist/scripts/base.min.js"></script>
+<script src="../../dist/scripts/global.min.js"></script>
+<script src="../../dist/scripts/local.min.js"></script>
+<script type="text/javascript" src="../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    /*犀牛ng-app的运用*/
+    angular.element(document).ready(function() {
+        initApp();
+        angular.bootstrap(document.body, ['xn']);
+    });
+    var uploadjson =  'http://www.yunland.cn/base/fileUploadJson.do';
+    var uploadmamagerjson = 'http://www.yunland.cn/base/fileUploadManager.do';
+</script>
+</body>
+</html>

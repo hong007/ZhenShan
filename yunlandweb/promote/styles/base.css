@@ -1,0 +1,211 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+    margin:0;
+    padding:0;
+    border:0;
+    *overflow:auto !important;/*IE7*/
+    *overflow:hidden;/*IE6*/
+}
+body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, code,del, dfn, em, img, q, dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside,  figure,footer, header,nav, section{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* vertical-align: baseline;*/
+}
+ul,ol,li { list-style:none; }
+h1,h2,h3,h4,h5,h6 { margin:0; padding:0; color: #333 }
+/* Line-height should always be unitless! */
+body {
+    line-height: 1.5;
+    background:#fff;
+    color: #666;
+	font-family: "微软雅黑";
+}
+a{
+    cursor:pointer;
+    text-decoration: none;
+    color: #333;
+}
+.f-left{
+    float: left;
+}
+.f-right{
+    float: right;
+}
+.ld{position:relative;}
+.ab{position:absolute;}
+.auto{margin: 0 auto}
+.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+
+.xn-width{width:1190px;}
+.con-width{width:1000px;}
+.bg-color-1{
+    background-color: #cdcdcd;
+}
+.bg-color-2{
+    background-color: #fff;
+}
+.column-nav a{
+    padding-left: 20px;
+    float: left;
+    color: #4A4A4A;
+}
+.vertical-line{
+    height: 12px;
+    width: 1px;
+    display: inline-block;
+    float: left;
+    margin-top: 9px;
+}
+/*head*/
+#header{
+    width: 100%;
+    font-size: 14px;
+	background:#fff;
+}
+.header-welcome{
+    width: 100%;
+    border-bottom: 2px solid #dcdcdc;
+    height: 30px;
+    line-height: 30px;
+    color: #4A4A4A;
+}
+.header-welcome .phone{
+    color: #00D7FA;
+    float: left;
+    margin-left: 5px;
+}
+.header-welcome .phone .icon-phone{
+    display: inline-block;
+    background: url("../images/phone.png") center top no-repeat;
+    margin-top: 2px;
+    width: 30px;
+    height: 14px;
+}
+/*导航*/
+.header-nav{
+    width: 100%;
+    background-color: #252a3e;
+}
+.header-nav .header-nav-ul{
+    float: left;
+}
+.header-nav .column-nav{
+    float: right;
+    height: 100%;
+}
+.header-nav .column-nav a{
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 14px;
+	background:url(../images/column-nav-icon.png) no-repeat left center;
+}
+.header-nav .column-nav a:hover{
+    color: #ccc;
+}
+.header-nav .vertical-line{
+    margin-top: 20px;
+}
+.header-nav .header-nav-ul>li {
+    float: left;
+    height: 100%;
+    text-align: center;
+	position:relative;
+}
+/*.header-nav .header-nav-ul>li:hover{
+    background-color: ;
+}*/
+.header-nav .header-nav-ul>li>a {
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 18px;
+    text-decoration: none;
+}
+.header-nav .header-nav-ul>li>a:hover{
+	background-color: #05d4f9;
+}
+.header-nav .header-nav-ul>li.active {
+    background-color:;
+}
+.header-nav .header-nav-ul>li>a:hover {
+    text-decoration: none;
+    /*color: #ccc;*/
+    float: left;
+}
+/*导航搜索框*/
+/*二级导航*/
+.header-nav .header-nav-ul>li ul{
+	position:absolute;
+	top:50px;
+	left:0;
+	z-index:1000;
+}
+.header-nav .header-nav-ul>li ul li{
+	width:104px;
+	height:30px;
+	line-height:30px;
+	display:none;
+	text-align:center;
+	background-color: #252A3E;
+}
+.header-nav .header-nav-ul>li:hover ul li{
+	display:block;
+}
+.header-nav .header-nav-ul>li ul li a{
+	height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 20px;
+    text-decoration: none;
+}
+.header-nav .header-nav-ul>li ul li:hover{
+	background:#05d4f9;
+}
+/*通用*/
+.pl_20{
+    padding-left:20px ;
+}
+.pl_25{
+    padding-left:25px ;
+}
+.pl_10{
+    padding-left: 10px;
+}
+.pr-20{
+    padding-right: 20px;
+}
+.mt-10{
+    margin-top: 10px;
+.mb_25{
+    margin-bottom: 25px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.mb-5{
+    margin-bottom: 5px;
+}
+.ml-45{
+    margin-left: 45px;
+}
+.pr-10{
+    padding-right: 10px;
+}
+.pt-10{
+    padding-top: 10px;
+}
+.pt-20{
+    padding-top: 20px;
+}
+.pt-30{
+    padding-top: 30px;
+}

@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>推广页面-2</title>
+<link href="../../styles/index.css" rel="stylesheet" type="text/css">
+<link href="../../styles/base.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!--头部 开始-->
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a href="#">合作机构</a>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+             <div class="f-left" style="padding-top: 8px;"><a href="#"><img src="../../images/nav-logo.png"/></a></div>
+             <ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="index.htm" target="_self">首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="report/index.html" target="_self">云地报告</a>
+                </li>
+                 <li class="$activetransfer">
+                    <a href="#" target="_self">城市更新</a>
+                </li>
+             </ul>
+        </div>
+    </div>
+</div>
+<!--头部 结束-->
+<!--内容 开始-->
+<div class="content-top">
+    <div class="auto con-width">
+         <div class="top-title auto"><img src="../../images/content-top-title.png"/></div>
+         <div class="ann auto">
+             <div class="ann-con con-left f-left clearfix">
+                 <div class="title title-icon1">今 日</div>
+                 <div class="con-text">
+                     <p>出让公告: <span>13000</span>条，推出土地 <span>44000</span>宗</p>
+                     <p>成交公示: <span>13</span>条，土地成交 <span>44</span>宗</p>
+                     <p>签订出让合同和划拨决定书等<span>58</span>份</p>
+                 </div>
+                 <div class="con-text-bg"></div>
+             </div>
+             <div class="ann-con con-right f-right clearfix">
+                 <div class="title title-icon2">本 月</div>
+                 <div class="con-text">
+                     <p>出让公告: <span>13</span>条，推出土地 <span>44</span>宗</p>
+                     <p>成交公示: <span>13</span>条，土地成交 <span>44</span>宗</p>
+                     <p>签订出让合同和划拨决定书等<span>58</span>份</p>
+                 </div>
+                 <div class="con-text-bg"></div>
+             </div>
+         </div>
+         <div style="margin-top:30px;"><img src="../../images/content-tu4.png"/></div>
+    </div>
+</div>
+<div class="content-bottom">
+    <div class="auto con-width">
+        <div style="padding-top:60px;"><img src="../../images/content-tu5.png"/></div>
+        <div class="bottom-con">
+            <div class="regsiter f-left clearfix ld">
+                <div class="bottom-title">我要注册</div>
+                <div class="bottom-title-bg"></div>
+                <div class="input-line clearfix ld">
+                    <div class="input-line-left">
+                        <div class="mb-5">手机号码：</div>
+                        <input type="text" name="name" id="" class="form-control" />
+                        <div class="prompt">手机号码不能为空</div>
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5">验证码：</div>
+                        <input type="text" name="name" id="" class="form-control" style=" width:98px;"/>
+                        <a href="javascript:void(0)" class="button">60秒后重新获取</a>
+                        <div class="prompt">验证码错误</div>
+                    </div>
+                    <div class="input-line-left">
+                        <div class="mb-5">设置密码：</div>
+                        <input type="password" name="name" id="" class="form-control" />
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5">确认密码：</div>
+                        <input type="password" name="name" id="" class="form-control"/>
+                        <div class="prompt">两次密码输入不一致</div>
+                    </div>
+                    <div class=" f-left" style="width:100%;"><input type="button" value="提交"class="submit-btn auto"/></div>
+                </div>
+                <div class="bottom-con-bg"></div>
+            </div>
+            <div class="demand f-right clearfix ld">
+                <div class="bottom-title">我有需求</div>
+                <div class="bottom-title-bg"></div>
+                <div class="input-line clearfix ld">
+                    <div class="input-line-left">
+                        <div class="mb-5">姓名：</div>
+                        <input type="text" name="name" id="" class="form-control" />
+                        <div class="prompt">姓名不能为空</div>
+                    </div>
+                    <div class="input-line-right">
+                        <div class="mb-5">需求描述：</div>
+                        <textarea name="name" id="" class="form-control" style="width:214px; height:102px;"></textarea>
+                    </div>
+                    <div class="input-line-left">
+                        <div class="mb-5">联系方式：</div>
+                        <input type="text" name="name" id="" class="form-control" />
+                        <div class="prompt">请填写您的联系方式</div>
+                    </div>
+                    
+                    <div class=" f-left" style="width:100%;"><input type="button" value="提交"class="submit-btn auto"/></div>
+                </div>
+                <div class="bottom-con-bg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--内容 结束-->  
+</body>
+</html>

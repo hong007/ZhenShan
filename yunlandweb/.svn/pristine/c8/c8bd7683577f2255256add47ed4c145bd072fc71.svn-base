@@ -1,0 +1,71 @@
+$page.setTitle("新增底部信息")
+<div class="xn-breadcrumb xn-width auto clearfix">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page"  href="$yunlandLink.setTarget('index')"></a> </li>
+        <li><a class="icon2"  href="$yunlandLink.setTarget('news/footerMaintain')">底部信息维护</a> </li>
+        <li class="active">新增底部信息</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" ng-controller="AddFooterController">
+    <form class="form-horizontal xn-form"  role="form"   xn-form-validate  novalidate name="validateForm">
+        <div class="news-editContent">
+            <div class="sidebar-description pt_30">
+
+                <div class="sidebar-description clearfix">
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">类型：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input">
+                            <select class="form-control" name="category" ng-model="dynamic.type" required="required">
+                                <option value="">-- 请选择类型 --</option>
+                                <option value="companyIntroduce">公司介绍</option>
+                                <option value="mediaReport">媒体报道</option>
+                                <option value="newComer">新手入门</option>
+                                <option value="help">使用帮助</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-description   clearfix">
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">标题：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input">
+                            <input type="text"
+                                   class="form-control" name="title" ng-model="dynamic.title" required="required">
+                        </div>
+                    </div>
+                    <div class="xn-input-line clearfix">
+                        <label class="xn-label"><span class="f-right">摘要：</span></label>
+                        <div class="xn-input news-summary">
+                            <textarea type="text" rows="3"
+                                      class="form-control" name="remarks" ng-model="dynamic.remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-description   clearfix">
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">内容：</span><i class="xn-required-i f-right"></i></label>
+                        <div class="xn-input news-summary">
+                        #*<textarea type="text" rows="10"
+                                  class="form-control" name="content" ng-model="dynamic.content" required="required"></textarea>*#
+                            <textarea class="form-control" rows="15" name="landIntro" id="landIntro" ng-model="dynamic.content"
+                                    ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt_12 ng-hide news-error" ng-show="validateForm.$errors.length > 0">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="alert alert-danger ng-binding"><i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="xn-input-line xn_btn_group mt_20 xn-center btw-100">
+            <a class="btn btn-primary" xn-form-submit="doSave()">保存</a>
+            <a class="btn btn-warning ml_15" xn-form-submit="doPublish()">发布</a>
+            <a class="btn btn-default ml_15" href="javascript:history.back(-1);">取消</a>
+        </div>
+    </form>
+</div>

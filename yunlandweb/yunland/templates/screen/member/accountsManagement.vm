@@ -1,0 +1,145 @@
+$page.setTitle("系统帐号管理")
+<div class="xn-breadcrumb xn-width auto clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget('member/index')">用户管理</a></li>
+        <li class="active">系统账户管理</li>
+    </ul>
+</div>
+<div class="xn-main auto xn-width clearfix" ng-controller="AccountsMngController">
+    <!--搜索部分-->
+    <div class="xn-search clearfix">
+        <form class="form-horizontal clearfix xn-form" name="searchForm" xn-form-validate novalidate role="form">
+            <div class="height-search-box auto">
+                <div class="xn-input-line  clearfix">
+                    <label for="accountId" class="xn-label">姓名：</label>
+                    <div class="xn-input-sm">
+                        <input class="form-control xn-click-input" type="text" name="name" ng-model="vm.name">
+                    </div>
+                    <label class="xn-label" >是否有效：</label>
+                    <div class="xn-input-sm">
+                        <select class="xn-click-input form-control" name="isActive" ng-model="vm.isActive">
+                            <option value="" selected="selected">--</option>
+                            <option value="true">有效</option>
+                            <option value="false">无效</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix mr_90">
+                    <button type="button" class="btn btn-success f-right w_90" xn-submit-enter="doSearch()">查询</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--搜索部分结束-->
+    <div class="xn-width mb_10 pr_10 clearfix">
+        <a class="btn btn-primary btn-sm f-right w_90" ng-click="addAccount()">新增</a>
+    </div>
+    <!--列表开始-->
+    <div class="xn-table" >
+        <table  class="table table-bordered table-striped xn-word-breakAll">
+            <thead>
+            <tr>
+                <th class="col-md-1 xn-center">序号</th>
+                <th class="col-md-2 xn-center">是否有效</th>
+                <th class="col-md-2 xn-center">账号名</th>
+                <th class="col-md-2 xn-center">姓名</th>
+                <th class="col-md-3 xn-center">手机号</th>
+                <th class="col-md-2 xn-center">操作</th>
+            </tr>
+            </thead>
+            <tbody id="tbody" >
+            <tr ng-repeat="account in accountList" >
+                <td class="xn-center">{{(vm.pageNumber-1)*vm.pageSize+$index+1}}</td>
+                <td class="xn-center">
+                    <span ng-if="account.isActive == true">有效</span>
+                    <span ng-if="account.isActive == false">无效</span>
+                </td>
+                <td class="xn-center">{{account.account}}</td>
+                <td class="xn-center">{{account.name}}</td>
+                <td class="xn-center">{{account.mobilePhone}}</td>
+                <td class="xn-center">
+                    <a class="view-a" ng-click="editAccount(account)" target="_blank">编辑</a>
+                </td>
+            </tr>
+            <tr  ng-if="vm.totalCount == 0"><td colspan="6" class="center">无法找到相应的记录</td></tr>
+            </tbody>
+        </table>
+        <div class="f-left mt_20 mb_20 ng-binding">共{{vm.totalCount}}条</div>
+        <div class="f-right clearfix">
+            <pagination ng-show="vm.totalCount>vm.pageSize" ng-change="getList()" max-size="maxPageSize"
+                        total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                        class="pagination-sm pagination-item" boundary-links="true" previous-text="&lsaquo;"
+                        next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+    </div>
+    <!--列表结束-->
+</div>
+
+<script type="text/ng-template" id="openAccount.html">
+    <form class="form-horizontal xn-cyclecount xn-form"  role="form"   xn-form-validate  novalidate name="validateForm">
+        <div class="modal-header">
+            <h3 class="modal-title">{{window.title}}</h3>
+
+            <div class="xn-close xn-cursor" ng-click="cancel()">
+                <i class="icon icon-delete"></i>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"><span class="f-right">是否有效：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                <div class="col-md-8">
+                    <label class="xn-cursor xn-padding-text  xn-right">
+                        <input type="radio" name="isActive" value="true" ng-model="vm.isActive" > <span class="f-right mt_5">有效</span></label>
+                    <label class="xn-padding-text xn-right xn-cursor ml_20">
+                        <input type="radio" name="isActive" value="false" ng-model="vm.isActive" > <span class="f-right mt_5">无效</span></label>
+                </div>
+            </div>
+            <div class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"><span class="f-right">账户名：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                <div class="col-md-8">
+                    #*<input type="text" class="form-control" name="account" ng-model="vm.account" required="required">*#
+                        <input ng-if="window.type=='edit'"  type="text" class="form-control" name="account" ng-model="vm.account" required="required" disabled>
+                        <input ng-if="window.type=='add'" type="text" class="form-control" name="account" ng-model="vm.account" required="required">
+                </div>
+            </div>
+            <div class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"><span class="f-right">姓名：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="name" ng-model="vm.name" required="required">
+                </div>
+            </div>
+            <div ng-if="window.type=='add'" class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"><span class="f-right">密码：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                <div class="col-md-8">
+                    <input type="password" class="form-control" name="password" ng-model="vm.password" ng-pattern="/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,11}$/" placeholder="请输入6-11位数字或字母组合的密码" required="required">
+                </div>
+            </div>
+            <div ng-if="window.type=='add'" class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"><span class="f-right">确认密码：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                <div class="col-md-8">
+                    <input type="password" class="form-control" name="confirmPassword" ng-model="vm.confirmPassword" ngng-pattern="/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,11}$/" ng-blur="confirmPassword()" placeholder="请输入6-11位数字或字母组合的密码" required="required">
+                </div>
+            </div>
+            <div ng-if="showTip" class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"></label>
+                <div class="col-md-8" style="color: red">两次输入的密码不匹配</div>
+            </div>
+            <div class="form-group col-md-12 col-md-offset-1 clearfix">
+                <label class="col-md-4 xn-label"><span class="f-right">手机号：</span></label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="mobilePhone" ng-model="vm.mobilePhone" ng-pattern="/^(1[3|4|5|6|7|8|9][\d]{9})$/">
+                </div>
+            </div>
+            <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0">
+                <div class="col-md-12">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" xn-form-submit="doSave()">保存</button>
+            <button class="btn btn-default" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</script>

@@ -1,0 +1,98 @@
+$rundata.setLayout("defaultEdit")
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget("index")" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>会员注册</span>
+    </div>
+</div>
+#macro (registerMessage $field)
+    #if (!$field.valid) $field.message #end
+#end
+
+<div class="simple-edit-content xn-width auto">
+    <div class="simple-edit-content-inner">
+        <div class="step-banner">
+            <div class="step-banner-1-off"><span class="step-banner-word step-1-off">验证账号</span></div>
+            <div class="step-banner-2-on"><span class="step-banner-word step-2 step-active">填写账号信息</span></div>
+            <div class="step-banner-3"><span class="step-banner-word step-3">完成</span></div>
+        </div>
+        <form action="" method="post">
+            #set ($group = $form.register.defaultInstance)
+            $group.mapTo($group)
+            <input type="hidden" name="action" value="register"/>
+            <input type="hidden" name="mobilePhone" value="$!mobilePhone">
+            <div class="simple-edit-content-inner">
+                <div class="register-input">
+                    <div class="input-line">
+                        <label><i class="xn-required-i"></i>账号：</label>
+                        <input type="text" class="form-control" name="$group.account.key" value="$group.account.value"/>
+                        <span>#registerMessage($group.account)</span>
+                        <span>#registerMessage ($group.registerError)</span>
+                    </div>
+                    <div class="input-line">
+                        <label><i class="xn-required-i"></i>密码：</label>
+                        <input type="password" class="form-control" name="$group.password.key"
+                               value="$group.password.value"/>
+                        <span>#registerMessage ($group.password)</span>
+                    </div>
+                    <div class="input-line">
+                        <label><i class="xn-required-i"></i>确认密码：</label>
+                        <input type="password" class="form-control" name="$group.confirmpassword.key"
+                               value="$group.confirmpassword.value"/>
+                        <span>#registerMessage ($group.confirmpassword)</span>
+                    </div>
+                    <div class="input-line">
+                        <label><i class="xn-required-i"></i>公司（个人）名称：</label>
+                        <input type="text" class="form-control" name="$group.name.key" value="$group.name.value"/>
+                        <span>#registerMessage ($group.name)</span>
+                    </div>
+                    <div class="input-line">
+                        <label><i class="xn-required-i"></i>联系人：</label>
+                        <input type="text" class="form-control" name="$group.contactName.key"
+                               value="$group.contactName.value"/>
+                        <span>#registerMessage ($group.contactName)</span>
+                    </div>
+                    <div class="input-line">
+                        <label>电话：</label>
+                        <input type="text" class="form-control" name="$group.contactPhone.key"
+                               value="$group.contactPhone.value"/>
+                        <span>#registerMessage ($group.contactPhone)</span>
+                    </div>
+                    <div class="input-line">
+                        <label>地址：</label>
+                        <input type="text" class="form-control" name="$group.address.key" value="$group.address.value"/>
+                        <span>#registerMessage ($group.address)</span>
+                    </div>
+                    <div class="input-line xn-center clearfix mt-85">
+                        <input class="btn btn-primary-long col-sm-offset-4" type="submit"
+                               name="event_submit_do_register" value="完成注册"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="xn-width auto">
+    <div class="step-footer-content">
+        <div class="column-nav">
+            <a href="">联系我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">加入我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">免责申明</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">意见反馈</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">友情链接</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">网站地图</a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="recordInfo">备案信息</div>
+    </div>
+</div>

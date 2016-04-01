@@ -1,0 +1,164 @@
+
+<!--footer start -->
+<div id="footer">
+    <div class="footer">
+        <div class="xn-width auto clearfix">
+            <ul class="footer-nav clearfix">
+                <li class="f-left about">
+                    <div class="text">关于我们</div>
+                    <ul class="list-text">
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=companyIntroduce")" target="_blank">公司介绍</a></li>
+##                        <li><a href="$indexContent.getURI("/news/informationdetail?type=mediaReport")" target="_blank">媒体报道</a></li>
+                        <li><a href="$indexContent.getURI("/news/index")" target="_blank">最新动态</a></li>
+                    </ul>
+                </li>
+                <li class="f-left help">
+                    <div class="text">帮助中心</div>
+                    <ul class="list-text">
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=newComer")" target="_blank">新手入门</a></li>
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=help")" target="_blank">使用帮助</a></li>
+                    </ul>
+                </li>
+                <li class="f-left care">
+                    <div class="text">关注我们</div>
+                    <ul class="list-text mt_10">
+                        #*<li class="f-left">
+                            <img src="$homeContent.getURI('/images/erweima.png')" class="mr_38">
+                        </li>*#
+                        <li class="f-left p-relative forWechat">
+                            <img src="$homeContent.getURI('/images/member-wechat.png')" class="mr_38 weixin">
+                            <img src="$homeContent.getURI('/images/weixin—click.png')" class="mr_38 weixinClick">
+                            <img class="tips_bd" alt="" src="$homeContent.getURI('/images/member-wechat-erweima.png')">
+                        </li>
+                        <li class="f-left p-relative forSina">
+                            <img src="$homeContent.getURI('/images/weibo—click.png')" class="mr_38 sinaClick">
+                            <img src="$homeContent.getURI('/images/member-sina.png')" class="mr_38 sina">
+                            <img class="tips_bd" alt="" src="$homeContent.getURI('/images/member-sina-erweima.png')">
+                        </li>
+                        #*<li class="f-left">
+                            <img src="$homeContent.getURI('/images/member-tencent.png')">
+                        </li>*#
+                    </ul>
+                </li>
+                <li class="f-left hot-line">
+                    <ul>
+                        <li class="text">客服热线</li>
+                        <li class="clearfix">
+                            <img src="$homeContent.getURI('/images/member-phone.png')" class="member-phone">
+                            <span class="number">0571-81902006</span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="text">在线咨询</li>
+                        <li>
+                            <a target='_blank' href='http://wpa.qq.com/msgrd?v=3&uin=2625838059&site=qq&menu=yes'>
+                                <img id="qq" src="$homeContent.getURI('/images/member-qq.png')" class="member-phone">
+                                <img id="qqClick" src="$homeContent.getURI('/images/qq-click.png')" class="member-phone" style="display: none;">
+                                <span>在线咨询</span>
+                                <span>09:00-18:00</span>
+                            </a>
+                        </li>
+                    </ul>
+
+            </li>
+        </ul>
+        <div class="friend_links clearfix">
+                <span class="tit">友情链接：</span>
+
+                <p class="links_wrap">
+##
+                    <a title="中国土地市场网" target="_blank" href="http://www.landchina.com">中国土地市场网</a>
+                    <a title="土地估价师题库" target="_blank" href="http://www.benexam.com/tudigujiashi/">土地估价师题库</a>
+                    <a title="土地登记代理人题库" target="_blank" href="http://www.benexam.com/tudidengjidaili/">土地登记代理人题库</a>
+                    <a title="房地产估价师题库" target="_blank" href="http://www.benexam.com/fangdichangujia/">房地产估价师题库</a>
+                    <a title="房地产经纪人题库" target="_blank" href="http://www.benexam.com/fangdichanjingjiren/">房地产经纪人题库</a>
+##                    <a title="和讯信托" target="_blank" href="http://trust.hexun.com">和讯信托</a> <a title="资管产品"
+##                                                                                              target="_blank"
+##                                                                                              href="http://www.jinfuzi.com/ziguan/">资管产品</a>
+##                    <a title="基金" target="_blank" href="http://www.jjmmw.com/">基金</a> <a title="金投保险网" target="_blank"
+##                                                                                         href="http://insurance.cngold.org">金投保险网</a>
+##                    <a title="中金理财" target="_blank" href="http://money.cnfol.com">中金理财</a> <a title="数米基金"
+##                                                                                              target="_blank"
+##                                                                                              href="http://blog.fund123.cn/">数米基金</a>
+##                    <a title="沃保保险网" target="_blank" href="http://www.vobao.com">沃保保险网</a> <a title="乐耕众筹"
+##                                                                                              target="_blank"
+##                                                                                              href="http://www.legeng360.com/">乐耕众筹</a>
+##                    <a title="瞄股网" target="_blank" href="http://www.miaogu.com">瞄股网</a> <a title="信托公司" target="_blank"
+##                                                                                           href="http://www.jinfuzi.com/xintuo/company">信托公司</a>
+##                    <a title="期货开户" target="_blank" href="http://www.jinfuzi.com/qihuo/">期货开户</a> <a title="银行网点查询"
+##                                                                                                     target="_blank"
+##                                                                                                     href="http://www.jinfuzi.com/bank/">银行网点查询</a>
+##                    <a title="港股开户" target="_blank" href="http://www.jfz.com/ganggu/kh/">港股开户</a> <a title="金融港"
+##                                                                                                     target="_blank"
+##                                                                                                     href="http://www.jrgang.com">金融港</a>
+##                    <a title="外汇平台" target="_blank" href="http://www.jfz.com/waihui/pt.html">外汇平台</a> <a title="信托产品"
+##                                                                                                         target="_blank"
+##                                                                                                         href="http://www.jfz.com/xintuo/">信托产品</a>
+##                    <a title="银行外汇开户" target="_blank" href="http://www.jfz.com/waihui/yh.html">银行外汇开户</a> <a
+##                        title="财经资讯" target="_blank" href="http://www.jfz.com/wz/">财经资讯</a> <a title="理财问答"
+##                                                                                               target="_blank"
+##                                                                                               href="http://www.xueqiu360.com/ask/">理财问答</a>
+##                    <a title="北京证券网" target="_blank" href="http://www.bjzq.com.cn" style="display: none;">北京证券网</a> <a
+##                        title="滚雪球" target="_blank" href="http://www.xueqiu360.com/" style="display: none;">滚雪球</a> <a
+##                        title="向日葵保险网" target="_blank" href="http://www.xiangrikui.com/"
+##                        style="display: none;">向日葵保险网</a> <a title="股票软件" target="_blank"
+##                                                             href="http://www.jfz.com/rj/zq.html"
+##                                                             style="display: none;">股票软件</a> <a title="期货软件"
+##                                                                                                target="_blank"
+##                                                                                                href="http://www.jfz.com/rj/qh.html"
+##                                                                                                style="display: none;">期货软件</a>
+##                    <a title="大家保保险网" target="_blank" href="http://www.dajiabao.com/ " style="display: none;">大家保保险网</a>
+##                    <a title="国内期货公司" target="_blank" href="http://www.jinfuzi.com/qihuo/company.html"
+##                       style="display: none;">国内期货公司</a> <a title="金评媒" target="_blank" href="http://www.jpm.cn/"
+##                                                            style="display: none;">金评媒</a> <a title="新一站保险网"
+##                                                                                              target="_blank"
+##                                                                                              href="http://www.xyz.cn/"
+##                                                                                              style="display: none;">新一站保险网</a>
+##                    <a title="拍拍贷" target="_blank" href="http://www.ppdai.com" style="display: none;">拍拍贷</a> <a
+##                        title="福汇" target="_blank" href="http://www.hqjhw.com/" style="display: none;">福汇</a> <a
+##                        title="私募产品" target="_blank" href="http://www.jfz.com/simu/" style="display: none;">私募产品</a> <a
+##                        title="证券公司排名" target="_blank" href="http://www.jinfuzi.com/trader/rank.html"
+##                        style="display: none;">证券公司排名</a> <a title="期货公司排名" target="_blank"
+##                                                             href="http://www.jfz.com/wz/id-87606.html"
+##                                                             style="display: none;">期货公司排名</a> <a title="股指期货交割日"
+##                                                                                                  target="_blank"
+##                                                                                                  href="http://www.jfz.com/wz/id-87605.html"
+##                                                                                                  style="display: none;">股指期货交割日</a>
+##                    <a id="ft_more_btn" class="more" href="javascript:;" style="display: inline !important;">[展开]</a>
+                </p>
+            </div>
+        <div class="again">
+            <div class="clearfix top">
+                <span>联系我们</span>
+                <i class="vertical-line bg-color-1"></i>
+                <span>加入我们</span>
+                <i class="vertical-line bg-color-1"></i>
+                <span>免责声明</span>
+                <i class="vertical-line bg-color-1"></i>
+                <span>意见反馈</span>
+                <i class="vertical-line bg-color-1"></i>
+                <span>友情链接</span>
+                <i class="vertical-line bg-color-1"></i>
+                <span>网站地图</span>
+                <i class="vertical-line bg-color-1"></i>
+                <span> <script src="http://s4.cnzz.com/z_stat.php?id=1256144657&web_id=1256144657" language="JavaScript"></script></span>
+            </div>
+            <div>浙江臻善科技有限公司
+            </div>
+            <div class="mt-6">
+                浙ICP备06018569号-2
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- footer end-->
+<script type="text/javascript">
+    $("#qq,#qqClick").hover(function(){
+        $("#qq").hide();
+        $("#qqClick").show();
+    },function(){
+        $("#qq").show();
+        $("#qqClick").hide();
+    });
+</script>

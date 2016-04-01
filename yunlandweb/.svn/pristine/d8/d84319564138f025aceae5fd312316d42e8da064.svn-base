@@ -1,0 +1,340 @@
+/**
+ * Created by DEV003 on 2014/12/26.
+ */
+angular.module("xn/template/attachmentEdit.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attachmentEdit.html",
+            "<div class=\"xn-employee-upload\" ng-init='ctrlDivShow=false'>"+
+            "    <ul class=\"xn-upload-img clearfix\">"+
+            "        <li class=\"clearfix\" ng-mouseenter='ctrlDivShow=true' ng-mouseleave='ctrlDivShow=false' ng-repeat=\"item in attachment.list\">"+
+            "           <i  class=\"icon icon-delete\" ng-click=\"deleteItem(item.id)\"></i>"+
+            "<div class='ctrl_div' ng-show='ctrlDivShow'><i image-magnifier img-url='{{item.filePath}}' class='icon icon-enlarge'></i><a href='{{item.filePath}}'><i class='icon icon-download'></i></a></div>"+
+            "          <img ng-show=\"{{item.displayName | isImg}}\"  class=\"upload-img\" src=\"{{item.filePath}}\" width=\"170\" height=\"100\" />"+
+            "           <div ng-show=\"!{{item.displayName | isImg}}\" class=\"upload-name\">{{item.displayName}}</div>"+
+            "     </li>"+
+                "       <li class=\"clearfix\">"+
+                "           <label for=\"{{attachment.selectItemId}}\"  >" +
+                "               <div  class=\"upload-add\"  >"+
+                "                   <input type=\"file\" id=\"{{attachment.selectItemId}}\"  class=\"none\"  ng-click=\"upload()\"  multiple/>"+
+                "                   <i class=\"icon icon-add\"  ></i>"+
+                "                   <div class=\"upload-add-title\">添加</div>"+
+                "               </div>"+
+                "           </label>"+
+                "       </li>"+
+            "   </ul>"+
+            " </div>");
+}]);
+
+angular.module("xn/template/attachmentView.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attachmentView.html",
+            "<div class=\"xn-employee-upload\" ng-init='ctrlDivShow=false'>"+
+            "    <ul class=\"xn-upload-img clearfix\">"+
+            "        <li class=\"clearfix\"  ng-mouseenter='ctrlDivShow=true' ng-mouseleave='ctrlDivShow=false' ng-repeat=\"item in attachment.list\">"+
+            "<div class='ctrl_div' ng-show='ctrlDivShow'><i image-magnifier img-url='{{item.filePath}}' class='icon icon-enlarge'></i><a href='{{item.filePath}}'><i class='icon icon-download'></i></a></div>"+
+            "          <img ng-show=\"{{item.displayName | isImg}}\"  class=\"upload-img\" src=\"{{item.filePath}}\" width=\"170\" height=\"100\" />"+
+            "           <div ng-show=\"!{{item.displayName | isImg}}\" class=\"upload-name\">{{item.displayName}}</div>"+
+            "     </li>"+
+            "   </ul>"+
+            " </div>");
+}]);
+
+
+angular.module("xn/template/attSingleEdit.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attSingleEdit.html",
+            "<div>" +
+            "<label class=\"clearfix\" for=\"{{attachment.selectItemId}}\">"+
+            "   <i ng-if=\"attachment.item\" class=\"icon icon-delete\" ng-click=\"deleteItem(attachment.item.id)\"></i>"+
+            "   <img ng-if=\"attachment.item\" class=\"upload-img\" src=\"{{attachment.item.filePath}}\" width=\"145\" height=\"90\" />"+
+            "   <div  ng-if=\"!attachment.item\"  class=\"upload-add\"  >"+
+            "       <input type=\"file\" id=\"{{attachment.selectItemId}}\"  class=\"none\" ng-click=\"upload()\" accept=\"image/png,image/gif,image/bmp,image/jpeg,image/jpg\" />"+
+            "       <i class=\"icon icon-add\"></i> " +
+            "       <div class=\"upload-add-title\">{{attachment.title}}</div>" +
+            "   </div>"+
+            "</label>"+
+            "</div>");
+}]);
+
+
+angular.module("xn/template/attSingleView.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attSingleView.html",
+            "<div>" +
+            "   <img ng-show=\"attachment.item\" class=\"upload-img\" src=\"{{attachment.item.filePath}}\" width=\"145\" height=\"90\" />"+
+            "   <img ng-show=\"!attachment.item\" class=\"upload-img\" src=\"{{attachment.defaultPath}}\" width=\"145\" height=\"90\" />"+
+            "</div>"
+    );
+}]);
+
+
+
+
+
+var xnAttachmentEdit = function ($http,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attachmentEdit.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope) {
+
+            var attachment = scope.attachment;
+            attachment.selectItemId = "XX"+new Date().getTime();
+            var selectItem = document.getElementById(attachment.selectItemId);
+            var i = 0;
+            while(selectItem != null){
+                attachment.selectItemId = "XX"+new Date().getTime()+i;
+                selectItem = document.getElementById(attachment.selectItemId);
+                i++;
+            }
+
+            if(attachment.businessId != null){
+                //加载附件
+                FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                    if(data.errors === null || data.errors.length > 0){
+                        dialogService.tip(data.errors);
+                    } else {
+                        attachment.list = data.attachmentList;
+                    }
+                });
+            } else{
+                attachment.businessId =1;
+            }
+            //上传附件
+            scope.upload = function(){
+                var fileId=document.getElementById(attachment.selectItemId);
+                fileId.onchange=function(){
+                    var fileList = document.getElementById(attachment.selectItemId).files;
+                    for(var i=0;i<fileList.length;i++){
+                        FoundationService.apiFoundationAttachmentUpload(fileList[i],attachment.businessId,attachment.businessType,attachment.businessCategory).success(function(data){
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            }else{
+                                attachment.list.push(data.attachment);
+                            }
+                        });
+                    }
+                };
+            };
+            //删除附件
+            scope.deleteItem =function(id){
+                FoundationService.apiFoundationAttachmentDelete({attachmentId : id}).success(function(data){
+                    if(data.errors === null || data.errors.length > 0){
+                        dialogService.tip(data.errors);
+                    } else {
+                        for(var i= 0;i <attachment.list.length;i++){
+                            if(id === attachment.list[i].id){
+                                attachment.list.splice(i,1);
+                                break;
+                            }
+                        }
+                    }
+                });
+            };
+        }
+    };
+};
+
+var xnAttachmentView = function ($http,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attachmentView.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,ngModel) {
+            if (!ngModel) return;
+            var attachment = scope.attachment;
+
+            //加载附件
+            FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                if(data.errors === null || data.errors.length > 0){
+                    dialogService.tip(data.errors);
+                } else {
+                    attachment.list = data.attachmentList;
+                }
+            });
+        }
+    };
+};
+
+var xnAttSingleEdit = function ($http,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attSingleEdit.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope) {
+
+            var attachment = scope.attachment;
+            attachment.selectItemId = "XX"+new Date().getTime();
+            var selectItem = document.getElementById(attachment.selectItemId);
+            var i = 0;
+            while(selectItem != null){
+                attachment.selectItemId = "XX"+new Date().getTime()+i;
+                selectItem = document.getElementById(attachment.selectItemId);
+                i++;
+            }
+
+            if(attachment.businessId != null){
+                //加载附件
+                FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                    if(data.errors === null || data.errors.length > 0){
+                        dialogService.tip(data.errors);
+                    } else {
+                        if(data.attachmentList.length != 0){
+                            attachment.item = data.attachmentList[0];
+                        }
+
+                    }
+                });
+            } else{
+                attachment.businessId =1;
+            }
+            //上传附件
+            scope.upload = function(){
+                var fileId=document.getElementById(attachment.selectItemId);
+                fileId.onchange=function(){
+                    var fileList = document.getElementById(attachment.selectItemId).files;
+                    for(var i=0;i<fileList.length;i++){
+                        FoundationService.apiFoundationAttachmentUpload(fileList[i],attachment.businessId,attachment.businessType,attachment.businessCategory).success(function(data){
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            }else{
+                                attachment.item =data.attachment;
+                            }
+                        });
+                    }
+                };
+            };
+            //删除附件
+            scope.deleteItem =function(id){
+                var dialogDefaults = {
+                    size:"sm"
+                };
+                var dialogOptions = {
+                    closeButtonText: "取消",
+                    actionButtonText: "删除",
+                    headerText: "删除....?",
+                    bodyText: "你确定删除附件吗？",
+                    callback: function () {
+                        FoundationService.apiFoundationAttachmentDelete({attachmentId : id}).success(function(data){
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            } else {
+                                attachment.item = null;
+                            }
+                        });
+                    }
+                };
+                dialogService.confirm(dialogDefaults, dialogOptions);
+            };
+        }
+    };
+};
+
+var xnAttSingleView = function ($http,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attSingleView.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,ngModel) {
+            if (!ngModel) return;
+            var attachment = scope.attachment;
+            //加载附件
+            FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                if(data.errors === null || data.errors.length > 0){
+                    dialogService.tip(data.errors);
+                } else {
+                    if(data.attachmentList.length != 0){
+                        attachment.item = data.attachmentList[0];
+                    }
+                }
+            });
+        }
+    };
+};
+
+//文本框粘贴图片
+var xnImgPaste=function($http,FoundationService,dialogService){
+    return {
+        restrict: "A",
+        scope: {attachment: '=xnAttachment'},
+        require: "?xnAttachment",
+        link: function (scope, elem) {
+            var attachment=scope.attachment;
+            if(!attachment) return ;
+
+            elem.bind("paste",function(e){
+                var clipboard = e.originalEvent.clipboardData;
+                for(var i=0,len=clipboard.items.length; i<len; i++) {
+                    if(clipboard.items[i].kind == 'file' || clipboard.items[i].type.indexOf('image') > -1) {
+                        var imageFile = clipboard.items[i].getAsFile();
+                        imageFile.name = new Date().getTime()+".png";
+                        FoundationService.apiFoundationAttachmentUpload(imageFile,attachment.businessId,attachment.businessType,attachment.businessCategory).success(function(data){
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            }else{
+                                attachment.list.push(data.attachment);
+                            }
+                        });
+                    }
+                }
+            });
+
+        }
+    };
+};
+
+angular.module("xn.directive.attachment", ["ng", "xn.service.foundation","xn/template/attachmentEdit.html","xn/template/attachmentView.html","xn/template/attSingleEdit.html","xn/template/attSingleView.html"])
+    .directive('xnAttachmentEdit', ["$http","FoundationService","dialogService", xnAttachmentEdit])
+    .directive('xnAttachmentView', ["$http","FoundationService","dialogService", xnAttachmentView])
+    .directive('xnAttSingleEdit', ["$http","FoundationService","dialogService", xnAttSingleEdit])
+    .directive('xnAttSingleView', ["$http","FoundationService","dialogService", xnAttSingleView])
+    .directive('xnImgPaste', ["$http","FoundationService","dialogService", xnImgPaste])
+    .directive("imageMagnifier", function() {
+        "use strict";
+        return {
+            restrict:"AC",
+            scope: {
+                imgUrl: "@"
+            },
+            link: function($scope, element, attrs, controller, transcludeFn) {
+                $(element).css("cursor", "pointer");
+                if(!$scope.imgUrl)
+                    return ;
+                if($scope.imgUrl.indexOf("@")!=-1)
+                    $scope.imgUrl = $scope.imgUrl.split("@")[0];
+                $scope.htm = "<div id='magnifier_out_div' class='magnifier_out_div'>";
+                $scope.htm += "<div class='img_div'>";
+                $scope.htm += "<img id='img' src='"+$scope.imgUrl+"' class='img_cl'/>";
+                $scope.htm += "</div>";
+                $scope.htm += "</div>";
+
+                $(element).bind("click", function(e) {
+                    $scope.showImg = true;
+                    if($("#magnifier_out_div").length>0) {
+                        $("#magnifier_out_div").find("img").attr("src", $scope.imgUrl);
+                        $("#magnifier_out_div").css('display', "block");
+                    }else
+                        $("body").append($scope.htm);
+                    $("#close_div").bind("click", function(e) {
+                        $scope.showImg = !$scope.showImg;
+                        if(!$scope.showImg)
+                            $("#magnifier_out_div").css('display', "none");
+                    });
+                    $("#img").bind("click", function(e) {
+                        if($scope.showImg) {
+                            $scope.showImg = !$scope.showImg;
+                            $("#magnifier_out_div").css('display', "none");
+                        }
+                    });
+                });
+            }
+        }
+    });

@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>土地转让-投递记录</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/yunland/images/favicon.ico"  type="image/x-icon"  >
+<link href="../../../dist/styles/global.min.css" rel="stylesheet">
+<link href="../../../dist/styles/local.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="xn-breadcrumb xn-width auto clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget('transfer/index')">土地转让</a></li>
+        <li class="active">投递记录</li>
+    </ul>
+</div>
+<div class="xn-main auto xn-width clearfix" ng-controller="TransferPostRecordController">
+    <!--搜索部分-->
+    <div class="xn-search clearfix">
+        <form class="form-horizontal clearfix xn-form" name="searchForm" xn-form-validate novalidate role="form">
+            <div class="height-search-box auto">
+                <div class="xn-input-line  clearfix">
+                    <label for="orderdate" class="xn-label">投递时间：</label>
+                    <div class="xn-input-sm">
+                        <div class="input-group openData">
+                            <input type="text" class="form-control" id="startDate" ng-model="vm.startDate" name="regularDate"
+                                   datepicker-popup="yyyy-MM-dd" is-open="startDate" max-date="maxDate"  datepicker-options="dateOptions"
+                                   date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </div>
+                    </div>
+                    <label for="number" class="xn-label">到：</label>
+                    <div class="xn-input-sm">
+                        <div class="input-group openData">
+                            <input type="text" class="form-control" id="endDate" ng-model="vm.endDate" name="regularDate"
+                                   datepicker-popup="yyyy-MM-dd" is-open="endDate" min-date="minDate"  datepicker-options="dateOptions"
+                                   date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"  ng-click="openEndDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label for="accountId" class="xn-label">投递会员名：</label>
+                    <div class="xn-input-sm">
+                        <input class="form-control xn-click-input" type="text" name="title" ng-model="vm.memberAccount">
+                    </div>
+                    <div class="xn-input-line  clearfix mr_90">
+                        <button type="button" class="btn btn-success w_90  f-right clearfix"  xn-submit-enter="doFind()">查询</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--搜索部分结束-->
+
+    <!--列表开始-->
+    <div class="xn-table" >
+        <table  class="table table-bordered table-striped xn-word-breakAll">
+            <thead>
+            <tr>
+                <th class="col-md-1 xn-center">序号</th>
+                <th class="col-md-2 xn-center">投递会员名</th>
+                <th class="col-md-2 xn-center">投递需求名称</th>
+                <th class="col-md-2 xn-center">投递地块名称</th>
+                <th class="col-md-2 xn-center">投递时间</th>
+            </tr>
+            </thead>
+            <tbody id="tbody" >
+            <tr ng-repeat="post in postList" >
+                <td class="xn-center">{{(vm.pageNumber-1)*vm.pageSize+$index+1}}</td>
+                <td class="xn-center">{{post.memberAccount}}</td>
+                <td class="xn-center"><a ng-href="$yunlandLink.setTarget("transfer/viewDemand")?id={{post.landDemandId}}" target="_blank">{{post.demandName}}</a></td>
+                <td class="xn-center"><a ng-href="$yunlandLink.setTarget("transfer/viewSupply")?id={{post.landSupplyId}}" target="_blank">{{post.supplyName}}</a></td>
+                <td class="xn-center">{{post.deliveryTime}}</td>
+            </tr>
+            <tr  ng-if="vm.totalCount == 0"><td colspan="12" class="center">无法找到相应的记录</td></tr>
+            </tbody>
+        </table>
+        <div class="f-left mt_20 mb_20 ng-binding">共{{vm.totalCount}}条</div>
+        <div class="f-right clearfix">
+            <pagination ng-show="vm.totalCount>vm.pageSize" ng-change="getList()" max-size="maxPageSize"
+                        total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                        class="pagination-sm pagination-item" boundary-links="true" previous-text="&lsaquo;"
+                        next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+    </div>
+    <!--列表结束-->
+</div>
+<script  src="$ledgerContent.getURI('scripts/controllers/accountingTransaction.js')" ></script>
+
+<div id="footer" class="xn-width auto clearfix">
+    <span>浙江臻善科技有限公司</span><br/>
+    <span>浙ICP备06018569号-2</span><br/>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='float: center;'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256144657%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</div>
+
+<!-- 引用服务站点的JS文件 -->
+
+<div class="xn-back-to-top"   data-feedback-url=$config.getServiceUrl("feedback/create.htm")>
+</div>
+    <div xn-nprogress></div>
+
+</body>
+<script src="../../../dist/scripts/base.min.js"></script>
+<script src="../../../dist/scripts/global.min.js"></script>
+<script src="../../../dist/scripts/local.min.js"></script>
+<script type="text/javascript" src="../../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    /*犀牛ng-app的运用*/
+    angular.element(document).ready(function() {
+        initApp();
+        angular.bootstrap(document.body, ['xn']);
+    });
+    var uploadjson =  'http://www.yunland.cn/base/fileUploadJson.do';
+    var uploadmamagerjson = 'http://www.yunland.cn/base/fileUploadManager.do';
+</script>
+</html>

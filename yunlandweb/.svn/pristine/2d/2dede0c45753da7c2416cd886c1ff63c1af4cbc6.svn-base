@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>城市推价-新增城市推介</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/yunland/images/favicon.ico"  type="image/x-icon"  >
+<link href="../../../dist/styles/global.min.css" rel="stylesheet">
+<link href="../../../dist/styles/local.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("recommend/city")">城市推介</a></li>
+        <li class="active">新增城市推介</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="AddCityController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix" style="min-width: 1200px">
+            <div class="edit-content">
+                <div class="recommend-editContent-top clearfix">
+                    <h4 class="recommend-editContent-h4">城市推介图片</h4>
+                    <div>
+                        <div class="xn-input-line  clearfix"  style="width:980px;margin: 0 auto">
+                            <ul class="xn-upload-img xn-upload-img-header clearfix" style="width: 595px;height: 250px ;float: left;margin-right: 20px" >
+                                <input type="file" id="pictureFile" name="pictureFile" ng-click="showPicture()" width="114" height="85"
+                                       contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                <li class="clearfix" style="width: 595px;height: 250px" ng-if="city.picturePath == null" onclick="pictureFile.click()">
+                                    <i class="icon icon-add"></i>
+                                    <div class="upload-add-title ng-binding">城市推介图片(建议尺寸：1190*500)</div>
+                                </li>
+                                <img ng-if="city.picturePath != null" onclick="pictureFile.click()"  id="spanImage" alt="请选择图片"
+                                     width="595" height="250" ng-src="{{city.picturePath}}"/>
+                            </ul>
+                            <ul class="xn-upload-img xn-upload-img-header clearfix" style="width: 330px;height: 250px; float: left;" >
+                                <input type="file" id="smallPictureFile" name="smallPictureFile" ng-click="showSmallPicture()" width="114" height="85"
+                                       contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                <li class="clearfix" style="width: 330px;height: 250px;" ng-if="city.smallPicturePath == null" onclick="smallPictureFile.click()">
+                                    <i class="icon icon-add"></i>
+                                    <div class="upload-add-title ng-binding">城市推介图片缩略图(建议尺寸:383*215)</div>
+                                </li>
+                                <img ng-if="city.smallPicturePath != null" onclick="smallPictureFile.click()" id="spanImage" alt="请选择图片"
+                                     width="330" height="250" ng-src="{{city.smallPicturePath}}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">土地基本信息</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">添加城市：</span><i
+                                class="xn-required-i f-right"></i></label>
+                                
+                        <div class="xn-input-lg">
+                            <div class="xn-location ng-isolate-scope ng-pristine ng-valid" xn-location1 ng-model="city.address" name="address" data-city-id="{"default":{"countryId":"","provinceId":"","cityId":"","districtId":""},"name":{"countryName":"中国","provinceName":"","cityName":"","districtName":"","postCode":""},"countryId":"86","provinceId":"","cityId":"","districtId":"","postCode":""}" address="false">
+                                <div class="xn-input-line clearfix">
+                                    <div class="xn-location-select">
+                                                 <select class="form-control   ng-pristine ng-valid ng-valid-required" ng-required="province" name="provinceId" ng-model="location.provinceId">                <option value="">省份</option>                <!-- ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="110000" class="ng-binding ng-scope">                    北京市                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="120000" class="ng-binding ng-scope">                    天津市                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="130000" class="ng-binding ng-scope">                    河北省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="140000" class="ng-binding ng-scope">                    山西省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="150000" class="ng-binding ng-scope">                    内蒙古自治区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="210000" class="ng-binding ng-scope">                    辽宁省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="220000" class="ng-binding ng-scope">                    吉林省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="230000" class="ng-binding ng-scope">                    黑龙江省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="310000" class="ng-binding ng-scope">                    上海市                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="320000" class="ng-binding ng-scope">                    江苏省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="330000" class="ng-binding ng-scope">                    浙江省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="340000" class="ng-binding ng-scope">                    安徽省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="350000" class="ng-binding ng-scope">                    福建省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="360000" class="ng-binding ng-scope">                    江西省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="370000" class="ng-binding ng-scope">                    山东省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="410000" class="ng-binding ng-scope">                    河南省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="420000" class="ng-binding ng-scope">                    湖北省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="430000" class="ng-binding ng-scope">                    湖南省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="440000" class="ng-binding ng-scope">                    广东省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="450000" class="ng-binding ng-scope">                    广西壮族自治区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="460000" class="ng-binding ng-scope">                    海南省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="500000" class="ng-binding ng-scope">                    重庆市                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="510000" class="ng-binding ng-scope">                    四川省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="520000" class="ng-binding ng-scope">                    贵州省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="530000" class="ng-binding ng-scope">                    云南省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="540000" class="ng-binding ng-scope">                    西藏自治区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="610000" class="ng-binding ng-scope">                    陕西省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="620000" class="ng-binding ng-scope">                    甘肃省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="630000" class="ng-binding ng-scope">                    青海省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="640000" class="ng-binding ng-scope">                    宁夏回族自治区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="650000" class="ng-binding ng-scope">                    新疆维吾尔自治区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="710000" class="ng-binding ng-scope">                    台湾省                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="810000" class="ng-binding ng-scope">                    香港特别行政区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) --><option ng-selected="area.id==location.provinceId" ng-repeat="area in provinceList=(areaList | filter:provinceListFilter)" value="820000" class="ng-binding ng-scope">                    澳门特别行政区                </option><!-- end ngRepeat: area in provinceList=(areaList | filter:provinceListFilter) -->            </select>       
+                                    </div>
+                                    <div class="xn-location-select">             
+                                    <select class="form-control   ng-pristine ng-valid ng-valid-required" ng-required="city" name="cityId" ng-model="location.cityId">                <option value="">城市</option>                <!-- ngRepeat: area in cityList=(areaList | filter:cityListFilter) -->            
+                                    </select>       
+                                    </div>
+                                    <div class="xn-location-select">             
+                                    <select class="form-control  ng-pristine ng-valid ng-valid-required" ng-required="district" name="districtId" ng-model="location.districtId">                <option value="">区县</option>                <!-- ngRepeat: area in districtList=(areaList | filter:districtListFilter) -->            </select>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">详细介绍</h4>
+                <div class="land-recommend-list clearfix">
+                    <div class="land-recommend-tab-title position-relative" ng-init="tab=1">
+                        <ul class="clearfix">
+                            <li ng-click="tab=1" ng-class="tab==1?'on':''">城市概况</li>
+                            <li ng-click="tab=2"  ng-class="tab==2?'on':''">城市规划</li>
+                            <li ng-click="tab=3" ng-class="tab==3?'on':''">土地价值</li>
+                            <li ng-click="tab=4" ng-class="tab==4?'on':''">土地出让一览表</li>
+                        </ul>
+                    </div>
+                    <div class="land-recommend-tab-con mt_10">
+                        <div class="land-detail" ng-show="tab==1">
+                                <textarea class="form-control" rows="15" name="landIntro" style="width: 100% ;height: 300px" id="landIntro" ng-model="city.generalContent"></textarea>
+                        </div>
+                        <div class="land-detail" ng-show="tab==2">
+                            <textarea class="form-control" rows="15" name="newsIntro"  style="width: 100%;height: 300px" id="newsIntro" ng-model="city.planContent"></textarea>
+                        </div>
+                        <div class="land-detail" ng-show="tab==3">
+                                <textarea class="form-control" rows="15" name="sellIntro" style="width: 100%;height: 300px" id="sellIntro" ng-model="city.landvalueContent"></textarea>
+                        </div>
+                        <div class="land-detail" ng-show="tab==4">
+                                <textarea class="form-control" rows="15" name="browseIntro"  style="width: 100%;height: 300px" id="browseIntro" ng-model="city.browseContent"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+</script>
+<script>
+
+
+</script>
+
+    <div id="footer" class="xn-width auto clearfix">
+    <span>浙江臻善科技有限公司</span><br/>
+    <span>浙ICP备06018569号-2</span><br/>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253874607'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1253874607%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+<!-- 引用服务站点的JS文件 -->
+
+<div class="xn-back-to-top"   data-feedback-url=$config.getServiceUrl("feedback/create.htm")>
+</div>
+    <div xn-nprogress></div>
+
+</body>
+<script src="../../../dist/scripts/base.min.js"></script>
+<script src="../../../dist/scripts/global.min.js"></script>
+<script src="../../../dist/scripts/local.min.js"></script>
+<script type="text/javascript" src="../../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    /*犀牛ng-app的运用*/
+    angular.element(document).ready(function() {
+        initApp();
+        angular.bootstrap(document.body, ['xn']);
+    });
+    var uploadjson =  'http://www.yunland.cn/base/fileUploadJson.do';
+    var uploadmamagerjson = 'http://www.yunland.cn/base/fileUploadManager.do';
+</script>
+</html>

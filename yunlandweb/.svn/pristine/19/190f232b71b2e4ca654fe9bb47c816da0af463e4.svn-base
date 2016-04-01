@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>云地网-互联网土地市场-修改版</title>
+<link rel="stylesheet" type="text/css" href="../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/p3Slider/zsucai.css">
+
+<script  type="text/javascript"  src="../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../scripts/jsAddress.js"></script>
+</head>
+<body>
+
+<!--footer start -->
+<div id="footer">
+    <div class="footer">
+        <div class="xn-width auto clearfix">
+            <ul class="footer-nav clearfix">
+                <li class="f-left about">
+                    <div class="text">关于我们</div>
+                    <ul class="list-text">
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=companyIntroduce")" target="_blank">公司介绍</a></li>                        
+                        <li><a href="$indexContent.getURI("/news/index")" target="_blank">最新动态</a></li>
+                    </ul>
+                </li>
+                <li class="f-left help">
+                    <div class="text">帮助中心</div>
+                    <ul class="list-text">
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=newComer")" target="_blank">新手入门</a></li>
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=help")" target="_blank">使用帮助</a></li>
+                    </ul>
+                </li>
+                <li class="f-left care">
+                    <div class="text">关注我们</div>
+                    <ul class="list-text mt_10">
+                        <li class="f-left p-relative forWechat">
+                            <img src="../../images/wei-icon.png" width="80" height="107" class="mr_38">
+                        </li>
+                        <li class="f-left p-relative forSina">
+                            <img src="../../images/xinlang-icon.png" width="80" height="107" class="mr_38">
+                        </li>
+                    </ul>
+                </li>
+                <li class="f-left hot-line">
+                    <ul class="f-left">
+                        <li class="text">客服热线</li>
+                        <li class="clearfix">
+                            <img src="../../images/member-phone.png" width="42" height="42" class="member-phone">
+                            <span class="number">0571-81902006</span>
+                        </li>
+                    </ul>
+                    <ul class="f-right">
+                        <li class="text">在线咨询</li>
+                        <li>
+                            <a target='_blank' href='http://wpa.qq.com/msgrd?v=3&uin=2625838059&site=qq&menu=yes'>
+                                <img id="qq" src="../../images/member-qq.png" width="42" height="42" class="member-phone" style="display: block;">
+                                <img id="qqClick" src="../../images/qq-click.png" width="42" height="42" class="member-phone" style="display: none;">
+                                <span>在线咨询</span>
+                                <span>09:00-18:00</span>
+                            </a>
+                        </li>
+                    </ul>
+
+            </li>
+        </ul>
+        <div class="friend_links clearfix">
+          <div style="width:1070px; margin:0 auto;">
+                <span class="tit">友情链接：</span>
+
+      <p class="links_wrap">
+
+                    <a title="中国土地市场网" target="_blank" href="http://www.landchina.com">中国土地市场网</a>
+                    <a title="土地估价师题库" target="_blank" href="http://www.benexam.com/tudigujiashi/">土地估价师题库</a>
+                    <a title="土地登记代理人题库" target="_blank" href="http://www.benexam.com/tudidengjidaili/">土地登记代理人题库</a>
+                    <a title="房地产估价师题库" target="_blank" href="http://www.benexam.com/fangdichangujia/">房地产估价师题库</a>
+                    <a title="房地产经纪人题库" target="_blank" href="http://www.benexam.com/fangdichanjingjiren/">房地产经纪人题库</a>
+                     <a title="房产小秘书" target="_blank" href="#">房产小秘书</a>
+                     <a title="光大惠升" target="_blank" href="#">光大惠升</a>
+                     <a title="深圳贷款网" target="_blank" href="#">深圳贷款网</a>
+                     <a title="阳灿金服" target="_blank" href="#">阳灿金服</a>
+                     <a title="滦南房天下" target="_blank" href="#">滦南房天下</a>
+                </p>
+                </div>
+            </div>
+        <div class="again">
+            <div style="padding-top:10px;">浙江臻善科技有限公司　浙ICP备06018569号-2　<img src="../../images/pic.gif.lnk" width="50" height="12"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- footer end-->
+<script type="text/javascript">
+    $("#qq,#qqClick").hover(function(){
+        $("#qq").hide();
+        $("#qqClick").show();
+    },function(){
+        $("#qq").show();
+        $("#qqClick").hide();
+    });
+</script>
+</body>
+</html>

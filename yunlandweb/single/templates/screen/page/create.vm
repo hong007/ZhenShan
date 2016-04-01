@@ -1,0 +1,52 @@
+<div class="main clearfix" ng-controller="PageCreateController">
+    <h3 class="title"> 管理导航：
+        <a  href="$singleLink.setTarget("page/index")">信息管理</a> |
+        <a   href="$singleLink.setTarget("page/create")">添加信息</a></h3>
+    <div class="form-layout clearfix">
+        <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+            <div class="form-group clearfix">
+                <label class="form-title " for="title"><span class="required">*</span>标题:</label>
+                <input type="text" class="form-control" name="title" id="title"  ng-model="vm.title"  maxlength="50"  required>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="form-title " >缩略片:</label>
+                <input type="text" class="form-control" name="storagePath"   ng-model="vm.storagePath"  >
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title" ></label>
+                <label  for="picture" class="f-left mr_15">
+                    <input type="file" class="w_130 btn btn-default f-left" name="picture" id="pic"
+                           accept={{picAccept}}    >
+                </label>
+                <button class="btn btn-default  f-left" type="submit" ng-click="upload()">上传</button>
+            </div>
+
+
+            <div class="form-group clearfix">
+                <label class="form-title " for="intro">简介:</label>
+                <textarea class="form-control" rows="3" name="intro" id="intro" ng-model="vm.intro"
+                         ></textarea>
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="content">内容:</label>
+                <textarea class="form-control" rows="8" name="content" id="content" ng-model="vm.content"
+                        ></textarea>
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="keyword">关键词:</label>
+                <input type="text" class="form-control" name="keyword" id="icp" ng-model="vm.keyword"  maxlength="50">
+            </div>
+            <div class="clearfix error-box" ng-show="validateForm.$errors.length>0 ">
+                <div class="alert alert-danger">
+                    <i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+            </div>
+            <div class="form-group-submit clearfix">
+                <button type="submit" class="btn btn-primary" xn-submit-enter = "doSave()">保存</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,1515 @@
+/**
+ * Created by DEV003 on 2014/12/26.
+ */
+
+angular.module("xn/template/xnAttachmentBox.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/xnAttachmentBox.html",
+        "<div class=\"xn-attachments-box\" ng-show=\"isOpenBox\">"+
+        "      <div class=\"xn-attachments-bg\" ng-click=\"closeAttachment()\"></div>"+
+        "      <div class=\"xn-attachments-popup\">"+
+        "          <div class=\"popup-head\">上传附件  <i ng-click=\"closeAttachment()\" class=\"attachment-close\"></i></div>"+
+        "          <div class=\"tab-title clearfix\">"+
+        "              <div class=\"tab-title-box clearfix\">"+
+        "                  <span class=\"tab-title-disk \" ng-class=\"{'tab-title-bottom':isDisk}\" ng-click=\"attachmentDisk()\">网盘</span>" +
+            "<span>|</span>" +
+            "<span class=\"tab-title-locality \" ng-class=\"{'tab-title-bottom':!isDisk}\" ng-click=\"attachmentLocality()\">本地</span>"+
+        "              </div>"+
+        "              <label class=\"attachmentInputFile\" for=\"{{attachmentBox.selectItemId}}\">添加文件"+
+        "                  <input type=\"file\" class=\"none\" id=\"{{attachmentBox.selectItemId}}\"  accept='{{filterUpType}}'  multiple  ng-click=\"upload()\"  >"+
+        "              </label>"+
+        "          </div>"+
+        "          <div class=\"tab-box\">"+
+        "              <div class=\"tab-box-disk\"  ng-show=\"isDisk\">"+
+        "                  <ul class=\"clearfix\">"+
+        "                      <li  ng-show='prentList.length>1' ng-click=\"getBack()\">"+
+        "                          <div class=\"tab-box-img go-back\"></div>"+
+        "                      </li>"+
+        "                      <li  ng-repeat=\"folder in folderList\" ng-click=\"getFolderFile(folder.id)\" >"+
+        "                          <div class=\"tab-box-img folder\"></div>"+
+        "                          <div class=\"tab-box-title\">{{folder.name}}</div>"+
+        "                      </li>"+
+        "                      <li  ng-repeat=\"file in fileList\" ng-class=\"{'select':file.state}\" ng-click=\"selectFile($index)\">"+
+        "                          <div class=\"tab-box-img  {{file.file.extension | attachmentFileType}}\"  ng-style=file.newImgUrl ></div>" +
+        "                          <div class=\"tab-box-title\">{{file.fileName}}</div>"+
+        "                      </li>"+
+        "                  </ul>"+
+        "              </div>"+
+        "              <div class=\"tab-box-locality\"  ng-show=\"!isDisk\">"+
+        "                  <ul class=\"clearfix\">"+
+        "                      <li  ng-repeat=\"file in fileLocalityList\" ng-class=\"{'select':file.state}\" ng-click=\"selectLocalityFile($index)\">"+
+        "                          <div class=\"tab-box-img  {{file.file.extension|attachmentFileType}}\"  ng-style=file.newImgUrl ></div>" +
+        "                          <div class=\"tab-box-title\">{{file.fileName}}</div>"+
+        "                      </li>"+
+        "                  </ul>"+
+        "              </div>"+
+        "          </div>"+
+        "          <div class=\"clearfix\" ></div>"+
+        "          <div class=\"popup-foot\">"+
+        "              <button class=\"popup-foot-bottom\" ng-click=\"saveAttachment()\">完成</button>"+
+        "          </div>"+
+        "      </div>"+
+        "  </div >");
+}]);
+
+angular.module("xn/template/xnAttachmentBoxSingle.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/xnAttachmentBoxSingle.html",
+        "<div class=\"xn-attachments-box\" ng-show=\"isOpenBoxSingle\">"+
+        "      <div class=\"xn-attachments-bg\" ng-click=\"closeAttachment()\"></div>"+
+        "      <div class=\"xn-attachments-popup\">"+
+        "          <div class=\"popup-head\">附件  <i ng-click=\"closeAttachment()\" class=\"attachment-close\"></i></div>"+
+        "          <div class=\"tab-title clearfix\">"+
+        "              <div class=\"tab-title-box clearfix\">"+
+        "                  <span class=\"tab-title-disk \" ng-class=\"{'tab-title-bottom':isDisk}\" ng-click=\"attachmentDisk()\">网盘</span>" +
+            "<span>|</span>" +
+            "<span class=\"tab-title-locality \" ng-class=\"{'tab-title-bottom':!isDisk}\" ng-click=\"attachmentLocality()\">本地</span>"+
+        "              </div>"+
+        "              <label class=\"attachmentInputFile\" for=\"{{attachmentBox.selectItemId}}\">添加文件"+
+        "                  <input type=\"file\" class=\"none\" id=\"{{attachmentBox.selectItemId}}\"  accept='{{filterUpType}}'   ng-click=\"upload()\"  >"+
+        "              </label>"+
+        "          </div>"+
+        "          <div class=\"tab-box\">"+
+        "              <div class=\"tab-box-disk\"  ng-show=\"isDisk\">"+
+        "                  <ul class=\"clearfix\">"+
+        "                      <li  ng-show='prentList.length>1' ng-click=\"getBack()\">"+
+        "                          <div class=\"tab-box-img go-back\"></div>"+
+        "                      </li>"+
+        "                      <li  ng-repeat=\"folder in folderList\" ng-click=\"getFolderFile(folder.id)\" >"+
+        "                          <div class=\"tab-box-img folder\"></div>"+
+        "                          <div class=\"tab-box-title\">{{folder.name}}</div>"+
+        "                      </li>"+
+        "                      <li  ng-repeat=\"file in fileList\" ng-class=\"{'select':file.state}\" ng-click=\"selectFile($index)\">"+
+        "                          <div class=\"tab-box-img  {{file.file.extension | attachmentFileType}}\"  ng-style=file.newImgUrl ></div>" +
+        "                          <div class=\"tab-box-title\">{{file.fileName}}</div>"+
+        "                      </li>"+
+        "                  </ul>"+
+        "              </div>"+
+        "              <div class=\"tab-box-locality\"  ng-show=\"!isDisk\">"+
+        "                  <ul class=\"clearfix\">"+
+        "                      <li  ng-repeat=\"file in fileLocalityList\" ng-class=\"{'select':file.state}\" ng-click=\"selectLocalityFile($index)\">"+
+        "                          <div class=\"tab-box-img  {{file.file.extension|attachmentFileType}}\" ng-style=file.newImgUrl ></div>" +
+        "                          <div class=\"tab-box-title\">{{file.fileName}}</div>"+
+        "                      </li>"+
+        "                  </ul>"+
+        "              </div>"+
+        "          </div>"+
+        "          <div class=\"clearfix\" ></div>"+
+        "          <div class=\"popup-foot\">"+
+        "              <button class=\"popup-foot-bottom\" ng-click=\"saveAttachment()\">完成</button>"+
+        "          </div>"+
+        "      </div>"+
+        "  </div >");
+}]);
+
+angular.module("xn/template/fileEdit.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/xnFileEdit.html",
+            "<div class=\"xn-employee-upload\">"+
+            "   <ul class=\"xn-upload-img clearfix\">"+
+            "       <li class=\"clearfix\" ng-repeat=\"item in file.list\">"+
+            "           <i  class=\"icon icon-delete\" ng-click=\"deleteItem($index)\"></i>"+
+
+            "           <img   ng-click=\"attachmentViewOpen(item.filePath)\"  class=\"upload-img\" ng-src=\"{{item.filePath}}@170w_100h_0e\" width=\"170\" height=\"100\" />"+
+/*            "           <div ng-show=\"!{{item.displayName | isImg}}\" class=\"upload-name\">{{item.displayName}}</div>"+*/
+
+            "       </li>"+
+            "       <li class=\"clearfix\" >"+
+            "               <div  class=\"upload-add\" ng-click=\"openFile()\"  >"+
+            "                   <i class=\"icon icon-add\"  ></i>"+
+            "                   <div class=\"upload-add-title\">添加</div>"+
+            "               </div>"+
+            "       </li>" +
+            "    </ul>"+
+            "    <div xn-attachment-box  ng-Model=\"filePopup\"  data-is-open=\"isOpen\"" +
+            "    data-type='{{type}}'     data-max-size=\"{{maxSize}}\"></div>"+
+
+            "    <div class='xn-attachmentView-bj' ng-show=\"attachmentState\" ng-click=\"attachmentViewClose()\"></div>  " +
+            "    <div class='xn-attachmentView-box'  ng-show=\"attachmentState\"> " +
+            "        <div class='xn-attachmentView-box-nr'  >" +
+            "            <i class='icon icon-close' ng-click=\"attachmentViewClose()\"></i>" +
+            "           <img class='xn-attachmentView-box-img' ng-src='{{attachmentView}}'>" +
+            "        </div>    " +
+            "    </div>"+
+            " </div>");
+}]);
+
+angular.module("xn/template/fileView.html", []).run(["$templateCache", function ($templateCache){
+    "use strict";
+    $templateCache.put("xn/template/xnFileView.html",
+            "<div class=\"xn-employee-upload\">"+
+            "    <ul class=\"xn-upload-img clearfix\">"+
+            "        <li class=\"clearfix\" ng-repeat=\"item in file.list\">"+
+            "          <img   ng-click=\"attachmentViewOpen(item.filePath)\" class=\"upload-img\" ng-src=\"{{item.filePath}}@170w_100h_0e\" width=\"170\" height=\"100\" />"+
+/*            "          <a href='{{item.filePath}}'>  " +
+            "               <div ng-show=\"!{{item.displayName | isImg}}\" class=\"upload-name\">{{item.displayName}}</div>"+
+            "          </a>"+*/
+            "       </li>"+
+            "    </ul>"+
+            "    <div class='xn-attachmentView-bj' ng-show=\"attachmentState\" ng-click=\"attachmentViewClose()\"></div>  " +
+            "    <div class='xn-attachmentView-box'  ng-show=\"attachmentState\"> " +
+            "        <div class='xn-attachmentView-box-nr'  >" +
+            "            <i class='icon icon-close' ng-click=\"attachmentViewClose()\"></i>" +
+            "           <img class='xn-attachmentView-box-img' ng-src='{{attachmentView}}'>" +
+            "        </div>    " +
+            "    </div>"+
+            " </div>");
+}]);
+
+angular.module("xn/template/attachmentEdit.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attachmentEdit.html",
+            "<div class=\"xn-employee-upload\">"+
+            "   <ul class=\"xn-upload-img clearfix\">"+
+            "       <li class=\"clearfix\" ng-repeat=\"item in attachment.list\">"+
+            "           <i  class=\"icon icon-delete\" ng-click=\"deleteItem(item.id)\"></i>"+
+             "          <img ng-show=\"{{item.displayName | isImg}}\" ng-click=\"attachmentViewOpen(item.filePath)\"  class=\"upload-img\" ng-src=\"{{item.filePathUrl}}\" width=\"170\" height=\"100\" />"+
+            "           <a  href='{{item.filePath}}'>"+
+            "               <div ng-show=\"!{{item.displayName | isImg}}\" class=\"upload-name\">{{item.displayName}}</div>"+
+            "           </a>"+
+            "       </li>"+
+            "       <li class=\"clearfix\" >"+
+            "               <div  class=\"upload-add\" ng-click=\"openAttachment()\"  >"+
+            "                   <i class=\"icon icon-add\"  ></i>"+
+            "                   <div class=\"upload-add-title\">添加</div>"+
+            "               </div>"+
+            "       </li>" +
+            "    </ul>"+
+            "    <div xn-attachment-box  ng-Model=\"attachmentPopup\"  data-is-open=\"isOpen\" " +
+            "   data-type='{{attachment.type}}'     data-max-size=\"{{attachment.size}}\"></div>"+
+            "   <div class='xn-attachmentView-bj' ng-show=\"attachmentState\" ng-click=\"attachmentViewClose()\"></div>  " +
+            "    <div class='xn-attachmentView-box'  ng-show=\"attachmentState\"> " +
+            "        <div class='xn-attachmentView-box-nr'  >" +
+            "            <i class='icon icon-close' ng-click=\"attachmentViewClose()\"></i>" +
+            "           <img class='xn-attachmentView-box-img' ng-src='{{attachmentView}}'>" +
+            "        </div>" +
+            "    </div>"+
+            " </div>");
+}]);
+angular.module("xn/template/attachmentView.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attachmentView.html",
+            "<div class=\"xn-employee-upload\">"+
+            "    <ul class=\"xn-upload-img clearfix\">"+
+            "        <li class=\"clearfix\" ng-repeat=\"item in attachment.list\">"+
+            "          <img ng-show=\"{{item.displayName | isImg}}\"  ng-click=\"attachmentViewOpen(item.filePath)\" class=\"upload-img\" ng-src=\"{{item.filePathUrl}}\" width=\"170\" height=\"100\" />"+
+            "          <a href='{{item.filePath}}'>  " +
+            "               <div ng-show=\"!{{item.displayName | isImg}}\" class=\"upload-name\">{{item.displayName}}</div>"+
+            "          </a>"+
+            "       </li>"+
+            "   </ul>"+
+            "   <div class='xn-attachmentView-bj' ng-show=\"attachmentState\" ng-click=\"attachmentViewClose()\"></div>  " +
+            "    <div class='xn-attachmentView-box'  ng-show=\"attachmentState\"> " +
+            "        <div class='xn-attachmentView-box-nr'  >" +
+            "            <i class='icon icon-close' ng-click=\"attachmentViewClose()\"></i>" +
+             "           <img class='xn-attachmentView-box-img' ng-src='{{attachmentView}}'>" +
+            "        </div>    " +
+            "    </div>"+
+            " </div>");
+}]);
+angular.module("xn/template/attSingleEdit.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attSingleEdit.html",
+            "<div>" +
+            "   <label class=\"clearfix\" >"+
+            "    <div ng-if=\"attachment.item\" >" +
+            "      <i ng-if=\"attachment.item\" class=\"icon icon-delete\" ng-click=\"deleteItem(attachment.item.id)\"></i>"+
+            "         <img ng-show=\"{{attachment.item.displayName | isImg}}\"  ng-click=\"attachmentViewOpen(attachment.item.filePath)\"  class=\"upload-img\" ng-src=\"{{attachment.item.filePath}}@170w_100h_90q\" width=\"170\" height=\"100\" />"+
+            "         <a  href='{{attachment.item.filePath}}' >"+
+            "             <div ng-show=\"!{{attachment.item.displayName | isImg}}\" class=\"upload-name\">{{attachment.item.displayName}}</div>"+
+            "         </a>"+
+            "      </div>"+
+            "      <div  ng-if=\"!attachment.item\"  class=\"upload-add\"    ng-click=\"openAttachment()\">"+
+            "          <i class=\"icon icon-add\"></i> " +
+            "          <div class=\"upload-add-title\">{{attachment.title}}</div>" +
+            "      </div>"+
+            "   </label>"+
+            "   <div xn-attachment-box-single  ng-Model=\"attachmentPopup\"  data-is-open-single=\"isOpenSingle\"" +
+            "   data-type='{{attachment.type}}'     data-max-size=\"{{attachment.size}}\"></div>"+
+            "   <div class='xn-attachmentView-bj' ng-show=\"attachmentState\" ng-click=\"attachmentViewClose()\" ></div>  " +
+            "    <div class='xn-attachmentView-box'  ng-show=\"attachmentState\"> " +
+            "        <div class='xn-attachmentView-box-nr'  >" +
+            "            <i class='icon icon-close' ng-click=\"attachmentViewClose()\"></i>" +
+            "           <img class='xn-attachmentView-box-img' ng-src='{{attachmentView}}'>" +
+            "        </div>    " +
+            "   </div>"+
+            "</div>");
+}]);
+
+angular.module("xn/template/attSingleView.html", []).run(["$templateCache", function ($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/attSingleView.html",
+            "<div  class=\"xn-employee-upload\">" +
+            "   <ul class=\"xn-upload-img clearfix\" >" +
+            "       <li class=\"clearfix\" ng-show=\"attachment.item\" >"+
+            "           <img  ng-show=\"isImg\"   ng-click=\"attachmentViewOpen(attachment.item.filePath)\"   class=\"upload-img\"  ng-src=\"{{attachment.item.filePath}}@145w_90h_90q\" width=\"170\" height=\"100\" />"+
+            "          <a  href='{{attachment.item.filePath}}' ng-show=\"!isImg\"  >  " +
+            "               <div  class=\"upload-name\">{{attachment.item.displayName}}</div>"+
+            "          </a>"+
+            "       </li>    "+
+            "       <li class=\"clearfix\" ng-show=\"!attachment.item\" >"+
+            "          <img  class=\"upload-img\" ng-src=\"{{attachment.defaultPath}}\" width=\"170\" height=\"100\" />" +
+            "       </li>    "+
+            "    </ul>"+
+            "      <div class='xn-attachmentView-bj' ng-show=\"attachmentState\" ng-click=\"attachmentViewClose()\"></div>  " +
+            "       <div class='xn-attachmentView-box'  ng-show=\"attachmentState\"> " +
+            "           <div class='xn-attachmentView-box-nr'  >" +
+            "               <i class='icon icon-close' ng-click=\"attachmentViewClose()\"></i>" +
+            "              <img class='xn-attachmentView-box-img' ng-src='{{attachmentView}}'>" +
+            "           </div>    " +
+            "       </div>"+
+            "</div>"
+    );
+}]);
+
+var xnAttachmentBox = function ($http,$filter,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/xnAttachmentBox.html",
+        scope: {
+            itemList: '=ngModel',
+            isOpenBox:"=isOpen",
+            maxSize:"@",
+            type:"@"
+        },
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,elem,atter,ngModel){
+            //面包屑
+            scope.prentList =[];
+            var isOpenBox=scope.isOpenBox;
+
+            var isDisk=scope.isDisk=true;
+            var itemList=scope.itemList;
+
+            //上传文件控制
+            scope.filterUpType=$filter('attachmentFilterType')(scope.type);
+            scope.filterPostType=$filter('attachmentPostType')(scope.type);
+
+            scope.attachmentBox=[];
+
+            //监控打开
+
+            scope.$watch( function(){
+               return scope.isOpenBox;
+            },function(newData,oldData){
+                if(newData){
+                    angular.forEach(scope.fileLocalityList,function(fileLocality){
+                        fileLocality.state=false;
+                    });
+                    scope.itemList={
+                        idList:[],
+                        attachmentList:[]
+                    };
+
+                    scope.attachmentDisk();
+                }
+            });
+            scope.attachmentBox.selectItemId = "XX"+new Date().getTime();
+            var selectItem = document.getElementById(scope.attachmentBox.selectItemId);
+            var i = 0;
+            while(selectItem != null){
+                scope.attachmentBox.selectItemId = "XX"+new Date().getTime()+i;
+                selectItem = document.getElementById( scope.attachmentBox.selectItemId);
+                i++;
+            }
+
+            if(scope.attachmentBox.businessId != null){
+
+            } else{
+                scope.attachmentBox.businessId =1;
+            }
+            var diskId = null;
+            var folderId=null;
+            var disk;
+            scope.folderList = [];
+            scope.fileList = [];
+            //本地文件
+            scope.fileLocalityList=[];
+            //获取用户的基本信息
+             $http({
+                    method: 'POST',
+                    url: "/system/api.do",
+                    params: {"method": "api.system.userinformation.get"}
+                 }).success(function(data){
+                     if (data.errors === null || data.errors.length > 0) {
+                         dialogService.tip(data.errors);
+                     } else if (!data.user.diskId) {
+                         $http({
+                             method: 'POST',
+                             url: "/api/foundation.do",
+                             params: {
+                                 "method": "api.foundation.disk.apply"},
+                                 data: {
+                                     name : "我的网盘"
+                                 }
+                             }
+                         ).success(function(newData){
+                                 if (data.errors === null || data.errors.length > 0) {
+                                     dialogService.tip(data.errors);
+                                 }else{
+                                     diskId = newData.id;
+                                     scope.getDisk(diskId);
+                                 }
+                             })
+                     } else {
+                         diskId = data.user.diskId;
+                         scope.getDisk(diskId);
+                     }
+                 });
+
+            scope.getDisk=function(diskId){
+                // 获取磁盘的信息
+                $http({
+                    method: 'POST',
+                    url: "/api/foundation.do",
+                    params: {
+                        "method": "api.foundation.disk.get"
+                    },
+                    data: {
+                        id : diskId
+                    }
+                }).success(function(data) {
+                    if (data.errors === null || data.errors.length > 0) {
+                        dialogService.tip(data.errors);
+                    }else{
+                        disk = data.disk;
+                        scope.getFolderFile(disk.rootFolderId);
+                    }
+                });
+            };
+
+            scope.findFolderFile = function(parentId) {
+                folderId = parentId;
+                // 获取根目录文件和文件夹列表
+                $http({
+                    method: 'POST',
+                    url: "/api/foundation.do",
+                    params: {
+                        "method": "api.foundation.folder.file.find"
+                    },
+                    data: {
+                        parentId : parentId,
+                        pageSize:0,
+                        type:scope.filterPostType
+                    }
+                }).success(function (data) {
+                    if (data.errors === null || data.errors.length > 0) {
+                        dialogService.tip(data.errors);
+                    }else{
+                        scope.folderList = data.folderList;
+                        scope.fileList=[];
+                        angular.forEach(data.folderFileList,function(folder){
+                            folder.state=false;
+                            if($filter('attachmentFileType')(folder.file.extension)=="img"){
+                                folder.newImgUrl={"background-image":"url(\""+folder.path+"@65w_50h_0e\")"};
+                            }else{
+                                folder.newimgUrl="";
+                            }
+                            scope.fileList.push(folder) ;
+
+                        });
+                    }
+                });
+            };
+
+            //上传附件
+            scope.upload = function(){
+                if(!scope.isDisk){
+                    folderId=scope.prentList[0];
+                }
+                var fileId=document.getElementById(scope.attachmentBox.selectItemId);
+                fileId.onchange=function(){
+                    if(fileId){
+                        var fileList = document.getElementById(scope.attachmentBox.selectItemId).files;
+                        for(var i=0;i<fileList.length;i++){
+                            if(scope.maxSize){
+                               if(Number(scope.maxSize)*1024*1024 <=fileList[i].size){
+                                   if(0==i){
+                                       dialogService.tip([{"message":"上传文件不能大于"+scope.maxSize+"M!" }]);
+                                       return;
+                                   }else{
+                                       dialogService.tip([{"message":"第"+i+"上传文件不能大于"+scope.maxSize+"M!" }]);
+                                       return;
+                                   }
+                               }
+                            }
+
+                            var file = fileList[i];
+                            var fd = new FormData();
+                            fd.append("File", file);
+                            fd.append("DiskId", diskId);
+                            fd.append("FolderId", folderId);
+
+                            $http({
+                                method: 'POST',
+                                url: "/api/diskFileUpload.do",
+                                headers: {'Content-Type': undefined },
+                                transformRequest: angular.identity,
+                                data: fd
+
+                            }).success(function(data) {
+                                if (data.errors === null || data.errors.length > 0) {
+                                    dialogService.tip(data.errors);
+                                } else {
+                                    if(scope.isDisk){
+                                        //网盘
+                                        var  folder={
+                                            state:false,
+                                            id:data.id,
+                                            fileName:data.name,
+                                            path:data.url,
+                                            file:{
+                                                id:data.fileId,
+                                                extension:data.ext
+                                            }
+                                        };
+                                        if($filter('attachmentFileType')(folder.file.extension)=="img"){
+                                            folder.newImgUrl={"background-image":"url(\""+folder.path+"@65w_50h_0e\")"};
+                                        }else{
+                                            folder.newimgUrl="";
+                                        }
+                                        scope.fileList.push(folder) ;
+
+                                    }else{
+                                        // 本地
+                                        var  folder={
+                                            state:false,
+                                            id:data.id,
+                                            fileName:data.name,
+                                            path:data.url,
+                                            file:{
+                                                id:data.fileId,
+                                                extension:data.ext
+                                            }
+                                        };
+                                        if($filter('attachmentFileType')(folder.file.extension)=="img"){
+                                            folder.newImgUrl={"background-image":"url(\""+folder.path+"@65w_50h_0e\")"};
+                                        }else{
+                                            folder.newimgUrl="";
+                                        }
+                                        scope.fileLocalityList.push(folder) ;
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                };
+            };
+
+            //选择文件
+            scope.selectFile=function(index){
+                scope.fileList[index].state=!scope.fileList[index].state;
+            };
+
+            //选择文件
+            scope.selectLocalityFile=function(index){
+                scope.fileLocalityList[index].state=!scope.fileLocalityList[index].state;
+            };
+
+            //获取文件
+            scope.getFolderFile=function(id){
+                scope.prentList.push(id);
+                scope.findFolderFile(id);
+            };
+
+            //返回上一级
+            scope.getBack=function(){
+                scope.prentList.splice(scope.prentList.length-1,1);
+                scope.findFolderFile(scope.prentList[scope.prentList.length-1]);
+            };
+
+            //切换
+            scope.attachmentDisk=function(){
+                scope.isDisk=true;
+                scope.prentList.splice(1, scope.prentList.length-1);
+                scope.findFolderFile(scope.prentList[0])
+            };
+            scope.attachmentLocality=function(){
+                angular.forEach(scope.fileLocalityList,function(fileLocality){
+                    fileLocality.state=false;
+                });
+                scope.isDisk=false;
+            };
+
+
+            //关闭
+            scope.closeAttachment=function(){
+                scope.isOpenBox=false;
+                scope.itemList={
+                    idList:[],
+                    attachmentList:[]
+                };
+            };
+            //保存
+            scope.saveAttachment=function(){
+                scope.itemList={
+                    idList:[],
+                    attachmentList:[]
+                };
+                if(scope.isDisk){
+                    angular.forEach(scope.fileList,function(file){
+                        if(file.state){
+                            scope.itemList.idList.push(file.file.id);
+                            scope.itemList.attachmentList.push(file);
+                        }
+                    });
+                }else{
+                    angular.forEach(scope.fileLocalityList,function(fileLocality){
+                        if(fileLocality.state){
+                            scope.itemList.idList.push(fileLocality.file.id);
+                            scope.itemList.attachmentList.push(fileLocality);
+                        }
+                    });
+                }
+                scope.isOpenBox=false;
+            }
+        }
+    };
+};
+
+var xnAttachmentBoxSingle = function ($http,$filter,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/xnAttachmentBoxSingle.html",
+        scope: {
+            itemList: '=ngModel',
+            isOpenBoxSingle:"=isOpenSingle",
+            maxSize:"@",
+            type:"@"
+        },
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,elem,atter,ngModel){
+            //面包屑
+            scope.prentList =[];
+            var isOpenBoxSingle=scope.isOpenBoxSingle;
+
+            var isDisk=scope.isDisk=true;
+            var itemList=scope.itemList;
+
+            scope.attachmentBox=[];
+
+            //上传文件控制
+            scope.filterUpType=$filter('attachmentFilterType')(scope.type);
+            scope.filterPostType=$filter('attachmentPostType')(scope.type);
+
+            //监控打开
+            scope.$watch( function(){
+               return scope.isOpenBoxSingle;
+            },function(newData){
+                angular.forEach(scope.fileLocalityList,function(fileLocality){
+                    fileLocality.state=false;
+                });
+                if(newData){
+                    scope.itemList={
+                        idList:"",
+                        attachmentList:""
+                    };
+                    scope.attachmentDisk();
+                }
+            });
+            scope.attachmentBox.selectItemId = "XX"+new Date().getTime();
+            var selectItem = document.getElementById(scope.attachmentBox.selectItemId);
+            var i = 0;
+            while(selectItem != null){
+                scope.attachmentBox.selectItemId = "XX"+new Date().getTime()+i;
+                selectItem = document.getElementById( scope.attachmentBox.selectItemId);
+                i++;
+            }
+
+            if(scope.attachmentBox.businessId != null){
+
+            } else{
+                scope.attachmentBox.businessId =1;
+            }
+            var diskId = null;
+            var folderId=null;
+            var disk;
+            scope.folderList = [];
+            scope.fileList = [];
+            //本地文件
+            scope.fileLocalityList=[];
+            //获取用户的基本信息
+             $http({
+                    method: 'POST',
+                    url: "/system/api.do",
+                    params: {"method": "api.system.userinformation.get"}
+                 }).success(function(data){
+                     if (data.errors === null || data.errors.length > 0) {
+                         dialogService.tip(data.errors);
+                     } else if (!data.user.diskId) {
+                         $http({
+                             method: 'POST',
+                             url: "/api/foundation.do",
+                             params: {
+                                 "method": "api.foundation.disk.apply"},
+                                 data: {
+                                     name : "我的网盘"
+                                 }
+                             }
+                         ).success(function(newData){
+                                 if (data.errors === null || data.errors.length > 0) {
+                                     dialogService.tip(data.errors);
+                                 }else{
+                                     diskId = newData.id;
+                                 }
+                             })
+                     } else {
+                         diskId = data.user.diskId;
+                     }
+                     // 获取磁盘的信息
+                     $http({
+                         method: 'POST',
+                         url: "/api/foundation.do",
+                         params: {
+                             "method": "api.foundation.disk.get"
+                         },
+                         data: {
+                             id : diskId
+                         }
+                     }).success(function(data) {
+                         if (data.errors === null || data.errors.length > 0) {
+                             dialogService.tip(data.errors);
+                         }else{
+                             disk = data.disk;
+                             scope.getFolderFile(disk.rootFolderId);
+                         }
+                     });
+             });
+            scope.findFolderFile = function(parentId) {
+                folderId = parentId;
+                // 获取根目录文件和文件夹列表
+                $http({
+                    method: 'POST',
+                    url: "/api/foundation.do",
+                    params: {
+                        "method": "api.foundation.folder.file.find"
+                    },
+                    data: {
+                        parentId : parentId,
+                        pageSize:0,
+                        type:scope.filterPostType
+                    }
+                }).success(function (data) {
+
+                    if (data.errors === null || data.errors.length > 0) {
+                        dialogService.tip(data.errors);
+                    }else{
+                        scope.folderList = data.folderList;
+                        scope.fileList=[];
+                        angular.forEach(data.folderFileList,function(folder){
+                            folder.state=false;
+                            if($filter('attachmentFileType')(folder.file.extension)=="img"){
+                                folder.newImgUrl={"background-image":"url(\""+folder.path+"@65w_50h_0e\")"};
+                            }else{
+                                folder.newimgUrl="";
+                            }
+                            scope.fileList.push(folder) ;
+                        });
+                    }
+                });
+            };
+
+            //上传附件
+            scope.upload = function(){
+                if(!scope.isDisk){
+                    folderId=scope.prentList[0];
+                }
+                var fileId=document.getElementById(scope.attachmentBox.selectItemId);
+                fileId.onchange=function(){
+                    if(fileId){
+                        var fileList = document.getElementById(scope.attachmentBox.selectItemId).files;
+                        for(var i=0;i<fileList.length;i++){
+                            if(scope.maxSize){
+                                if(Number(scope.maxSize)*1024*1024 <=fileList[i].size){
+                                    dialogService.tip([{"message":"上传文件不能大于"+scope.maxSize+"M!" }]);
+                                    return;
+                                }
+                            }
+
+                            var file = fileList[i];
+                            var fd = new FormData();
+                            fd.append("File", file);
+                            fd.append("DiskId", diskId);
+                            fd.append("FolderId", folderId);
+
+                            $http({
+                                method: 'POST',
+                                url: "/api/diskFileUpload.do",
+                                headers: {'Content-Type': undefined },
+                                transformRequest: angular.identity,
+                                data: fd
+
+                            }).success(function(data) {
+                                if (data.errors === null || data.errors.length > 0) {
+                                    dialogService.tip(data.errors);
+                                } else {
+                                    if(scope.isDisk){
+                                        //网盘
+                                        var  folder={
+                                            state:false,
+                                            id:data.id,
+                                            fileName:data.name,
+                                            path:data.url,
+                                            file:{
+                                                id:data.fileId,
+                                                extension:data.ext
+                                            }
+                                        };
+                                        if($filter('attachmentFileType')(folder.file.extension)=="img"){
+                                            folder.newImgUrl={"background-image":"url(\""+folder.path+"@65w_50h_0e\")"};
+                                        }else{
+                                            folder.newimgUrl="";
+                                        }
+                                        scope.fileList.push(folder) ;
+
+                                    }else{
+                                        // 本地
+                                        var  folder={
+                                            state:false,
+                                            id:data.id,
+                                            fileName:data.name,
+                                            path:data.url,
+                                            file:{
+                                                id:data.fileId,
+                                                extension:data.ext
+                                            }
+                                        };
+                                        if($filter('attachmentFileType')(folder.file.extension)=="img"){
+                                            folder.newImgUrl={"background-image":"url(\""+folder.path+"@65w_50h_0e\")"};
+                                        }else{
+                                            folder.newimgUrl="";
+                                        }
+                                        scope.fileLocalityList.push(folder) ;
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                };
+            };
+
+            //选择文件
+            scope.selectFile=function(index){
+                angular.forEach(scope.fileList,function(file){
+                    file.state=false;
+                });
+                scope.fileList[index].state=true;
+            };
+
+            //选择文件
+            scope.selectLocalityFile=function(index){
+                angular.forEach(scope.fileLocalityList,function(file){
+                    file.state=false;
+                });
+                scope.fileLocalityList[index].state=true;
+            };
+
+            //获取文件
+            scope.getFolderFile=function(id){
+                scope.prentList.push(id);
+                scope.findFolderFile(id);
+            };
+
+            //返回上一级
+            scope.getBack=function(){
+                scope.prentList.splice(scope.prentList.length-1,1);
+                scope.findFolderFile(scope.prentList[scope.prentList.length-1]);
+            };
+
+            //切换
+            scope.attachmentDisk=function(){
+                scope.isDisk=true;
+                scope.prentList.splice(1, scope.prentList.length-1);
+                scope.findFolderFile(scope.prentList[0])
+            };
+            scope.attachmentLocality=function(){
+                angular.forEach(scope.fileLocalityList,function(fileLocality){
+                    fileLocality.state=false;
+                });
+                scope.isDisk=false;
+            };
+
+
+            //关闭
+            scope.closeAttachment=function(){
+                scope.isOpenBoxSingle=false;
+                scope.itemList={
+                    idList:"",
+                    attachmentList:""
+                };
+            };
+            //保存
+            scope.saveAttachment=function(){
+                scope.itemList={
+                    idList:"",
+                    attachmentList:""
+                };
+                if(scope.isDisk){
+                    angular.forEach(scope.fileList,function(file){
+                        if(file.state){
+                            scope.itemList.idList=file.file.id;
+                            scope.itemList.attachmentList=file;
+                        }
+                    });
+                }else{
+                    angular.forEach(scope.fileLocalityList,function(fileLocality){
+                        if(fileLocality.state){
+                            scope.itemList.idList=fileLocality.file.id;
+                            scope.itemList.attachmentList=fileLocality;
+                        }
+                    });
+                }
+                scope.isOpenBoxSingle=false;
+            }
+        }
+    };
+};
+
+var xnFileEdit = function ($http,$filter,AttachmentService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/xnFileEdit.html",
+        scope: {file: '=ngModel',
+        maxSize:"@",
+        type:"@"
+        },
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,elem,attr,ngModel) {
+            scope.isOpen=false;
+            scope.filePopup={
+                idList:[],
+                attachmentList:[]
+            };
+            scope.openFile=function(){
+                scope.isOpen=true;
+            };
+
+            var file=scope.file;
+            file.list=[];
+
+
+            scope.$watch(function(){
+                return  scope.isOpen;
+            },function(newData){
+               if(!newData){
+                    for(var i=0;i<scope.filePopup.idList.length;i++){
+                        var deal=scope.filePopup.attachmentList[i];
+                        scope.file.list.push({id:deal.file.id,filePath:deal.path}) ;
+                        scope.file.ids.push(deal.file.id) ;
+                    }
+                   scope.filePopup={
+                       idList:[],
+                       attachmentList:[]
+                   };
+                }
+            });
+            var isFirst=true;
+            scope.$watch(function(){
+                return scope.file.ids;
+            },function(newVal,oldVal){
+                if(newVal.length && isFirst){
+                    //加载附件
+                    AttachmentService.apiFoundationFilePathGetList(file).success(function(data){
+                        if(data.errors === null || data.errors.length > 0){
+                            dialogService.tip(data.errors);
+                        } else {
+                           var filePathMap = data.filePathMap;
+                            scope.file.list = [];
+                            if(filePathMap != null){
+                                for(var fileId in filePathMap){
+                                    scope.file.list.push({id:fileId,filePath:filePathMap[fileId]});
+                                }
+                            }
+                        }
+                    });
+                    isFirst=false;
+                }
+            });
+            //删除
+            scope.deleteItem =function($index){
+                scope.file.ids.splice($index,1);
+                scope.file.list.splice($index,1);
+            };
+
+
+            scope.attachmentState=false;
+            //打开预览
+            scope.attachmentViewOpen=function(url){
+                scope.attachmentView=url;
+                /*     scope.attachmentView="background-image:url(\""+url+"\")";*/
+                scope.attachmentState=true;
+            };
+
+            //关闭预览
+            scope.attachmentViewClose=function(){
+                scope.attachmentView="";
+                scope.attachmentState=false;
+            };
+
+        }
+    };
+};
+
+var xnFileView = function ($http,$filter,AttachmentService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/xnFileView.html",
+        scope: {file: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,ngModel) {
+            if (!ngModel) return;
+            var file = scope.file;
+
+            scope.attachmentView="";
+            scope.attachmentState=false;
+
+            var isFirst=true;
+            scope.$watch(function(){
+                return scope.file.ids;
+            },function(newVal,oldVal){
+                if(newVal.length && isFirst){
+                    //加载附件
+                    AttachmentService.apiFoundationFilePathGetList(file).success(function(data){
+                        if(data.errors === null || data.errors.length > 0){
+                            dialogService.tip(data.errors);
+                        } else {
+                            var filePathMap = data.filePathMap;
+                            scope.file.list = [];
+                            if(filePathMap != null){
+                                for(var fileId in filePathMap){
+                                    scope.file.list.push({id:fileId,filePath:filePathMap[fileId]});
+                                }
+                            }
+                        }
+                    });
+                    isFirst=false;
+                }
+            });
+
+            //打开预览
+            scope.attachmentViewOpen=function(url){
+                scope.attachmentView=url;
+                /*     scope.attachmentView="background-image:url(\""+url+"\")";*/
+                scope.attachmentState=true;
+            };
+
+            //关闭预览
+            scope.attachmentViewClose=function(){
+                scope.attachmentView="";
+                scope.attachmentState=false;
+            };
+
+        }
+    };
+};
+
+var xnAttachmentEdit = function ($http,$filter,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attachmentEdit.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,elem,attr,ngModel) {
+            scope.isOpen=false;
+            //图片预览
+
+            scope.attachmentPopup={
+                idList:[],
+                attachmentList:[]
+            };
+
+            scope.openAttachment=function(){
+                scope.isOpen=true;
+             //   elem.find(".xn-attachments-box").addClass("xn-attachments-box-open");
+            };
+
+            var attachment=scope.attachment;
+            attachment.list=[];
+
+            scope.attachment.files={};
+
+            scope.$watch(function(){
+                return  scope.isOpen;
+            },function(newdata){
+                if(!newdata){
+                    for(var i=0;i<scope.attachmentPopup.idList.length;i++){
+                        $http({
+                            method: 'POST',
+                            url: "/api/foundation.do",
+                            params: {
+                                "method": "api.foundation.attachment.uploadbyfileid"
+                            },
+                            data: {
+                                fileId : scope.attachmentPopup.idList[i],
+                                businessId:attachment.businessId,
+                                businessType:attachment.businessType,
+                                businessCategory:attachment.businessCategory
+                            }
+                        }).success(function (data) {
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            }else{
+                                var deal=data.attachment;
+                                if($filter('isImg')(deal.displayName)){
+                                    deal.filePathUrl = deal.filePath+"@170w_100h_0e";
+                                }
+                                attachment.list.push(deal) ;
+                            }
+                        });
+                    }
+                    scope.attachment.files=angular.copy(scope.attachmentPopup);
+                }else{
+                    scope.attachment.files={};
+                }
+            });
+            if(attachment.businessId != null){
+                //加载附件
+                FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                    if(data.errors === null || data.errors.length > 0){
+                        dialogService.tip(data.errors);
+                    } else {
+                       angular.forEach(data.attachmentList,function(folder){
+                           if($filter('isImg')(folder.displayName)){
+                               folder.filePathUrl = folder.filePath+"@170w_100h_0e";
+                           }
+                            attachment.list.push(folder) ;
+                       });
+                    }
+                });
+            } else{
+                attachment.businessId =1;
+            }
+
+            scope.attachmentState=false;
+            //打开预览
+            scope.attachmentViewOpen=function(url){
+                scope.attachmentView=url;
+                /*     scope.attachmentView="background-image:url(\""+url+"\")";*/
+                scope.attachmentState=true;
+            };
+
+            //关闭预览
+            scope.attachmentViewClose=function(){
+                scope.attachmentView="";
+                scope.attachmentState=false;
+            };
+
+
+
+            //删除附件
+            scope.deleteItem =function(id){
+                FoundationService.apiFoundationAttachmentDelete({attachmentId : id}).success(function(data){
+                    if(data.errors === null || data.errors.length > 0){
+                        dialogService.tip(data.errors);
+                    } else {
+                        for(var i= 0;i <attachment.list.length;i++){
+                            if(id === attachment.list[i].id){
+                                attachment.list.splice(i,1);
+                                break;
+                            }
+                        }
+                    }
+                });
+            };
+        }
+    };
+};
+
+var xnAttachmentView = function ($http,$filter,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attachmentView.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,ngModel) {
+            if (!ngModel) return;
+            var attachment = scope.attachment;
+            scope.attachmentView="";
+            scope.attachmentState=false;
+            //加载附件
+            FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                if(data.errors === null || data.errors.length > 0){
+                    dialogService.tip(data.errors);
+                } else {
+                    angular.forEach(data.attachmentList,function(folder){
+                        if($filter('isImg')(folder.displayName)){
+                            folder.filePathUrl = folder.filePath+"@170w_100h_0e";
+                        }
+                        attachment.list.push(folder) ;
+                    });
+                }
+            });
+            //打开预览
+            scope.attachmentViewOpen=function(url){
+                scope.attachmentView=url;
+           /*     scope.attachmentView="background-image:url(\""+url+"\")";*/
+                scope.attachmentState=true;
+            };
+
+            //关闭预览
+            scope.attachmentViewClose=function(){
+                scope.attachmentView="";
+                scope.attachmentState=false;
+            }
+
+        }
+    };
+};
+
+var xnAttSingleEdit = function ($http,$filter,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attSingleEdit.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope) {
+            scope.isOpenSingle=false;
+            scope.openAttachment=function(){
+                scope.isOpenSingle=true;
+            };
+            scope.attachmentPopup={
+                idList:"",
+                attachmentList:""
+            };
+
+            var attachment = scope.attachment;
+            scope.attachment.files={};
+
+            attachment.selectItemId = "XX"+new Date().getTime();
+            var selectItem = document.getElementById(attachment.selectItemId);
+            var i = 0;
+            while(selectItem != null){
+                attachment.selectItemId = "XX"+new Date().getTime()+i;
+                selectItem = document.getElementById(attachment.selectItemId);
+                i++;
+            }
+
+            if(attachment.businessId != null){
+                //加载附件
+                FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+                    if(data.errors === null || data.errors.length > 0){
+                        dialogService.tip(data.errors);
+                    } else {
+                        if(data.attachmentList.length != 0){
+                            attachment.item = data.attachmentList[0];
+                        }
+
+                    }
+                });
+            } else{
+                attachment.businessId =1;
+            }
+            scope.$watch(function(){
+                return  scope.isOpenSingle;
+            },function(newdata){
+                if(!newdata){
+                    if(scope.attachmentPopup.idList){
+                        $http({
+                            method: 'POST',
+                            url: "/api/foundation.do",
+                            params: {
+                                "method": "api.foundation.attachment.uploadbyfileid"
+                            },
+                            data: {
+                                fileId : scope.attachmentPopup.idList,
+                                businessId:attachment.businessId,
+                                businessType:attachment.businessType,
+                                businessCategory:attachment.businessCategory
+                            }
+                        }).success(function (data) {
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            }else{
+                                attachment.item=data.attachment ;
+                            }
+                        });
+                        scope.attachment.files=angular.copy(scope.attachmentPopup);
+                    }else{
+                        scope.attachment.files={};
+                    }
+
+                }
+            });
+
+            //删除附件
+            scope.deleteItem =function(id){
+                var dialogDefaults = {
+                    size:"sm"
+                };
+                var dialogOptions = {
+                    closeButtonText: "取消",
+                    actionButtonText: "删除",
+                    headerText: "删除....?",
+                    bodyText: "你确定删除附件吗？",
+                    callback: function () {
+                        FoundationService.apiFoundationAttachmentDelete({attachmentId : id}).success(function(data){
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            } else {
+                                attachment.item = null;
+                            }
+                        });
+                    }
+                };
+                dialogService.confirm(dialogDefaults, dialogOptions);
+            };
+
+
+            scope.attachmentState=false;
+            //打开预览
+            scope.attachmentViewOpen=function(url){
+                scope.attachmentView=url;
+                /*     scope.attachmentView="background-image:url(\""+url+"\")";*/
+                scope.attachmentState=true;
+            };
+
+            //关闭预览
+            scope.attachmentViewClose=function(){
+                scope.attachmentView="";
+                scope.attachmentState=false;
+            };
+        }
+    };
+};
+
+var xnAttSingleView = function ($http,$filter,FoundationService,dialogService) {
+    return {
+        restrict: "A",
+        templateUrl: "xn/template/attSingleView.html",
+        scope: {attachment: '=ngModel'},
+        replace: true,
+        require: "?ngModel",
+        link: function (scope,ngModel) {
+            if (!ngModel) return;
+            var attachment = scope.attachment;
+            scope.isImg=false;
+
+            //加载附件
+            FoundationService.apiFoundationAttachmentGetListByBizInfo(attachment).success(function(data){
+
+                if(data.errors === null || data.errors.length > 0){
+                    dialogService.tip(data.errors);
+                } else {
+                    if(data.attachmentList.length != 0){
+                        attachment.item = data.attachmentList[0];
+                    }
+                }
+            });
+            scope.$watch(function(){
+                return  attachment.item;
+            },function( newData){
+                if(newData){
+                    if($filter('isImg')(newData.displayName)){
+                        scope.isImg=true
+                    }
+                }
+            },true);
+
+
+            scope.attachmentState=false;
+            //打开预览
+            scope.attachmentViewOpen=function(url){
+                scope.attachmentView=url;
+
+                scope.attachmentState=true;
+            };
+
+            //关闭预览
+            scope.attachmentViewClose=function(){
+                scope.attachmentView="";
+                scope.attachmentState=false;
+            }
+        }
+    };
+};
+
+//文本框粘贴图片
+var xnImgPaste=function($http,$filter,FoundationService,dialogService){
+    return {
+        restrict: "A",
+        scope: {attachment: '=xnAttachment'},
+        require: "?xnAttachment",
+        link: function (scope, elem) {
+            var attachment=scope.attachment;
+            if(!attachment) return ;
+            elem.bind("paste",function(e){
+                var clipboard = e.originalEvent.clipboardData;
+                for(var i=0,len=clipboard.items.length; i<len; i++) {
+                    if(clipboard.items[i].kind == 'file' || clipboard.items[i].type.indexOf('image') > -1) {
+                        var imageFile = clipboard.items[i].getAsFile();
+                        imageFile.name = new Date().getTime()+".png";
+                        FoundationService.apiFoundationAttachmentUpload(imageFile,attachment.businessId,attachment.businessType,attachment.businessCategory).success(function(data){
+                            if(data.errors === null || data.errors.length > 0){
+                                dialogService.tip(data.errors);
+                            }else{
+                                attachment.list.push(data.attachment);
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    };
+};
+
+angular.module("xn.directive.attachment", ["ng", "xn.service.foundation",
+    "xn/template/xnAttachmentBox.html",
+    "xn/template/xnAttachmentBoxSingle.html",
+    "xn/template/fileEdit.html",
+    "xn/template/fileView.html",
+    "xn/template/attachmentEdit.html",
+    "xn/template/attachmentView.html",
+    "xn/template/attSingleEdit.html",
+    "xn/template/attSingleView.html"])
+    .filter("attachmentFileType", [
+        function () {
+            return function (input) {
+                switch (input)
+                {
+                    case "folder":
+                        input="folder";
+                        break;
+                    case "xlsx":
+                    case "xls":
+                        input="xls";
+                        break;
+                    case "docx":
+                    case "doc":
+                        input="doc";
+                        break;
+                    case "pptx":
+                    case "ppt":
+                        input="ppt";
+                        break;
+                    case "txt":
+                        input="txt";
+                        break;
+                    case "pdf":
+                        input="pdf";
+                        break;
+                    case "zip":
+                    case "rar":
+                        input="zip";
+                        break;
+                    case "jpeg":
+                    case "jpg":
+                    case "png":
+                    case "gif":
+                        input="img";
+                        break;
+                    default:
+                        input="other";
+                        break;
+                }
+                return input;
+            };
+        }
+    ])
+    .filter("attachmentFilterType", [
+        function () {
+            return function (input) {
+                switch (input)
+                {
+                    case "image":
+                        input="image/gif, image/jpeg ,image/jpg,image/png";
+                        break;
+                    case "document":
+                       input="application/msword," +  //word
+                           "application/vnd.ms-excel," +
+                            "application/pdf," +        //pdf
+                            "application/vnd.openxmlformats-officedocument.wordprocessingml.document,"+     // (for .document files)
+                            "text/plain," +              //txt
+                           "application/vnd.ms-powerpoint," +  //ppt
+                           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet," +  //xlsx
+                           "application/vnd.openxmlformats-officedocument.presentationml.presentation," +  //pptx
+                           "application/vnd.openxmlformats-officedocument.wordprocessingml.template,"+  //(for .docx files)
+                            "application/vnd.openxmlformats-officedocument.presentationml.presentation,"+ //(for .pptx files)
+                            "application/vnd.openxmlformats-officedocument.presentationml.slideshow,"+  //(for .ppsx files)
+                            "application/vnd.openxmlformats-officedocument.presentationml.template,"+   //(for .potx files)
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,"+        //(for .xlsx files)
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.template,"+     // (for .xltx files)
+
+                            "application/x-pci,"+
+                            "application/x-pcl,"+
+                            "application/x-pcx,"+
+                            "application/vnd.adobe.pdx,"+
+                            "application/x-pkcs12,"+
+                            "application/x-pgl,"+
+                            "application-pki.pko,"+
+                            "application/x-perl,"+
+                            "application/x-xls,"+
+                            "application/x-xlw";
+                        break;
+                    case "video":
+                        input="audio/mp3,audio/x-ms-wma,video/mp4,video/avi,video/x-ms-wmv," +
+                            "application/x-shockwave-flash,rm," +
+                            "application/vnd.rn-realmedia-vbr";  //rmvb
+                        break;
+                    default:
+                        input="";
+                        break;
+                }
+                return input;
+            };
+        },
+    ])
+    .filter("attachmentPostType", [
+        function () {
+            return function (input) {
+                switch (input)
+                {
+                    case "video":
+                    case "VIDEO":
+                        input="AUDIO_VIDEO";
+                        break;
+                    case "document":
+                    case "DOCUMENT":
+                       input="DOCUMENT";
+                        break;
+                    case "PICTURE":
+                    case "picture":
+                    case "IMAGE":
+                    case "image":
+                        input="PICTURE";
+                        break;
+                    default:
+                        input="ALL";
+                        break;
+                }
+                return input;
+            };
+        },
+    ])
+
+    .directive('xnAttachmentBox', ["$http","$filter","dialogService", xnAttachmentBox])
+    .directive('xnAttachmentBoxSingle', ["$http","$filter","dialogService", xnAttachmentBoxSingle])
+    .directive('xnFileEdit', ["$http","$filter","AttachmentService","dialogService", xnFileEdit])
+    .directive('xnFileView', ["$http","$filter","AttachmentService","dialogService", xnFileView])
+    .directive('xnAttachmentEdit', ["$http","$filter","FoundationService","dialogService", xnAttachmentEdit])
+    .directive('xnAttachmentView', ["$http","$filter","FoundationService","dialogService", xnAttachmentView])
+    .directive('xnAttSingleEdit', ["$http","$filter","FoundationService","dialogService", xnAttSingleEdit])
+    .directive('xnAttSingleView', ["$http","$filter","FoundationService","dialogService", xnAttSingleView])
+    .directive('xnImgPaste', ["$http","$filter","FoundationService","dialogService", xnImgPaste])
+    .factory('AttachmentService', ['$http', function ($http) {
+        var service = {};
+        var url = "/api/foundation.do";
+
+        service.apiFoundationFilePathGetList = function (data) {
+            return $http({
+                method: 'POST',
+                url: url,
+                data: data,
+                params: {"method": "api.foundation.filepath.getlist"} });
+        };
+
+        return service;
+    }]);

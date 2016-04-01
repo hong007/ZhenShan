@@ -1,0 +1,92 @@
+$rundata.setLayout("defaultEdit")
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget("index")" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>发布土地需求</span>
+    </div>
+</div>
+<div class="edit-content xn-width auto">
+    <div class="edit-content-inner">
+        <h3 class="editContent-h3">地块基本信息</h3>
+        <div class="input-line clearfix">
+            <div class="input-line-left">
+                <div class="mb-5">需求名称：</div>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-line-right">
+                <div class="mb-5">土地所在地区：</div>
+                <select class="form-control w-150 mr-9" id="cmbProvince" name="cmbProvince"></select>
+                <select class="form-control w-150 mr-9" id="cmbCity" name="cmbCity"></select>
+                <select class="form-control w-150 mr-9" id="cmbArea" name="cmbArea"></select>
+            </div>
+        </div>
+        <div class="input-line clearfix">
+            <div class="input-line-left">
+                <div class="mb-5">需求面积：</div>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-line-right">
+                <div class="mb-5">求购金额：</div>
+                <input type="text" class="form-control" name="">
+            </div>
+        </div>
+        <div class="input-line clearfix">
+            <div class="input-line-left">
+                <div class="mb-5">求购类型：</div>
+                <input type="text" class="form-control" name="">
+            </div>
+            <div class="input-line-right">
+                <div class="mb-5">合作方式：</div>
+                <input type="text" class="form-control" name="">
+            </div>
+        </div>
+        <div class="input-line clearfix">
+            <div class="input-line-left">
+                <div class="mb-5">企业名称：</div>
+                <input type="text" class="form-control" name="">
+            </div>
+            <div class="input-line-right">
+                <div class="mb-5">联系人：</div>
+                <input type="text" class="form-control" name="">
+            </div>
+        </div>
+        <h3 class="editContent-h3">地块描述</h3>
+        <div class="map-content">
+            <textarea class="form-control" rows="20" name="landIntro" id="landIntro"></textarea>
+        </div>
+    </div>
+</div>
+<div class="input-line xn-center clearfix mt-60">
+    <button class="btn btn-primary col-sm-offset-0">保存</button>
+    <button class="btn btn-warning ml-50">提交</button>
+    <a class="btn btn-default ml-50" href="javascript:history.back(-1)">取消</a>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea','江苏','苏州市');
+        var editItem=[
+            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'link', 'unlink', '|', 'about'
+        ];
+        var editor= KindEditor.create('#landIntro',
+                {
+                    width : "100%",
+                    height : "210px",
+                    items:editItem,
+                    allowFileManager:true,
+                    uploadJson : '',
+                    fileManagerJson : '',
+                }
+        );
+    });
+</script>

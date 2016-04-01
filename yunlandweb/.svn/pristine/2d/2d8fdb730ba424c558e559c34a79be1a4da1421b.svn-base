@@ -1,0 +1,30 @@
+<div class="xn-width auto">
+    #if($!issuccess)
+    <div class="pay-content">
+            <img src="$alipaypaymentContent.getURI('/images/paySuccess.png')" width="170" height="160" alt="支付图片">
+            <div class="pay-content-right">
+                <h1>亲爱的用户，您已成功付款<span>¥$!payment.amount元</span></h1>
+            </div>
+        </div>
+        #else
+            <div class="pay-content">
+                <img src="$alipaypaymentContent.getURI('/images/payFail.png')" width="170" height="160" alt="支付图片">
+                <div class="pay-content-right">
+                    <h1>亲爱的用户，您的本次付款失败</span></h1>
+                </div>
+            </div>
+    #end
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        var id = '$!payment.srcId';
+        setTimeout(function() {
+            if($!payment.type=='deliver'){
+                location.href="$homeLink.setTarget('transfer/requiredetail')?id="+id;
+            }else if($!payment.type=='upgrade'){
+                location.href="$homeLink.setTarget('member/admin/index')";
+            }
+        }, 6000);
+    });
+</script>

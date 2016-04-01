@@ -1,0 +1,568 @@
+//验证
+angular.module("xn.directive.common",["xn/template/common.html"]).provider('xnValidator', [function () {
+    var defaultRules = {
+            required: "该选项不能为空",
+            maxlength: "该选项输入值长度不能大于{maxlength}",
+            minlength: "该选项输入值长度不能小于{minlength}",
+            email: "输入邮件的格式不正确",
+            repeat: "两次输入不一致",
+            pattern: "该选项输入格式不正确",
+            number: "必须输入数字",
+            xnuniquecheck: "该输入值已经存在，请重新输入"
+        },
+        elemTypes = ['text', 'password', 'email', 'number', ['textarea'], ['select'], ['select-one']];
+
+    var validatorFn = function () {
+        this.elemTypes = elemTypes;
+        this.rules = [];
+        this.isEmpty = function (object) {
+            if (object === undefined || object === null) {
+                return true;
+            }
+            if (object instanceof Array && object.length === 0) {
+                return true;
+            }
+            return false;
+        };
+        this.defaultShowError = function (elem, errorMessages) {
+            var $elem = angular.element(elem);
+            var $group = $elem.parent().parent();
+            if (!this.isEmpty($group) && !$group.hasClass("has-error")) {
+                $group.addClass("has-error");
+                $elem.after('<span class="xn-error">' + errorMessages[0] + '</span>');
+            }
+        };
+        this.defaultRemoveError = function (elem) {
+            var $elem = angular.element(elem);
+            var $group = $elem.parent().parent();
+            if (!this.isEmpty($group) && $group.hasClass("has-error")) {
+                $group.removeClass("has-error");
+                $elem.next(".xn-error").remove();
+            }
+        };
+        this.options = {
+            blurTrig: false
+        }
+    };
+
+    validatorFn.prototype = {
+        constructor: validatorFn,
+        config: function (options) {
+            this.options = angular.extend(this.options, options);
+        },
+        setRules: function (rules) {
+            this.rules = rules;
+        },
+        getErrorMessage: function (validationName, elem) {
+            var msgTpl = null;
+            if (!this.isEmpty(this.rules[elem.name]) && !this.isEmpty(this.rules[elem.name][validationName])) {
+                msgTpl = this.rules[elem.name][validationName];
+            }
+            switch (validationName) {
+                case "maxlength":
+                    if (msgTpl !== null) {
+                        return msgTpl.replace("{maxlength}", elem.getAttribute("ng-maxlength"));
+                    }
+                    return defaultRules.maxlength.replace("{maxlength}", elem.getAttribute("ng-maxlength"));
+                case "minlength":
+                    if (msgTpl !== null) {
+                        return msgTpl.replace("{minlength}", elem.getAttribute("ng-minlength"));
+                    }
+                    return defaultRules.minlength.replace("{minlength}", elem.getAttribute("ng-minlength"));
+                default :
+                {
+                    if (msgTpl !== null) {
+                        return msgTpl;
+                    }
+                    if (defaultRules[validationName] === null) {
+                        throw new Error("该验证规则(" + validationName + ")默认错误信息没有设置！");
+                    }
+                    return defaultRules[validationName];
+                }
+
+            }
+        },
+        getErrorMessages: function (elem, errors) {
+            var elementErrors = [];
+            for (var err in errors) {
+                if (errors[err]) {
+                    var msg = this.getErrorMessage(err, elem);
+                    elementErrors.push(msg);
+                }
+            }
+            return elementErrors;
+        },
+        showError: function (elem, errorMessages, options) {
+            var useOptions = angular.extend({}, this.options, options);
+            if (useOptions.showError === false) {
+                return;
+            }
+            angular.element(elem).removeClass("valid").addClass("error");
+            if (angular.isFunction(useOptions.showError)) {
+                return useOptions.showError(elem, errorMessages);
+            }
+            if (useOptions.showError === true) {
+                return this.defaultShowError(elem, errorMessages);
+            }
+        },
+        removeError: function (elem, options) {
+            var useOptions = angular.extend({}, this.options, options);
+            if (useOptions.removeError === false) {
+                return;
+            }
+            angular.element(elem).removeClass("error").addClass("valid");
+            if (angular.isFunction(useOptions.removeError)) {
+                return useOptions.removeError(elem);
+            }
+            if (useOptions.removeError === true) {
+                return this.defaultRemoveError(elem);
+            }
+        }
+    };
+
+    var validator = new validatorFn();
+
+    this.config = function (options) {
+        validator.config(options);
+    };
+
+    this.setRules = function (rules) {
+        validator.setRules(rules);
+    };
+
+    this.$get = function () {
+        return validator;
+    };
+}])
+
+    //复选框list
+    .directive("xnCheckboxList", function() {
+        "use strict";
+        return {
+            restrict: "AC",
+            templateUrl: "xn/template/common/checkboxList.html",
+            scope: {checkboxs:'=ngModel'},
+            require: "?ngModel",
+            link: function (scope, elem, attrs, ngModel) {
+                if (!ngModel) return;
+                var checkbox = scope.checkboxs={listKey:[],list:[]};
+
+                attrs.$observe("checkboxList", function (value){
+                    scope.checkList = JSON.parse(value);
+                    angular.forEach(scope.checkList, function(line){
+                        if(line.state){
+                            scope.checkboxs.listKey.push(line.key);
+                            scope.checkboxs.list.push(line);
+                        }
+                    });
+                });
+
+                scope.change=function(state, key, checkbox){
+                    if(state){
+                        var i=0;
+                        angular.forEach(scope.checkboxs.listKey, function(line){
+                            if(line==key){
+                                scope.checkboxs.listKey.splice(i, 1);
+                                return;
+                            }
+                            i++;
+                        });
+                        var j=0;
+                        angular.forEach(scope.checkboxs.list, function(line){
+                            if(line.key==key){
+                                scope.checkboxs.list.splice(j, 1);
+                                return;
+                            }
+                            j++;
+                        });
+                    }else{
+                        scope.checkboxs.listKey.push(key);
+                        scope.checkboxs.list.push(checkbox);
+                    }
+                };
+            }
+        }
+    })
+    //禁用
+    .directive("xnDisabled", ["XN_BEGIN_REQUEST", "XN_END_REQUEST", function (XN_BEGIN_REQUEST, XN_END_REQUEST) {
+        'use strict';
+        return {
+            restrict: "A",
+            link: function (scope, element) {
+                scope.$on(XN_BEGIN_REQUEST, function () {
+                    // got the request start notification, show the element  console.log("接收到了 XN_BEGIN_REQUEST")
+                    element.attr({disabled:"disabled"});
+                    element.addClass("disabled");
+                });
+                scope.$on(XN_END_REQUEST, function () {
+                    // got the request end notification, hide the element
+                    element.attr({disabled:"true"});
+                    element.removeClass("disabled");
+                    element.removeAttr("disabled");
+                });
+            }
+        };
+    }])
+    //遍历
+    .directive("xnRepeat", [function () {
+        'use strict';
+        return {
+            restrict: "AE",
+            require: "ngModel",
+            link: function (scope, elem, attrs, ctrl) {
+                var otherInput = elem.inheritedData("$formController")[attrs.xnRepeat];
+
+                ctrl.$parsers.push(function (value) {
+                    if (value === otherInput.$viewValue) {
+                        ctrl.$setValidity("repeat", true);
+                        return value;
+                    }
+                    ctrl.$setValidity("repeat", false);
+                });
+                otherInput.$parsers.push(function (value) {
+                    ctrl.$setValidity("repeat", value === ctrl.$viewValue);
+                    return value;
+                });
+            }
+        };
+    }])
+    //将复选框变单选
+    .directive("xnUniqueCheck", ['$timeout', '$http', function ($timeout, $http) {
+        return{
+            require: "ngModel",
+            link: function (scope, elem, attrs, ngModel) {
+                var doValidate = function () {
+                    var attValues = scope.$eval(attrs.xnUniqueCheck);
+                    var url = attValues.url;
+                    var isExists = attValues.isExists;//default is true
+                    $http.get(url).success(function (result) {
+                        if (isExists === false) {
+                            ngModel.$setValidity('xnuniquecheck', result.data);
+                        }
+                        else {
+                            ngModel.$setValidity('xnuniquecheck', !result.data);
+                        }
+                    });
+                };
+
+                scope.$watch(attrs.ngModel, function (newValue) {
+                    if (_.isEmpty(newValue)) {
+                    } else if (!scope[elem[0].form.name][elem[0].name].$dirty) {
+                        doValidate();
+                    }
+                });
+
+                elem.bind("blur", function () {
+                    $timeout(function () {
+                        if (scope[elem[0].form.name][elem[0].name].$invalid) {
+                            return;
+                        }
+                        doValidate();
+
+                    });
+                });
+                elem.bind("focus", function () {
+                    $timeout(function () {
+                        ngModel.$setValidity('xnuniquecheck', true);
+                    });
+                });
+            }
+        };
+    }])
+    .directive('xnHasPermission', ["permissionService", function(permissionService) {
+        return {
+            link: function (scope, element, attrs) {
+                if (!_.isString(attrs.xnHasPermission))
+                    throw "hasPermission value must be a string";
+
+                var value = attrs.xnHasPermission.trim();
+                //！是非操作，标识没有该权限项
+                var notPermissionFlag = value[0] === '!';
+                if (notPermissionFlag) {
+                    value = value.slice(1).trim();
+                }
+
+                function toggleVisibilityBasedOnPermission() {
+                    var hasPermission = permissionService.hasPermission(value);
+
+                    if (hasPermission && !notPermissionFlag || !hasPermission && notPermissionFlag)
+                        element.show();
+                    else
+                        element.hide();
+                }
+
+                toggleVisibilityBasedOnPermission();
+                scope.$on('permissionsChanged', toggleVisibilityBasedOnPermission);
+            }
+        };
+    }])
+    //默认图片
+    .directive('xnImg', [function () {
+        return {
+            restrict: "AE",
+            link: function (scope, element) {
+                element.bind("error",function(){
+                    element.attr({src: "/home/images/logo.jpg"});
+                });
+            }
+        };
+    }])
+    //必输
+    .directive('xnRequired', [function () {
+        return {
+            restrict: "AEC",
+            link: function (scope,element) {
+                if( element.attr("placeholder")==undefined){
+                    element.attr("placeholder","(必填)");
+                }else{
+                    element.attr("placeholder",element.attr("placeholder")+"(必填)");
+                };
+            }
+        };
+    }])
+    //获取焦点
+    .directive('xnHasFocus', function() {
+        return{
+            link:function(scope, element, attrs) {
+                scope.$watch(attrs.xnHasFocus, function (nVal, oVal) {
+                    if(oVal){
+                        element[0].focus();
+                    }
+                });
+                element.bind('blur', function() {
+                    scope.$apply(attrs.xnHasFocus + " = false");
+                });
+                element.bind('keydown', function (e) {
+                    if (e.which == 13){
+                        scope.$apply(attrs.xnHasFocus + " = false");
+                    }
+                });
+            }
+        };
+    })
+    //发票类的表单，点击触发显示编辑框
+    .directive('xnClickEdit', function(){
+        return {
+            require: "?ngModel",
+            restrict: 'AE',
+            link: function($scope, iElm, attr){
+                iElm.bind("click", function(){
+                    iElm.addClass("xn-click-edit-hover");
+                    iElm.find(".xn-click-input").show();
+                    iElm.find(".xn-click-input").focus();
+                    iElm.find(".xn-click-input").select();
+                });
+                iElm.find(".xn-click-input").bind("blur",function(){
+                    iElm.removeClass("xn-click-edit-hover");
+                    iElm.find(".xn-click-input").hide();
+                });
+            }
+        };
+    })
+    .directive('input', function(){
+        return {
+            require: "?ngModel",
+            restrict: 'E',
+            link: function($scope, iElm, attr){
+                if(iElm[0].type === "text") {
+                    iElm.bind("click", function(){
+                        this.select();
+                    });
+                }
+            }
+        };
+    })
+    .directive('textarea', function(){
+        return {
+            require: "?ngModel",
+            restrict: 'E',
+            link: function($scope, iElm, attr){
+                if(iElm[0].type === "textarea") {
+                    iElm.bind("click", function(){
+                        this.select();
+                    });
+                }
+            }
+        };
+    })
+    .directive('xnFixTop', [function () {
+        return {
+            restrict: "C",
+            scope: {
+                yOffset: "@",
+                yShifting: "@"
+            },
+            link: function (scope, elm) {
+                if(!scope.yShifting)
+                    scope.yShifting = 0;
+                if(!scope.yOffset)
+                    scope.yOffset = 0;
+                var startPos = $(elm).offset().top;
+                var width = $(elm).css("width");
+                $.event.add(window, "scroll", function() {
+                    var p = $(window).scrollTop();
+                    $(elm).css('position',((p + Number(scope.yShifting)) > startPos) ? 'fixed' : 'relative');
+                    $(elm).css('top',((p + Number(scope.yShifting)) > startPos) ? scope.yOffset : '');
+                    $(elm).css('width', width);
+                });
+            }
+        };
+    }])
+    //  返回顶部与在线留言 todo  1滚动不是逐渐上去，2，没有隐藏
+    .directive('xnBackToTop', ["$location","$anchorScroll",function ($location,$anchorScroll) {
+        return {
+            template:
+            "<ul>\n" +
+            "<li class='backToTop'>\n"+
+            "<a  ng-click='backToTop(header,0)'>\n"+
+            "<span class='gotop-icon icon  icon-up-1'></span>"+
+            "<span class='gotop-font'>返回<br>顶部</span>"+
+            "</a>\n"+
+            "</li>\n" +
+            "<li>\n"+
+            "<a ng-href='{{url}}' target='_blank'>\n"+
+                //"反馈<br>建议"+
+            "<span class='gotop-icon icon icon-idea'></span>"+
+            "<span class='gotop-font'>反馈<br>建议</span>"+
+            "</a>\n"+
+            "</li>\n" +
+            "</ul>",
+            restrict: "C",
+            link: function (scope, elem, attrs, ngModel) {
+                attrs.$observe("feedbackUrl", function (value){
+                    if(value){
+                        scope.url= value;
+                    }else{
+                        return
+                    }
+                });
+
+                scope.backToTop = function(id){
+                    $location.hash(id);
+                    $anchorScroll();
+                };
+
+
+            }
+        };
+    }])
+    .directive("xnPositiveNumber", function() {
+        return {
+            restrict: "A",
+            require: "^ngModel",
+            scope:{
+                data: "=ngModel"
+            },
+            link: function(scope, elements, attres) {
+                if(!scope.data)
+                    scope.data = 0;
+                if(scope.data<0)
+                    scope.data = -scope.data;
+                scope.$watch("data", function(val) {
+                    if(scope.data<0)
+                        scope.data = -scope.data;
+                });
+            }
+        };
+    })
+    .directive('xnTagInput', [function () {
+        return {
+            restrict: "AE",
+            scope: {
+                data: "=ngModel",
+                name: "@"
+            },
+            require: 'ngModel',
+            priority: 1,
+            link: function($scope, element, attrs, ngModel) {
+                if(!ngModel) return;
+
+                var str = $scope.data;
+
+                if(!str) str= "";
+
+                var strList = [];
+
+                if(str.length>0) strList = JSON.parse(str);
+
+                var count = 0;
+
+                $scope.$watch("data", function(newVal, oldVal) {
+                    if(newVal) strList = JSON.parse(newVal);
+                    $scope.init();
+                });
+
+                $scope.bindDelete = function(id) {
+                    angular.element("#"+id).on("click", function(e) {
+                        angular.element("#li"+angular.element(this).attr('id')).remove();
+                        strList = JSON.parse($scope.data);
+                        strList.splice(Number(angular.element(this).attr('id')), 1);
+                        str = JSON.stringify(strList);
+                        ngModel.$setViewValue(str);
+                    });
+                };
+
+                $scope.init = function() {
+                    count = 0;
+                    angular.element("#xnInput_out_div01").remove();
+                    var xnInputDiv = "<div class='xnInput_out_div' id='xnInput_out_div01'><ul id='inner_ul' class='xnInput_ul'>";
+                    xnInputDiv += "<li id='last_li'><input type='text' name='"+$scope.name+"' id='xnInput_input01' class='xnInput_input'/></li></ul></div>";
+                    angular.element(element).before(xnInputDiv);
+                    for(var i=0; i<strList.length; i++) {
+                        angular.element("#last_li").before("<li id='li"+(count>=10?count:'0'+count)+"' class='con_li'><div>"+strList[i]+"</div><a href='javascript:void(0);' class='li_a' id='"+(count>=10?count:'0'+count)+"'><i class='icon icon-delete'></i></a></li>");
+                        $scope.bindDelete(count>=10?count:'0'+count);
+                        count ++;
+                    }
+                    angular.element("#xnInput_input01").on("focus", function(e) {
+                        angular.element("#xnInput_out_div01").addClass("input_outline");
+                    });
+                    angular.element("#xnInput_input01").on("blur", function(e) {
+                        angular.element("#xnInput_out_div01").removeClass("input_outline");
+                    });
+                    angular.element("#xnInput_out_div01").on("click", function(e) {
+                        angular.element("#xnInput_input01").focus();
+                    });
+                    angular.element("#xnInput_input01").on("keydown", function(e) {
+                        if(e.keyCode==13 && angular.element(this).val()) {
+                            var val = angular.element(this).val();
+                            var num = 0;
+                            for(var i=0; i<strList.length; i++) {
+                                if(strList[i]==val) num ++;
+                            }
+                            if(num==0) strList.push(val);
+                            str = JSON.stringify(strList);
+                            angular.element(this).val("");
+                            ngModel.$setViewValue(str);
+                            $scope.$apply();
+                        }
+                    });
+                };
+
+                ngModel.$parsers.push(function (value) {
+                    var div = angular.element(element).prev();
+                    angular.element(div)
+                        .toggleClass('ng-invalid', !ngModel.$valid)
+                        .toggleClass('ng-valid', ngModel.$valid)
+                        .toggleClass('ng-invalid-required', !ngModel.$valid)
+                        .toggleClass('ng-valid-required', ngModel.$valid)
+                        .toggleClass('ng-dirty', ngModel.$dirty)
+                        .toggleClass('ng-pristine', ngModel.$pristine);
+                    return value;
+                });
+            }
+        };
+    }]);
+
+angular.module("xn/template/common.html",[]).run(["$templateCache", function($templateCache) {
+    "use strict";
+    $templateCache.put("xn/template/common/checkboxList.html",
+        "<div class='checkboxList-outer'>"+
+        "	<label class=\"mr_15 xn-label-checkbox\" for=\"{{checkbox.key}}{{$index}}\" ng-repeat=\"checkbox in checkList\">"+
+        "  		<i class=\"xn-checkbox\"></i>"+
+        "  		<i class=\"icon icon-right_3\" ng-if=\"checkbox.state\"></i>"+
+        "   	<input type=\"checkbox\" class=\"xn-checkbox-input\" id=\"{{checkbox.key}}{{$index}}\" name=\"{{checkbox.key}}{{$index}}\" ng-click=\"change(checkbox.state,checkbox.key,checkbox)\" " +
+        "       ng-model=\"checkbox.state\">{{checkbox.value}}"+
+        "	</label>"+
+        "</div>"
+    );
+}]);

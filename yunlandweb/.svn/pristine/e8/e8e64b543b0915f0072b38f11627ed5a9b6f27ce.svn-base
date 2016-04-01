@@ -1,0 +1,462 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>走势图</title>
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+</head>
+
+<body>
+<!-- Top -->
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../images/logo-3.png" width="140" height="90"alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer clearfix">
+                    <div class="search-content" >
+                        <div>
+                        <ul>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                    <option value="zhuz"> 住宅用地 </option>
+                                    <option value="shangy"> 商业/办公用地 </option>
+                                    <option value="gongy"> 工业用地 </option>
+                                    <option value="zhongh"> 综合用地 </option>
+                                    <option value="other"> 其他 </option>
+                                </select>
+                            </li>
+                            <li id="sellMethod_li"></li>
+                        </ul>
+
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        </div>
+                        <div>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div class="header-QRCode">
+            <img src="../../images/erweima-2.png" width="90" height="90" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li>
+                    <a href="index.htm" target="_self">首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="active">
+                    <a href="statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="report/index.html" target="_self">云地报告</a>
+                </li>
+                 <li class="$activetransfer">
+                    <a href="#" target="_self">城市更新</a>
+                </li>
+                <li class="column-nav">
+                   <a href="#">合作机构</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right" style="display:none"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<script type="text/javascript">
+ addressInit('cmbProvince', 'cmbCity', 'cmbArea','86');
+    //加载所有的数据
+    var sellmethod = function(type){
+        if(type=="sell") {
+            var options = '<select class="select-input2 wp-100" name="sellmethod" id="sellmethod"><option value="">出让方式</option>';
+                            options += '<option value="21"> 招标 </option>'
+                            options += '<option value="22"> 拍卖 </option>'
+                            options += '<option value="23"> 挂牌 </option>'
+                            options += '<option value="1"> 划拨 </option>'
+                            options += '<option value="2"> 招拍挂 </option>'
+                            options += '<option value="3"> 协议 </option>'
+                            options += '<option value="4"> 租赁 </option>'
+                            options += '<option value="5"> 作价出资或入 </option>'
+                            options += '<option value="6"> 授权经营 </option>'
+                            options +='</select>'
+        }else if(type=="transfer"){
+            var options = '<select class="select-input2 wp-100" name="sellmethod" id="sellmethod"><option value="">合作方式</option>';
+                            options += '<option value="1"> 整体转让 </option>'
+                            options += '<option value="2"> 控股权转让 </option>'
+                            options += '<option value="3"> 部分转让 </option>'
+                            options += '<option value="4"> 股权转让 </option>'
+                            options += '<option value="5"> 项目融资 </option>'
+                            options += '<option value="6"> 债权融资 </option>'
+                            options += '<option value="7"> 租赁融资 </option>'
+                            options += '<option value="0"> 其他/面谈 </option>'
+                            options +='</select>'
+        }
+        $("#sellMethod_li").append(options);
+    }
+    var businessType = '';
+//    alert(businessType);
+    $(function(){
+        if($("#nav-"+businessType)){
+            $("#nav-"+businessType).addClass('active');
+            $("#nav-"+businessType).siblings().removeClass('active');
+            if(businessType=='news'){
+                $("#forLandNews").show();
+                $("#forLandInfo").hide();
+            }else{
+                $("#forLandNews").hide();
+                $("#forLandInfo").show();
+                if(businessType=='sell'||businessType=='transfer'){
+                    $("#sellMethod_li").empty();
+                    sellmethod(businessType);
+                }
+            }
+        }
+        $("#keyword").val('');
+        $("#cmbProvince").val('');
+        $("#cmbCity").val('');
+        $("#cmbArea").val('');
+        $("#purpose").val('');
+        $("#sellmethod").val('');
+        var cp = '';
+        if(''!=cp || null!=cp){
+            addressInit('cmbProvince', 'cmbCity', 'cmbArea','','','');
+        }
+        $("#businessType").data("currenttab",'');
+    });
+</script>
+<!-- Top 结束 -->
+
+<div id="content">
+    <div class="member-content statistic-content xn-width auto clearfix mt_10">
+        <div class="clearfix"></div>
+        <div class="content-left">
+            <div class="statistic-nav">
+                <div class="column-nav">
+                    <a class="active" href="trendChart.html">云地走势图<span></span></a>
+                    <a href="intelligence.html">云地情报站<span></span></a>
+                    <a href="index.html">云地排行榜<span></span></a>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="monthType" value="monthAmount" />
+        <div class="content-right">
+             <div class="hot-city">                           
+                 <dl class="listIndex" attr="terminal_brand_s">
+                    <dt id="region">热门城市 :</dt>
+                    <dd data-more=true>
+                        <label>
+                            <input name="radio2" type="radio" value="310000"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="310000"
+                               attrval="上海">上海</a>
+                        </label>
+                            <label>
+                            <input name="radio2" type="radio" value="110000"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="110000"
+                               attrval="北京">北京</a>
+                        </label>
+                        <label>
+                            <input name="radio2" type="radio" value="440100"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="440100"
+                               attrval="广州">广州</a>
+                        </label>
+                        <label>
+                            <input name="radio2" type="radio" value="440300"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="440300"
+                               attrval="深圳">深圳</a>
+                        </label>
+                        <label>
+                            <input name="radio2" type="radio" value="500000"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="500000"
+                               attrval="重庆">重庆</a>
+                        </label>
+                        <label>
+                            <input name="radio2" type="radio" value="330100"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="330100"
+                               attrval="杭州">杭州</a>
+                        </label>
+                            <label>
+                            <input name="radio2" type="radio" value="120000"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="120000"
+                               attrval="天津">天津</a>
+                        </label>
+                         <label>
+                            <input name="radio2" type="radio" value="320100"
+                                   style="display: none;"/>
+                            <a href="javascript:;" values2="" values1="" value="320100"
+                               attrval="南京">南京</a>
+                        </label>
+                    </dd>
+                </dl>
+            </div>
+            <div class="search-div">
+                <div class="input-line">
+                    <label>成交时间：</label>
+                    <input id="d4311" class="Wdate form-control w-100" type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')}'})">
+                    <i class="horizontal-line"></i>
+                    <input id="d4312" class="Wdate form-control w-100" type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}'})">
+                    <div class="tip"></div>
+                    <label>地&nbsp;&nbsp;区：</label>
+                    <select class="form-control w-100 mr-10" id="cmbProvinces" name="cmbProvinces"></select>
+                    <select class="form-control w-100 mr-10" id="cmbCitys" name="cmbCitys"></select>
+                    <select class="form-control w-100" id="cmbAreas" name="cmbAreas"></select>
+                </div>
+                <div class="input-line">
+                    <label>规划用途：</label>
+                    <select class="form-control w-233" id="landType" name="">
+                        <option value="">-- 请选择规划用途 --</option>
+                                    <option value="05">商服用地</option>
+                                    <option value="051">批发零售用地</option>
+                                    <option value="052">住宿餐饮用地</option>
+                                    <option value="053">商务金融用地</option>
+                                    <option value="054">其他商服用地</option>
+                                    <option value="06">工矿仓储用地</option>
+                                    <option value="061">工业用地</option>
+                                    <option value="062">采矿用地</option>
+                                    <option value="063">仓储用地</option>
+                                    <option value="07">住宅用地</option>
+                                    <option value="08">公共管理与公共服务用地</option>
+                                    <option value="081">机关团体用地</option>
+                                    <option value="082">新闻出版用地</option>
+                                    <option value="083">科教用地</option>
+                                    <option value="084">医卫慈善用地</option>
+                                    <option value="085">文体娱乐用地</option>
+                                    <option value="086">公共设施用地</option>
+                                    <option value="087">公园与绿地</option>
+                                    <option value="088">风景名胜设施用地</option>
+                                    <option value="09">特殊用地</option>
+                                    <option value="091">军事设施用地</option>
+                                    <option value="092">使领馆用地</option>
+                                    <option value="093">监教场所用地</option>
+                                    <option value="094">宗教用地</option>
+                                    <option value="095">殡葬用地</option>
+                                    <option value="10">交通运输用地</option>
+                                    <option value="102">公路用地</option>
+                                    <option value="103">街巷用地</option>
+                                    <option value="104">农村道路</option>
+                                    <option value="105">机场用地</option>
+                                    <option value="106">港口码头用地</option>
+                                    <option value="107">管道运输用地</option>
+                                    <option value="11">水域及水利设施用地</option>
+                                    <option value="111">河流水面</option>
+                                    <option value="112">湖泊水面</option>
+                                    <option value="113">水库水面</option>
+                                    <option value="114">坑塘水面</option>
+                                    <option value="115">沿海滩涂</option>
+                                    <option value="116">内陆滩涂</option>
+                                    <option value="117">沟渠</option>
+                                    <option value="118">水工建筑用地</option>
+                                    <option value="119">冰川及永久积雪</option>
+                                    <option value="12">其他土地</option>
+                                    <option value="121">空闲地</option>
+                                    <option value="122">设施农用地</option>
+                                    <option value="123">田坎</option>
+                                    <option value="124">盐碱地</option>
+                                    <option value="125">沼泽地</option>
+                                    <option value="126">沙地</option>
+                                    <option value="127">裸地</option>
+                                    <option value="071">高档住宅用地</option>
+                                    <option value="072">中低价位、中小套型普通商品住房用地</option>
+                                    <option value="073">其他普通商品住房用地</option>
+                                    <option value="074">经济适用住房用地</option>
+                                    <option value="075">廉租住房用地</option>
+                                    <option value="076">其他住房用地</option>
+                                    <option value="shangy">商业</option>
+                                    <option value="zhuz">住宅</option>
+                                    <option value="zhongh">综合</option>
+                                    <option value="qiet">其他</option>
+                                    <option value="077">公共租赁住房用地</option>
+                            </select>
+                    <div class="tip"></div>
+                    <label>出让方式：</label>
+                    <select class="form-control w-208" id="sellWay" name="">
+                        <option value="">-- 请选择出让方式 --</option>
+                            <option value="21">招标</option>
+                            <option value="22">拍卖</option>
+                            <option value="23">挂牌</option>
+                            <option value="1">划拨</option>
+                            <option value="2">招拍挂</option>
+                            <option value="3">协议</option>
+                            <option value="4">租赁</option>
+                            <option value="5">作价出资或入</option>
+                            <option value="6">授权经营</option>
+                    </select>
+                    </div>
+                     <div class="input-line2">
+                         <span class="f-left">选择类型：</span>
+                         <div class="select">
+                             <span id="text_left">成交数量</span><span id="arrow_right"><select></select></span>   
+                         </div>  
+                         <ul class="select-list">  
+                            <li id="monthAmount">成交数量</li>  
+                            <li id="monthArea">成交面积</li>  
+                            <li id="monthMoney">成交金额</li>  
+                            <li id="monthPrice">平均楼面价</li>   
+                         </ul> 
+                         <div class="f-right">
+                             <a id="query" class="btn btn-short button ml-10">查询</a>
+                             <a class="btn download-btn"><span></span>下载</a>
+                         </div>
+                    </div>
+                <script type="text/javascript">
+                     $(function(){   
+                     $('#arrow_right').click(function(e){   
+                     $('.select-list').toggle();   e.stopPropagation();    
+                     $('body').click(function(){    $('.select-list').hide();})  
+                      })   
+                      $('.select-list li').click(function(){   $('#text_left').text(($(this).text()));   
+                       })   
+                        }) 
+               </script>
+            </div>
+            <div class="content-main" id="mainAmount" style="height: 400px">
+
+            </div>
+            <div class="content-main" id="mainArea" style="height: 400px; ">
+
+            </div>
+            <div class="content-main" id="mainMoney" style="height: 400px;">
+
+            </div>
+            <div class="content-main" id="mainPrice" style="height: 400px;">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript"  src="../../../vendor/echarts/echarts.js"></script>
+<script type="text/javascript"  src="../../../scripts/statistic/trendChart.js"></script>
+<script type="text/javascript"  src="../../../scripts/statistic/intelligence.js"></script>
+<script type="text/javascript">
+    addressInit2('cmbProvinces', 'cmbCitys', 'cmbAreas','86');
+</script>
+</body>
+<script  type="text/javascript"  src="../../../scripts/index.js"></script>
+<script  type="text/javascript"  src="../../../scripts/site.js"></script>
+</html>

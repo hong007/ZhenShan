@@ -1,0 +1,21 @@
+<div class="article-content xn-width auto">
+    ##<div class="title-outer">
+    ##    <div class="title">$landPublicity.title</div>
+    ##    <div class="publish-time">
+    ##        <span class="publish-word">发布时间:</span>
+    ##        <span>
+    ##            #if($landPublicity.approveTime)
+    ##                $!utils.formatMessage("{0, date, yyyy-MM-dd HH:mm:ss}", $!landPublicity.approveTime)
+    ##            #else
+    ##                暂无发布时间
+    ##            #end
+    ##        </span>
+    ##    </div>
+    ##</div>
+    ##<div class="summary">
+    ##    摘要：$!landPublicity.remarks
+    ##</div>
+    <div class="contents">
+        #noescape()  $!landPublicity.content #end
+    </div>
+</div>

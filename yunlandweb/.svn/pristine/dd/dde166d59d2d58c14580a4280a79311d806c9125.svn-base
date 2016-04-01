@@ -1,0 +1,202 @@
+<header data-am-widget="header"
+        class="am-header am-header-default index-header detail-header">
+    <a href="javascript:history.back(-1)"><i class="am-icon-angle-left am-icon-sm"></i></a>
+    <h1 class="am-header-title">
+        土地供应
+    </h1>
+
+    <div class="am-header-right am-header-nav">
+        #if($passport)
+            <a href="$mobileContent.getURI("loginout")" class="">
+                <i class="am-header-icon am-icon-sign-out"></i>
+            </a>
+        #else
+            <a href="login" class="">
+                <i class="am-header-icon icon-account"></i>
+            </a>
+        #end
+    </div>
+    </div>
+</header>
+<div data-am-widget="slider" class="am-slider am-slider-default index-slider" data-am-slider='{}'>
+    <ul class="am-slides">
+        <li>
+            <img src="$!landSupply.picturePath">
+        </li>
+    </ul>
+</div>
+<div class="detail-title">
+    <h1>$!landSupply.name</h1>
+    <div class="publishTime">发布时间：
+     #if($!landSupply.lastUpdateTime)
+        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landSupply.lastUpdateTime)
+    #else
+        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landSupply.approveTime)
+    #end</div>
+</div>
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2 index-tabs detail-tabs">
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="[data-tab-panel-0]">基本信息</a></li>
+        <li class=""><a href="[data-tab-panel-1]">详细介绍</a></li>
+    </ul>
+
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-tabs-bd" >
+        <!--列表标题-->
+        <div data-tab-panel-0 class="am-list-news-bd am-tab-panel am-active">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                <!--列表标题-->
+                <div class="am-list-news-bd">
+                    <ul class="am-list">
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">所在地区</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.provinceName/$!landSupply.cityName /$!landSupply.districtName</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">位置</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.address</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">预算金额(万元)</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.financingAmount</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">规划用途</span>
+                            <span class="am-list-date am-vertical-align-middle">$!selectPurpose.get($!landSupply.planUse)</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">合作方式</span>
+                            <span class="am-list-date am-vertical-align-middle">$!selectCollaborateMethod.get($!landSupply.cooperationMode)</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">使用年限</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.sellYear 年</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">占地面积</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.floorSpace 万平方米</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">联系人</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.contactName</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">联系电话</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landSupply.contactPhone</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div data-tab-panel-1 class="am-list-news-bd am-tab-panel">
+            <div class="detail-intro-inner">
+                <div class="moreIntro">
+                    <div class="more-title">
+                        <span></span>
+                        <h3>位置地图</h3>
+                    </div>
+                    #*<div data-am-widget="map" class="am-map am-map-default"
+                         data-name="云适配" data-address="北京市海淀区海淀大街27号亿景大厦3层西区" data-longitude="" data-latitude="" data-scaleControl="" data-zoomControl="true" data-setZoom="17" data-icon="">
+                        <div id="bd-map"></div>
+                    </div>*#
+                    <div class="map-content">
+                        <div id="allmap"></div>
+                    </div>
+
+                    <div class="more-title">
+                        <span></span>
+                        <h3>更多详情介绍</h3>
+                    </div>
+                    <div class="more-content">
+                        #noescape()  $!landSupply.content #end
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<footer data-am-widget="footer"
+        class="am-footer am-footer-default"
+        data-am-footer="{  }">
+##    <div class="am-footer-switch">
+##    <span class="am-footer-ysp" data-rel="mobile"
+##          data-am-modal="{target: '#am-switch-mode'}">
+##          手机版
+##    </span>
+##        <span class="am-footer-divider"> | </span>
+##        <a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+##            电脑版
+##        </a>
+##    </div>
+    <div class="am-footer-miscs ">
+        <p><a href="http://www.yunland.cn/" title="云地网"
+                target="_blank" class="">云地网</a>
+            </p>
+        <p>浙ICP备06018569号-2</p>
+    </div>
+</footer>
+
+<div id="am-footer-modal"
+     class="am-modal am-modal-no-btn am-switch-mode-m am-switch-mode-m-default">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd am-modal-footer-hd">
+            <a href="javascript:void(0)" data-dismiss="modal" class="am-close am-close-spin " data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            您正在浏览的是
+        <span class="am-switch-mode-owner">
+            手机版
+        </span>
+        <span class="am-switch-mode-slogan">
+              为您当前手机订制的移动网站。
+        </span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var opts = {
+        width : 55,     // 信息窗口宽度
+        height: 80,     // 信息窗口高度
+        title : "云地网提示" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:""
+    }
+
+    var new_point = new BMap.Point(116.404, 39.915);
+    var marker;
+    var point = '$!landSupply.location';
+    if(!point==''){
+        var temppoint = point.split(',');
+        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+        map.centerAndZoom(new_point, 11);  //根据经纬度定中心点
+        marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        map.panTo(new_point);
+        var infoWindow = new BMap.InfoWindow("土地名称:$landSupply.name", opts);  // 创建信息窗口对象
+        marker.addEventListener("click", function(){
+            map.openInfoWindow(infoWindow,new_point); //开启信息窗口
+        });
+    }else{
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("$!landSupply.provinceName$!landSupply.cityName$!landSupply.districtName$!landSupply.address", function(point){
+            if (point) {
+                map.centerAndZoom(point, 16);
+                marker = new BMap.Marker(point);  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+                var infoWindow = new BMap.InfoWindow("土地名称:$landSupply.name", opts);  // 创建信息窗口对象
+                marker.addEventListener("click", function(){
+                    map.openInfoWindow(infoWindow,point); //开启信息窗口
+                });
+            }
+        }, "$landSupply.cityName");
+    }
+</script>

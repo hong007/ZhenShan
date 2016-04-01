@@ -1,0 +1,1062 @@
+#login{
+	width:1190px;
+	margin:10px auto 0 auto;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color:#333;
+}
+.login-head{
+    position: relative;
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+}
+.login-head .login-head-login{
+    position: relative;
+    margin: 0 auto;
+
+}
+.login-head ul{
+    position: absolute;
+    height: 260px;
+}
+.login-head ul li{
+    float: left;
+    height: 260px;
+}
+.login-head ul li a{
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+.login-head .btnBg .list-circle{
+    width: 100%;
+    height: 20px;
+    margin:0 auto;
+    text-align: center;
+}
+.login-head .list-circle{
+    height: 22px;
+    display: inline-block;
+    float: right;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 22px;
+}
+.login-head .list-circle span{
+    display: inline-block;
+    margin:0 8px;
+    width:11px;
+    height: 20px;
+    background: url("../images/round01.png") no-repeat;
+}
+.list-circle span.on{
+    background: url("../images/round01-click.png") no-repeat;
+}
+
+/*土地发布-土地需求*/
+.banner-text-right{
+	width:260px;
+	}
+	
+.banner-text-right .button-con{
+    height: 68px;
+	padding: 0 6px;
+	border: 1px solid #dbdcde;
+	color: #fff;
+	font-size: 14px;
+	}
+	
+.banner-text-right .button-con .button{
+	width:118px;
+	height:26px;
+	line-height:26px;
+	border: solid 1px #05d4f9;
+	-moz-border-radius: 3px;      
+    -webkit-border-radius: 3px;   
+    border-radius: 3px;
+	margin-top: 4px;
+	}	
+
+.banner-text-right .button-con .button-x{
+	background: #05d4f9;
+}
+
+.banner-text-right .button-con .button p{
+	margin: 0 17px;
+	background: url(../images/button-td.png) center left no-repeat;
+	padding-left: 25px;
+	}	
+	
+.banner-text-right .button-con a{
+	display: block;
+	height: 26px;
+	color:#05d4f9;
+	font-size:14px;
+	-moz-border-radius: 3px;      
+    -webkit-border-radius: 3px;   
+    border-radius: 3px;
+	}	
+	
+.banner-text-right .button-con a.color{
+	color: #fff;
+}
+.banner-text-right .button-con p.demand{
+	background: url(../images/button-xq.png) left center no-repeat;
+}
+.banner-text-right .button-con p.login1{
+	background: url(../images/button-login-icon.png) left center no-repeat;
+}
+.banner-text-right .button-con p.registered{
+	background: url(../images/button-registered-icon.png) left center no-repeat;
+}
+.banner-text-right .button-con .button:hover{
+	background-color: #09a7c3;
+}	
+.banner-text-right .text-con{
+    height:206px;
+    border:1px solid #dbdcde;
+	margin-top:4px;
+	background:#fff;			
+	}
+		
+.banner-text-right .text-con .title-qg{
+	height:36px;
+	line-height:36px;
+	font-size:18px;
+	border-bottom:1px solid #dbdcde;
+	padding:0 10px;    
+	}
+	
+.banner-text-right .text-con .title-qg p{
+	background:url(../images/title-qg.png) left center no-repeat;
+	padding-left:30px;
+	}
+	
+.banner-text-right .text-con span{
+	color:#ff7a29;
+	}
+	
+.banner-text-right .text-con .jinri-con{
+	height:84px;
+	border-bottom:1px solid #dcdcdc;
+	}
+
+.banner-text-right .text-con .jinri-con p{
+	font-size:12px;
+	padding:8px 0 0 4px;
+	width: 219px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	}	
+	
+.banner-text-right .text-con .jinri-con .jinri-wrap{
+	width:34px;
+	height:84px;
+	border-right:1px solid #dcdcdc;
+    }
+	
+.banner-text-right .text-con .jinri-con .jinri-wrap span{
+	width:14px;
+	padding:20px 10px;
+	display:block;
+	word-wrap:break-word;
+	}
+	
+/*登录与注册部分*/
+.xn-top-box{
+    width:303px;
+    height:auto;
+    background:url('../images/login-bg.png');
+    opacity: 1.0;
+    position: absolute;
+    top:0;
+    left:50%;
+    margin-left:282px;
+    z-index: 999;
+    margin-top: 50px;
+}
+@media (man-width:120px) {
+
+    .xn-top-box{
+        margin-left:187px;
+    }
+}
+.xn-top-box .top-button{
+    margin-bottom: 27px;
+    float: left;
+    width: 100%;
+}
+.xn-top-box .top-button span{
+    display: inline-block;
+    width:50%;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    float: left;
+}
+.xn-top-box .top-button .selected{
+    background:#8d989e;
+}
+
+#form1{
+    display: none;
+}
+.xn-top-box .top-phone{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.xn-top-box .top-phone input{
+    width:226px;
+    height: 36px;
+    padding: 0 20px 0 10px;
+}
+.xn-top-box .top-code{
+    margin-left: 22px;
+    margin-bottom:40px;
+}
+.xn-top-box .top-code input{
+    width:122px;
+    height: 36px;
+    display: inline-block;
+    padding: 0 10px 0 10px;
+    margin-right: 10px;
+}
+.xn-top-box .top-code .identifyCode-div{
+    width: 100px;
+    display: inline-block;
+    height: 36px;
+    background-color: #DDDDDD;
+    border: 2px solid #dcdcdc;
+    float: right;
+    margin-right: 21px;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+}
+.xn-top-box .top-error{
+    color: red;
+    display: none;
+}
+.xn-top-box label.error{
+    color: red;
+    font-size: 14px;
+    width: auto;
+    float: none;
+    display: block;
+    text-align: left;
+}
+.xn-top-box .top-register{
+    text-align: center;
+}
+.xn-top-box .top-register button{
+    width:260px;
+    height:40px;
+    background:#ff7b29;
+    border:0;
+    font-size: 16px;
+    color:#fff;
+    margin-bottom: 50px;
+}
+.xn-top-box .top-register input{
+    width:260px;
+    height:40px;
+    background:#ff7b29;
+    border:0;
+    font-size: 16px;
+    color:#fff;
+    margin-bottom: 50px;
+    padding: 0px;
+}
+/*.details-right .text-right{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}*/
+.details-right .text-right .more{
+    width:368px;
+}
+.details-right .text-right .more a {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top:10px;
+    float: right;
+    color:#999999;
+    font-size: 16px;
+}
+.details-right .text-right .text-message{
+    width: 380px;
+    height: 45px;
+    border-left: 1px solid #dcdcdc;
+    margin-left: 8px;
+    margin-top: -15px;
+    padding-left: 20px;
+    font-size: 14px;
+    /*overflow: hidden;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+.details-right .text-right .text-message .address{
+    width:16%;
+    min-height: 45px;
+    display:block;
+    float: left;
+    color:#55b8fa;
+    margin-right: 15px;
+    /*overflow: hidden;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.details-right .text-right .text-message .time{
+    display: block;
+    float: left;
+    margin-right: 30px;
+    height: 45px;
+    width: 65%;
+    /*white-space: initial;*/
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+.details-right .text-right .text-message .text{
+    display: block;
+    float: left;
+    height: 21px;
+    width: 255px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*土地动态*/
+.middle-content{
+    position: relative;
+}
+.middle-content .yun-dynamic{
+	padding:5px 10px 0 10px;
+}
+.middle-content .yun-dynamic .title-xin{
+	margin-top: 4px;
+}
+.middle-content .yun-dynamic .theme{
+    background:url(../images/title-icon.png) left center no-repeat;
+    padding-left: 15px;
+    /*padding-top: 2px;*/
+    font-size: 20px;
+    font-weight: 500;
+    color: #333333;
+}
+.middle-content .theme-line{
+    width: 1170px;
+    height: 0;
+    border-bottom: 1px solid #cccccc;
+	margin-left:10px;
+}
+.xn-relative{
+    position: relative;
+}
+.middle-content .dynamic-details{
+	padding: 0 10px;
+}
+.middle-content .dynamic-details table th,.middle-content .dynamic-details table td{
+    text-align: center;
+}
+.td-limit{/*添加代码*/
+    width:270px;
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap;
+	color:#F00;
+}
+.middle-content .dynamic-details .forNotice table td{
+    /*text-align: left;*/
+}
+.middle-content .arrow-right{
+    position: absolute;
+    bottom: 45px;
+    right: 20px;
+    border: 1px solid #333;
+    padding: 0 5px;
+}
+.middle-content .list-blue{
+    position: absolute;
+    bottom:6px;
+    right:8px;
+}
+.middle-content .list-blue span{
+    display: inline-block;
+    width:14px;
+    height: 14px;
+    background:#fff;
+	text-align:center;
+	line-height:14px;
+	font-size:12px;
+}
+.middle-content .list-blue span.on{
+    background:#ff7a29;
+	color:#fff;
+}
+
+.middle-content .dynamic-details .details-left{
+    float: left;
+    position: relative;
+    width:165px;
+    height:90px;
+    overflow: hidden;
+}
+.xn-change{
+    width:650px;
+}
+.middle-content .dynamic-details .details-left ul{
+    width: 578px;
+    height: 282px;
+    position: absolute;
+    overflow: hidden;
+}
+.middle-content .dynamic-details .details-left ul li{
+    width: 578px;
+    height: 233px;
+    float: left;
+   position: relative;
+}
+.middle-content .dynamic-details .details-left .img-left{
+    /*background: url('../images/dynamic.png') no-repeat;*/
+    width:165px;
+    height: 90px;
+    float: left;
+}
+.middle-content .dynamic-details .details-left .img-left img{
+	width:165px;
+}
+.middle-content .dynamic-details .details-left .img-left .pic-txt {
+    display: block;
+    bottom: 0;
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin: -30px 0 0;
+    /*padding: 0 5px;*/
+    font: 16px/30px Microsoft YaHei bold;
+    font-weight :bold;
+    text-align: center;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#80000000, endColorstr=#80000000);
+    cursor: pointer;
+    color: #fff;
+}
+
+.middle-content .dynamic-details .details-left .img-left .arrow{
+    position: absolute;
+    width:12px;
+    height: 22px;
+    top: 130px;
+    left: 388px;
+    z-index:999;
+}
+.middle-content .dynamic-details .details-left .text-right a{
+    color:#fff;
+}
+.middle-content .dynamic-details .details-left .text-right p{
+    width: 220px;
+    height: 160px;
+    margin: 15px 18px 0 18px;
+    font-size: 14px;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.middle-content .dynamic-details .hot li{
+
+    width:367px;
+    height:348px;
+    border:1px solid #dcdcdc;
+    float: left;
+}
+
+.mr_30{
+   margin-right:30px;
+}
+/*热门土地*/
+.middle-content .hot-topic .hot{
+    position: relative;
+}
+.middle-content .shadow{
+    position: absolute;
+    top:301px;
+    width:370px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    color:#fff;
+    background:url('../images/back_ground.png');
+}
+.middle-content .shadow span{
+    display: inline-block;
+}
+
+
+.middle-content .con-module-r{
+	width: 394px;
+	margin-right: 10px;
+}
+.middle-content .con-module-r .transfer{
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid #c2c2c2;
+}
+.middle-content .con-module-r .transfer li{
+    float: left;
+    height: 28px;
+    width: 20%;
+    text-align: center;
+    padding-top:8px;
+    color:#333;
+    cursor:pointer;
+    font-size: 16px;
+}
+.middle-content .con-module-r .transfer .active{/*后加样式*/
+    background: url(../images/search_nav_bg.png) bottom no-repeat;
+}
+.middle-content .con-module-l .transfer .active{/*后加样式*/
+    background: url(../images/tab_nav_bg.png) bottom no-repeat;
+}
+.middle-content .con-module-r .transfer .active a{
+	color:#05d4f9; 
+}
+.middle-content .con-module-l .transfer .active a{
+	color:#05d4f9; 
+}
+/*土地出让*/
+#table2{
+    display: none;
+}
+#table3{
+    display: none;
+}
+#table4{
+    display: none;
+}
+.middle-content .dynamic-details .transfer{
+    width: 100%;
+    height: 38px;
+    border-bottom: 2px solid #c2c2c2;
+}
+.middle-content .transfer li{
+    float: left;
+    height: 32px;
+    width: 86px;
+    text-align: center;
+    padding-top:8px;
+    color:#333;
+    cursor:pointer;
+    font-size: 16px;
+}
+.middle-content .transfer .click{
+    background: url(../images/search_nav_bg.png) bottom no-repeat;
+	color:#05d4f9; 
+}
+
+.middle-content .transfer .click a{
+	color:#05d4f9; 
+}
+.middle-content table{
+    width:100%;
+    table-layout:fixed;
+    word-break:break-all;
+	margin-bottom:10px;
+}
+.middle-content thead tr{
+    height: 32px;
+    line-height: 32px;
+    background: #f7f7f7;
+}
+.middle-content table thead tr th{
+    font-weight: normal;
+    font-size: 16px;
+    color:#333;
+}
+.middle-content tbody tr{
+    height: 31px;
+}
+.middle-content table tbody tr td{
+    padding: 0 10px;
+    height: 30px;
+    word-wrap:break-word;
+    word-break:break-all;
+	text-align:center;
+}
+.middle-content table tbody tr td .img{
+    width:40px;
+    height: 40px;
+    border:1px solid #dcdcdc;
+    margin:0 auto;
+}
+.text-center{
+    text-align: center;
+}
+/*.middle-content .advertisement{
+    width:100%;
+    height: 150px;
+    background: #dcdcdc;
+	margin-top:15px;
+}广告图*/
+/*热门土地*/
+.middle-content .hot-topic .hot{
+    position: relative;
+}
+.middle-content .shadow{
+    position: absolute;
+    top:301px;
+    width:370px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    color:#fff;
+    background:url('../images/back_ground.png');
+}
+.middle-content .shadow span{
+    display: inline-block;
+}
+.top-main .slide .slide-ul li {
+    width: 184px;
+	height: 132px;
+	line-height: 40px;
+    padding: 0;
+    margin-top: 10px;
+	border-bottom: solid 1px #ccc;
+}
+.top-main .slide .slide-ul li:hover .tip_xin{
+	border-bottom: solid 2px #ff7a29;
+	margin-bottom: 0;
+}
+.top-main .slide .slide-ul {
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+/*土地转让*/
+.middle-content .dynamic-details .details-top{
+    /*padding-top: 10px;*/
+}
+.middle-content .dynamic-details .title{
+    color:#333;
+    font-size: 16px;
+    font-weight: bold;
+}
+.middle-content .dynamic-details .title span{
+    font-weight: 500;
+    font-size: 18px;
+}
+.middle-content .dynamic-details .title img{
+    float:right;
+    margin-right: 40px;
+}
+#land-none{
+    display: none;
+}
+#demand-none{
+    display: none;
+}
+.middle-content .dynamic-details .title .more a{
+    display: inline-block;
+    float: right;
+    color: #555;
+    font-size: 12px;
+    font-weight: normal;
+}
+.middle-content .dynamic-details .supply{
+    padding-top: 10px;
+}
+.middle-content .dynamic-details .supply li{
+    position: relative;
+    float: left;
+    width:285px;
+    height:160px;
+    border:0;
+    margin-bottom: 10px;
+}
+#move-none{
+    display: none;
+}
+.move{
+    position:absolute;
+    top:0;
+}
+.dynamic-details .details-top .more-text{
+    position: absolute;
+    color: #fff;
+    top: 30px;
+    left: 15px;
+    z-index: 999999;
+}
+.dynamic-details .details-top .more-text h4{
+    color:#fff;
+    font-size: 16px;
+    margin-bottom:40px;
+    font-weight: normal;
+}
+.dynamic-details .details-top .more-text p{
+    font-family: "微软雅黑";
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.more-text{
+    display: none;
+}
+.pb_10{
+    padding-bottom: 10px;
+}
+.mt_40{
+    margin-top: 40px;
+}
+
+/*土地转让/土地需求*/
+.details-bottom{
+	padding:10px;
+	}
+.middle-content .details-bottom .theme{
+    background:url(../images/title-icon.png) left center no-repeat;
+    padding-left: 15px;
+    /*padding-top: 2px;*/
+    font-size: 20px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.details-bottom .title{
+    color:#333;
+    font-size: 16px;
+    font-weight: bold;
+	padding-bottom:8px;/*后加代码*/
+    } 
+.details-bottom .title span{
+    font-weight: 500;
+    font-size: 18px;
+    }
+.details-bottom .title .more a{
+    display: inline-block;
+    float: right;
+    color: #555;
+    font-size: 12px;
+    font-weight: normal;
+    }
+.details-bottom .title img{
+    float:right;
+    margin-right: 40px;
+    }
+	
+
+/*底部*/
+.bottom-banner {
+    width: 100%;
+    height: 110px;
+    background: #eee;
+    margin: 15px auto 0;
+	background:#f5f5f5;
+}
+.footer{
+    font-family: "微软雅黑";
+    width: 100%;
+    height: auto;
+    background: #363A3C;
+    margin-top: 0;
+    padding-bottom: 50px;
+}
+.footer .tips_bd {
+    display: none;
+    width: 229px;
+    height: 240px;
+    padding: 0;
+    position: absolute;
+    left: 75px;
+    top: -10px;
+    z-index: 1000;
+}
+.footer .forWechat .weixinClick{
+    display: none;
+}
+.footer .forWechat:hover .weixinClick{
+    display: block;
+}
+.footer .forWechat:hover .weixin{
+    display: none;
+}
+.footer .forWechat:hover .tips_bd{
+    display: block;
+}
+.footer .forSina .sinaClick{
+    display: none;
+}
+.footer .forSina:hover .sinaClick{
+    display: block;
+}
+.footer .forSina:hover .tips_bd{
+    display: block;
+}
+.footer .forSina:hover .sina{
+    display: none;
+}
+.footer .friend_links {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid #5b5b5b; */
+    line-height: 1.8em;
+    font-size: 12px;
+}
+.footer .friend_links .tit {
+    float: left;
+    width: 75px;
+    text-align: right;
+    color: #999;
+}
+.footer .friend_links .links_wrap {
+    float: left;
+    width: 1070px;
+    text-align: left;
+}
+.footer .friend_links .links_wrap a {
+    margin-right: 15px;
+
+    line-height: 18px;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #999;
+}
+.footer .again{
+    margin-top: 0;
+}
+/* 热点地图 调整样式 */
+.middle-content .con-module-r .tab_content{
+	height: 275px;
+	margin-top: 10px;
+}
+.middle-content .con-module-r .tab_content table{
+	margin-bottom: 4px;
+}
+.middle-content .con-module-r .tab_content table .small-tu{
+	width:194px; 
+	height:58px;
+}
+.middle-content .con-module-r .tab_content table thead tr{
+	height: 30px;
+	line-height: 30px;
+}
+.middle-content .con-module-r .tab_content tbody tr td{
+	/*white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;*/
+}
+.middle-content .con-module-r .tab_content .toShowAllTd .toShowAllDiv{
+	position: absolute;
+	bottom: 100%;
+	left: -130px;
+}
+/* 热点地图 调整样式 结束 */
+
+/* 土地转让 */
+.middle-content .yun-dynamic .name{
+	margin:10px 8px 0;
+	font-size:12px;
+}
+.middle-content .yun-dynamic .name a{
+	font-size:12px;
+}
+.middle-content .yun-dynamic .name a:hover{
+	color: #ccc;
+}
+.middle-content .yun-dynamic .name i{
+	padding: 0 6px;
+	font-style: normal;
+}
+.middle-content .yun-dynamic a.release-btn{
+	display: inline-block;
+	width: 68px;
+	height: 18px;
+	margin-right: 10px;
+	line-height: 18px;
+	text-align: center;
+	color: #05d4f9;
+	border: solid 1px #05d4f9;
+	-moz-border-radius: 3px;      
+    -webkit-border-radius: 3px; 
+    border-radius:3px; 
+	float: left;
+}
+.middle-content .yun-dynamic span.more{
+	color: #555555;
+	font-size: 12px;
+	float: right;
+	margin-top:10px;
+}
+.middle-content .yun-dynamic .release-btn:hover{
+	background: #05d4f9;
+	color: #fff;
+}
+.middle-content .main-text{
+	margin: 10px 0;
+}
+.middle-content .main-text .tu{
+	width: 187px;
+	height: 105px;
+	float: left;
+	overflow: hidden;
+}
+.middle-content .main-text .tu2{
+	width: 192px;
+	height: 105px;
+	float: left;
+	overflow: hidden;
+}
+.middle-content .main-text .details{
+	float: right;
+}
+.middle-content .main-text .details h3{
+	width: 180px;
+	height: 34px;
+	font-size: 14px;
+}
+.middle-content .dynamic-details .main-text a:hover{
+	text-decoration:underline;
+}
+.middle-content .main-text .details p{
+	line-height: 23px;
+	color: #666;
+}
+.middle-content .main-text .details p span{
+	float: right;
+	color: #ff7a29;
+	text-align: right;
+}
+.middle-content .main-text .details p a{
+	float: right;
+	margin-left: 50px;
+	color: #ff7a29;
+}
+
+.middle-content .main-text .con-bottom li{
+	width: 368px;
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	padding-left: 10px;
+	background: url(../images/li-icon.gif) left center no-repeat;
+}
+.middle-content .main-text .con-bottom li a:hover{
+	text-decoration:underline;
+	color: #e61b1b;
+}
+/*.middle-content .main-text .con-bottom .advertising-area li{
+	width: 192px;
+	height: 50px;
+	float: left;
+	padding: 0 0 9px;
+	background: none;
+}*/
+/* 土地转让 结束 */
+
+/* 云地对接 */
+.middle-content .main-text .docking-con img{
+	display: block;
+}
+.middle-content .main-text .docking-con{
+	width: 378px;
+}
+.middle-content .main-text .docking-con tu3{
+	width: 134px;
+	height: 100px;
+}
+.middle-content .main-text h3{
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.middle-content .main-text h3 a:hover{
+	text-decoration:underline;
+}
+.middle-content .main-text h2{
+	width: 100%;
+	font-size: 1.17em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.middle-content .main-text .text-con{
+	width: 55%;
+}
+.middle-content .main-text .text-con p{
+	margin-top: 6px;
+	line-height: 22px;
+	font-size: 12px;
+	overflow: hidden;
+}
+.middle-content .main-text .text-con p span{
+	color: #ff7b29;
+}
+.middle-content .main-text .text-con p a{
+	color: #ff7b29;
+}
+.middle-content .main-text .laws{
+	width: 378px;
+}
+.middle-content .main-text .laws li{
+	height: 32px;
+	padding: 0 10px;
+	line-height: 32px;
+	color: #c9c9c9;
+	text-align: right;
+}
+.middle-content .main-text .laws li a{
+	float: left;
+	width: 265px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.middle-content .main-text .laws li.bg{
+	background: #f7f7f7;
+}
+.middle-content .main-text .laws li.laws-title{
+	height: 36px;
+	line-height: 36px;
+	border-bottom: solid 1px #dcdcdc;
+	text-align: left;
+	font-size: 16px;
+	color: #333;
+}
+/* 云地对接 结束*/
+
+/* 招拍挂 */
+.middle-content .con-module-r .trailer li{
+	height: 25px;
+	line-height: 25px;
+}
+.middle-content .con-module-r .trailer li span{
+	display: inline-block;
+}
+.middle-content .con-module-r .trailer li .text_left{
+	width: 348px;
+}
+.middle-content .con-module-r .trailer li .text_left a:hover{
+	text-decoration: underline;
+	color: #e61b1b;
+}
+.middle-content .con-module-r .trailer li .text_right{
+	width: 40px;
+	text-align: right;
+}
+.middle-content .yun-dynamic .theme .transfer li{
+	height: 20px;
+	padding: 6px 0;
+	font-size: 14px;
+}
+/* 招拍挂 结束 */

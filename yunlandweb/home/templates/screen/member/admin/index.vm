@@ -1,0 +1,90 @@
+$rundata.setLayout("defaultMember")
+<script type="text/javascript"  src="$homeContent.getURI('scripts/member/memberresource.js')"></script>
+<div id="content">
+    <div class="member-content xn-width auto clearfix">
+        <div class="content-left">
+            <h3>我的云地</h3>
+            <ul class="member-my">
+                <li class="click"><a href="$homeLink.setTarget("member/admin/index")">我的土地</a></li>
+                <li><a href="$homeLink.setTarget("member/admin/requirement")">我的需求</a></li>
+                <li><a href="$homeLink.setTarget("member/admin/deliver")">我的投递</a></li>
+                <li><a href="$homeLink.setTarget("member/admin/collection")">我的收藏</a></li>
+            </ul>
+            <i class="member-line"></i>
+            <ul class="member-setting">
+                <li class="base-message"><a href="$homeLink.setTarget("member/admin/baseMessage")">基本信息</a></li>
+                <li class="password"><a href="$homeLink.setTarget("member/admin/password")">密码管理</a></li>
+                ##<li class="upgrade"><a href="$homeLink.setTarget("member/admin/upgrade")">会员升级</a></li>
+            </ul>
+        </div>
+
+        <div class="content-right">
+            <div class="content-top">
+                <label>地块名称：</label>
+                <input id="name" type="text" class="form-control w-150 mr-10"/>
+                <label>合作方式：</label>
+                <select class="form-control w-150 mr-10" id="cooperationMode" name="">
+                    <option value="">-- 请选择合作方式 --</option>
+                    #foreach($param in ${selectCollaborateMethod.keySet()})
+                        <option value="$param">${selectCollaborateMethod.get($param)}</option>
+                    #end
+                </select>
+                <div class="tip"></div>
+                <label>状态：</label>
+                <select class="form-control w-150" id="state" name="">
+                    <option value="">-- 请选择状态 --</option>
+                    <option value="RELEASE">审核成功</option>
+                    <option value="UNPUBLISHED">待审核</option>
+                    <option value="CANCELED">审核失败</option>
+                    <option value="UN_SUBMIT">未提交</option>
+                </select>
+                <a id="query" class="btn btn-short">查询</a>
+                <a class="btn btn-short" href="publishresource"  style="margin-bottom: 20px;width: 100px;float: right;">我要发布</a>
+            </div>
+            <div class="content-main">
+                <table id="resourceTable" class="mmg" width="100%">
+
+                </table>
+            </div>
+            <div id="pg" style="text-align: right;"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var getCooperationMode = function(value){
+        if(!value){
+            return "";
+        }
+        // 查询用途
+        var cooperationModes = [
+            #foreach($param in ${selectCollaborateMethod.keySet()})
+                {key:'$param',value:'${selectCollaborateMethod.get($param)}'},
+            #end
+        ]
+        for(var i=0;i<cooperationModes.length;i++){
+            var cooperationMode = cooperationModes[i];
+            if(cooperationMode&&cooperationMode.key==value){
+                return ""+cooperationMode.value;
+            }
+        }
+    }
+
+    var getLandPurose = function(value){
+        if(!value){
+            return "";
+        }
+        // 查询用途
+        var planuseModes = [
+            #foreach($param in ${selectPurpose.keySet()})
+                {key:'$param',value:'${selectPurpose.get($param)}'},
+            #end
+        ]
+        for(var i=0;i<planuseModes.length;i++){
+            var planuseMode = planuseModes[i];
+            if(planuseMode&&planuseMode.key==value){
+                return ""+planuseMode.value;
+            }
+        }
+    }
+</script>

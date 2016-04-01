@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:util="http://www.springframework.org/schema/util"
+             xmlns:p="http://www.springframework.org/schema/p"
+             xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/util http://localhost:8080/schema/www.springframework.org/schema/util/spring-util.xsd
+             ">
+
+    <util:map id="selectSupplyMethod" map-class="java.util.LinkedHashMap">
+        <beans:entry key="21" value="招标"/>
+        <beans:entry key="22" value="拍卖"/>
+        <beans:entry key="23" value="挂牌"/>
+        <beans:entry key="1" value="划拨"/>
+        <beans:entry key="2" value="招拍挂"/>
+        <beans:entry key="3" value="协议"/>
+        <beans:entry key="4" value="租赁"/>
+        <beans:entry key="5" value="作价出资或入"/>
+        <beans:entry key="6" value="授权经营"/>
+        <!--<beans:entry key="0" value="供地方式" />-->
+    </util:map>
+    <!--公告类型-->
+    <util:map id="selectNoticeType" map-class="java.util.LinkedHashMap">
+        <beans:entry key="21" value="招标"/>
+        <beans:entry key="22" value="拍卖"/>
+        <beans:entry key="23" value="挂牌"/>
+        <beans:entry key="100" value="公开公告"/>
+        <beans:entry key="101" value="公告调整"/>
+        <beans:entry key="102" value="其它公告"/>
+    </util:map>
+
+    <!--政府公告类型-->
+    <util:map id="selectPublicityType" map-class="java.util.LinkedHashMap">
+        <beans:entry key="GDJH" value="供地计划" />
+        <beans:entry key="CRGG" value="出让公告" />
+        <beans:entry key="CJGS" value="成交公示" />
+        <beans:entry key="JGGS" value="结果公示" />
+    </util:map>
+
+    <util:map id="selectLandPurpose" map-class="java.util.LinkedHashMap">
+        <beans:entry key="05" value="商服用地" />
+        <beans:entry key="051" value="批发零售用地" />
+        <beans:entry key="052" value="住宿餐饮用地" />
+        <beans:entry key="053" value="商务金融用地" />
+        <beans:entry key="054" value="其他商服用地" />
+        <beans:entry key="06" value="工矿仓储用地" />
+        <beans:entry key="061" value="工业用地" />
+        <beans:entry key="062" value="采矿用地" />
+        <beans:entry key="063" value="仓储用地" />
+        <beans:entry key="07" value="住宅用地" />
+        <beans:entry key="08" value="公共管理与公共服务用地" />
+        <beans:entry key="081" value="机关团体用地" />
+        <beans:entry key="082" value="新闻出版用地" />
+        <beans:entry key="083" value="科教用地" />
+        <beans:entry key="084" value="医卫慈善用地" />
+        <beans:entry key="085" value="文体娱乐用地" />
+        <beans:entry key="086" value="公共设施用地" />
+        <beans:entry key="087" value="公园与绿地" />
+        <beans:entry key="088" value="风景名胜设施用地" />
+        <beans:entry key="09" value="特殊用地" />
+        <beans:entry key="091" value="军事设施用地" />
+        <beans:entry key="092" value="使领馆用地" />
+        <beans:entry key="093" value="监教场所用地" />
+        <beans:entry key="094" value="宗教用地" />
+        <beans:entry key="095" value="殡葬用地" />
+        <beans:entry key="10" value="交通运输用地" />
+        <beans:entry key="102" value="铁路用地" />
+        <beans:entry key="102" value="公路用地" />
+        <beans:entry key="103" value="街巷用地" />
+        <beans:entry key="104" value="农村道路" />
+        <beans:entry key="105" value="机场用地" />
+        <beans:entry key="106" value="港口码头用地" />
+        <beans:entry key="107" value="管道运输用地" />
+        <beans:entry key="11" value="水域及水利设施用地" />
+        <beans:entry key="111" value="河流水面" />
+        <beans:entry key="112" value="湖泊水面" />
+        <beans:entry key="113" value="水库水面" />
+        <beans:entry key="114" value="坑塘水面" />
+        <beans:entry key="115" value="沿海滩涂" />
+        <beans:entry key="116" value="内陆滩涂" />
+        <beans:entry key="117" value="沟渠" />
+        <beans:entry key="118" value="水工建筑用地" />
+        <beans:entry key="119" value="冰川及永久积雪" />
+        <beans:entry key="12" value="其他土地" />
+        <beans:entry key="121" value="空闲地" />
+        <beans:entry key="122" value="设施农用地" />
+        <beans:entry key="123" value="田坎" />
+        <beans:entry key="124" value="盐碱地" />
+        <beans:entry key="125" value="沼泽地" />
+        <beans:entry key="126" value="沙地" />
+        <beans:entry key="127" value="裸地" />
+        <beans:entry key="071" value="高档住宅用地" />
+        <beans:entry key="072" value="中低价位、中小套型普通商品住房用地" />
+        <beans:entry key="073" value="其他普通商品住房用地" />
+        <beans:entry key="074" value="经济适用住房用地" />
+        <beans:entry key="075" value="廉租住房用地" />
+        <beans:entry key="076" value="其他住房用地" />
+        <beans:entry key="shangy" value="商业" />
+        <beans:entry key="zhuz" value="住宅" />
+        <beans:entry key="zhongh" value="综合" />
+        <beans:entry key="qiet" value="其他" />
+        <beans:entry key="077" value="公共租赁住房用地" />
+    </util:map>
+
+    <util:map id="selectMonth" map-class="java.util.LinkedHashMap">
+        <beans:entry key="1" value="1月" />
+        <beans:entry key="2" value="2月" />
+        <beans:entry key="3" value="3月" />
+        <beans:entry key="4" value="4月" />
+        <beans:entry key="5" value="5月" />
+        <beans:entry key="6" value="6月" />
+        <beans:entry key="7" value="7月" />
+        <beans:entry key="8" value="8月" />
+        <beans:entry key="9" value="9月" />
+        <beans:entry key="10" value="10月" />
+        <beans:entry key="11" value="11月" />
+        <beans:entry key="12" value="12月" />
+    </util:map>
+   <!--规划用途-->
+    <util:map id="selectPurpose" map-class="java.util.LinkedHashMap">
+        <beans:entry key="zhuz" value="住宅用地" />
+        <beans:entry key="shangy" value="商业/办公用地" />
+        <beans:entry key="gongy" value="工业用地" />
+        <beans:entry key="zhongh" value="综合用地" />
+    </util:map>
+   <!--出让方式-->
+    <util:map id="selectSellMethod" map-class="java.util.LinkedHashMap">
+        <beans:entry key="1" value="招标" />
+        <beans:entry key="2" value="挂牌" />
+        <beans:entry key="3" value="拍卖" />
+        <beans:entry key="4" value="协议出让" />
+    </util:map>
+    <!--合作方式-->
+    <util:map id="selectCollaborateMethod" map-class="java.util.LinkedHashMap">
+        <beans:entry key="1" value="整体转让" />
+        <beans:entry key="2" value="控股权转让" />
+        <beans:entry key="3" value="部分转让" />
+        <beans:entry key="4" value="股权转让" />
+        <beans:entry key="5" value="项目融资" />
+        <beans:entry key="6" value="债权融资" />
+        <beans:entry key="7" value="租赁融资" />
+    </util:map>
+    <!--使用年限-->
+    <util:map id="selectUserYear" map-class="java.util.LinkedHashMap">
+        <beans:entry key="0-5" value="0-5年" />
+        <beans:entry key="5-10" value="5-10年" />
+        <beans:entry key="10-20" value="10-20年" />
+        <beans:entry key="20-30" value="20-30年" />
+        <beans:entry key="30-50" value="30-50年" />
+        <beans:entry key="50-1000" value="50年以上" />
+    </util:map>
+
+    <util:map id="selectProvince" map-class="java.util.LinkedHashMap">
+        <beans:entry key="320000" value="江苏" />
+        <beans:entry key="330000" value="浙江" />
+        <beans:entry key="310000" value="上海" />
+        <beans:entry key="340000" value="安徽" />
+        <beans:entry key="350000" value="福建" />
+        <beans:entry key="360000" value="江西" />
+        <beans:entry key="110000" value="北京" />
+        <beans:entry key="120000" value="天津" />
+        <beans:entry key="130000" value="河北" />
+        <beans:entry key="140000" value="山西" />
+        <beans:entry key="210000" value="辽宁" />
+        <beans:entry key="220000" value="吉林" />
+        <beans:entry key="230000" value="黑龙江" />
+        <beans:entry key="370000" value="山东" />
+        <beans:entry key="410000" value="河南" />
+        <beans:entry key="420000" value="湖北" />
+        <beans:entry key="430000" value="湖南" />
+        <beans:entry key="440000" value="广东" />
+        <beans:entry key="460000" value="海南" />
+        <beans:entry key="500000" value="重庆" />
+        <beans:entry key="510000" value="四川" />
+        <beans:entry key="520000" value="贵州" />
+        <beans:entry key="530000" value="云南" />
+        <beans:entry key="610000" value="陕西" />
+        <beans:entry key="620000" value="甘肃" />
+        <beans:entry key="630000" value="青海" />
+        <beans:entry key="540000" value="西藏自治区" />
+        <beans:entry key="450000" value="广西壮族自治区" />
+        <beans:entry key="150000" value="内蒙古自治区" />
+        <beans:entry key="640000" value="宁夏回族自治区" />
+        <beans:entry key="650000" value="新疆维吾尔自治区" />
+        <beans:entry key="710000" value="台湾" />
+        <beans:entry key="810000" value="香港特别行政区" />
+        <beans:entry key="820000" value="澳门特别行政区" />
+    </util:map>
+    <util:map id="selectTime" map-class="java.util.LinkedHashMap">
+        <beans:entry key="3" value="3天"/>
+        <beans:entry key="7" value="一周"/>
+        <beans:entry key="14" value="两周"/>
+    </util:map>
+    <util:map id="selectLandArea" map-class="java.util.LinkedHashMap">
+        <beans:entry key="0-10" value="10万平米以下"/>
+        <beans:entry key="10-50" value="10-50万平米以下"/>
+        <beans:entry key="50-100000000" value="50万平米以上"/>
+    </util:map>
+    <util:map id="selectYear" map-class="java.util.LinkedHashMap">
+        <beans:entry key="1975" value="1975" />
+        <beans:entry key="1976" value="1976" />
+        <beans:entry key="1977" value="1977" />
+        <beans:entry key="1978" value="1978" />
+        <beans:entry key="1979" value="1979" />
+        <beans:entry key="1980" value="1980" />
+        <beans:entry key="1981" value="1981" />
+        <beans:entry key="1982" value="1982" />
+        <beans:entry key="1983" value="1983" />
+        <beans:entry key="1984" value="1984" />
+        <beans:entry key="1985" value="1985" />
+        <beans:entry key="1986" value="1986" />
+        <beans:entry key="1987" value="1987" />
+        <beans:entry key="1988" value="1988" />
+        <beans:entry key="1989" value="1989" />
+        <beans:entry key="1990" value="1990" />
+        <beans:entry key="1991" value="1991" />
+        <beans:entry key="1992" value="1992" />
+        <beans:entry key="1993" value="1993" />
+        <beans:entry key="1994" value="1994" />
+        <beans:entry key="1995" value="1995" />
+        <beans:entry key="1996" value="1996" />
+        <beans:entry key="1997" value="1997" />
+        <beans:entry key="1998" value="1998" />
+        <beans:entry key="1999" value="1999" />
+        <beans:entry key="2000" value="2000" />
+        <beans:entry key="2001" value="2001" />
+        <beans:entry key="2002" value="2002" />
+        <beans:entry key="2003" value="2003" />
+        <beans:entry key="2004" value="2004" />
+        <beans:entry key="2005" value="2005" />
+        <beans:entry key="2006" value="2006" />
+        <beans:entry key="2007" value="2007" />
+        <beans:entry key="2008" value="2008" />
+        <beans:entry key="2009" value="2009" />
+        <beans:entry key="2010" value="2010" />
+        <beans:entry key="2011" value="2011" />
+        <beans:entry key="2012" value="2012" />
+        <beans:entry key="2013" value="2013" />
+        <beans:entry key="2014" value="2014" />
+        <beans:entry key="2015" value="2015" />
+        <beans:entry key="2016" value="2016" />
+        <beans:entry key="2017" value="2017" />
+        <beans:entry key="2018" value="2018" />
+        <beans:entry key="2019" value="2019" />
+        <beans:entry key="2020" value="2020" />
+        <beans:entry key="2021" value="2021" />
+        <beans:entry key="2022" value="2022" />
+        <beans:entry key="2023" value="2023" />
+        <beans:entry key="2024" value="2024" />
+        <beans:entry key="2025" value="2025" />
+        <beans:entry key="2026" value="2026" />
+        <beans:entry key="2027" value="2027" />
+        <beans:entry key="2028" value="2028" />
+        <beans:entry key="2029" value="2029" />
+        <beans:entry key="2030" value="2030" />
+        <beans:entry key="2031" value="2031" />
+        <beans:entry key="2032" value="2032" />
+        <beans:entry key="2033" value="2033" />
+        <beans:entry key="2034" value="2034" />
+        <beans:entry key="2035" value="2035" />
+        <beans:entry key="2036" value="2036" />
+        <beans:entry key="2037" value="2037" />
+        <beans:entry key="2038" value="2038" />
+        <beans:entry key="2039" value="2039" />
+        <beans:entry key="2040" value="2040" />
+        <beans:entry key="2041" value="2041" />
+        <beans:entry key="2042" value="2042" />
+        <beans:entry key="2043" value="2043" />
+        <beans:entry key="2044" value="2044" />
+        <beans:entry key="2045" value="2045" />
+        <beans:entry key="2046" value="2046" />
+        <beans:entry key="2047" value="2047" />
+        <beans:entry key="2048" value="2048" />
+        <beans:entry key="2049" value="2049" />
+        <beans:entry key="2050" value="2050" />
+        <beans:entry key="2051" value="2051" />
+        <beans:entry key="2052" value="2052" />
+        <beans:entry key="2053" value="2053" />
+    </util:map>
+
+</beans:beans>

@@ -1,0 +1,711 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合作国土局-开发商</title>
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+
+<link rel="stylesheet" href="../../../styles/organization.css">
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                                    <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                                                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        <ul>
+                            <li>
+                                <select class="form-control wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="form-control wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="form-control wp-100" id="cmbArea" name="cmbArea"></select>
+                            </li>
+                            <li>
+                                <select class="form-control wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                                                            <option value="zhuz"> 住宅用地 </option>
+                                                                            <option value="shangy"> 商业/办公用地 </option>
+                                                                            <option value="gongy"> 工业用地 </option>
+                                                                            <option value="zhongh"> 综合用地 </option>
+                                                                    </select>
+                            </li>
+                            <li id="sellMethod_li">
+                                                                                                                                                                                                                                                                                                                                                                                                                            </li>
+                        </ul>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="请输入关键词">
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                    
+                </div>
+            <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+             <ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="../index.html" target="_self">首&nbsp;&nbsp;&nbsp;页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="../recommend/index.html" target="_self">云地热推</a>
+                    <ul>
+                       <li><a href="../recommend/index.html" target="_self">土地推介</a></li>
+                       <li><a href="#" target="_self">推介活动</a></li>
+                    </ul>
+                </li>
+                <li class="$activesell">
+                    <a href="../sell/index.html" target="_self">一级市场</a>
+                    <ul>
+                       <li><a href="../sell/index.html" target="_self">最新地块</a></li>
+                       <li><a href="../sell/announcement.html" target="_self">政府公告</a></li>
+                    </ul>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../recommend/index.html" target="_self">二级市场</a>
+                    <ul>
+                       <li><a href="../recommend/index.html" target="_self">找土地</a></li>
+                       <li><a href="../transfer/index.html" target="_self">找资金</a></li>
+                    </ul>
+                </li>
+                <li class="$activenews">
+                    <a href="#">宅基地</a>
+                    <ul>
+                       <li><a href="#" target="_self">宅地流转</a></li>
+                       <li><a href="#" target="_self">最美乡村</a></li>
+                    </ul>
+                </li>
+                <li class="$activestatistic">
+                    <a href="#" target="_self">海外土地</a>
+                    <ul>
+                       <li><a href="#" target="_self">土地项目</a></li>
+                       <li><a href="#" target="_self">投资指南</a></li>
+                    </ul>
+                </li>
+                <li class="$activestatistic">
+                    <a href="../statistic/index.html" target="_self">云地大数据</a>
+                </li>
+            </ul>
+            <div class="column-nav">
+                <a class="pr-20" href="../../../../403.html">合作国土局</a>
+                <i class="vertical-line bg-color-2"></i>
+                <a href="../../../../403.html" style="margin-left:20px; background:url(../../../images/column-nav-icon2.png) no-repeat left center;">合作开发商</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    addressInit('cmbProvince', 'cmbCity', 'cmbArea','86');
+    //加载所有的数据
+    var sellmethod = function(type){
+        if(type=="sell") {
+            var options = '<select class="form-control wp-100" name="sellmethod" id="sellmethod"><option value="">出让方式</option>';
+                            options += '<option value="21"> 招标 </option>'
+                            options += '<option value="22"> 拍卖 </option>'
+                            options += '<option value="23"> 挂牌 </option>'
+                            options += '<option value="1"> 划拨 </option>'
+                            options += '<option value="2"> 招拍挂 </option>'
+                            options += '<option value="3"> 协议 </option>'
+                            options += '<option value="4"> 租赁 </option>'
+                            options += '<option value="5"> 作价出资或入 </option>'
+                            options += '<option value="6"> 授权经营 </option>'
+                            options +='</select>'
+        }else if(type=="transfer"){
+            var options = '<select class="form-control wp-100" name="sellmethod" id="sellmethod"><option value="">合作方式</option>';
+                            options += '<option value="1"> 整体转让 </option>'
+                            options += '<option value="2"> 控股权转让 </option>'
+                            options += '<option value="3"> 部分转让 </option>'
+                            options += '<option value="4"> 股权转让 </option>'
+                            options += '<option value="5"> 项目融资 </option>'
+                            options += '<option value="6"> 债权融资 </option>'
+                            options += '<option value="7"> 租赁融资 </option>'
+                            options +='</select>'
+        }
+        $("#sellMethod_li").append(options);
+    }
+    var businessType = '';
+//    alert(businessType);
+    $(function(){
+        if($("#nav-"+businessType)){
+            $("#nav-"+businessType).addClass('active');
+            $("#nav-"+businessType).siblings().removeClass('active');
+            if(businessType=='news'){
+                $("#forLandNews").show();
+                $("#forLandInfo").hide();
+            }else{
+                $("#forLandNews").hide();
+                $("#forLandInfo").show();
+                if(businessType=='sell'||businessType=='transfer'){
+                    $("#sellMethod_li").empty();
+                    sellmethod(businessType);
+                }
+            }
+        }
+        $("#keyword").val('');
+        $("#cmbProvince").val('');
+        $("#cmbCity").val('');
+        $("#cmbArea").val('');
+        $("#purpose").val('');
+        $("#sellmethod").val('');
+        var cp = '';
+        if(''!=cp || null!=cp){
+            addressInit('cmbProvince', 'cmbCity', 'cmbArea','','','');
+        }
+        $("#businessType").data("currenttab",'');
+    });
+
+</script>
+<!--头部-结束-->
+
+<div id="content">
+    <div class="member-content statistic-content xn-width auto clearfix">
+        <div class="content-left" style="width:200px;height:200px">
+            <h3>合作机构</h3>
+            <ul class="member-my" id="tab-ul">
+                <li onclick="site.changeTabs(this,'forField')" class="click"><a href="#">国土局</a></li>
+                <li onclick="site.changeTabs(this,'forActivity')"><a href="#">开发商</a></li>
+            </ul>
+        </div>
+        <div class="content-right forNewsTitle" style="width:970px;">
+            <div class="institutions_con land-intro-verticleList" id="forField">
+                <div class="homeland_box" id="Annoucementdata">
+                    <div class="yun-homeland">
+                        <div class="theme">
+                            <a target="_blank" href="recommend/index">合作国土局</a>
+                        </div>
+                    </div>
+                    <div class="theme-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <div class="dotted-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <div class="dotted-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <div class="dotted-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/tu.jpg"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                </div>
+                <div id="orgpagination1" class="pagination f-left" style="width:970px;">
+                    <a href="#">上一页</a>
+                    <span class="active">1</span>
+                    <a href="#">2</a>
+                    <a href="#">下一页</a>
+                </div>
+            </div>
+            <div class="institutions_con land-intro-verticleList" id="forActivity" style="display: none;">
+                <div class="developers_box" id="activitysData">
+                    <div class="yun-homeland">
+                        <div class="theme">
+                            <a target="_blank" href="recommend/index">合作开发商</a>
+                        </div>
+                    </div>
+                    <div class="theme-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/institutionslogo/institutions-logo-1.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-2.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-3.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-4.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-5.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <div class="dotted-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/institutionslogo/institutions-logo-1.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-2.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-3.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-4.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-5.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <div class="dotted-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/institutionslogo/institutions-logo-1.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-2.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-3.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-4.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-5.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <div class="dotted-line"></div>
+                    <dl>
+                       <dt style="margin-left:0"><a href="#"><img src="../../../images/institutionslogo/institutions-logo-1.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-2.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-3.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-4.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                    <dl>
+                       <dt><a href="#"><img src="../../../images/institutionslogo/institutions-logo-5.png"/></a></dt>
+                       <dd>龙门国土资源局</dd>
+                    </dl>
+                </div>
+                <div id="orgpagination2" class="pagination f-left" style="width:970px;">
+                    <a href="#">上一页</a>
+                    <span class="active">1</span>
+                    <a href="#">2</a>
+                    <a href="#">下一页</a>
+                </div>
+            </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var readTable = function (elementId, data) {
+        //1 清空当前数据
+        $('#' + elementId).children(".single-outer").remove();
+        // 2 在元素后，添加数据
+        var result = data.result;
+        $(result).each(function (index, item) {
+            var itemremark = item.remarks ? item.remarks : "";
+            if(itemremark.length>120){
+                var html = '<div class="single-outer">' +
+                        '<a href="detail?id=' + item.id + '&type='+item.type+'"><img src="' + item.picturePath + '" width="330" height="200" alt="土地信息"></a>' +
+                        '<div class="single-inner-middle w-560">' +
+                        '<div class="title"><a href="detail?id=' + item.id + '&type='+item.type+'" target="_blank">' + item.title + '</a></div>' +
+                        '<div class="place-area">发布时间：' + item.approveTimeStr + ' </div>' +
+                        '<div class="place-area h-80">' +
+                        '<div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>' +
+                        '<div class="news-summary toShowAllTd">'+
+                        '   <div class="toShowAllDiv">'+
+                        '       <span class="toShowAll">'+itemremark+'</span>'+
+                        '       <span class="toShowAll-arrow"></span>'  +
+                        '   </div>'+ itemremark.substring(0,120)+'...' + '</div>' +
+
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+            }else{
+                var html = '<div class="single-outer">' +
+                        '<a href="detail?id=' + item.id + '&type='+item.type+'"><img src="' + item.picturePath + '" width="330" height="200" alt="土地信息"></a>' +
+                        '<div class="single-inner-middle w-560">' +
+                        '<div class="title"><a href="detail?id=' + item.id + '&type='+item.type+'" target="_blank">' + item.title + '</a></div>' +
+                        '<div class="place-area">发布时间：' + item.approveTimeStr + ' </div>' +
+                        '<div class="place-area h-80">' +
+                        '<div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>' +
+                        '<div class="news-summary">'+ itemremark + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+            }
+
+
+            $('#' + elementId).append(html);
+        })
+        $(".toShowAllTd").hover(function(){
+            $(this).find('div').show();
+        },function(){
+            $(this).find('div').hide();
+        });
+    };
+
+    function pageselectCallback0(page_index, jq){
+        load_list0(page_index);
+        return false;
+    }
+    function createPagination0(page_index, count) {
+        $("#orgpagination0").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback0
+        });
+    }
+    function load_list0(page_index){
+        var data = "{type:'notice',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('Annoucementdata', data);
+                    createPagination0(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback1(page_index, jq){
+        load_list1(page_index);
+        return false;
+    }
+    function createPagination1(page_index, count) {
+        $("#orgpagination1").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback1
+        });
+    }
+    function load_list1(page_index){
+        var data = "{type:'inlineInformation',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('infomationdata', data);
+                    createPagination1(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback2(page_index, jq){
+        load_list2(page_index);
+        return false;
+    }
+    function createPagination2(page_index, count) {
+        $("#orgpagination2").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback2
+        });
+    }
+    function load_list2(page_index){
+        var data = "{type:'activityForecast',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('activitysData', data);
+                    createPagination2(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback3(page_index, jq){
+        load_list3(page_index);
+        return false;
+    }
+    function createPagination3(page_index, count) {
+        $("#orgpagination3").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback3
+        });
+    }
+    function load_list3(page_index){
+        var data = "{type:'specialReport',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('ReportsData', data);
+                    createPagination3(page_index, data.totalCount);
+                }, 'json')
+    }
+    $(function(){
+        load_list0(0);
+        load_list1(0);
+        load_list2(0);
+        load_list3(0);
+        site.changeTabs(this,'forField')
+    });
+</script>
+
+<!--footer start -->
+<div id="footer">
+    <div class="footer">
+        <div class="xn-width auto clearfix">
+            <ul class="footer-nav clearfix">
+                <li class="f-left about">
+                    <div class="text">关于我们</div>
+                    <ul class="list-text">
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=companyIntroduce")" target="_blank">公司介绍</a></li>                        
+                        <li><a href="$indexContent.getURI("/news/index")" target="_blank">最新动态</a></li>
+                    </ul>
+                </li>
+                <li class="f-left help">
+                    <div class="text">帮助中心</div>
+                    <ul class="list-text">
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=newComer")" target="_blank">新手入门</a></li>
+                        <li><a href="$indexContent.getURI("/news/informationdetail?type=help")" target="_blank">使用帮助</a></li>
+                    </ul>
+                </li>
+                <li class="f-left care">
+                    <div class="text">关注我们</div>
+                    <ul class="list-text mt_10">
+                        <li class="f-left p-relative forWechat">
+                            <img src="../../../images/wei-icon.png" class="mr_38">
+                        </li>
+                        <li class="f-left p-relative forSina">
+                            <img src="../../../images/xinlang-icon.png" class="mr_38">
+                        </li>
+                    </ul>
+                </li>
+                <li class="f-left hot-line">
+                    <ul class="f-left">
+                        <li class="text">客服热线</li>
+                        <li class="clearfix">
+                            <img src="../../../images/member-phone.png" class="member-phone">
+                            <span class="number">0571-81902006</span>
+                        </li>
+                    </ul>
+                    <ul class="f-right">
+                        <li class="text">在线咨询</li>
+                        <li>
+                            <a target='_blank' href='http://wpa.qq.com/msgrd?v=3&uin=2625838059&site=qq&menu=yes'>
+                                <img id="qq" src="../../../images/member-qq.png" class="member-phone" style="display: block;">
+                                <img id="qqClick" src="../../../images/qq-click.png" class="member-phone" style="display: none;">
+                                <span>在线咨询</span>
+                                <span>09:00-18:00</span>
+                            </a>
+                        </li>
+                    </ul>
+
+            </li>
+        </ul>
+        <div class="friend_links clearfix">
+          <div style="width:1070px; margin:0 auto;">
+                <span class="tit">友情链接：</span>
+
+      <p class="links_wrap">
+
+                    <a title="中国土地市场网" target="_blank" href="http://www.landchina.com">中国土地市场网</a>
+                    <a title="土地估价师题库" target="_blank" href="http://www.benexam.com/tudigujiashi/">土地估价师题库</a>
+                    <a title="土地登记代理人题库" target="_blank" href="http://www.benexam.com/tudidengjidaili/">土地登记代理人题库</a>
+                    <a title="房地产估价师题库" target="_blank" href="http://www.benexam.com/fangdichangujia/">房地产估价师题库</a>
+                    <a title="房地产经纪人题库" target="_blank" href="http://www.benexam.com/fangdichanjingjiren/">房地产经纪人题库</a>
+                     <a title="房产小秘书" target="_blank" href="#">房产小秘书</a>
+                     <a title="光大惠升" target="_blank" href="#">光大惠升</a>
+                     <a title="深圳贷款网" target="_blank" href="#">深圳贷款网</a>
+                     <a title="阳灿金服" target="_blank" href="#">阳灿金服</a>
+                     <a title="滦南房天下" target="_blank" href="#">滦南房天下</a>
+                </p>
+                </div>
+            </div>
+        <div class="again">
+            <div style="padding-top:10px;">浙江臻善科技有限公司　浙ICP备06018569号-2　<img src="../../../images/pic.gif.lnk"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- footer end-->
+<script type="text/javascript">
+    $("#qq,#qqClick").hover(function(){
+        $("#qq").hide();
+        $("#qqClick").show();
+    },function(){
+        $("#qq").show();
+        $("#qqClick").hide();
+    });
+</script>
+
+</body>
+<script  type="text/javascript"  src="../../../scripts/index.js"></script>
+<script  type="text/javascript"  src="../../../scripts/site.js"></script>s
+</html>

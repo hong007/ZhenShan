@@ -1,0 +1,85 @@
+<script type="text/javascript"  src="$homeContent.getURI('scripts/member/register.js')"></script>
+<script type="text/javascript"  src="$homeContent.getURI('vendor/validate/jquery.validate.js')"></script>
+$rundata.setLayout("defaultEdit")
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget('index')" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>会员注册</span>
+    </div>
+</div>
+
+<div class="simple-edit-content xn-width auto">
+    <div class="simple-edit-content-inner">
+        <div class="step-banner">
+            <div class="step-banner-1"><span class="step-banner-word step-active">验证账号</span></div>
+            <div class="step-banner-2"><span class="step-banner-word step-2">填写账号信息</span></div>
+            <div class="step-banner-3"><span class="step-banner-word step-3">完成</span></div>
+        </div>
+        <div class="step-input">
+            <form action="step_2" method="post" id="step1">
+                <div class="input-line">
+                    <label><i class="xn-required-i"></i>手机号码：</label>
+                    <span>
+                        <input type="text" class="form-control" id="mobilePhone" name="mobilePhone"
+                               placeholder="请输入您注册的手机号码" pattern="" />
+                    </span>
+                    <span id="mobileError"></span>#*不要删哈*#
+
+                </div>
+
+                <div class="input-line mt_50">
+                    <label class="xn-label"><i class="xn-required-i"></i>验证码：</label>
+                    <span>
+                        <input type="text" class="form-control short-form-control" name="code" id="code"
+                               placeholder="请输入验证码"/>
+                        <div class="identifyingCode-div" id="getVerifiyCode">免费获取验证码</div>
+                        <div class="clearfix"></div>
+                    </span>
+                    <span></span>
+                </div>
+                <div class="input-line agreeCbx">
+                    <img id="agreeCbx" src="$homeContent.getURI('/images/checkbox.png')" width="22" height="19"
+                         onclick="site.checkboxAgreeToggle(this,true)" alt="复选框">
+                    <img id="agreeCbxChoosed" src="$homeContent.getURI('/images/checkbox-choosed.png')"
+                         onclick="site.checkboxAgreeToggle(this,false)" width="22" height="19" alt="复选框已选">
+                    <span>我已同意<a href="#">云地服务协议</a></span>
+                    <input type="hidden" id="isAgree" name="isAgree">
+                </div>
+                <div class="input-line xn-center clearfix mt-85">
+                    <input class="btn btn-primary-long col-sm-offset-1" id="agreeNext" type="submit" #*onclick="nextstep()"*# value="下一步"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="xn-width auto">
+    <div class="step-footer-content">
+        <div class="column-nav">
+            <a href="">联系我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">加入我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">免责申明</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">意见反馈</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">友情链接</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">网站地图</a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="recordInfo">备案信息</div>
+    </div>
+</div>
+##<script type="text/javascript">
+##        $("#step1").validate({
+##            errorPlacement : function(error, element) {
+##                error.appendTo(element.parent().next());
+##            }
+##        });
+##</script>

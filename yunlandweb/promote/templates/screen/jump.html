@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>跳转页面</title>
+<!--<meta http-equiv="refresh" CONTENT="3;URL=http://www.yunland.cn/statistic/index.htm" >-->
+<link href="../../styles/base.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!--头部 开始-->
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+             <div class="f-left" style="padding-top: 8px;"><a href="#"><img src="../../images/nav-logo.png"/></a></div>
+             <ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="http://www.yunland.cn/index.htm" target="_blank">首&nbsp;&nbsp;&nbsp;页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="../screen/recommend/index.html" target="_blank">云地热推</a>
+                    <ul>
+                       <li><a href="#" target="_blank">土地推介</a></li>
+                       <li><a href="#" target="_blank">推介活动</a></li>
+                    </ul>
+                </li>
+                <li class="$activesell">
+                    <a href="http://www.yunland.cn/sell/index.htm" target="_blank">一级市场</a>
+                    <ul>
+                       <li><a href="#" target="_blank">最新地块</a></li>
+                       <li><a href="#" target="_blank">政府公告</a></li>
+                    </ul>
+                </li>
+                <li class="$activetransfer">
+                    <a href="http://www.yunland.cn/transfer/index.htm" target="_blank">二级市场</a>
+                    <ul>
+                       <li><a href="#" target="_blank">找土地</a></li>
+                       <li><a href="#" target="_blank">找资金</a></li>
+                    </ul>
+                </li>
+                <li class="$activestatistic">
+                    <a href="http://www.yunland.cn/statistic/index.htm" target="_blank">云地大数据</a>
+                </li>
+             </ul>
+            <div class="column-nav">
+                <a class="pr-20" href="http://www.yunland.cn/member/admin/publishresource.htm">合作国土局</a>
+                <i class="vertical-line bg-color-2"></i>
+                <a href="http://www.yunland.cn/member/admin/publishrequirement.htm" style="margin-left:20px; background:url(../../images/column-nav-icon2.png) no-repeat left center;">合作开发商</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--头部 结束-->
+<div  class="xn-width auto" style=" text-align:center;">
+<div style="padding-top:130px;"><img src="../../images/welcome.jpg"/></div>
+<div style=" margin-top:60px; font-size:16px;">您可以以您的手机号码作为账户名，所接收的验证码作为密码，登陆云地网，享受更多会员服务。</div>
+请等待<span id="dd">5</span>秒 自动跳转
+<script type="text/javascript">
+function run(){
+    var s = document.getElementById("dd");
+    if(s.innerHTML == 0){
+        window.location.href='../../../home/templates/screen/statistic/index.html';
+        return false;
+    }
+    s.innerHTML = s.innerHTML * 1 - 1;
+}
+window.setInterval("run();", 500);
+</script>
+</div>
+</body>
+</html>

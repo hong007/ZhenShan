@@ -1,0 +1,146 @@
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left">
+                您好，<a href="$homeContent.getURI("../forword")">$!passport.userName</a> 欢迎来到云地，免费咨询热线：
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    400-888800
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                #if($passport)
+                    <a class="pr-20" href="$baseContent.getURI("loginout")">退出</a>
+                #else
+                    <a class="pr-20" href="$baseContent.getURI("login")">登录</a>
+                #end
+                <i class="vertical-line bg-color-1"></i>
+                <a class="pr-20" href="$homeContent.getURI("../member/register/step1")">注册</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a href="">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="$homeLink.setTarget("index")" class="xn-text-center">
+                <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+                <h4>领先的土地推介平台</h4>
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" onclick="site.changeTab(this,'forLandInfo','forLandNews')">
+                        <a>土地推介</a>
+                    </li>
+                    <li onclick="site.changeTab(this,'forLandInfo','forLandNews')">
+                        <a>土地出让</a>
+                    </li>
+                    <li onclick="site.changeTab(this,'forLandInfo','forLandNews')">
+                        <a>土地转让</a>
+                    </li>
+                    <li onclick="site.changeTab(this,'forLandNews','forLandInfo')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="forLandInfo" class="search-outer">
+                <div class="search-content">
+                    <ul>
+                        <li>
+                            <select class="form-control wp-100" id="cmbProvince" name="cmbProvince"></select>
+                        </li>
+                        <li>
+                            <select class="form-control wp-100" id="cmbCity" name="cmbCity"></select>
+                        </li>
+                        <li>
+                            <select class="form-control wp-100" id="cmbArea" name="cmbArea"></select>
+                        </li>
+                        <li>
+                            <select class="form-control wp-100">
+                                <option value="" selected="selected">规划用途</option>
+                                <option value="1">住宅</option>
+                                <option value="2">商业/办公</option>
+                                <option value="3">工业</option>
+                                <option value="4">其他</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select class="form-control wp-100">
+                                <option value="" selected="selected">出让方式</option>
+                                <option value="1">招牌</option>
+                                <option value="2">挂牌</option>
+                                <option value="3">拍卖</option>
+                                <option value="4">公开公告</option>
+                                <option value="5">其他</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <input type="text" class="form-control wp-94 clearfix" placeholder="请输入关键词">
+                </div>
+                <div class="search-btn">
+                    <span>搜索</span>
+                </div>
+            </div>
+            <div id="forLandNews" class="search-landnews" style="display: none;">
+                <input type="text" placeholder="请输入关键词"/>
+
+                <div class="search-btn">
+                    <span>搜索</span>
+                </div>
+            </div>
+        </div>
+        <img class="header-QRCode" src="$homeContent.getURI('/images/erweima.png')" width="100" height="100" alt="二维码">
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+            #set($fullUrl = $rundata.request.requestURI)
+            #if($fullUrl.startsWith("/index"))
+                #set($activeindex = "active")
+            #elseif($fullUrl.startsWith("/recommend"))
+                #set($activerecommend = "active")
+            #elseif($fullUrl.startsWith("/sell"))
+                #set($activesell = "active")
+            #elseif($fullUrl.startsWith("/transfer"))
+                #set($activetransfer = "active")
+            #elseif($fullUrl.startsWith("/transfer"))
+                #set($activetransfer = "active")
+            #elseif($fullUrl.startsWith("/news"))
+                #set($activenews = "active")
+            #elseif($fullUrl.startsWith("/statistic"))
+                #set($activestatistic = "active")
+            #else
+                #set($activeindex = "active")
+            #end
+            <ul class="clearfix header-nav-ul">
+                <li class="$activeindex">
+                    <a href="$homeLink.setTarget('index')" target="_self">首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="$homeLink.setTarget('recommend/index')" target="_self">土地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="$homeLink.setTarget('sell/index')" target="_self">土地出让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="$homeLink.setTarget('transfer/index')" target="_self">土地转让</a>
+                </li>
+                <li class="$activenews">
+                    <a href="$homeLink.setTarget('news/index')" target="_self">云地动态</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="$homeLink.setTarget('statistic/index')" target="_self">云地大数据</a>
+                </li>
+            </ul>
+            <div class="column-nav">
+                <a class="pr-20" href="$homeLink.setTarget('../member/admin/publishresource')">发布土地</a>
+                <i class="vertical-line bg-color-2"></i>
+                <a href="$homeLink.setTarget('../member/admin/publishrequirement')">发布需求</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+</script>

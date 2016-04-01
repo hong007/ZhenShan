@@ -1,0 +1,27 @@
+<div class="login-header">
+    <div class="am-g">
+        <a href="javascript:history.back(-1)"><span class="am-icon-angle-left am-icon-lg"></span></a>
+        <span class="login-header-title">找回密码</span>
+    </div>
+</div>
+<div class="am-g login-content">
+    <div>
+        <img src="$mobileContent.getURI("image/logo.png")">
+        <form action="step2" method="post" id="step1" class="am-form">
+            <div class="login-edit">
+                <div class="login-input-line">
+                    <input type="text" id="mobilePhone" name="mobilePhone" placeholder="请输入手机号">
+                </div>
+                <hr>
+                <div class="login-input-line">
+                    <input style="width: 47%" type="text" name="code" id="code" placeholder="请输入验证码">
+                    <button type="button" id="getVerifiyCode" class="am-btn am-btn-primary am-radius am-fr mt-7">获取验证码</button>
+                </div>
+            </div>
+            <div id="messageBox" style="color: red;font-size: 1.4rem;"></div>
+            <input type="submit" id="agreeNext" class="am-btn am-btn-primary am-btn-block am-radius mt-20" value="下一步"/>
+        </form>
+    </div>
+</div>
+<script type="text/javascript"  src="$mobileContent.getURI('scripts/findPassport.js')"></script>
+<script type="text/javascript"  src="$mobileContent.getURI('vendor/validate/jquery.validate.js')"></script>

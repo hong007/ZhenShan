@@ -1,0 +1,183 @@
+$rundata.setLayout("defaultEdit")
+#macro (publishinfoMessage $field)
+    #if (!$field.valid) $field.message #end
+#end
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget("index")" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="125" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>发布土地需求</span>
+    </div>
+</div>
+<form action="" method="post">
+    <input type="hidden" name="action" value="EditRequirement"/>
+    #set ($group = $form.editdemand.defaultInstance)
+    $group.mapTo($landDemand)
+    <div class="edit-content xn-width auto">
+        <div class="edit-content-inner">
+            <h3 class="editContent-h3">地块基本信息</h3>
+            <input type="hidden" id="id" name="$group.id.key" value="$group.id.value">
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>需求名称：</div>
+                    <input type="text" class="form-control" id="title" name="$group.title.key"
+                           value="$group.title.value">
+                    <div class="error-area">#publishinfoMessage ($group.title)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>土地所在地区：</div>
+                    <select class="form-control w-150 mr-10" id="cmbProvince" name="$group.provinceId.key" value="$group.provinceId.value"></select>
+                    <select class="form-control w-150 mr-10" id="cmbCity" name="$group.cityId.key" value="$group.cityId.value"></select>
+                    <select class="form-control w-150 mr-10" id="cmbArea" name="$group.districtId.key" value="$group.districtId.value"></select>
+                    <div class="error-area">
+                        #publishinfoMessage ($group.provinceName)
+                    #publishinfoMessage ($group.cityName)
+                    #publishinfoMessage ($group.districtName)
+                    </div>
+                </div>
+                <input type="hidden" id="provinceName" name="$group.provinceName.key" value="$group.provinceName.value">
+                <input type="hidden" id="cityName" name="$group.cityName.key" value="$group.cityName.value">
+                <input type="hidden" id="districtName" name="$group.districtName.key" value="$group.districtName.value">
+                <input type="hidden" id="contentId" name="$group.contentId.key" value="$group.contentId.value">
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>需求面积：</div>
+                    <input type="text" class="form-control" id="title" name="$group.demandArea.key"
+                           value="$group.demandArea.value">
+                    <div class="error-area">#publishinfoMessage ($group.demandArea)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5">预算金额：</div>
+                    <input type="text" class="form-control" id="amount" name="$group.amount.key"
+                           value="$group.amount.value">
+                    <div class="error-area">#publishinfoMessage ($group.amount)</div>
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>规划用途：</div>
+                ##<input type="text" class="form-control" id="planUse" name="$group.planUse.key"
+                ##       value="$group.planUse.value">
+                    <select id="planUse" class="form-control" name="$group.planUse.key" value="$group.planUse.value">
+                        <option value="zhuz">住宅用地</option>
+                        <option value="shangy">商业/办公用地</option>
+                        <option value="gongy">工业用地</option>
+                        <option value="zhongh">综合用地</option>
+                    </select>
+                    <div class="error-area">#publishinfoMessage ($group.planUse)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>$group.cooperationMode.displayName：</div>
+                    #select ($group.cooperationMode.key $selectCollaborateMethod $group.cooperationMode.value "-- 请选择合作方式 --")
+                    <div class="error-area">#publishinfoMessage ($group.cooperationMode)</div>
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5">企业名称：</div>
+                    <input type="text" class="form-control" id="enterpriseName" name="$group.enterpriseName.key"
+                           value="$group.enterpriseName.value">
+                    <div class="error-area"></div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>联系人：</div>
+                    <input type="text" class="form-control" id="contactName" name="$group.contactName.key"
+                           value="$group.contactName.value">
+                    <div class="error-area">#publishinfoMessage ($group.contactName)</div>
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>使用年限：</div>
+                    <input type="text" class="form-control" id="year" name="$group.year.key"
+                           value="$group.year.value">
+                    <div class="error-area">#publishinfoMessage ($group.year)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>联系电话：</div>
+                    <input type="text" class="form-control" id="contactName" name="$group.contactPhone.key"
+                           value="$group.contactPhone.value">
+                    <div class="error-area">#publishinfoMessage ($group.contactPhone)</div>
+                </div>
+            </div>
+            <h3 class="editContent-h3">地块描述</h3>
+            <div class="map-content">
+                <textarea class="form-control" rows="20" name="$group.content.key" value="$group.content.value" id="landIntro"></textarea>
+                <div class="error-area"></div>
+            </div>
+            <div>#if($errorMsg) <p style="color: red">$errorMsg</p> #end</div>
+        </div>
+    </div>
+    <div class="input-line xn-center clearfix mt-60">
+    #*<button class="btn btn-primary col-sm-offset-0">保存</button>
+    <button class="btn btn-warning ml-50">提交</button>
+    <a class="btn btn-default ml-50" href="javascript:history.back(-1)">取消</a>*#
+        <input type="submit" class="btn btn-primary col-sm-offset-0" name="event_submit_do_save"value="保存" ></input>
+        <input type="submit" class="btn btn-warning ml-50" name="event_submit_do_submit" value="提交"></input>
+        <a class="btn btn-default ml-50" href="javascript:history.back(-1)">取消</a>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea', '江苏省', '苏州市','太仓市');
+        var editItem = [
+            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen','image','multiimage', '/',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'link', 'unlink', '|', 'about'
+        ];
+        var editor = KindEditor.create('#landIntro',
+                {
+                    width: "100%",
+                    height: "210px",
+                    items: editItem,
+                    allowFileManager: false,
+                    uploadJson: '../../upload/fileUploadJson.do',
+                }
+        );
+        editor.html('#noescape() $group.content.value #end');
+        $('select').addClass('form-control');
+        $("#planUse").find("option[value=$group.planUse.value]").attr("selected",true);
+        var provinceName ;
+        var cityName ;
+        var districtName ;
+
+
+        $("#cmbProvince").val('$group.provinceId.value');
+        changeProvince();
+        $("#cmbCity").val('$group.cityId.value');
+        changeCity();
+        $("#cmbArea").val('$group.districtId.value');
+        mapInit('allmap', 'cmbProvince', 'cmbCity', 'cmbArea', 'address', 'coordinate');
+
+        $("#cmbProvince").change(function() {
+            var proviceId = $("#cmbProvince  option:selected").val();
+            provinceName = $("#cmbProvince  option:selected").html();
+            selectArea();
+        });
+        $("#cmbCity").change(function() {
+            selectArea();
+        });
+        $("#cmbArea").change(function() {
+            selectArea();
+        });
+
+        var selectArea = function(){
+            provinceName = $("#cmbProvince  option:selected").html();
+            cityName = $("#cmbCity  option:selected").html();
+            districtName =  $("#cmbArea  option:selected").html();
+            $("#cityName").val(cityName);
+            $("#districtName").val(districtName);
+            $("#provinceName").val(provinceName);
+        }
+
+    });
+</script>

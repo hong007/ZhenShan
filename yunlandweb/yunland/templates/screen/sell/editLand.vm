@@ -1,0 +1,236 @@
+$page.setTitle("编辑土地信息")
+
+<script type="text/javascript">
+    var selectModel = [
+        #foreach($param in ${selectLandPurpose.keySet()})
+            {id:"$param",name:'${selectLandPurpose.get($param)}'},
+        #end
+    ]
+
+</script>
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("sell/index")">土地出让</a></li>
+        <li class="active">编辑土地信息</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="EditLandController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix">
+            <div class="edit-content">
+                <div class="land-title">
+                    <h3>{{sellLand.name}}</h3>
+                </div>
+                <h4 class="recommend-editContent-h4">土地基本信息</h4>
+                <div>
+                    <div class="xn-input-line  clearfix label-long">
+                        <label class="xn-label"><span class="f-right">宗地编号：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="number" ng-model="sellLand.landNumber" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">宗地总面积(万平方米)：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="area" ng-model="sellLand.floorSpace " required="required" ng-pattern="/^\d+(\.{0,1}\d+){0,1}$/">
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">宗地坐落：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="place" ng-model="sellLand.landLocation" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">出让年限：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="limit" ng-model="sellLand.sellYear" required="required" ng-pattern="/^(0|[1-9]\d*)$/">
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">容积率：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="plotRatio" ng-model="sellLand.plotRatio"  >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">建筑密度(%)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="buildingDensity" ng-model="sellLand.buildingDensity"  >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">绿化率(%)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="landscapingRatio" ng-model="sellLand.greeningRate"  >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">建筑限高(米)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="maxHeight" ng-model="sellLand.maxHeight"  >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">土地用途：</span></label>
+
+                        <div class="xn-input-sm">
+                            #*<input type="text" class="form-control"
+                                   name="purpose" ng-model="sellLand.planUse " required="required">*#
+                                <div xn-filter-select data-select-data="selectData" ng-model="land.planUse" name="operatingUnit" ></div>
+                        </div>
+                        #*<div class="xn-input-sm">
+                            <select id="planUse" class="form-control" ng-model="sellLand.planUse">
+                                <option id="07" value="07">住宅用地</option>
+                                <option id="shangy" value="shangy">商业/办公用地</option>
+                                <option id="061" value="061">工业用地</option>
+                                <option id="zhongh" value="zhongh">综合用地</option>
+                            </select>
+                        </div>*#
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">投资强度(万/公顷)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="invest" ng-model="sellLand.investmentIntensity"  >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">保证金：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="cautionMoney" ng-model="sellLand.deposit " >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">估价报告备案号：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="recordNum" ng-model="sellLand.priceRecord " >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">起始价：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="initPrice" ng-model="sellLand.startPrice " >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">加价幅度：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="markupRange" ng-model="sellLand.bidIncrement " >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">截止日期：</span></label>
+                        <div class="xn-input-sm openData input-group">
+                            <input type="text" class="form-control" id="endTime" ng-model="sellLand.endTime" name="endTime"
+                                   datepicker-popup="yyyy-MM-dd" is-open="endTime" #*max-date="maxDate"*#  datepicker-options="dateOptions"
+                                   date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openEndTime($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"></label>
+                        <div class="xn-input-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">位置地图</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">位置：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-lg">
+                            <div xn-location ng-model="land.address" data-city-id="{{land.address}}"  address=false></div>
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        #*<label class="xn-label"><span class="f-right">经纬度：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="coordinate" ng-model="land.coordinate" required="required" disabled>
+                        </div>*#
+                            <div >
+                                <input type="hidden" class="form-control"
+                                       name="coordinate" ng-model="land.coordinate" >
+                            </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <div id="allmap"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">地块图片</h4>
+                <div>
+                    <ul class="xn-upload-img" >
+                        <input type="file" id="pictureFile" name="pictureFile" ng-click="showPicture()" width="114" height="85"
+                               contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                        <li class="clearfix"  ng-if="sellLand.picturePath == null" onclick="pictureFile.click()">
+                            <i class="icon icon-add"></i>
+                            <div class="upload-add-title ng-binding">地块图片</div>
+                        </li>
+                        <img ng-if="sellLand.picturePath != null" onclick="pictureFile.click()" class="view-img imgFile" id="spanImage" alt="请选择图片"
+                             width="234" height="120" ng-src="{{sellLand.picturePath}}"/>
+                    </ul>
+                </div>
+            ##  <div class="multiple-file"><div xn-attachment-edit ng-model="attachment"></div></div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">详细介绍</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <textarea class="form-control" rows="15" name="sellIntro" id="sellIntro" ng-model="sellLand.content"
+                                    ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0 ">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5"
+                                                       ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>

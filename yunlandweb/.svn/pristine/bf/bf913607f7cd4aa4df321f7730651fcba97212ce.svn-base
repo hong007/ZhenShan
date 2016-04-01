@@ -1,0 +1,98 @@
+<div class="article-content xn-width auto">
+##    <div class="title-outer">
+##        <div class="title">$!landDynamic.title</div>
+##        <div class="publish-time">
+##            <span class="publish-word">发布时间:</span>
+##            <span>
+##                #if($landDynamic.approveTime)
+##                    $!utils.formatMessage("{0, date, yyyy-MM-dd HH:mm:ss}", $!landDynamic.approveTime)
+##                   #else
+##                       暂无发布时间
+##                #end
+##            </span>
+##        </div>
+##    </div>
+##    <div class="summary">
+##        摘要：$!landDynamic.remarks
+##    </div>
+##    <div class="contents">
+##        #noescape() $!landDynamic.content #end
+##    </div>
+    <div class="yunland-news clearfix">
+        <div class="content-left">
+            <!--文章标题-->
+           <h3 class="news-detail-title">$!landDynamic.title</h3>
+            <div class="news-detail-subtitle clearfix"><div class="width-65 clearfix">
+                <span class="f-left">yunland.cn</span><span class="pl_10 f-left">云地网</span>
+                <span class="pl_10 f-left">
+                     #if($landDynamic.approveTime)
+                         $!utils.formatMessage("{0, date, yyyy-MM-dd HH:mm:ss}", $!landDynamic.approveTime)
+                     #else
+                         暂无发布时间
+                     #end
+                </span>
+                <span class="pl_10 f-left">来源：
+                    #if($landDynamic.author)
+                        $!landDynamic.author
+                    #else
+                        云地网
+                    #end
+                </span>
+                <span class="pl_10 bdsharebuttonbox share_icondiv f-right">
+                    <a href="#" class="bds_more  share_icon1" data-cmd="more"></a>分享
+                </span>
+        </div>
+            </div>
+            <!--摘要-->
+            <p class="news-detail-summary mt_10"><span class="digest">[摘要]</span>$!landDynamic.remarks</p>
+            <!--文章主体内容-->
+            <div class="news-detail-content">
+                #noescape() $!landDynamic.content #end
+            </div>
+            <ul class="clearfix mt_10 news-more">
+                #if($landDynamicPre.title)
+                    <li>上一篇：<a href="detail.vm?id=$!landDynamicPre.id&type=$landDynamicPre.type">$!landDynamicPre.title</a></li>
+                #end
+                #if($landDynamicNxt.title)
+                <li>下一篇：<a href="detail.vm?id=$!landDynamicNxt.id&type=$landDynamicNxt.type">$!landDynamicNxt.title</a></li>
+                #end
+            </ul>
+
+        </div>
+        <div class="content-right">
+            <!--排行榜-->
+            <div class="news-ranking-list">
+            <p class="rank-title">资讯排行榜</p>
+            <ul>
+            #foreach($!landDynamic in $landDynamicList)
+                #if($velocityCount < 4)
+                    <li class="toShowAllTd"><a href="detail.vm?id=$!landDynamic.id&type=$landDynamic.type" target="_blank" title="$!landDynamic.title"><span class="number highlight">$velocityCount</span><span class="toShowAllTd">$!landDynamic.title</span></a>
+                        #*<div class="toShowAllDiv display-none" >
+                            <span class="toShowAll xn-text-center">$!landDynamic.title</span>
+                            <span class="toShowAll-arrow"></span>
+                        </div>*#
+                    </li>
+
+                #else
+                    <li class="toShowAllTd"><a href="detail.vm?id=$!landDynamic.id&type=$landDynamic.type" target="_blank" title="$!landDynamic.title"><span class="number nomalbg">$velocityCount</span><span class="toShowAllTd">$!landDynamic.title</span></a>
+                        #*<div class="toShowAllDiv display-none ">
+                            <span class="toShowAll xn-text-center">$!landDynamic.title</span>
+                            <span class="toShowAll-arrow"></span>
+                        </div>*#
+                    </li>
+
+                #end
+            #end
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+/*$(".toShowAllTd").hover(function () {
+    $(this).find('div').show();
+}, function () {
+    $(this).find('div').hide();
+});*/
+
+</script>

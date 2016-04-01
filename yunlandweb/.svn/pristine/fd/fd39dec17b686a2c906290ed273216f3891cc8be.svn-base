@@ -1,0 +1,1011 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>政府公告</title>
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+<link rel="stylesheet" type="text/css" href="../../../styles/popup.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" width="140" height="90"alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        
+                        <ul>
+                            <li style="margin-left:5px;">
+                                <select class="select-input2 wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                    <option value="zhuz"> 住宅用地 </option>
+                                    <option value="shangy"> 商业/办公用地 </option>
+                                    <option value="gongy"> 工业用地 </option>
+                                    <option value="zhongh"> 综合用地 </option>
+                                    <option value="other"> 其他 </option>
+                                </select>
+                            </li>
+                            <li id="sellMethod_li"></li>
+                        </ul>
+
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+                
+                <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" width="90" height="90" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li>
+                    <a href="../index.htm" target="_self">云地网首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="../recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li>
+                    <a href="../transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="active">
+                    <a href="../sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="../statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../report/index.html" target="_self">云地报告</a>
+                </li>
+                <li class="column-nav">
+                   <a href="#">合作机构</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right" style=" display:none"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<!--头部 结束-->
+<div class="xn-width auto clearfix">
+   <div class="promote-con-left f-left mb-10">
+           <div class="login-head detail-slider excludeIndex" id="focus">
+        <div id="trippleArrowLeft2" class="arrow-left"></div>
+        <div id="trippleArrowRight2" class="arrow-right"></div>
+        <ul>
+        <li>
+            <a href="$!recommendbuttom.url">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/652030732172398592.jpg"  width="100%" height="260" alt="头部推介图片">
+            </a>
+        </li>
+        <li>
+            <a href="$!recommendbuttom.url">
+               <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/641775130393317376.jpg" width="100%" height="260" alt="头部推介图片">
+            </a>
+        </li>
+        <li>
+            <a href="$!recommendbuttom.url">
+               <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/643250954040643584.jpg" width="100%" height="260" alt="头部推介图片"></li>  
+            </a>
+        <li>
+            <a href="$!recommendbuttom.url">
+               <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/641774529727041536.jpg" width="100%" height="260" alt="头部推介图片"></li>
+            </a>
+        </ul>
+        <div class="btnBg xn-width auto" style="display:none">
+            <div class="list-circle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+            </div>
+        </div>
+    </div>
+    <div id="individual-search" class="search-nav-xin"><a href="javascript:;">云地网首页</a>><a href="javascript:;">土地招拍挂</a>><a href="javascript:;">政府公告</a></div>
+        <div class="w1200" style="margin-top:0">
+            <div class="list-screen">
+                <div style="padding:10px;">
+                    <div class="screen-term">
+                        <div class="selectNumberScreen">
+                            <div id="selectList" class="screenBox screenBackground">
+                                <dl class="listIndex" attr="terminal_brand_s">
+                                    <dt id="region">所在地区 :</dt>
+                                    <dd data-more=true style="width:740px">
+                                       <label>
+                                             <a href="javascript:;" values2="" values1=""attrval="不限" style="display: none;">不限</a>
+                                        </label>
+                                         <label>
+                                                    <input name="radio2" type="radio" value="320000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="320000"
+                                                       attrval="江苏">江苏</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="330000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="330000"
+                                                       attrval="浙江">浙江</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="310000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="310000"
+                                                       attrval="上海">上海</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="340000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="340000"
+                                                       attrval="安徽">安徽</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="350000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="350000"
+                                                       attrval="福建">福建</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="360000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="360000"
+                                                       attrval="江西">江西</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="110000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="110000"
+                                                       attrval="北京">北京</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="120000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="120000"
+                                                       attrval="天津">天津</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="130000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="130000"
+                                                       attrval="河北">河北</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="140000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="140000"
+                                                       attrval="山西">山西</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="210000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="210000"
+                                                       attrval="辽宁">辽宁</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="220000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="220000"
+                                                       attrval="吉林">吉林</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="230000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="230000"
+                                                       attrval="黑龙江">黑龙江</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="370000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="370000"
+                                                       attrval="山东">山东</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="410000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="410000"
+                                                       attrval="河南">河南</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="420000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="420000"
+                                                       attrval="湖北">湖北</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="430000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="430000"
+                                                       attrval="湖南">湖南</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="440000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="440000"
+                                                       attrval="广东">广东</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="460000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="460000"
+                                                       attrval="海南">海南</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="500000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="500000"
+                                                       attrval="重庆">重庆</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="510000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="510000"
+                                                       attrval="四川">四川</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="520000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="520000"
+                                                       attrval="贵州">贵州</a>
+                                                </label>
+                                                    <label>
+                                                    <input name="radio2" type="radio" value="530000"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="530000"
+                                                       attrval="云南">云南</a>
+                                                </label>
+                                                <label >
+                                                        <input name="radio2" type="radio" value="610000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="610000"
+                                                          attrval="陕西">陕西</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="620000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="620000"
+                                                          attrval="甘肃">甘肃</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="630000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="630000"
+                                                          attrval="青海">青海</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="540000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="540000"
+                                                          attrval="西藏">西藏</a>
+                                                    </label>
+                                                                    <label>
+                                                        <input name="radio2" type="radio" value="450000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="450000"
+                                                          attrval="广西">广西</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="150000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="150000"
+                                                          attrval="内蒙古">内蒙古</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="640000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="640000"
+                                                          attrval="宁夏">宁夏</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="650000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="650000"
+                                                          attrval="新疆">新疆</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="710000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="710000"
+                                                          attrval="台湾">台湾</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="810000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="810000"
+                                                          attrval="香港">香港</a>
+                                                    </label>
+                                                                    <label >
+                                                        <input name="radio2" type="radio" value="820000"
+                                                               style="display: none;"/>
+                                                       <a href="javascript:;" values2="" values1="" value="820000"
+                                                          attrval="澳门">澳门</a>
+                                                    </label>
+                                    </dd>
+                                </dl>
+                                <dl class="listIndex" attr="">
+                                    <dt id="noticeType">公告类型</dt>
+                                    <dd>
+                                        <label>
+                                            <input name="radio2" type="radio" value="" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="GDJH" attrval="供地计划">供地计划</a>
+                                        </label>
+                                        <label>
+                                            <input name="radio2" type="radio" value="" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="CRGG" attrval="出让公告">出让公告</a>
+                                        </label>
+                                        <label>
+                                            <input name="radio2" type="radio" value="" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="CJGS" attrval="成交公示">成交公示</a>
+                                        </label>
+                                        <label>
+                                            <input name="radio2" type="radio" value="" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="JGGS" attrval="结果公示">结果公示</a>
+                                        </label>
+                                    </dd>
+                               </dl>
+                               <dl class="listIndex" attr="">
+                                    <dt id="publishTime">发布时间</dt>
+                                    <dd>
+                                        <label>
+                                            <input name="radio2" type="radio" value="3" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="3" attrval="3天">3天</a>
+                                        </label>
+                                        <label>
+                                            <input name="radio2" type="radio" value="7" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="7" attrval="一周">一周</a>
+                                        </label>
+                                        <label>
+                                            <input name="radio2" type="radio" value="14" style="display: none;">
+                                            <a href="javascript:;" values2="" values1="" value="14" attrval="两周">两周</a>
+                                        </label>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hasBeenSelected clearfix">
+                    <div style="float:right;" class="eliminateCriteria">【清空全部】</div>
+                    <dl>
+                        <dt>已选条件：</dt>
+                        <dd style="DISPLAY: none" class=clearDd>
+                        <div class=clearList></div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="content-main">
+            <table id="resourceTable" class="mmg" width="100%">
+    
+            </table>
+        </div>
+        <div id="pg" style="text-align: right;" class="mmPaginator"></div>
+    <div class="clearfix"></div>
+    </div>
+    <div class="promote-con-right middle-content f-right">
+        <div class="list-con">
+            <h3>全国成交土地总价排行榜<a href="javascript:;" class="more">更多>></a></h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-2">排名</th>
+                    <th class="xn-col-sm-4"></th>
+                    <th class="xn-col-sm-7">地块位置</th>
+                    <th class="xn-col-sm-5">总价<span style="font-size:12px;">（元）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">                            
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="list-con">
+            <h3>全国成交土地面积排行榜<a href="javascript:;" class="more">更多>></a></h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-2">排名</th>
+                    <th class="xn-col-sm-4"></th>
+                    <th class="xn-col-sm-7">地块位置</th>
+                    <th class="xn-col-sm-5">单价<span style="font-size:12px;">（元）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">                            
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="list-con">
+            <h3>全国成交土地楼面价排行榜<a href="javascript:;" class="more">更多>></a></h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-2">排名</th>
+                    <th class="xn-col-sm-4"></th>
+                    <th class="xn-col-sm-7">地块位置</th>
+                    <th class="xn-col-sm-5">总价<span style="font-size:12px;">（元/m²）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">                            
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../../scripts/shaixuan6.js"></script>
+<script type="text/javascript" src="../../../vendor/mmgrid/json2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var tab = new $.fn.tab({
+            tabList:"#demo1 .ui-tab-container .ui-tab-list li",
+            contentList:"#demo1 .ui-tab-container .ui-tab-content"
+        });
+        var tab = new $.fn.tab({
+            tabList:"#demo1 .ui-tab-container .ui-tab-list2 li",
+            contentList:"#demo1 .ui-tab-container .ui-tab-content2"
+        });
+        $(".land-intro-list li:last").css("margin-right","0px");
+
+        $("#selectList").find(".more").toggle(function(){
+            $(this).addClass("more_bg");
+            $(".more-none").show()
+        },function(){
+            $(this).removeClass("more_bg");
+            $(".more-none").hide()
+        });
+
+        var taboy_box=$(".lefttable-list");
+        taboy_box.children("tbody").find("tr:gt(2)").hide();
+        $(".leftbox-morea").toggle(function(){
+                    $(this).parent().prev().find("tr").show();
+                    $(this).addClass("more-i")
+                },function(){
+                    $(this).removeClass("more-i");
+                    $(this).parent().prev().children("tbody").find("tr:gt(2)").hide();
+                }
+        );
+
+        var getPlanUse = function(value){
+            if(!value){
+                return "";
+            }
+            // 查询用途
+            var planuses = [
+            ]
+            for(var i=0;i<planuses.length;i++){
+                var planuse = planuses[i];
+                if(planuse&&planuse.key==value){
+                    return ""+planuse.value;
+                }
+            }
+        }
+        var cols = [
+            { title:'公告', name:'title' ,width:300, align:'left',renderer:function(val,item){
+                return '<a href="announcementdetail?id='+item.id+'" target="_blank" title='+val+'>'+val+'</a>'
+            }},
+            { title:'公告类型', name:'type',width:60 ,align:'center',renderer:function(val){
+                if(val=='GDJH'){
+                    return '<span title="供地计划">供地计划</span>'
+                }else if(val=='CRGG'){
+                    return '<span title="出让公告">出让公告</span>'
+                }else if(val=='CJGS'){
+                    return '<span title="成交公示">成交公示</span>'
+                }else if(val=='JGGS'){
+                    return '<span title="结果公示">结果公示</span>'
+                }else{
+                    return '<span title="其他">其他</span>'
+                }
+            }},
+            {title: '发布时间', name: 'approveTime',width:80,align:'center',renderer:function(val){
+                if(val){
+                    val = val.substr(0,10);
+                    var tempdata = val.split("-");
+                    return tempdata[0]+"年"+tempdata[1]+"月"+tempdata[2]+"日";
+                }
+            }}
+            //{ title:'合作方式', name:'cooperationMode' , align:'right',   type: 'number'},
+            //{ title:'状态', name:'status' ,align:'right', type: 'number'},
+            //{ title:'操作', name:'' , align:'center', lockWidth:true, lockDisplay: true, renderer: function(val){
+            //    return '<a class="view">查看</a>| <a class="delete">删除</a>'
+            //}}
+        ];
+        var mmg = $('.mmg').mmGrid({
+            height:1080,
+            width: 828,
+            cols: cols,
+            url: '/sell/api.do',
+            method: 'post',
+            nowrap:true,
+            remoteSort:true,
+            root:'result',
+            loadingText:'云地网提醒您,数据正在努力加载中...',
+            loadErrorText:'云地网提醒您,数据加载异常...',
+            fullWidthRows: true,
+            autoLoad: true,
+            indexCol:true,
+            indexColWidth:80,
+            plugins: [
+                $('#pg').mmPaginator()
+            ],
+            params: function(){
+                return {
+                    method: 'api.sell.notice.find'
+                }
+            }
+        });
+
+        $("#query").click(function () {
+            //拼装查询结果
+            var keyword = $('#mykeyword').val();
+            var data = {};
+            data.keyword = keyword;
+            data.selectvalue = selectResult();
+            mmg.load({data: JSON.stringify(data)});
+////            console.log(data);
+////
+////            data.push({keyword:keyword});
+//            $.ajax({ type: "post",//使用get方法访问后台
+//                dataType: "json",//返回json格式的数据
+//                url:'/sell/api.do',
+//                data:{method:'api.sell.result.find',data:data},
+//                success: function(msg){
+//                    console.log(msg);
+//                }
+//            })
+        });
+
+        //$("#query").click(function(){
+        //    //拼装查询结果
+        //    var keyword = $('#keyword').val();
+        //    var data = "{'keyword':\""+keyword+"\",'selectvalue':\""+selectResult()+"\"}";
+        //    mmg.load({data:data});
+        //});
+    });
+</script>
+
+<script type="text/javascript">
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            window.location.href = '$mobileContent.getURI("/index")';
+        }
+    }
+    $(function () {
+        $(".toShowAllTd").hover(function () {
+            $(this).find('div').show();
+        }, function () {
+            $(this).find('div').hide();
+        });
+        browserRedirect();
+    });
+
+    //信息hover显示
+//    $(function(){
+//
+//        $(".index-img-con").find(".tip").css("display","none");
+//        $(".supply li").hover(function(){
+//            var indexli= $(this).index();
+//            $(this).find(".tip").show().siblings().find(".tip").hide();
+//        },function(){
+//            $(".index-img-con").find(".tip").css("display","none");
+//        });
+//    })
+
+
+</script>
+<style type="text/css">
+    .screenBox dl dd span {
+
+        margin: 0px 12px 0px 0px;
+        color: #666;
+        overflow: hidden;
+        text-decoration: none;
+        float: left;
+        display: block;
+        vertical-align: middle;
+		line-height: 24px;
+    }
+    .screenBox dl dd {
+        position: relative;
+        padding-left: 0px;
+        float: left;
+        padding-top: 0px;
+        vertical-align: middle;
+    }
+    .screenBox dl dt {
+        text-align: left;
+        width: 65px;
+        font-weight: 400;
+		color: #9b9b9b;
+        padding-top: 2px;
+    }
+</style>
+</body>
+<!-- 日期控件 -->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/My97DatePicker/WdatePicker.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/datejs.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/ui.tab.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/plugins.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/json2.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmGrid.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmPaginator.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/pagination/jquery.pagination.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/s3Slider/s3Slider.js?v=1.0-SNAPSHOT"></script>
+</html>

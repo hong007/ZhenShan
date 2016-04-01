@@ -1,0 +1,45 @@
+<div class="main clearfix" ng-controller="NewsListController">
+    <h3 class="title"> 管理导航：
+        <a  href="$singleLink.setTarget("news/list")">信息管理</a> |
+        <a   href="$singleLink.setTarget("news/create")">添加信息</a></h3>
+    <div class="form-layout clearfix">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="info">
+                <th class="xn-text-center col-sm-1">序号</th>
+                <th class="xn-text-center col-sm-5">标题</th>
+                <th class="xn-text-center col-sm-2">排序</th>
+                <th class="xn-text-center col-sm-1">推荐</th>
+                <th class="xn-text-center col-sm-1">新品</th>
+                <th class="xn-text-center col-sm-2">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="page in List">
+                <td class="xn-text-center" ng-bind="vm.pageSize*(vm.pageNumber-1)+$index +1"></td>
+                <td class="xn-text-center">{{page.title}}</td>
+                <td class="xn-text-center">
+                    <input type="number" class="form-control  ordNum" ng-model="page.ordNum" >
+                    <button type="submit" class="btn btn-default"  ng-click="doOrder(page)">改</button>
+                </td>
+                <td class="xn-text-center">
+                    <button type="submit" class="btn btn-link" ng-class="{'red':page.isRecommend}"  ng-click="doChange(page,'RECOMMEND')">{{page.isRecommend |yesNo}}</button>
+                </td>
+                <td class="xn-text-center">
+                    <button type="submit" class="btn btn-link"  ng-class="{'red':page.isNewArrival}"  ng-click="doChange(page,'NEWARRIVAL')">{{page.isNewArrival |yesNo}}</button>
+                </td>
+                <td class="xn-text-center">
+                    <a  href="$singleLink.setTarget("news/edit")?id={{page.id}}">修改</a> | <a  href="javascript:void(0)" ng-click="doDelete(page.id)">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot ng-if="vm.totalCount == 0">
+            <tr><td colspan="7" class="xn-text-center">暂无数据</td></tr>
+            </tfoot>
+        </table>
+        <div class="clearfix"></div>
+        <div class="f-left mt_20 mb_10">共{{vm.totalCount}}条</div>
+        <pagination  class="f-right" ng-show="vm.totalCount>vm.pageSize"  ng-change="getList()"  max-size="maxPageSize" total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                     class="pagination-sm"  boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>
+</div>

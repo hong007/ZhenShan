@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云地网-会员</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/home/images/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" href="../../../../styles/base.css"></link>
+<link rel="stylesheet" href="../../../../styles/member.css"></link>
+<link rel="stylesheet" href="../../../../vendor/kindeditor/themes/default/default.css"></link>
+<link rel="stylesheet" href="../../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" href="../../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" href="../../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" href="../../../../vendor/mmgrid/theme/bootstrap/mmPaginator-bootstrap.css">
+<script  type="text/javascript"  src="../../../../scripts/jquery.min.js"></script>
+</head>
+
+<body>
+<!--头部  开始-->
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好,bear， 欢迎来到云地，咨询热线：</span>
+                <span class="phone">
+                    <img src="http://www.yunland.cn/home/images/phone.png" width="16" height="15" alt="电话">
+                    0571-81902006
+                </span>
+            </div>
+            <div class="f-right column-nav">
+                                    <a class="pr-20" href="http://www.yunland.cn/base/loginout">注销</a>
+                                <i class="vertical-line bg-color-1"></i>
+                <a href="">新手指引</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="nav">
+    <div class="xn-width auto member-nav clearfix">
+        <div class="nav-left">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="http://www.yunland.cn/home/images/logo.png" width="125" height="81" alt="云地网">
+            </a>
+            <i class="vertical-line"></i>
+            <div class="nav-name">
+                <h2>我 的 云 地</h2>
+                <span>领先的土地推介平台</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">土地推介</a></li>
+                <li><a href="#">土地出让</a></li>
+                <li><a href="#">土地转让</a></li>
+                <li><a href="#">云地动态</a></li>
+                <li><a href="#">云地大数据</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--头部  结束-->
+<div id="content">
+    <div class="member-content xn-width auto clearfix">
+        <div class="content-left">
+            <h3>我的云地</h3>
+            <ul class="member-my">
+                <li><a href="index.html">我的土地</a></li>
+                <li><a href="requirement.html">我的需求</a></li>
+                <li><a href="deliver.html">我的投递</a></li>
+                <li><a href="collection.html">我的收藏</a></li>
+            </ul>
+            <i class="member-line"></i>
+            <ul class="member-setting">
+                <li class="base-message"><a href="baseMessage.html">基本信息</a></li>
+                <li class="password click"><a href="password.html">密码管理</a></li>
+                <li><a href="#">我的会员</a></li>
+                            </ul>
+        </div>
+
+        <div class="content-right">
+            <div class="base-content-top">
+                <span class="base-bar">密码管理</span>
+            </div>
+                        <form action="" method="post">
+                <input type="hidden" name="action" value="ChangePassword"/>
+                                <div class="password-content-main clearfix">
+                    <div class="pw">
+                        <label>原密码:</label>
+                        <input type="password" name="_fm.c._0.o"
+                               value="">
+                        <span style="color: red">                            </span>
+                    </div>
+                    <div class="pw">
+                        <label>新密码:</label>
+                        <input type="password" name="_fm.c._0.n"
+                               value="">
+                        <span style="color: red">                            </span>
+                    </div>
+                    <div class="pw">
+                        <label>确认新密码:</label>
+                        <input type="password" name="_fm.c._0.c"
+                               value="">
+                        <span style="color: red">                            </span>
+                    </div>
+                    <div class="pw">
+                                            </div>
+                    <div class="pw">
+                        <input type="submit" class="btn btn-primary-long ml-35" name="event_submit_do_update"
+                               value="确定"></input>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<!--footer start -->
+<div id="footer">
+    <div class="footer">
+        <div class="xn-width auto clearfix">
+            <ul class="footer-nav clearfix">
+                <li class="f-left about">
+                    <div class="text">关于我们</div>
+                    <ul class="list-text">
+                        <li><a href="http://www.yunland.cn/news/informationdetail?type=companyIntroduce" target="_blank">公司介绍</a></li>
+                        <li><a href="http://www.yunland.cn/news/index" target="_blank">最新动态</a></li>
+                        <li><a href="http://www.yunland.cn/news/contact" target="_blank">联系我们</a></li>
+                    </ul>
+                </li>
+                <li class="f-left help">
+                    <div class="text">帮助中心</div>
+                    <ul class="list-text">
+                        <li><a href="http://www.yunland.cn/news/informationdetail?type=newComer" target="_blank">新手入门</a></li>
+                        <li><a href="http://www.yunland.cn/news/informationdetail?type=help" target="_blank">使用帮助</a></li>
+                    </ul>
+                </li>
+                <li class="f-left care">
+                    <div class="text">关注我们</div>
+                    <ul class="list-text mt_10">
+                        <li class="f-left p-relative forWechat">
+                            <img src="http://www.yunland.cn/home/images/wei-icon.png" class="mr_38">
+                        </li>
+                        <li class="f-left p-relative forSina">
+                            <img src="http://www.yunland.cn/home/images/xinlang-icon.png" class="mr_38">
+                        </li>
+                    </ul>
+                </li>
+                <li class="f-left hot-line">
+                    <ul class="f-left">
+                        <li class="text">客服热线</li>
+                        <li class="clearfix">
+                            <img src="http://www.yunland.cn/home/images/member-phone.png" class="member-phone">
+                            <span class="number">0571-81902006</span>
+                        </li>
+                    </ul>
+                    <ul class="f-right">
+                        <li class="text">在线咨询</li>
+                        <li>
+                            <a target='_blank' href='http://wpa.qq.com/msgrd?v=3&uin=2625838059&site=qq&menu=yes'>
+                                <img id="qq" src="http://www.yunland.cn/home/images/member-qq.png" class="member-phone" style="display: block;">
+                                <img id="qqClick" src="http://www.yunland.cn/home/images/qq-click.png" class="member-phone" style="display: none;">
+                                <span>在线咨询</span>
+                                <span>09:00-18:00</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+            <div class="friend_links clearfix">
+                <div style="width:1070px; margin:0 auto;">
+                    <span class="tit">友情链接：</span>
+
+                    <p class="links_wrap">
+
+
+                        <a title="中国土地市场网" target="_blank" href="http://www.landchina.com">中国土地市场网</a>
+                        <a title="土地估价师题库" target="_blank" href="http://www.benexam.com/tudigujiashi/">土地估价师题库</a>
+                        <a title="土地登记代理人题库" target="_blank" href="http://www.benexam.com/tudidengjidaili/">土地登记代理人题库</a>
+                        <a title="房地产估价师题库" target="_blank" href="http://www.benexam.com/fangdichangujia/">房地产估价师题库</a>
+                        <a title="房地产经纪人题库" target="_blank" href="http://www.benexam.com/fangdichanjingjiren/">房地产经纪人题库</a>
+                        <a title="房产小秘书" target="_blank" href="http://www.xiaomishusoft.com/">房产小秘书</a>
+                        <a title="北京房产抵押贷款" target="_blank" href="http://www.pzz8.com/">北京房产抵押贷款</a>
+                        <a title="深圳贷款网" target="_blank" href="http://www.51rongz.com/">深圳贷款网</a>
+
+                    </p>
+                </div>
+            </div>
+            <div class="again">
+                <div style="padding-top:10px;">浙江臻善科技有限公司　浙ICP备06018569号-2　<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='float: center;'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256144657%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+                    <script>
+                        var _hmt = _hmt || [];
+                        (function() {
+                            var hm = document.createElement("script");
+                            hm.src = "//hm.baidu.com/hm.js?58afcf0578c028f4364b4eb02d8df6e8";
+                            var s = document.getElementsByTagName("script")[0];
+                            s.parentNode.insertBefore(hm, s);
+                        })();
+                    </script>
+                   <script type="text/javascript"> var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9bca8510b0f81ed6a9c48644b98ddc30' type='text/javascript'%3E%3C/script%3E")) </script>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- footer end-->
+    <script type="text/javascript">
+        $("#qq,#qqClick").hover(function(){
+            $("#qq").hide();
+            $("#qqClick").show();
+        },function(){
+            $("#qq").show();
+            $("#qqClick").hide();
+        });
+    </script>
+
+
+    </body>
+<script  type="text/javascript"  src="../../../../scripts/member.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/jsAddress.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/site.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/map.js"></script>
+<script type="text/javascript" src="../../../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="../../../../vendor/kindeditor/lang/zh_CN.js"></script>
+<script  type="text/javascript"  src="../../../../scripts/jquery.form.js"></script>
+<script type="text/javascript"  src="../../../../vendor/mmgrid/plugins.js"></script>
+<script type="text/javascript"  src="../../../../vendor/mmgrid/json2.js"></script>
+<script type="text/javascript"  src="../../../../vendor/mmgrid/mmGrid.js"></script>
+<script type="text/javascript"  src="../../../../vendor/mmgrid/mmPaginator.js"></script>
+</html>

@@ -1,0 +1,32 @@
+<div class="main clearfix" ng-controller="PageIndexController">
+    <h3 class="title"> 管理导航：
+        <a  href="$singleLink.setTarget("page/index")">信息管理</a> |
+        <a   href="$singleLink.setTarget("page/create")">添加信息</a></h3>
+    <div class="form-layout clearfix">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="info">
+                <th class="xn-text-center col-sm-2">ID</th>
+                <th class="xn-text-center col-sm-6">标题</th>
+                <th class="xn-text-center col-sm-2">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="page in pageList">
+                    <td class="xn-text-center">{{page.id}}</td>
+                    <td class="xn-text-center">{{page.title}}</td>
+                    <td class="xn-text-center">
+                        <a  href="$singleLink.setTarget("page/edit")?id={{page.id}}">修改</a> | <a  href="javascript:void(0)" ng-click="doDelete(page.id)">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-if="vm.totalCount == 0">
+              <tr><td colspan="4" class="xn-text-center">暂无数据</td></tr>
+            </tfoot>
+        </table>
+        <div class="clearfix"></div>
+    #*    <div class="f-left mt_20 mb_10">共{{vm.totalCount}}条</div>*#
+        <pagination  class="f-right" ng-show="vm.totalCount>vm.pageSize"  ng-change="getList()"  max-size="maxPageSize" total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                     class="pagination-sm"  boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>
+</div>

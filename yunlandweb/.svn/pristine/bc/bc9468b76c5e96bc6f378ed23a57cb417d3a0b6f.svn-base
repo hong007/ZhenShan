@@ -1,0 +1,11 @@
+<div class="xn-form-top">
+    $control.setTemplate("single:header")
+</div>
+<div class="xn-form-menu">
+    $control.setTemplate("single:nav")
+</div>
+<div class="xn-form-main">
+    <div class="main-layout" ng-view>
+        <iframe  src="$singleLink.setTarget("main.vm")" name="main" width="100%" height="100%"></iframe>
+    </div>
+</div>

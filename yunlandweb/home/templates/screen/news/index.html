@@ -1,0 +1,916 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云地动态</title>
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" width="140" height="90"alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        
+                        <ul>
+                            <li style="margin-left:5px;">
+                                <select class="select-input2 wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                    <option value="zhuz"> 住宅用地 </option>
+                                    <option value="shangy"> 商业/办公用地 </option>
+                                    <option value="gongy"> 工业用地 </option>
+                                    <option value="zhongh"> 综合用地 </option>
+                                    <option value="other"> 其他 </option>
+                                </select>
+                            </li>
+                            <li id="sellMethod_li"></li>
+                        </ul>
+
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+                
+                <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" width="90" height="90" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="../index.htm" target="_self">云地网首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="../recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="../transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="../statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../report/index.html" target="_self">云地报告</a>
+                </li>
+                <li class="column-nav">
+                   <a href="#">合作机构</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right" style=" display:none"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<script type="text/javascript">
+    addressInit('cmbProvince', 'cmbCity', 'cmbArea','86');
+    //加载所有的数据
+    var sellmethod = function(type){
+        if(type=="sell") {
+            var options = '<select class="form-control wp-100" name="sellmethod" id="sellmethod"><option value="">出让方式</option>';
+                            options += '<option value="21"> 招标 </option>'
+                            options += '<option value="22"> 拍卖 </option>'
+                            options += '<option value="23"> 挂牌 </option>'
+                            options += '<option value="1"> 划拨 </option>'
+                            options += '<option value="2"> 招拍挂 </option>'
+                            options += '<option value="3"> 协议 </option>'
+                            options += '<option value="4"> 租赁 </option>'
+                            options += '<option value="5"> 作价出资或入 </option>'
+                            options += '<option value="6"> 授权经营 </option>'
+                            options +='</select>'
+        }else if(type=="transfer"){
+            var options = '<select class="form-control wp-100" name="sellmethod" id="sellmethod"><option value="">合作方式</option>';
+                            options += '<option value="1"> 整体转让 </option>'
+                            options += '<option value="2"> 控股权转让 </option>'
+                            options += '<option value="3"> 部分转让 </option>'
+                            options += '<option value="4"> 股权转让 </option>'
+                            options += '<option value="5"> 项目融资 </option>'
+                            options += '<option value="6"> 债权融资 </option>'
+                            options += '<option value="7"> 租赁融资 </option>'
+                            options +='</select>'
+        }
+        $("#sellMethod_li").append(options);
+    }
+    var businessType = '';
+//    alert(businessType);
+    $(function(){
+        if($("#nav-"+businessType)){
+            $("#nav-"+businessType).addClass('active');
+            $("#nav-"+businessType).siblings().removeClass('active');
+            if(businessType=='news'){
+                $("#forLandNews").show();
+                $("#forLandInfo").hide();
+            }else{
+                $("#forLandNews").hide();
+                $("#forLandInfo").show();
+                if(businessType=='sell'||businessType=='transfer'){
+                    $("#sellMethod_li").empty();
+                    sellmethod(businessType);
+                }
+            }
+        }
+        $("#keyword").val('');
+        $("#cmbProvince").val('');
+        $("#cmbCity").val('');
+        $("#cmbArea").val('');
+        $("#purpose").val('');
+        $("#sellmethod").val('');
+        var cp = '';
+        if(''!=cp || null!=cp){
+            addressInit('cmbProvince', 'cmbCity', 'cmbArea','','','');
+        }
+        $("#businessType").data("currenttab",'');
+    });
+
+</script>
+<!--头部 结束-->
+
+<div id="content">
+    <div class="member-content statistic-content xn-width auto clearfix">
+        <div class="content-left">
+            <h3>云地资讯</h3>
+            <ul class="member-my" id="tab-ul">
+                <li onclick="site.changeTabs(this,'forAnnoucement')" ><a>公告</a></li>
+                <li onclick="site.changeTabs(this,'forField')" class="click"><a href="#">资讯</a></li>
+                <li onclick="site.changeTabs(this,'forActivity')"><a href="#">活动</a></li>
+                <li onclick="site.changeTabs(this,'forSubject')"><a href="#">报告</a></li>
+            </ul>
+        </div>
+
+        <div class="content-right forNewsTitle">
+            <div class="land-intro-verticleList" id="forAnnoucement">
+                <div id="Annoucementdata">
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=660978619015106560'&type=notice'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/660978594897858560.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=660978619015106560&type='notice'"
+                                                      target="_blank">云地网受邀参与第七届中国房地产科学发展论坛</a></div>
+                                <div class="place-area">发布时间：2015-11-02 08:35:57 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    第七届中国房地产科学发展论坛在天津召开，云地网作为互联网土地交易和金融服务平台代表受邀参与论坛。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=634248586536030208'&type=notice'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/634243822746210304.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=634248586536030208&type='notice'"
+                                                      target="_blank">云地网登陆中国土地第一展</a></div>
+                                <div class="place-area">发布时间：2015-08-20 14:56:20 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    8月18日至20日，2015中国（深圳）国际房地产业博览会暨2015中国（深圳）城市土地展将在深圳会展中心1号馆正式召开。云地网正式登陆中国土地第一展。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=633938126297239552'&type=notice'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/638225529719623680.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=633938126297239552&type='notice'"
+                                                      target="_blank">云地上线，好礼相送！</a></div>
+                                <div class="place-area">发布时间：2015-08-19 17:46:42 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015年8月18日，云地网低调上线！凡是2015.8.18-2015.8.31期间，所有注册用户即可获得一次抽奖机会，我们为各位准备了极富纪念意义的礼品！还在等什么？赶紧来注册吧~
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=633920794686525440'&type=notice'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/633920511579394048.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=633920794686525440&type='notice'"
+                                                      target="_blank">云地上线，在线土地推介服务免费送！</a></div>
+                                <div class="place-area">发布时间：2015-08-19 16:37:49 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015年8月18日，云地网低调上线；在线土地推介服务免费100家！三大免费服务，为您的土地推介插上互联网的翅膀；为地方经济的振兴和发展，贡献互联网的力量。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=632806440280920064'&type=notice'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/632806142028156928.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=632806440280920064&type='notice'"
+                                                      target="_blank">云地网，低调上线！</a></div>
+                                <div class="place-area">发布时间：2015-08-19 15:54:17 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015年8月18号云地网将【低调】上线。没有上线发布会，没有美女走秀，没有新闻通稿。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+
+                                    <div id="orgpagination0" class="pagination">
+                                        <a href="#">上一页</a>
+                                        <span class="active">1</span>
+                                        <a href="#">下一页</a>
+                                    </div>
+                            </div>
+            <div class="land-intro-verticleList" id="forField" style="display: none;">
+                <div id="infomationdata">
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662435511264481280&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662435496248872960.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662435511264481280&type='inlineInformation'"
+                                                      target="_blank">浙江农村耕地 、宅基地财产权正逐步变现</a></div>
+                                <div class="place-area">发布时间：2015-11-06 09:05:08 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    在浙江，农村耕地、宅基地用益物权盘活，在经历了悖谬式的正名提法，审慎稳妥的确权颁证、抵押登记，甚至还有慎之又慎的处置流转后，又迎来新的政策配套激励。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662428996214329344&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662428986634539008.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662428996214329344&type='inlineInformation'"
+                                                      target="_blank">地方卖地收入下滑 投融资债务双承压</a></div>
+                                <div class="place-area">发布时间：2015-11-06 08:39:14 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    报告显示，2015年前三季度，地方政府的土地使用权出让收入同比下降了34.7%。同时，土地市场寒冬导致地方政府可支配收入大幅减少，对地方政府投融资、债务等诸多影响正在显现。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662076253947695104&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662076245370343424.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662076253947695104&type='inlineInformation'"
+                                                      target="_blank">甘肃临夏市试水宅基地抵押贷款</a></div>
+                                <div class="place-area">发布时间：2015-11-05 09:17:34 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    甘肃临夏市试水宅基地抵押贷款，首批38宗已通过金融机构审核，这将精准扶贫与农村土地确权登记工作结合起来，在突破农村金融瓶颈中发挥更大效用。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=661707571115462656&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/661707564119363584.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=661707571115462656&type='inlineInformation'"
+                                                      target="_blank">农村改革加速土地资产化将为人民币提供锚定物</a></div>
+                                <div class="place-area">发布时间：2015-11-04 08:52:33 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    11月2日，中央印发《深化农村改革综合性实施方案》，引人关注的是其中关于土地承包权与宅基地的相关描述。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662433574829821952&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662433562179801088.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662433574829821952&type='inlineInformation'"
+                                                      target="_blank">宅基地超面积有偿使用 衙前已落实九成半</a></div>
+                                <div class="place-area">发布时间：2015-11-06 08:57:26 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    为加强农民建房管理，加快推进农村宅基地使用制度改革，衙前镇有力推进农村村民宅基地超面积部分有偿使用费收缴工作，现在已进入缴费扫尾阶段。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662427899332530176&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662427876981084160.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662427899332530176&type='inlineInformation'"
+                                                      target="_blank">一线城市土地溢价率创历史纪录</a></div>
+                                <div class="place-area">发布时间：2015-11-06 08:34:53 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    进入11月份，北京、上海、广州、深圳四大一线城市，待售土地达到了67宗，起价高达765.6亿元，创造了历史最高纪录，11月份也有望成为一线城市土地历史成交额最高的月份。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662072629091766272&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662072621185503232.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662072629091766272&type='inlineInformation'"
+                                                      target="_blank">全球十大年均房价涨幅最高城：沪京位列七八名</a></div>
+                                <div class="place-area">发布时间：2015-11-05 09:03:10 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    据报告，全球十大年平均住房价格涨幅最高城市中亚洲占四席，上海和北京分别以14%和12%的涨幅，位列第七和第八位。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662069133663670272&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662069123840610304.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662069133663670272&type='inlineInformation'"
+                                                      target="_blank">高价地块频出将加大调控压力</a></div>
+                                <div class="place-area">发布时间：2015-11-05 08:49:16 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    当前一线城市的土地热度基本处于历史最高水平，高价地块频出或将加大调控压力。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=662068165576364032&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662068152032956416.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=662068165576364032&type='inlineInformation'"
+                                                      target="_blank">北上广深11月待售土地创纪录底价达765.6亿</a></div>
+                                <div class="place-area">发布时间：2015-11-05 08:45:25 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    统计显示，截至目前，11月北上广深待售土地达到了67宗，底价总价高达765.6亿元，触顶历史最高纪录。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=661768098193739776&type='inlineInformation'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/661768083056496640.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=661768098193739776&type='inlineInformation'"
+                                                      target="_blank">中国农村改革顶层设计进一步明晰土地&ldquo;三权分置&rdquo;</a></div>
+                                <div class="place-area">发布时间：2015-11-04 12:53:04 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    中国农村改革出台顶层设计，明晰土地产权与经营权，稳定农户种粮信心，扩大粮食生产集约化优势。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+                                    <div id="orgpagination1" class="pagination">
+                                        <a href="#">上一页</a>
+                                        <span class="active">1</span>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <span>...</span>
+                                        <a href="#">30</a>
+                                        <a href="#">31</a>
+                                        <a href="#">32</a>
+                                        <a href="#">下一页</a>
+                                    </div>
+                
+            </div>
+            <div class="land-intro-verticleList" id="forActivity" style="display: none;">
+                <div id="activitysData">
+                                            <div class="single-outer">
+                            <a href="detail.vm?id=659236991380361216&type='activityForecast'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/659236235877158912.jpg"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=659236991380361216&type='activityForecast'"
+                                                      target="_blank">第七届中国房地产科学发展（梅江）论坛</a></div>
+                                <div class="place-area">发布时间：2015-10-28 13:15:21 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    中国房地产业协会定于2015年10月30日&mdash;11月1日在天津举办第七届中国房地产科学发展（梅江）论坛。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+                                    <div id="orgpagination2" class="pagination">
+                                        <a href="#">上一页</a>
+                                        <span class="active">1</span>
+                                        <a href="#">下一页</a>
+                                    </div>
+                
+            </div>
+            <div class="land-intro-verticleList" id="forSubject" style="display: none;">
+                <div id="ReportsData">
+                                            <div class="single-outer">
+                            <a href="detail?id=662077559437398016&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662077549048107008.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=662077559437398016&type='specialReport'"
+                                                      target="_blank">宅基地可以释放二十万亿 未来货币还会增加</a></div>
+                                <div class="place-area">发布时间：2015-11-05 09:22:45 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    宅基地可以释放20万亿，将农村宅基地的使用权确权给农民，可立即令9亿农民增加20万亿元财产。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=661070941992128512&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/661356806794514432.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=661070941992128512&type='specialReport'"
+                                                      target="_blank">中国城市住房价格288指数二手房价格60指数报告（2015.10）</a></div>
+                                <div class="place-area">发布时间：2015-11-03 09:38:48 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015 年 10 月，中国城市住房价格 288 指数&mdash;&mdash;二手房价格 60 指数为 1091.1 点，较上月上升 0.9 点，环 比上涨 0.08%，同比上涨 0.04%。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=661061768483049472&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/661356640700076032.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=661061768483049472&type='specialReport'"
+                                                      target="_blank">中国城市住房价格288指数 一手房价格指数报告（2015.10）</a></div>
+                                <div class="place-area">发布时间：2015-11-03 09:38:15 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015 年 10 月，中国城市住房（一手房）价格 288 指数为 1102.0 点，指数较上月上升 3.4 点，环比上涨 0.31%， 涨幅较上月缩小 0.14 个百分点，同比涨幅扩大至 1.41%。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=661352160696864768&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/661352142820741120.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=661352160696864768&type='specialReport'"
+                                                      target="_blank">十月全国土地市场供地上涨成交下滑 出让金环比降三成</a></div>
+                                <div class="place-area">发布时间：2015-11-03 09:20:17 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    <div class="toShowAllDiv">
+                                                <span class="toShowAll">2015年10月，全国300个城市共推出土地2504宗，环比减少3%，同比增加7%；推出土地面积9653万平方米，环比增加2%，同比增加11%。其中，住宅类用地（含住宅用地及包含住宅用地的综合性用地）724宗，环比减少16%，同比增加1%；推出土地面积2670万平方米，环比减少19%，同比减少10%。</span>
+                                                <span class="toShowAll-arrow"></span>
+                                            </div>
+                                                                                        2015年10月，全国300个城市共推出土地2504宗，环比减少3%，同比增加7%；推出土地面积9653万平方米，环比增加2%，同比增加11%。其中，住宅类用地（含住宅用地及包含住宅用地的综合性用地）724宗，环比减少16%，同比增加1%； ...
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=659907438639976448&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/659907369496875008.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=659907438639976448&type='specialReport'"
+                                                      target="_blank">2015年上半年国土资源主要统计数据解读</a></div>
+                                <div class="place-area">发布时间：2015-10-30 09:40:37 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015年上半年建设用地供应&ldquo;量精效更优&rdquo;，可预期通过建设用地预审和审批的项目在第三、四季度落地，下半年土地供应将会加大放量。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=659612191385063424&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/659612983684894720.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=659612191385063424&type='specialReport'"
+                                                      target="_blank">一线城市量价持续创近五年新高</a></div>
+                                <div class="place-area">发布时间：2015-10-29 14:06:31 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015年三季度30个典型城市成交量保持稳定，成交价格再创历史新高。从区域结构上看，一线城市表现依旧抢眼，量价持续创近五年新高；三线城市量价有所回落，去库存压力依旧较大。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=659280669285158912&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/659269806478200832.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=659280669285158912&type='specialReport'"
+                                                      target="_blank">一句话点评9月份全国热门城市新房、二手房价格</a></div>
+                                <div class="place-area">发布时间：2015-10-28 17:19:45 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    买房是咱老百姓的头等大事，但每当看到房产地市场新一轮总结的时候，本站记着都会不忍直视，因为全国一线城市的房价涨势已势如破竹。即使，略有下降，也不过是杯水车薪。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=659261689875009536&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/659253639227248640.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=659261689875009536&type='specialReport'"
+                                                      target="_blank">2015上半年浙江省房地产市场发展报告</a></div>
+                                <div class="place-area">发布时间：2015-10-28 15:00:38 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    2015上半年浙江省房地产市场成交面积显著回升，市场复苏迹象明显。同时，房地产企业投资谨慎，行业走出低谷还需要一定时间。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="single-outer">
+                            <a href="detail?id=659245435088932864&type='specialReport'" target="_blank"><img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/659227178529329152.jpg"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=659245435088932864&type='specialReport'"
+                                                      target="_blank">2015年上半年浙江省房地产市场发展报告解读</a></div>
+                                <div class="place-area">发布时间：2015-10-28 13:56:39 </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                                                                    在国家和地方政府一系列房地产政策作用下，2015年上半年浙江省商品房销售规模增长十分显著。
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+                                    <div id="orgpagination3" class="pagination">
+                                        <a href="#">上一页</a>
+                                        <span class="active">1</span>
+                                        <a href="#">下一页</a>
+                                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var readTable = function (elementId, data) {
+        //1 清空当前数据
+        $('#' + elementId).children(".single-outer").remove();
+        // 2 在元素后，添加数据
+        var result = data.result;
+        $(result).each(function (index, item) {
+            var itemremark = item.remarks ? item.remarks : "";
+            if(itemremark.length>120){
+                var html = '<div class="single-outer">' +
+                        '<a href="detail?id=' + item.id + '&type='+item.type+'"><img src="' + item.picturePath + '" width="330" height="200" alt="土地信息"></a>' +
+                        '<div class="single-inner-middle w-560">' +
+                        '<div class="title"><a href="detail?id=' + item.id + '&type='+item.type+'" target="_blank">' + item.title + '</a></div>' +
+                        '<div class="place-area">发布时间：' + item.approveTimeStr + ' </div>' +
+                        '<div class="place-area h-80">' +
+                        '<div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>' +
+                        '<div class="news-summary toShowAllTd">'+
+                        '   <div class="toShowAllDiv">'+
+                        '       <span class="toShowAll">'+itemremark+'</span>'+
+                        '       <span class="toShowAll-arrow"></span>'  +
+                        '   </div>'+ itemremark.substring(0,120)+'...' + '</div>' +
+
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+            }else{
+                var html = '<div class="single-outer">' +
+                        '<a href="detail?id=' + item.id + '&type='+item.type+'"><img src="' + item.picturePath + '" width="330" height="200" alt="土地信息"></a>' +
+                        '<div class="single-inner-middle w-560">' +
+                        '<div class="title"><a href="detail?id=' + item.id + '&type='+item.type+'" target="_blank">' + item.title + '</a></div>' +
+                        '<div class="place-area">发布时间：' + item.approveTimeStr + ' </div>' +
+                        '<div class="place-area h-80">' +
+                        '<div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>' +
+                        '<div class="news-summary">'+ itemremark + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+            }
+
+
+            $('#' + elementId).append(html);
+        })
+        $(".toShowAllTd").hover(function(){
+            $(this).find('div').show();
+        },function(){
+            $(this).find('div').hide();
+        });
+    };
+
+    function pageselectCallback0(page_index, jq){
+        load_list0(page_index);
+        return false;
+    }
+    function createPagination0(page_index, count) {
+        $("#orgpagination0").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback0
+        });
+    }
+    function load_list0(page_index){
+        var data = "{type:'notice',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('Annoucementdata', data);
+                    createPagination0(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback1(page_index, jq){
+        load_list1(page_index);
+        return false;
+    }
+    function createPagination1(page_index, count) {
+        $("#orgpagination1").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback1
+        });
+    }
+    function load_list1(page_index){
+        var data = "{type:'inlineInformation',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('infomationdata', data);
+                    createPagination1(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback2(page_index, jq){
+        load_list2(page_index);
+        return false;
+    }
+    function createPagination2(page_index, count) {
+        $("#orgpagination2").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback2
+        });
+    }
+    function load_list2(page_index){
+        var data = "{type:'activityForecast',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('activitysData', data);
+                    createPagination2(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback3(page_index, jq){
+        load_list3(page_index);
+        return false;
+    }
+    function createPagination3(page_index, count) {
+        $("#orgpagination3").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback3
+        });
+    }
+    function load_list3(page_index){
+        var data = "{type:'specialReport',keyword:'',businessType: ''}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('ReportsData', data);
+                    createPagination3(page_index, data.totalCount);
+                }, 'json')
+    }
+    $(function(){
+        load_list0(0);
+        load_list1(0);
+        load_list2(0);
+        load_list3(0);
+        site.changeTabs(this,'forField')
+    });
+</script>
+
+</body>
+<script  type="text/javascript"  src="../../../scripts/index.js"></script>
+<script  type="text/javascript"  src="../../../scripts/site.js"></script>
+
+</html>

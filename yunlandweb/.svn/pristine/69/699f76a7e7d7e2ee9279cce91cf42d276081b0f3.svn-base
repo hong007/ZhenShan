@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    #showTitle("云地网")
+    <meta name="keywords" content="$constants.keywords()"/>
+    <meta name="description" content="$constants.description()">
+    <metahttp-equiv
+    ="X-UA-Compatible" content="IE=8"><!--以IE8模式渲染-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="Shortcut Icon" href="$baseContent.getURI('images/favicon.ico')" type="image/x-icon">
+
+    <link rel="stylesheet" href="$baseContent.getURI('styles/base.css')"></link>
+    <link rel="stylesheet" href="$baseContent.getURI('styles/index.css')"></link>
+    <link rel="stylesheet" href="$baseContent.getURI('styles/other.css')"></link>
+    <script src="$baseContent.getURI('scripts/jquery/jquery.min.js')"></script>
+    <script src="$baseContent.getURI('scripts/md5/md5.js')"></script>
+    <script src="$baseContent.getURI('scripts/controllers/login.js')"></script>
+</head>
+<body>
+    $screen_placeholder
+#set($about = $pageInfo.get("623439392282906624"))
+#set($contact = $pageInfo.get("623008912471363584"))
+</body>
+<script type="text/javascript" src="$homeContent.getURI('scripts/site.js')"></script>
+</html>

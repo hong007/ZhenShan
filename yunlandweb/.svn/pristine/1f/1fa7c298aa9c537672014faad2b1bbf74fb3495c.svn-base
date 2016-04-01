@@ -1,0 +1,959 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云地大数据-频道主页</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+<link rel="stylesheet" type="text/css" href="../../../styles/popup.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" width="140" height="90"alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        
+                        <ul>
+                            <li style="margin-left:5px;">
+                                <select class="select-input2 wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                    <option value="zhuz"> 住宅用地 </option>
+                                    <option value="shangy"> 商业/办公用地 </option>
+                                    <option value="gongy"> 工业用地 </option>
+                                    <option value="zhongh"> 综合用地 </option>
+                                    <option value="other"> 其他 </option>
+                                </select>
+                            </li>
+                            <li id="sellMethod_li"></li>
+                        </ul>
+
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+                
+                <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" width="90" height="90" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li>
+                    <a href="../index.html" target="_self">云地网首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="../recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="../transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="active">
+                    <a href="../statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../report/index.html" target="_self">云地报告</a>
+                </li>
+                <li class="column-nav">
+                   <a href="#">合作机构</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right" style=" display:none"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<script type="text/javascript"  src="../../../vendor/echarts/echarts.js"></script>
+<script type="text/javascript"  src="../../../scripts/statistic/trendChart.js"></script>
+<div class="xn-width auto clearfix">
+   <div class="promote-con-left f-left">
+        <div class="city-renewal-title">
+            <div class="title">云地走势图</div>
+            <div class="more"><a href="javascript:;">查看详情</a></div>
+        </div>
+        <div id="content">
+            <div class="member-content statistic-content auto clearfix">
+                <div class="clearfix"></div>
+                <input type="hidden"  id="monthType" value="monthAmount" />
+                <div class="content-right con-right">
+                    <div class="search-div" style="display:none">
+                        <div class="input-line">
+                            <label>成交时间：</label>
+                            <input id="d4311" class="Wdate form-control w-100" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')}'})"/>
+                            <i class="horizontal-line"></i>
+                            <input id="d4312" class="Wdate form-control w-100" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}'})"/>
+                            <div class="tip"></div>
+                            <label>所在地区：</label>
+                            <select class="form-control w-100 mr-10" id="cmbProvinces" name="cmbProvinces"></select>
+                            <select class="form-control w-100 mr-10" id="cmbCitys" name="cmbCitys"></select>
+                            <select class="form-control w-100" id="cmbAreas" name="cmbAreas"></select>
+                        </div>
+                        <div class="input-line">
+                            <label>规划用途：</label>
+                            <select class="form-control w-233" id="landType" name="">
+                                <option value="">-- 请选择规划用途 --</option>
+                                                            <option value="05">商服用地</option>
+                                                            <option value="051">批发零售用地</option>
+                                                            <option value="052">住宿餐饮用地</option>
+                                                            <option value="053">商务金融用地</option>
+                                                            <option value="054">其他商服用地</option>
+                                                            <option value="06">工矿仓储用地</option>
+                                                            <option value="061">工业用地</option>
+                                                            <option value="062">采矿用地</option>
+                                                            <option value="063">仓储用地</option>
+                                                            <option value="07">住宅用地</option>
+                                                            <option value="08">公共管理与公共服务用地</option>
+                                                            <option value="081">机关团体用地</option>
+                                                            <option value="082">新闻出版用地</option>
+                                                            <option value="083">科教用地</option>
+                                                            <option value="084">医卫慈善用地</option>
+                                                            <option value="085">文体娱乐用地</option>
+                                                            <option value="086">公共设施用地</option>
+                                                            <option value="087">公园与绿地</option>
+                                                            <option value="088">风景名胜设施用地</option>
+                                                            <option value="09">特殊用地</option>
+                                                            <option value="091">军事设施用地</option>
+                                                            <option value="092">使领馆用地</option>
+                                                            <option value="093">监教场所用地</option>
+                                                            <option value="094">宗教用地</option>
+                                                            <option value="095">殡葬用地</option>
+                                                            <option value="10">交通运输用地</option>
+                                                            <option value="102">公路用地</option>
+                                                            <option value="103">街巷用地</option>
+                                                            <option value="104">农村道路</option>
+                                                            <option value="105">机场用地</option>
+                                                            <option value="106">港口码头用地</option>
+                                                            <option value="107">管道运输用地</option>
+                                                            <option value="11">水域及水利设施用地</option>
+                                                            <option value="111">河流水面</option>
+                                                            <option value="112">湖泊水面</option>
+                                                            <option value="113">水库水面</option>
+                                                            <option value="114">坑塘水面</option>
+                                                            <option value="115">沿海滩涂</option>
+                                                            <option value="116">内陆滩涂</option>
+                                                            <option value="117">沟渠</option>
+                                                            <option value="118">水工建筑用地</option>
+                                                            <option value="119">冰川及永久积雪</option>
+                                                            <option value="12">其他土地</option>
+                                                            <option value="121">空闲地</option>
+                                                            <option value="122">设施农用地</option>
+                                                            <option value="123">田坎</option>
+                                                            <option value="124">盐碱地</option>
+                                                            <option value="125">沼泽地</option>
+                                                            <option value="126">沙地</option>
+                                                            <option value="127">裸地</option>
+                                                            <option value="071">高档住宅用地</option>
+                                                            <option value="072">中低价位、中小套型普通商品住房用地</option>
+                                                            <option value="073">其他普通商品住房用地</option>
+                                                            <option value="074">经济适用住房用地</option>
+                                                            <option value="075">廉租住房用地</option>
+                                                            <option value="076">其他住房用地</option>
+                                                            <option value="shangy">商业</option>
+                                                            <option value="zhuz">住宅</option>
+                                                            <option value="zhongh">综合</option>
+                                                            <option value="qiet">其他</option>
+                                                            <option value="077">公共租赁住房用地</option>
+                                                    </select>
+                            
+                        </div>
+                        <div class="input-line2">
+                             <span class="f-left">选择类型：</span>
+                             <div class="select">
+                                 <span id="text_left">成交数量</span><span id="arrow_right"><select></select></span>   
+                             </div>  
+                             <ul class="select-list">  
+                                <li id="monthAmount">成交数量</li>  
+                                <li id="monthArea">成交面积</li>  
+                                <li id="monthMoney">成交金额</li>  
+                                <li id="monthPrice">平均楼面价</li>   
+                             </ul> 
+                             <div class="f-right">
+                                 <a id="query" class="btn btn-short button ml-10">查询</a>
+                                 <a class="btn download-btn"><span></span>下载</a>
+                             </div>
+                        </div>
+                        <script type="text/javascript">
+							 $(function(){   
+							 $('#arrow_right').click(function(e){   
+							 $('.select-list').toggle();   e.stopPropagation();    
+							 $('body').click(function(){    $('.select-list').hide();    })  
+							  })   
+							  $('.select-list li').click(function(){   $('#text_left').text(($(this).text()));   
+							   })   
+								}) 
+					   </script>
+                    </div>
+                    <div class="content-main" id="mainAmount" style="height: 400px; background:#dcdcdc">
+
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <div class="city-renewal-title pt-10">
+            <div class="title">云地情报站</div>
+            <div class="more"><a href="javascript:;">查看详情</a></div>
+        </div>
+        <div id="content">
+            <div class="member-content statistic-content auto clearfix">
+                <div class="clearfix"></div>
+                <div class="content-right con-right">
+                    <div class="search-div" style="display:none">
+                        <div class="input-line">
+                            <label style="width:85px">地产商名称：</label>
+                            <input id="user" type="text" class="form-control w-208"/>
+                            <div class="tip"></div>
+                            <label>所在地区：</label>
+                            <select class="form-control w-100 mr-10" id="cmbProvinces" name="cmbProvinces"></select>
+                            <select class="form-control w-100 mr-10" id="cmbCitys" name="cmbCitys"></select>
+                            <select class="form-control w-100" id="cmbAreas" name="cmbAreas"></select>
+                        </div>
+                        <div class="input-line">
+                            <label style="width:85px">规划用途：</label>
+                            <select class="form-control w-215" id="landType" name="">
+                                <option value="">-- 请选择规划用途 --</option>
+                                                            <option value="05">商服用地</option>
+                                                            <option value="051">批发零售用地</option>
+                                                            <option value="052">住宿餐饮用地</option>
+                                                            <option value="053">商务金融用地</option>
+                                                            <option value="054">其他商服用地</option>
+                                                            <option value="06">工矿仓储用地</option>
+                                                            <option value="061">工业用地</option>
+                                                            <option value="062">采矿用地</option>
+                                                            <option value="063">仓储用地</option>
+                                                            <option value="07">住宅用地</option>
+                                                            <option value="08">公共管理与公共服务用地</option>
+                                                            <option value="081">机关团体用地</option>
+                                                            <option value="082">新闻出版用地</option>
+                                                            <option value="083">科教用地</option>
+                                                            <option value="084">医卫慈善用地</option>
+                                                            <option value="085">文体娱乐用地</option>
+                                                            <option value="086">公共设施用地</option>
+                                                            <option value="087">公园与绿地</option>
+                                                            <option value="088">风景名胜设施用地</option>
+                                                            <option value="09">特殊用地</option>
+                                                            <option value="091">军事设施用地</option>
+                                                            <option value="092">使领馆用地</option>
+                                                            <option value="093">监教场所用地</option>
+                                                            <option value="094">宗教用地</option>
+                                                            <option value="095">殡葬用地</option>
+                                                            <option value="10">交通运输用地</option>
+                                                            <option value="102">公路用地</option>
+                                                            <option value="103">街巷用地</option>
+                                                            <option value="104">农村道路</option>
+                                                            <option value="105">机场用地</option>
+                                                            <option value="106">港口码头用地</option>
+                                                            <option value="107">管道运输用地</option>
+                                                            <option value="11">水域及水利设施用地</option>
+                                                            <option value="111">河流水面</option>
+                                                            <option value="112">湖泊水面</option>
+                                                            <option value="113">水库水面</option>
+                                                            <option value="114">坑塘水面</option>
+                                                            <option value="115">沿海滩涂</option>
+                                                            <option value="116">内陆滩涂</option>
+                                                            <option value="117">沟渠</option>
+                                                            <option value="118">水工建筑用地</option>
+                                                            <option value="119">冰川及永久积雪</option>
+                                                            <option value="12">其他土地</option>
+                                                            <option value="121">空闲地</option>
+                                                            <option value="122">设施农用地</option>
+                                                            <option value="123">田坎</option>
+                                                            <option value="124">盐碱地</option>
+                                                            <option value="125">沼泽地</option>
+                                                            <option value="126">沙地</option>
+                                                            <option value="127">裸地</option>
+                                                            <option value="071">高档住宅用地</option>
+                                                            <option value="072">中低价位、中小套型普通商品住房用地</option>
+                                                            <option value="073">其他普通商品住房用地</option>
+                                                            <option value="074">经济适用住房用地</option>
+                                                            <option value="075">廉租住房用地</option>
+                                                            <option value="076">其他住房用地</option>
+                                                            <option value="shangy">商业</option>
+                                                            <option value="zhuz">住宅</option>
+                                                            <option value="zhongh">综合</option>
+                                                            <option value="qiet">其他</option>
+                                                            <option value="077">公共租赁住房用地</option>
+                                                    </select>
+                            <div class="tip"></div>
+                                <label>出让方式：</label>
+                                <select class="form-control w-208" id="sellWay" name="">
+                                    <option value="">-- 请选择出让方式 --</option>
+                                            <option value="21">招标</option>
+                                            <option value="22">拍卖</option>
+                                            <option value="23">挂牌</option>
+                                            <option value="1">划拨</option>
+                                            <option value="2">招拍挂</option>
+                                            <option value="3">协议</option>
+                                            <option value="4">租赁</option>
+                                            <option value="5">作价出资或入</option>
+                                            <option value="6">授权经营</option>
+                                    </select>
+                        </div>
+                        <div class="input-line2">
+                             <span class="f-left">选择类型：</span>
+                             <ul class="member-my">
+                                <li id="map" class="click"><a href="javascript:;">地图</a></li>
+                                <li id="table"><a href="javascript:;">列表</a></li>
+                            </ul>
+                             <div class="f-right">
+                                 <a id="query" class="btn btn-short button ml-10">查询</a>
+                                 <a class="btn download-btn"><span></span>下载</a>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="map-content" id="mainMap">
+                        <div id="allmap"></div>
+                    </div>
+                    <div id="mainTable" >
+                        <div class="content-main" >
+                            <table cellpadding="0" cellspacing="0" id="resourceTable" class="mmg" width="100%" #*class="statistic word-breakAll"*#>
+        
+                            </table>
+                        </div>
+                        <div id="pg" style="text-align: right;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="city-renewal-title pt-10">
+            <div class="title">云地排行榜</div>
+            <div class="more"><a href="javascript:;">查看详情</a></div>
+        </div>
+        <div id="content">
+            <div class="member-content statistic-content clearfix mb-10">
+                <input type="hidden" id="orderBy" value="MONEY" />
+                <div class="content-right" style="width:826px">
+                     <div class="content-main">
+                        <div class="mmGrid" style="width: 828px; height: 550px;">
+                            <style>.mmGrid .mmg1a6af-col0 {width: 30px;max-width: 30px;text-align: center; }.mmGrid .mmg1a6af-col1 {width: 100px;max-width: 100px;text-align: center; }.mmGrid .mmg1a6af-col2 {width: 80px;max-width: 80px;text-align: center; }.mmGrid .mmg1a6af-col3 {width: 75px;max-width: 75px;text-align: center; }.mmGrid .mmg1a6af-col4 {width: 75px;max-width: 75px;text-align: floorSpace; }.mmGrid .mmg1a6af-col5 {width: 70px;max-width: 70px;text-align: center; }.mmGrid .mmg1a6af-col6 {width: 110px;max-width: 110px;text-align: center; }.mmGrid .mmg1a6af-col7 {width: 80px;max-width: 80px;text-align: center; }.mmGrid .mmg1a6af-col8 {width: 70px;max-width: 70px;text-align: center; }</style>
+                            <div class="mmg-headWrapper">
+                                <table class="mmg-head" cellspacing="0" style="left: 0px; width:828px;">
+                                      <thead>
+                                            <tr>
+                                               <th class="mmg1a6af-col0 first" rowspan="1" colspan="1" data-colindex="0">
+                                                  <div class="mmg-titleWrapper"><span class="mmg-title ">序号</span><div class="mmg-sort"></div></div>
+                                               </th>
+                                               <th class="mmg1a6af-col1" rowspan="1" colspan="1" data-colindex="1">
+                                                  <div class="mmg-titleWrapper"><span class="mmg-title ">地块名称</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                               <th class="mmg1a6af-col2" rowspan="1" colspan="1" data-colindex="2">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">面积(万m²)</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                               <th class="mmg1a6af-col3" rowspan="1" colspan="1" data-colindex="3">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">规划用途</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                               <th class="mmg1a6af-col4" rowspan="1" colspan="1" data-colindex="4">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">出让方式</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                               <th class="mmg1a6af-col5" rowspan="1" colspan="1" data-colindex="5">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">出让期限</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                               <th class="mmg1a6af-col6" rowspan="1" colspan="1" data-colindex="6">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">成交总价（万元）</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                                <th class="mmg1a6af-col7" rowspan="1" colspan="1" data-colindex="7">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">土地使用权人</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                                <th class="mmg1a6af-col8" rowspan="1" colspan="1" data-colindex="8">
+                                                   <div class="mmg-titleWrapper"><span class="mmg-title ">楼面价</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                               </th>
+                                            </tr>
+                                     </thead>
+                                 </table>
+                            </div>
+                            <div class="mmg-bodyWrapper" style="height: 764px; width: 100%;">
+                                <table id="resourceTable" class="mmg mmg-body" width="100%" style="width:828px">
+                                      <tbody>
+                                            <tr>
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">1</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr class="even">
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">2</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr>
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">3</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr class="even">
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">4</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr>
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">5</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr class="even">
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">6</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr>
+                                                <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">7</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr class="even">
+                                               <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">8</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr>
+                                                <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">9</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                           <tr class="even">
+                                                <td class="mmg1a6af-col0 nowrap"><span class="nowrap"><label class="mmg-index">10</label></span></td>                                   <td class="mmg1a6af-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                               <td class="mmg1a6af-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                               <td class="mmg1a6af-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                               <td class="mmg1a6af-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                               <td class="mmg1a6af-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col6 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col7 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                               <td class="mmg1a6af-col8 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                                           </tr>
+                                      </tbody>
+                                </table>
+                            </div>
+                        </div>        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    <div class="clearfix"></div>
+    </div>
+    <div class="promote-con-right middle-content zixun-list f-right">
+                <div class="list-con">
+            <h3>云地报告</h3>
+            <ul>
+               <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="100" height="74"/></a></div>
+                   <div class="content">
+                       <div class="text-title"><a href="javascript:;" title="美国德克萨斯顿地球之旅7132土地约">美国德克萨斯顿地球之旅7132土地约</a></div>
+                       <div class=" text-con"><span>摘要：</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路置业有限公司111111<a class="xq" href="#">[详情]</a></div>
+                   </div>
+               </li>
+               <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="100" height="74"/></a></div>
+                   <div class="content">
+                       <div class="text-title"><a href="javascript:;" title="美国德克萨斯顿地球之旅7132土地约">美国德克萨斯顿地球之旅7132土地约</a></div>
+                       <div class=" text-con"><span>摘要：</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路置业有限公司111111<a class="xq" href="#">[详情]</a></div>
+                   </div>
+               </li>
+               <li class="mb-10">
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="100" height="74"/></a></div>
+                   <div class="content">
+                       <div class="text-title"><a href="javascript:;" title="美国德克萨斯顿地球之旅7132土地约">美国德克萨斯顿地球之旅7132土地约</a></div>
+                       <div class=" text-con"><span>摘要：</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路置业有限公司111111<a class="xq" href="#">[详情]</a></div>
+                   </div>
+               </li>
+            </ul>
+        </div>
+
+        <div class="list-con">
+            <h3>热度排行榜</h3>
+            <ul class="hot-list">
+               <li class="focus"><span>1</span><a href="javascript" title="杭州地市迎来开年大战，信达33.9亿造单价地王">杭州地市迎来开年大战，信达33.9亿造单价地王111111 </a></li>
+               <li class="focus"><span>2</span><a href="javascript" title="青岛2016年首拍落锤 银盛泰1.7亿拿城阳宅地">青岛2016年首拍落锤 银盛泰1.7亿拿城阳宅地</a></li>
+               <li class="focus"><span>3</span><a href="javascript" title="天津滨海新区一宗商务用地底价成交">天津滨海新区一宗商务用地底价成交</a></li>
+               <li><span>4</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+               <li><span>5</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+               <li><span>6</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+               <li><span>7</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+               <li><span>8</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+               <li><span>9</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+               <li class="mb-10"><span>10</span><a href="javascript" title="天津北辰挂牌浦东路地快 起始总价8.95亿元">天津北辰挂牌浦东路地快 起始总价8.95亿元</a></li>
+            </ul>
+        </div>
+        <div class="list-con">
+            <h3>优选地块</h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-1"></th>
+                    <th class="xn-col-sm-4">省份</th>
+                    <th class="xn-col-sm-8">地块名称</th>
+                    <th class="xn-col-sm-4">面积<span style="font-size:12px;">（m<sup>2</sup>）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                                    <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="list-con">
+            <h3>对接活动</h3>
+            <ul>
+               <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="100" height="74"/></a></div>
+                   <div class="content">
+                       <div class="text-title"><a href="javascript:;" title="美国德克萨斯顿地球之旅7132土地约">美国德克萨斯顿地球之旅7132土地约</a></div>
+                       <div class=" text-con">地块位于河南省商丘市梁园区平原街道办事处，东至长征路置业有限公司111111<a class="xq" href="#">[详情]</a></div>
+                   </div>
+               </li>
+               <li>
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="100" height="74"/></a></div>
+                   <div class="content">
+                       <div class="text-title"><a href="javascript:;" title="美国德克萨斯顿地球之旅7132土地约">美国德克萨斯顿地球之旅7132土地约</a></div>
+                       <div class=" text-con">地块位于河南省商丘市梁园区平原街道办事处，东至长征路置业有限公司111111<a class="xq" href="#">[详情]</a></div>
+                   </div>
+               </li>
+               <li class="mb-10">
+                   <div class="tu"><a href="#"><img src="../../../images/658887828947996672.jpg" width="100" height="74"/></a></div>
+                   <div class="content">
+                       <div class="text-title"><a href="javascript:;" title="美国德克萨斯顿地球之旅7132土地约">美国德克萨斯顿地球之旅7132土地约</a></div>
+                       <div class=" text-con">地块位于河南省商丘市梁园区平原街道办事处，东至长征路置业有限公司111111<a class="xq" href="#">[详情]</a></div>
+                   </div>
+               </li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript" src="../../../scripts/shaixuan6.js"></script>
+<script type="text/javascript" src="../../../vendor/mmgrid/json2.js"></script>
+
+<script>
+// 百度地图API功能
+var map = new BMap.Map("allmap");
+map.disableScrollWheelZoom();
+map.addEventListener("click", function(){
+    map.enableScrollWheelZoom();
+});
+map.centerAndZoom(new BMap.Point(116.417854,39.921988), 5);
+var myIcon = new BMap.Icon("../home/images/mapMarker.png", new BMap.Size(32,38));
+var navigationControl = new BMap.NavigationControl({
+    // 靠左上角位置
+    anchor: BMAP_ANCHOR_TOP_LEFT,
+    // LARGE类型
+    type: BMAP_NAVIGATION_CONTROL_LARGE,
+    // 启用显示定位
+    enableGeolocation: true
+});
+map.addControl(navigationControl);
+
+$(function(){
+    var getMapData = function(data){
+        $.ajax({ type: "post",//使用get方法访问后台
+            dataType: "json",//返回json格式的数据
+            url:'/sell/api.do',
+            data:{method:'api.statistic.intelligence.find',data:data},
+            success: function(msg){
+                map.clearOverlays();
+                $.each(msg.result, function (i, item) {
+                    for(var j=0;j<selectModelType.length;j++){
+                        var selectModel = selectModelType[j];
+                        if( item.planUse == selectModel.id){
+                            item.planUse =selectModel.name;
+                        }
+                    }
+                    var address = (item.provinceName?item.provinceName:'')+(item.cityName?item.cityName:'')+(item.districtName?item.districtName:"")+(item.address?item.address:"");
+                    var point = item.location;
+                    if(!point==''){
+                        var temppoint = point.split(',');
+                        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+                        map.centerAndZoom(new_point, 5);  //根据经纬度定中心点
+                        marker = new BMap.Marker(new_point);  // 创建标注
+                        map.addOverlay(marker);              // 将标注添加到地图中
+                        map.panTo(new_point);
+                        var infoWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                        '<table ><tr ><td style="width:85px;  text-align: right;">地产商名称：</td>'+
+                        '<td><h4>'+(item.user?item.user:"")+'</h4></td></tr>'+
+                        '<tr><td style="text-align: right;">地块名称：</td><td>'+(item.name?item.name:"")+'</td></tr> '+
+                        '<tr><td style="text-align: right;">土地类型：</td><td>'+(item.planUse?item.planUse:"")+'</td></tr>' +
+                        '<tr><td style="text-align: right;">面积：</td><td>'+(item.totalArea)+'万平方米</td></tr>' +
+                        '<tr><td style="text-align: right;">地址：</td><td id="address_td">'+address+'</td></tr></table>' +
+                        '</div>');
+                        marker.addEventListener("click", function(){
+                            map.openInfoWindow(infoWindow,new_point); //开启信息窗口
+                        });
+                    }else{
+                        // 创建地址解析器实例
+                        var myGeo = new BMap.Geocoder();
+                        // 将地址解析结果显示在地图上,并调整地图视野
+                        myGeo.getPoint(address, function(point){
+                            if (point) {
+                                map.centerAndZoom(point, 5);
+                                marker = new BMap.Marker(point);  // 创建标注
+                                map.addOverlay(marker);              // 将标注添加到地图中
+                                var infoWindow = new BMap.InfoWindow('<div style="margin:0;line-height:20px;">' +
+                                '<table ><tr ><td style="width:85px;  text-align: right;">地产商名称：</td>'+
+                                '<td><h4>'+(item.user?item.user:"")+'</h4></td></tr>'+
+                                '<tr><td style="text-align: right;">地块名称：</td><td>'+(item.name?item.name:"")+'</td></tr> '+
+                                '<tr><td style="text-align: right;">土地类型：</td><td>'+(item.planUse?item.planUse:"")+'</td></tr>' +
+                                '<tr><td style="text-align: right;">面积：</td><td>'+(item.totalArea)+'万平方米</td></tr>' +
+                                '<tr><td style="text-align: right;">地址：</td><td id="address_td">'+address+'</td></tr></table>' +
+                                '</div>');
+                                marker.addEventListener("click", function(){
+                                    map.openInfoWindow(infoWindow,point); //开启信息窗口
+                                });
+                            }
+                        }, "$landSupply.cityName");
+                    }
+                    //var ponit=new BMap.Point(item.location.split(",")[0],item.location.split(",")[1]);
+                    //var i = new BMap.Marker(ponit,{icon:myIcon});  // 创建标注
+                    //map.addOverlay(i);              // 将标注添加到地图中
+                    //map.panTo(ponit);
+                    //创建信息窗口
+
+                    //i.addEventListener("click", function(){
+                    //    this.openInfoWindow(infoWindow1);
+                    //}); //点击标注打开信息窗口
+
+                });
+            }
+        });
+    };
+    getMapData("{\'provinceId\':\'320000\',\'type\':\'map\'}");
+    $("#mainTable").hide();
+
+    $("#map").click(function(){
+        $("#map").attr("class","click");
+        $("#table").removeClass("click");
+        $("#mainTable").hide();
+        $("#mainMap").show();
+    });
+    $("#table").click(function(){
+        $("#table").attr("class","click");
+        $("#map").removeClass("click");
+        $("#mainMap").hide();
+        $("#mainTable").show();
+    });
+}); 
+</script>
+<script type="text/javascript">
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            window.location.href = '$mobileContent.getURI("/index")';
+        }
+    }
+    $(function () {
+        $(".toShowAllTd").hover(function () {
+            $(this).find('div').show();
+        }, function () {
+            $(this).find('div').hide();
+        });
+        browserRedirect();
+    });
+
+    //信息hover显示
+//    $(function(){
+//
+//        $(".index-img-con").find(".tip").css("display","none");
+//        $(".supply li").hover(function(){
+//            var indexli= $(this).index();
+//            $(this).find(".tip").show().siblings().find(".tip").hide();
+//        },function(){
+//            $(".index-img-con").find(".tip").css("display","none");
+//        });
+//    })
+
+
+</script>
+
+
+<!--footer start -->
+<iframe src="../../control/footer.html" frameborder=0 width=100% height=305 marginheight=0 marginwidth=0 scrolling=no></iframe>
+<script  type="text/javascript"  src="../../../scripts/index.js"></script>
+<script  type="text/javascript"  src="../../../scripts/site.js"></script>
+<!-- 日期控件 -->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/My97DatePicker/WdatePicker.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/datejs.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/ui.tab.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/plugins.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/json2.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmGrid.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmPaginator.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/pagination/jquery.pagination.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/s3Slider/s3Slider.js?v=1.0-SNAPSHOT"></script>
+
+</html>

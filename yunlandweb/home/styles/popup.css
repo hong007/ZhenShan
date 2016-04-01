@@ -1,0 +1,188 @@
+#msg_win {
+	border: 1px solid #A67901;
+	background: #EAEAEA;
+	width: 480px;
+	position: absolute;
+	right: 0;
+	font-size: 12px;
+	font-family: Arial;
+	margin: 0px;
+	display: none;
+	overflow: hidden;
+	z-index: 99;
+}
+#msg_win .icos {
+	position: absolute;
+	top: 2px;
+*top:0px;
+	right: 2px;
+	z-index: 9;
+}
+.icos a {
+	float: left;
+	color: #833B02;
+	margin: 1px;
+	text-align: center;
+	font-weight: bold;
+	width: 14px;
+	height: 22px;
+	line-height: 22px;
+	padding: 1px;
+	text-decoration: none;
+	font-family: webdings;
+}
+.icos a:hover {
+	color: #fff;
+}
+
+#msg_content {
+	margin-right: 0;
+	width: 480px;
+	height: 320px;
+	overflow: hidden;
+}
+
+
+/* 对接活动弹窗 */
+.mask {
+	margin: 0;
+	padding: 0;
+	border: none;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	z-index: 9999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+#LoginBox {
+	position: absolute;
+	left: 460px;
+	top: 150px;
+	background: white;
+	width: 700px;
+	height: 530px;
+	border: 1px solid #abadb3;
+	border-radius: 7px;
+	z-index: 10000;
+	display: none;
+}
+.row1 {
+	padding: 0px 20px;
+	line-height: 60px;
+	height: 60px;
+}
+.row {
+	height: 36px;
+	padding: 0px 30px;
+	margin-bottom: 13px;
+	font-size: x-large;
+	text-align: center;
+}
+.close_btn {
+	width: 24px;
+	height: 24px;
+	margin-top: 20px;
+	font-family: arial;
+	font-size: 30px;
+	font-weight: 700;
+	color: #999;
+	text-decoration: none;
+	float: right;
+	background: url(../images/shut-down.gif) no-repeat;
+}
+#LoginBox .validation{
+	display: inline-block;
+	width: 112px;
+	padding: 6px 3px;
+	font-size: 16px;
+	background: #f5f5f5;
+	color: #a5a5a5;
+}
+#LoginBox .warning2{
+	width: 396px;
+	height: 14px;
+	line-height: 14px;
+	margin-left: 148px;
+	margin-bottom: 32px;
+	text-align:right;
+	font-size: 14px;
+	color: #ff7a29;
+}
+.inputBox {
+	border: 1px solid #c3c3c3;
+	padding: 6px 6px 6px 20px;
+	border-radius: 18px;
+	-moz-border-radius: 18px;
+	-webkit-border-radius: 18px;
+	margin-left: 5px;
+	font-size: 18px;
+}
+.inputBox:hover{
+	border-color:#ff7a29;
+}
+#txtName,#txtUnit,#txtEmail,#txtMa {
+	height: 22px;
+	line-height: 22px;
+	width: 280px;
+	border: none;
+}
+#txtPhone{
+	height: 22px;
+	line-height: 22px;
+	width: 152px;
+	border: none;
+}
+
+#loginbtn {
+	color: White;
+	background: #ff7a29;
+	text-decoration: none;
+	padding: 10px 46px;
+	border-radius: 30px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.warning {
+	float: right;
+	color: Red;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	margin-right: 20px;
+	display: none;
+}
+/* 内容 */
+
+
+
+
+
+/*弹出层插件样式开始*/
+.Prompt_floatBoxBg{display:none;width:100%;height:100%;background:#000;position:fixed !important;/*ie7 ff*/position:absolute;top:0;left:0;filter:alpha(opacity=0);opacity:0; z-index:999;}
+.Prompt_floatBox{
+z-index:1000;
+display: block;
+position: absolute;
+padding:6px;
+text-align:center;
+top: 404.5px;
+left: 531.5px;
+height: auto;
+z-index: 10000;
+word-wrap: break-word;
+-webkit-box-shadow: rgba(0, 0, 0, 0.498039) 0px 0px 15px;
+box-shadow: rgba(0, 0, 0, 0.498039) 0px 0px 15px;
+border-top-left-radius: 6px;
+border-top-right-radius: 6px;
+border-bottom-right-radius: 6px;
+border-bottom-left-radius: 6px;
+background-color: white;
+opacity: 1;
+}
+.Prompt_floatBox .content{padding:100px;background:#fff;overflow-x:hidden;overflow-y: auto;}
+/*弹出层插件样式结束*/

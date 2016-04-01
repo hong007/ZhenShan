@@ -1,0 +1,38 @@
+$page.setTitle("设置")
+<div class="main clearfix" ng-controller="SettingController">
+    <h3 class="title">修改密码</h3>
+    <div class="form-layout clearfix">
+        <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+            <div class="form-group clearfix">
+                <label class="form-title " for="name">公司名称:</label>
+                <input type="text" class="form-control" name="name" id="name"  ng-model="vm.name"  maxlength="50">
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="shortName">公司简称:</label>
+                <input type="text" class="form-control" name="shortName" id="shortName" ng-model="vm.shortName"  maxlength="50">
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="icp">备案号:</label>
+                <input type="text" class="form-control" name="icp" id="icp" ng-model="vm.icp"  maxlength="50">
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="keywords">关键词:</label>
+                <input type="text" class="form-control" name="keywords" id="keywords" ng-model="vm.keywords"  maxlength="500">
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="description">网站描述:</label>
+                <textarea class="form-control" rows="3" name="description"  ng-model="vm.description"
+                          maxlength="500"></textarea>
+            </div>
+            <div class="clearfix error-box" ng-show="validateForm.$errors.length>0 ">
+                <div class="alert alert-danger">
+                    <i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+            </div>
+            <div class="form-group-submit clearfix">
+                <button type="submit" class="btn btn-primary" xn-submit-enter = "doSave()">保存</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

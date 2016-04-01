@@ -1,0 +1,16 @@
+<div class="login-header">
+    <div class="am-g">
+        <span class="am-icon-angle-left am-icon-lg"></span>
+        <span class="login-header-title">找回密码</span>
+    </div>
+</div>
+<div class="am-g login-content">
+    <div>
+        <img src="$mobileContent.getURI("image/logo.png")">
+        <div class="passport-reset">
+            <img src="$mobileContent.getURI('/image/select.png')" width="52" height="52" alt="已选">
+            <div class="success-word">密码已重置成功！</div>
+        </div>
+        <a  href="../login" class="am-btn am-btn-primary am-btn-block am-radius mt-20 mb-20">点击登录</a>
+    </div>
+</div>

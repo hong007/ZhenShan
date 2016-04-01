@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    #showTitle("云地网-会员")
+    <meta name="keywords" content="云地网-互联网土地市场-测试版" />
+    <meta name="description" content="云地网-互联网土地市场-测试版">
+    <metahttp-equiv ="X-UA-Compatible" content="IE=8"><!--以IE8模式渲染-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="Shortcut Icon" href="$homeContent.getURI('images/favicon.ico')" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="$homeContent.getURI('styles/base.css')"></link>
+    <link rel="stylesheet" href="$homeContent.getURI('styles/member.css')"></link>
+    <link rel="stylesheet" href="$homeContent.getURI('vendor/kindeditor/themes/default/default.css')"></link>
+    <link rel="stylesheet" href="$homeContent.getURI('vendor/mmgrid/mmGrid.css')">
+    <link rel="stylesheet" href="$homeContent.getURI('vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css')">
+    <link rel="stylesheet" href="$homeContent.getURI('vendor/mmgrid/mmPaginator.css')">
+    <link rel="stylesheet" href="$homeContent.getURI('vendor/mmgrid/theme/bootstrap/mmPaginator-bootstrap.css')">
+    <script  type="text/javascript"  src="$homeContent.getURI('scripts/jquery.min.js')"></script>
+</head>
+<body>
+    $control.setTemplate("home:navMember")
+    $screen_placeholder
+    $control.setTemplate("home:footer")
+
+    #set($about = $pageInfo.get("623439392282906624"))
+    #set($contact = $pageInfo.get("623008912471363584"))
+</body>
+<script  type="text/javascript"  src="$homeContent.getURI('scripts/member.js')"></script>
+<script  type="text/javascript"  src="$homeContent.getURI('scripts/jsAddress.js')"></script>
+<script  type="text/javascript"  src="$homeContent.getURI('scripts/site.js')"></script>
+<script  type="text/javascript"  src="$homeContent.getURI('scripts/map.js')"></script>
+<script type="text/javascript" src="$homeContent.getURI('vendor/kindeditor/kindeditor-all-min.js')"></script>
+<script type="text/javascript" src="$homeContent.getURI('vendor/kindeditor/lang/zh_CN.js')"></script>
+<script  type="text/javascript"  src="$homeContent.getURI('scripts/jquery.form.js')"></script>
+<script type="text/javascript"  src="$homeContent.getURI('vendor/mmgrid/plugins.js')"></script>
+<script type="text/javascript"  src="$homeContent.getURI('vendor/mmgrid/json2.js')"></script>
+<script type="text/javascript"  src="$homeContent.getURI('vendor/mmgrid/mmGrid.js')"></script>
+<script type="text/javascript"  src="$homeContent.getURI('vendor/mmgrid/mmPaginator.js')"></script>
+</html>

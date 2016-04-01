@@ -1,0 +1,347 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云地出让-新增土地信息</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/yunland/images/favicon.ico"  type="image/x-icon"  >
+<link href="../../../dist/styles/global.min.css" rel="stylesheet">
+<link href="../../../dist/styles/local.min.css" rel="stylesheet">
+</head>
+
+<body>
+$page.setTitle("新增土地信息")
+
+<script type="text/javascript">
+     var selectModel2 = [
+                    {id:"05",name:'商服用地'},
+                    {id:"051",name:'批发零售用地'},
+                    {id:"052",name:'住宿餐饮用地'},
+                    {id:"053",name:'商务金融用地'},
+                    {id:"054",name:'其他商服用地'},
+                    {id:"06",name:'工矿仓储用地'},
+                    {id:"061",name:'工业用地'},
+                    {id:"062",name:'采矿用地'},
+                    {id:"063",name:'仓储用地'},
+                    {id:"07",name:'住宅用地'},
+                    {id:"08",name:'公共管理与公共服务用地'},
+                    {id:"081",name:'机关团体用地'},
+                    {id:"082",name:'新闻出版用地'},
+                    {id:"083",name:'科教用地'},
+                    {id:"084",name:'医卫慈善用地'},
+                    {id:"085",name:'文体娱乐用地'},
+                    {id:"086",name:'公共设施用地'},
+                    {id:"087",name:'公园与绿地'},
+                    {id:"088",name:'风景名胜设施用地'},
+                    {id:"09",name:'特殊用地'},
+                    {id:"091",name:'军事设施用地'},
+                    {id:"092",name:'使领馆用地'},
+                    {id:"093",name:'监教场所用地'},
+                    {id:"094",name:'宗教用地'},
+                    {id:"095",name:'殡葬用地'},
+                    {id:"10",name:'交通运输用地'},
+                    {id:"102",name:'公路用地'},
+                    {id:"103",name:'街巷用地'},
+                    {id:"104",name:'农村道路'},
+                    {id:"105",name:'机场用地'},
+                    {id:"106",name:'港口码头用地'},
+                    {id:"107",name:'管道运输用地'},
+                    {id:"11",name:'水域及水利设施用地'},
+                    {id:"111",name:'河流水面'},
+                    {id:"112",name:'湖泊水面'},
+                    {id:"113",name:'水库水面'},
+                    {id:"114",name:'坑塘水面'},
+                    {id:"115",name:'沿海滩涂'},
+                    {id:"116",name:'内陆滩涂'},
+                    {id:"117",name:'沟渠'},
+                    {id:"118",name:'水工建筑用地'},
+                    {id:"119",name:'冰川及永久积雪'},
+                    {id:"12",name:'其他土地'},
+                    {id:"121",name:'空闲地'},
+                    {id:"122",name:'设施农用地'},
+                    {id:"123",name:'田坎'},
+                    {id:"124",name:'盐碱地'},
+                    {id:"125",name:'沼泽地'},
+                    {id:"126",name:'沙地'},
+                    {id:"127",name:'裸地'},
+                    {id:"071",name:'高档住宅用地'},
+                    {id:"072",name:'中低价位、中小套型普通商品住房用地'},
+                    {id:"073",name:'其他普通商品住房用地'},
+                    {id:"074",name:'经济适用住房用地'},
+                    {id:"075",name:'廉租住房用地'},
+                    {id:"076",name:'其他住房用地'},
+                    {id:"shangy",name:'商业'},
+                    {id:"zhuz",name:'住宅'},
+                    {id:"zhongh",name:'综合'},
+                    {id:"qiet",name:'其他'},
+                    {id:"077",name:'公共租赁住房用地'},
+            ]
+
+    var selectModelSellWay = [
+                            {id:"21",name:'招标'},
+                            {id:"22",name:'拍卖'},
+                            {id:"23",name:'挂牌'},
+                            {id:"1",name:'划拨'},
+                            {id:"2",name:'招拍挂'},
+                            {id:"3",name:'协议'},
+                            {id:"4",name:'租赁'},
+                            {id:"5",name:'作价出资或入'},
+                            {id:"6",name:'授权经营'},
+                ]
+</script>
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("sell/index")">土地出让</a></li>
+        <li class="active">新增土地信息</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="AddLandController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix">
+            <div class="edit-content">
+                <h4 class="recommend-editContent-h4">土地基本信息</h4>
+                <div>
+                    <div class="xn-input-line  clearfix label-long">
+                        <label class="xn-label"><span class="f-right">宗地名称：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="name" ng-model="sellLand.name" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">出让方式：</span><i
+                                class="xn-required-i f-right"></i></label>
+                        <div class="xn-input-sm">
+                            <div xn-filter-select data-select-data="selectDataSellWay" ng-model="land.sellWay" name="operatingUnitSellWay" required="required"></div>
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix label-long">
+                        <label class="xn-label"><span class="f-right">宗地编号：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="number" ng-model="sellLand.landNumber" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">宗地总面积(万平方米)：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="area" ng-model="sellLand.floorSpace " required="required" ng-pattern="/^\d+(\.{0,1}\d+){0,1}$/">
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">宗地坐落：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="place" ng-model="sellLand.landLocation" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">出让年限：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="limit" ng-model="sellLand.sellYear" required="required" ng-pattern="/^(0|[1-9]\d*)$/">
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">容积率：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="plotRatio" ng-model="sellLand.plotRatio"  >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">建筑密度(%)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="buildingDensity" ng-model="sellLand.buildingDensity"  >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">绿化率(%)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="landscapingRatio" ng-model="sellLand.greeningRate"  >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">建筑限高(米)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="maxHeight" ng-model="sellLand.maxHeight"  >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">土地用途：</span></label>
+
+                        <div class="xn-input-sm">
+                            <div xn-filter-select data-select-data="selectData" ng-model="land.planUse" name="operatingUnit" ></div>
+                        </div>
+
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">投资强度(万/公顷)：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="invest" ng-model="sellLand.investmentIntensity"  >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">保证金：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="cautionMoney" ng-model="sellLand.deposit " >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">估价报告备案号：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="recordNum" ng-model="sellLand.priceRecord " >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">起始价：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="initPrice" ng-model="sellLand.startPrice " >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">加价幅度：</span></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="markupRange" ng-model="sellLand.bidIncrement " >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">截止日期：</span></label>
+                        <div class="xn-input-sm openData input-group">
+                            <input type="text" class="form-control" id="endTime" ng-model="sellLand.endTime" name="endTime"
+                                   datepicker-popup="yyyy-MM-dd" is-open="endTime" #*max-date="maxDate"*#  datepicker-options="dateOptions"
+                                   date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openEndTime($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"></label>
+                        <div class="xn-input-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">位置地图</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">位置：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-lg">
+                            <div xn-location ng-model="land.address" data-city-id="{{land.address}}"  address=false></div>
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">经纬度：</span><i
+                            class="xn-required-i f-right"></i></label>
+
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="coordinate" ng-model="land.coordinate" required="required" disabled>
+                    </div>
+                        <div >
+                            <input type="hidden" class="form-control"
+                                   name="coordinate" ng-model="land.coordinate" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <div id="allmap"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">地块图片</h4>
+                <div>
+                    <ul class="xn-upload-img" >
+                        <input type="file" id="pictureFile" name="pictureFile" ng-click="showPicture()" width="114" height="85"
+                               contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                        <li class="clearfix"  ng-if="sellLand.picturePath == null" onclick="pictureFile.click()">
+                            <i class="icon icon-add"></i>
+                            <div class="upload-add-title ng-binding">地块图片</div>
+                        </li>
+                        <img ng-if="sellLand.picturePath != null" onclick="pictureFile.click()" class="view-img imgFile" id="spanImage" alt="请选择图片"
+                             width="234" height="120" ng-src="{{sellLand.picturePath}}"/>
+                    </ul>
+
+
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">详细介绍</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <textarea class="form-control" rows="15" name="sellIntro" id="sellIntro" ng-model="sellLand.content"
+                                    ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0 ">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5"
+                                                       ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+
+<div id="footer" class="xn-width auto clearfix">
+    <span>浙江臻善科技有限公司</span><br/>
+    <span>浙ICP备06018569号-2</span><br/>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253874607'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1253874607%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+<!-- 引用服务站点的JS文件 -->
+
+<div class="xn-back-to-top"   data-feedback-url=$config.getServiceUrl("feedback/create.htm")>
+</div>
+    <div xn-nprogress></div>
+
+</body>
+<script src="../../../dist/scripts/base.min.js"></script>
+<script src="../../../dist/scripts/global.min.js"></script>
+<script src="../../../dist/scripts/local.min.js"></script>
+<script type="text/javascript" src="../../../vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    /*犀牛ng-app的运用*/
+    angular.element(document).ready(function() {
+        initApp();
+        angular.bootstrap(document.body, ['xn']);
+    });
+    var uploadjson =  'http://www.yunland.cn/base/fileUploadJson.do';
+    var uploadmamagerjson = 'http://www.yunland.cn/base/fileUploadManager.do';
+</script>
+</html>

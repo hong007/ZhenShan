@@ -1,0 +1,95 @@
+<div class="xn-width auto mt_20">
+    <h3 class="editContent-h3">供地结果信息</h3>
+    <table class="detail-table word-breakAll" style="margin-bottom: 25px;">
+        <tr>
+            <td class="table-label xn-center">行政区</td>
+            <td class="table-column-tripple">
+                $!landResult.cityName
+                #if($!landResult.districtName != '')
+                    /$!landResult.districtName
+                #end
+            </td>
+            <td class="table-label xn-center">电子监管号</td>
+            <td class="table-column-tripple">$!landResult.superviseNumber</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">项目名称</td>
+            <td class="table-column-tripple" colspan="3">$!landResult.name</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">项目位置</td>
+            <td class="table-column-tripple" colspan="3">$!landResult.landLocation</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">面积</td>
+            <td class="table-column-tripple">$!landResult.totalArea</td>
+            <td class="table-label xn-center">土地来源</td>
+            <td class="table-column-tripple">$!landResult.address</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">土地用途</td>
+            <td class="table-column-tripple">$!selectLandPurpose.get($!landResult.planUse)</td>
+            <td class="table-label xn-center">供地方式</td>
+            <td class="table-column-tripple">$!selectSupplyMethod.get($!landResult.supplyType)</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">土地使用年限</td>
+            <td class="table-column-tripple">$!landResult.sellYear</td>
+            <td class="table-label xn-center">行业分类</td>
+            <td class="table-column-tripple">$!landResult.industry</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">土地级别</td>
+            <td class="table-column-tripple">$!landResult.level</td>
+            <td class="table-label xn-center">成交价格(万元)</td>
+            <td class="table-column-tripple">$!landResult.money</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">土地使用权人</td>
+            <td class="table-column-tripple" colspan="3">$!landResult.user</td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">约定容积率</td>
+            <td class="table-column-tripple">
+                 下限  $!landResult.ratioLimit
+                 上限  $!landResult.ratioTop
+            </td>
+            <td class="table-label xn-center">约定交地时间</td>
+            <td class="table-column-tripple">
+                #if($landResult.deliveryTime)
+                $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landResult.deliveryTime)
+                #end
+            </td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">约定开工时间</td>
+            <td class="table-column-tripple">
+                #if($landResult.buildingTime)
+                    $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landResult.buildingTime)
+                #end
+            </td>
+            <td class="table-label xn-center">约定竣工时间</td>
+            <td class="table-column-tripple">
+            #if($landResult.endTime)
+                $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landResult.endTime)
+            #end
+            </td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">实际开工时间</td>
+            <td class="table-column-tripple"></td>
+            <td class="table-label xn-center">实际竣工时间</td>
+            <td class="table-column-tripple"></td>
+        </tr>
+        <tr>
+            <td class="table-label xn-center">批准单位</td>
+            <td class="table-column-tripple">$!landResult.approveOffice</td>
+            <td class="table-label xn-center">合同签订日期</td>
+            <td class="table-column-tripple">
+                #if($landResult.sigingDate)
+                    $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!landResult.sigingDate)
+                #end
+            </td>
+        </tr>
+    </table>
+</div>

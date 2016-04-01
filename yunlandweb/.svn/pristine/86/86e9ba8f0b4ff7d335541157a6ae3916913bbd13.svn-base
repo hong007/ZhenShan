@@ -1,0 +1,67 @@
+<script type="text/javascript"  src="$homeContent.getURI('vendor/echarts/echarts.js')"></script>
+<script type="text/javascript"  src="$homeContent.getURI('scripts/statistic/trendChart.js')"></script>
+<div id="content">
+    <div class="member-content statistic-content xn-width auto clearfix">
+        <div class="statistic-nav">
+            <div class="f-left column-nav">
+                <a href="$homeContent.getURI("../statistic/index")">排行榜</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a class="active" href="$homeContent.getURI("../statistic/trendChart")">走势图</a>
+                <i class="vertical-line bg-color-1"></i>
+                <a href="$homeContent.getURI("../statistic/intelligence")">情报站</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content-left">
+            <h3>分类</h3>
+            <ul class="member-my">
+                <li id="monthAmount" class="click"><a href="#">成交数量</a></li>
+                <li id="monthArea"><a href="#">成交面积</a></li>
+                <li id="monthMoney"><a href="#">成交金额</a></li>
+                <li id="monthPrice"><a href="#">平均楼面价</a></li>
+            </ul>
+        </div>
+        <input type="hidden" id="monthType" value="monthAmount" />
+        <div class="content-right">
+            <div class="search-div">
+                <div class="input-line">
+                    <label>月&nbsp;&nbsp;份：</label>
+                    <input id="startmonth" name="startmonth" type="text" class="Wdate form-control w-100" onfocus="WdatePicker({dateFmt:'yyyyMM',maxDate:'#F{$dp.$D(\'endmonth\')}',minDate:'#F{$dp.$D(\'endmonth\',{M:-12})}'})"/>
+                    <i class="horizontal-line"></i>
+                    <input id="endmonth" name="endmonth" type="text" class="Wdate form-control w-100" onfocus="WdatePicker({dateFmt:'yyyyMM',minDate:'#F{$dp.$D(\'startmonth\')}',maxDate:'#F{$dp.$D(\'startmonth\',{M:+12})}'})"})"/>
+                    <div class="tip"></div>
+                    <label>地&nbsp;&nbsp;区：</label>
+                    <select class="form-control w-100 mr_20" id="cmbProvinces" name="cmbProvinces"></select>
+                    <select class="form-control w-100 mr_20" id="cmbCitys" name="cmbCitys"></select>
+                    <select class="form-control w-100" id="cmbAreas" name="cmbAreas"></select>
+                </div>
+                <div class="input-line">
+                    <label>规划用途：</label>
+                    <select id="landType" class="form-control w-233" id="" name="">
+                        <option value="">-- 请选择规划用途 --</option>
+                        #foreach($param in ${selectLandPurpose.keySet()})
+                            <option value="$param">${selectLandPurpose.get($param)}</option>
+                        #end
+                    </select>
+                    <div class="w-208"></div>
+                    <a id="query" class="btn btn-short ml-20" #*onclick="doSearch()"*#>查询</a>
+                </div>
+            </div>
+            <div class="content-main" id="mainAmount" style="height: 400px">
+
+            </div>
+            <div class="content-main" id="mainArea" style="height: 400px; ">
+
+            </div>
+            <div class="content-main" id="mainMoney" style="height: 400px;">
+
+            </div>
+            <div class="content-main" id="mainPrice" style="height: 400px;">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    addressInit2('cmbProvinces', 'cmbCitys', 'cmbAreas','86');
+</script>

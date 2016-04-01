@@ -1,0 +1,73 @@
+<div class="main clearfix" ng-controller="NewsCreateController">
+    <h3 class="title"> 管理导航：
+        <a  href="$singleLink.setTarget("news/list")">信息管理</a> |
+        <a   href="$singleLink.setTarget("news/create")">添加信息</a>
+    </h3>
+    <div class="form-layout clearfix">
+        <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate  name="validateForm">
+            <div class="form-group clearfix">
+                <label class="form-title " for="name"><span class="required">*</span>标题:</label>
+                <input type="text" class="form-control" name="title" id="title"  ng-model="vm.title"  maxlength="50"  required="required">
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="name"><span class="required">*</span>属性设置:</label>
+                <select  name="categoryId" id="categoryId"  class="form-control category" ng-model="vm.categoryId"
+                         ng-options="category.id as category.newName for category in categoryList" required="required">
+                    <option value="">-- 请选择类别 --</option>
+                  #*  <option value="category.id"  ng-repeat="category in categoryList" > {{category.level ==0  ?category.name:category.newName}}</option>*#
+                </select>
+               	<label class="mr_15 xn-label-checkbox" for="isNewArrival">
+                  	<input type="checkbox"  id="isNewArrival" name="isNewArrival"   ng-model="vm.isNewArrival">是否新品
+               	</label>
+                <label class="mr_15 xn-label-checkbox" for="isRecommend">
+                  	<input type="checkbox"  id="isRecommend" name="isRecommend"   ng-model="vm.isRecommend">是否推荐
+               	</label>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="form-title " >缩略片:</label>
+                <input type="text" class="form-control" name="storagePath"   ng-model="vm.storagePath"  >
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title" ></label>
+                <label  for="picture" class="f-left mr_15">
+                    <input type="file" class="w_130 btn btn-default f-left" name="picture" id="pic"
+                           accept={{picAccept}}    >
+                </label>
+                <button class="btn btn-default  f-left" type="submit" ng-click="upload()">上传</button>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="form-title " for="summary">摘要:</label>
+                <textarea class="form-control" rows="3" name="summary" id="summary" ng-model="vm.summary" maxlength="500"
+                        ></textarea>
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="content">内容:</label>
+                <textarea class="form-control" rows="8" name="content" id="content" ng-model="vm.content"
+                        ></textarea>
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="keyword">关键词:</label>
+                <input type="text" class="form-control" name="keyword" id="icp" ng-model="vm.keyword"  maxlength="50" >
+            </div>
+            <div class="form-group clearfix">
+                <label class="form-title " for="submitUserName">发布人:</label>
+                <input type="text" class="form-control submitUser" name="submitUserName" id="submitUserName" ng-model="vm.submitUserName">
+                <label class="mr_15 f-left" for="ordNum">排序:</label>
+                <input type="text" class="form-control ordNum" name="ordNum" id="ordNum" ng-model="vm.ordNum"> <label class="mr_15 f-left" >（小在前）</label>
+            </div>
+            <div class="clearfix error-box" ng-show="validateForm.$errors.length>0 ">
+                <div class="alert alert-danger">
+                    <i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+            </div>
+            <div class="form-group-submit clearfix">
+                <button type="submit" class="btn btn-primary mr_45" xn-submit-enter = "doSave()">保存</button>
+                <a href="$singleLink.setTarget("news/list")" class="btn btn-default" >返回</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+

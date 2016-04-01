@@ -1,0 +1,841 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>土地招拍挂-频道主页</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../../vendor/p3Slider/zsucai.css">
+<link rel="stylesheet" type="text/css" href="../../../styles/popup.css">
+
+<script  type="text/javascript"  src="../../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../../scripts/jsAddress.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                                <a href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../../images/logo-3.png" width="140" height="90"alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer">
+                    <div class="search-content">
+                        
+                        <ul>
+                            <li style="margin-left:5px;">
+                                <select class="select-input2 wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                    <option value="zhuz"> 住宅用地 </option>
+                                    <option value="shangy"> 商业/办公用地 </option>
+                                    <option value="gongy"> 工业用地 </option>
+                                    <option value="zhongh"> 综合用地 </option>
+                                    <option value="other"> 其他 </option>
+                                </select>
+                            </li>
+                            <li id="sellMethod_li"></li>
+                        </ul>
+
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                    </div>
+                </div>
+                
+                <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div class="header-QRCode">
+            <img src="../../../images/erweima-2.png" width="90" height="90" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li>
+                    <a href="../index.htm" target="_self">云地网首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="../recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="active">
+                    <a href="../transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="../statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="../report/index.html" target="_self">云地报告</a>
+                </li>
+                <li class="column-nav">
+                   <a href="#">合作机构</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right" style=" display:none"><a href="#">地图找地</a></div>
+    </div>
+</div>
+
+<div class="xn-width auto clearfix">
+   <div class="promote-con-left f-left mb-30">
+    <div class="land-intro-verticleList" id="forSupply">
+        <div class="city-renewal-title">
+            <div class="title">地块信息</div>
+            <div class="more"><a href="javascript:;">查看更多</a></div>
+        </div>
+        <div class="land-data" id="landSupplysData">
+            <div class="single-land clearfix">
+                <a href="javascript:;"><img src="../../../images/details-tu.jpg" width="190" height="120" alt="土地信息"/></a>
+                <div class="double-right">
+                    <div class="title"><a href="#" title="重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字">重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字</a></div>
+                    <div class="middle">
+                        <div class="middle-left"><span>拍卖</span><span class="ml-10">其他</span></br><span class="coding">宗地编号：2016-1</span></div>
+                        <div class="middle-right"><span>宗地面积：</span>7.15万㎡</br><span>使用年限：</span>30年</div>
+                    </div>
+                    <div class="single-inner-middle mt_10">
+                        <div class="place-area">
+                            <i class="icon-location"></i><span>重庆市</span><span>重庆市</span><span>渝北区</span>
+                        </div>
+                        <div class="place-area2">已经浏览：6666666次</div>
+                        <div class="place-area2">发布时间：2015-11-09 13:10:15</div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-land clearfix">
+                <a href="javascript:;"><img src="../../../images/details-tu.jpg" width="190" height="120" alt="土地信息"/></a>
+                <div class="double-right">
+                    <div class="title"><a href="#" title="重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字">重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字</a></div>
+                    <div class="middle">
+                        <div class="middle-left"><span>拍卖</span><span class="ml-10">其他</span></br><span class="coding">宗地编号：2016-1</span></div>
+                        <div class="middle-right"><span>宗地面积：</span>7.15万㎡</br><span>使用年限：</span>30年</div>
+                    </div>
+                    <div class="single-inner-middle mt_10">
+                        <div class="place-area">
+                            <i class="icon-location"></i><span>重庆市</span><span>重庆市</span><span>渝北区</span>
+                        </div>
+                        <div class="place-area2">已经浏览：6666666次</div>
+                        <div class="place-area2">发布时间：2015-11-09 13:10:15</div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-land clearfix">
+                <a href="javascript:;"><img src="../../../images/details-tu.jpg" width="190" height="120" alt="土地信息"/></a>
+                <div class="double-right">
+                    <div class="title"><a href="#" title="重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字">重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字</a></div>
+                    <div class="middle">
+                        <div class="middle-left"><span>拍卖</span><span class="ml-10">其他</span></br><span class="coding">宗地编号：2016-1</span></div>
+                        <div class="middle-right"><span>宗地面积：</span>7.15万㎡</br><span>使用年限：</span>30年</div>
+                    </div>
+                    <div class="single-inner-middle mt_10">
+                        <div class="place-area">
+                            <i class="icon-location"></i><span>重庆市</span><span>重庆市</span><span>渝北区</span>
+                        </div>
+                        <div class="place-area2">已经浏览：6666666次</div>
+                        <div class="place-area2">发布时间：2015-11-09 13:10:15</div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-land clearfix" style="border-bottom:none">
+                <a href="javascript:;"><img src="../../../images/details-tu.jpg" width="190" height="120" alt="土地信息"/></a>
+                <div class="double-right">
+                    <div class="title"><a href="#" title="重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字">重庆市国土资源和房屋管理局国有土地使用权公开公告出让公告(渝国土房管字</a></div>
+                    <div class="middle">
+                        <div class="middle-left"><span>拍卖</span><span class="ml-10">其他</span></br><span class="coding">宗地编号：2016-1</span></div>
+                        <div class="middle-right"><span>宗地面积：</span>7.15万㎡</br><span>使用年限：</span>30年</div>
+                    </div>
+                    <div class="single-inner-middle mt_10">
+                        <div class="place-area">
+                            <i class="icon-location"></i><span>重庆市</span><span>重庆市</span><span>渝北区</span>
+                        </div>
+                        <div class="place-area2">已经浏览：6666666次</div>
+                        <div class="place-area2">发布时间：2015-11-09 13:10:15</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="city-renewal-title" style="margin-top:20px">
+            <div class="title">政府公告</div>
+            <div class="more"><a href="javascript:;">查看更多</a></div>
+        </div>
+        <div class="content-main">
+            <div class="mmGrid" style="width: 828px; height: 405px;">
+                <style>.mmGrid .mmg198b6-col0 {width: 30px;max-width: 30px;text-align: center; }.mmGrid .mmg198b6-col1 {width: 400px;max-width: 400px;text-align: left; }.mmGrid .mmg198b6-col2 {width: 160px;max-width: 160px;text-align: center; }.mmGrid .mmg198b6-col3 {width: 140px;max-width: 140px;text-align: center; }</style>
+                <div class="mmg-headWrapper">
+                    <table class="mmg-head" cellspacing="0" style="left: 0px;">
+                          <thead>
+                                <tr>
+                                   <th class="mmg198b6-col0 first" rowspan="1" colspan="1" data-colindex="0">
+                                      <div class="mmg-titleWrapper"><span class="mmg-title ">序号</span><div class="mmg-sort"></div></div>
+                                   </th>
+                                   <th class="mmg198b6-col1" rowspan="1" colspan="1" data-colindex="1">
+                                      <div class="mmg-titleWrapper"><span class="mmg-title ">公告</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                   <th class="mmg198b6-col2" rowspan="1" colspan="1" data-colindex="2">
+                                       <div class="mmg-titleWrapper"><span class="mmg-title ">公告类型</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                   <th class="mmg198b6-col3" rowspan="1" colspan="1" data-colindex="3">
+                                       <div class="mmg-titleWrapper"><span class="mmg-title ">截止时间</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                </tr>
+                         </thead>
+                     </table>
+                </div>
+                <div class="mmg-bodyWrapper" style="height: 764px; width: 100%;">
+                    <table id="resourceTable" class="mmg mmg-body" width="100%" style="width:828px">
+                          <tbody>
+                                <tr>
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">1</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">2</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">3</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">4</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">5</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">6</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">7</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">8</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">9</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="mmg198b6-col0 nowrap"><span class="nowrap"><label class="mmg-index">10</label></span></td>
+                                    <td class="mmg198b6-col1 nowrap"><span class="nowrap"><a href="announcementdetail?id=703246304067063808" target="_blank" title="黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示">黄陂区国土资源和规划局国有土地使用权招拍挂出让成交公示</a></span></td>
+                                    <td class="mmg198b6-col2 nowrap"><span class="nowrap"><span title="成交公示">成交公示</span></span></td>
+                                    <td class="mmg198b6-col3 nowrap"><span class="nowrap">2016年08月24日</span></td>
+                                </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>        
+        </div>
+        <div class="city-renewal-title" style="margin-top:20px">
+            <div class="title">成交结果</div>
+            <div class="more"><a href="javascript:;">查看更多</a></div>
+        </div>
+        <div class="content-main">
+            <div class="mmGrid" style="width: 828px; height: 405px;">
+                <style>.mmGrid .mmg11bd4-col0 {width: 30px;max-width: 30px;text-align: center; }.mmGrid .mmg11bd4-col1 {width: 140px;max-width: 140px;text-align: center; }.mmGrid .mmg11bd4-col2 {width: 138px;max-width: 138px;text-align: center; }.mmGrid .mmg11bd4-col3 {width: 138px;max-width: 138px;text-align: center; }.mmGrid .mmg11bd4-col4 {width: 138px;max-width: 138px;text-align: center; }.mmGrid .mmg11bd4-col5 {width: 10px344px;max-width: 10px344px;text-align: center; }.mmGrid .mmg11bd4-col6 {width: 138px;max-width: 138px;text-align: center; }.mmGrid .mmg11bd4-col7 {width: 138px;max-width: 138px;text-align: center; }.mmGrid .mmg11bd4-col8 {width: 138px;max-width: 138px;text-align: center; }</style>
+                <div class="mmg-headWrapper">
+                    <table class="mmg-head" cellspacing="0" style="left: 0px;">
+                          <thead>
+                                <tr>
+                                   <th class="mmg11bd4-col0 first" rowspan="1" colspan="1" data-colindex="0">
+                                      <div class="mmg-titleWrapper"><span class="mmg-title ">序号</span><div class="mmg-sort"></div></div>
+                                   </th>
+                                   <th class="mmg11bd4-col1" rowspan="1" colspan="1" data-colindex="1">
+                                      <div class="mmg-titleWrapper"><span class="mmg-title ">地块名称</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                   <th class="mmg11bd4-col2" rowspan="1" colspan="1" data-colindex="2">
+                                       <div class="mmg-titleWrapper"><span class="mmg-title ">面积（万平方米）</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                   <th class="mmg11bd4-col3" rowspan="1" colspan="1" data-colindex="3">
+                                       <div class="mmg-titleWrapper"><span class="mmg-title ">规划用途</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                   <th class="mmg11bd4-col4" rowspan="1" colspan="1" data-colindex="4">
+                                       <div class="mmg-titleWrapper"><span class="mmg-title ">出让年限（年）</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                   <th class="mmg11bd4-col5" rowspan="1" colspan="1" data-colindex="5">
+                                       <div class="mmg-titleWrapper"><span class="mmg-title ">成交总价（万元）</span><div class="mmg-sort"></div><div class="mmg-colResize"></div></div>
+                                   </th>
+                                </tr>
+                         </thead>
+                     </table>
+                </div>
+                <div class="mmg-bodyWrapper" style="height: 764px; width: 100%;">
+                    <table id="resourceTable" class="mmg mmg-body" width="100%" style="width:828px">
+                          <tbody>
+                                <tr>
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">1</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr class="even">
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">2</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr>
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">3</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr class="even">
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">4</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr>
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">5</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr class="even">
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">6</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr>
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">7</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr class="even">
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">8</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr>
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">9</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                               <tr class="even">
+                                   <td class="mmg11bd4-col0 nowrap"><span class="nowrap"><label class="mmg-index">10</label></span></td>                                   <td class="mmg11bd4-col1 nowrap"><span class="nowrap"><a href="resultdetail?id=636435091761270784" target="_blank" title="顺德区大良街道办事处公有资产管理委员会办公室(居住用地)">顺德区大良街道办事处公有资产管理委员会办公室(居住用地)</a></span></td>
+                                   <td class="mmg11bd4-col2 nowrap"><span class="nowrap"><span title="大良金榜居委会龙京路北八座101号">大良金榜居委会龙京路北八座101号</span></span></td>
+                                   <td class="mmg11bd4-col3 nowrap"><span class="nowrap">0.001800</span></td>
+                                   <td class="mmg11bd4-col4 nowrap"><span class="nowrap"><span title="其他普通商品住房用地">其他普通商品住房用地</span></span></td>
+                                   <td class="mmg11bd4-col5 nowrap"><span class="nowrap"><span title="协议">协议</span></span></td>
+                               </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>        
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+    </div>
+    <div class="promote-con-right middle-content f-right">
+        <div class="list-con">
+            <h3>全国成交土地总价排行榜<a href="javascript:;" class="more">更多>></a></h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-2">排名</th>
+                    <th class="xn-col-sm-4"></th>
+                    <th class="xn-col-sm-7">地块位置</th>
+                    <th class="xn-col-sm-5">总价<span style="font-size:12px;">（元）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">                            
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="list-con">
+            <h3>全国成交土地面积排行榜<a href="javascript:;" class="more">更多>></a></h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-2">排名</th>
+                    <th class="xn-col-sm-4"></th>
+                    <th class="xn-col-sm-7">地块位置</th>
+                    <th class="xn-col-sm-5">单价<span style="font-size:12px;">（元）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">                            
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="list-con">
+            <h3>全国成交土地楼面价排行榜<a href="javascript:;" class="more">更多>></a></h3>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-2">排名</th>
+                    <th class="xn-col-sm-4"></th>
+                    <th class="xn-col-sm-7">地块位置</th>
+                    <th class="xn-col-sm-5">总价<span style="font-size:12px;">（元/m²）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>1</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>新疆维...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr>
+                        <td><i>2</i></td>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em> 江西省...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i>3</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">                            
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">4</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                            <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td><i class="sorting-bg2">5</i></td>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                           <em>江西省...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../vendor/mmgrid/json2.js"></script>
+
+<script type="text/javascript">
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            window.location.href = '$mobileContent.getURI("/index")';
+        }
+    }
+    $(function () {
+        $(".toShowAllTd").hover(function () {
+            $(this).find('div').show();
+        }, function () {
+            $(this).find('div').hide();
+        });
+        browserRedirect();
+    });
+
+    //信息hover显示
+//    $(function(){
+//
+//        $(".index-img-con").find(".tip").css("display","none");
+//        $(".supply li").hover(function(){
+//            var indexli= $(this).index();
+//            $(this).find(".tip").show().siblings().find(".tip").hide();
+//        },function(){
+//            $(".index-img-con").find(".tip").css("display","none");
+//        });
+//    })
+
+
+</script>
+
+
+
+
+
+
+<!--footer start -->
+<iframe src="../../control/footer.html" frameborder=0 width=100% height=305 marginheight=0 marginwidth=0 scrolling=no></iframe>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/site.js?v=1.0-SNAPSHOT"></script>
+<!-- 日期控件 -->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/My97DatePicker/WdatePicker.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/datejs.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/ui.tab.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/plugins.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/json2.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmGrid.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmPaginator.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/pagination/jquery.pagination.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/s3Slider/s3Slider.js?v=1.0-SNAPSHOT"></script>
+
+</html>

@@ -1,0 +1,18 @@
+# angular-sanitize [![spm version](http://spmjs.io/badge/angular-sanitize)](http://spmjs.io/package/angular-sanitize)
+
+---
+
+
+
+## Install
+
+```
+$ spm install angular-sanitize --save
+```
+
+## Usage
+
+```js
+var angular = require('angular-sanitize');
+// use angular
+```

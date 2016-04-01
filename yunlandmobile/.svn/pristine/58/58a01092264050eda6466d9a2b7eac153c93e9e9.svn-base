@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../../style/base.css">
+<link rel="stylesheet" href="../../style/other.css">
+<script src="../../scripts/jquery.min.js"></script>
+<script src="../../scripts/login-reg.js"></script>
+</head>
+
+<body>
+<div class="login-reg-bg"><img src="../../images/login-bg.jpg"/></div>
+<!-- header -->
+<div class="return-wrap"><a class="return" href="javascript:history.back();"><i class="am-icon-lg"></i></a></div>
+<header class="logo-black">
+       <a href="javascript:;"><img src="../../images/yunland-logo.png"/></a>
+</header>
+<!-- header end -->
+<!-- login content -->
+<div class="content-wrap">
+     <form id="loginForm" method="post" action="" onsubmit="adaptValue();">
+          <div class="item item-username" id="line_phone_number">
+              <input type="text" name="phone_number" class="text-input text-username phone_number" placeholder="请输入手机号码" autocomplete="off" id="phone_number" onblur="v_phone_number();" onkeyup="v_phone_number();"/>
+              <div class="none"><span></span></div>
+          </div>
+          <div class="item item-password" id="line_password">
+              <input id="password" name="password" class="text-input text-password" type="password" placeholder="密码" oonblur="v_password();" onkeyup="v_password();"/>
+              <div class="none"><span></span></div>
+          </div>
+          <div class="itme itme-option">
+              <a class="forget-pasword" href="jaascript:;">忘记密码？<span>帮助</span></a>
+          </div>
+          <div class="login-btn-wrap1"><input type="submit1" id="submit" class="btn-ty login-btn-primary" value="登录"/></div>
+          <div class="no-join">还未加入会员？</div>
+          <div class="reg-btn-wrap2"><a class="btn-ty reg-btn-secondary"href="reg.html">注册</a></div>
+     </form>
+</div>
+<!-- login content end -->
+</body>
+</html>

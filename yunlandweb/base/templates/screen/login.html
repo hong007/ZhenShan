@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录页面</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/base/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://www.yunland.cn/base/styles/base.css"></link>
+<link rel="stylesheet" href="http://www.yunland.cn/base/styles/index.css"></link>
+<link rel="stylesheet" href="../../styles/other.css"></link>
+<script src="http://www.yunland.cn/base/scripts/jquery/jquery.min.js"></script>
+<script src="http://www.yunland.cn/base/scripts/md5/md5.js"></script>
+<script src="http://www.yunland.cn/base/scripts/controllers/login.js"></script>
+
+</head>
+
+<body>
+<div class="login-header">
+    <div class="xn-width auto">
+        <div class="header-logo">
+            <a href="$homeLink.setTarget("index")" class="xn-text-center">
+                <img src="../../images/logo.png" width="90" height="50" alt="云地网">
+            </a>
+        </div>
+        <i class="vertical-line bg-color-1"></i>
+
+        <div class="header-title">欢迎登录云地网</div>
+        <div class="f-right mt-6">
+            咨询热线：
+            <span class="phone">
+                <img src="../../images/phone.png" width="16" height="15" alt="电话">
+                0571-81902006
+            </span>
+        </div>
+    </div>
+</div>
+<div class="login-background">
+    <form action="" method="post">
+        <input type="hidden" name="action" value="login_action"/>
+
+        <div class="xn-width auto p-relative">
+            <div class="login-content">
+                <div class="input-line clearfix">
+                </div>
+                <div class="input-line clearfix">
+                    <div class="mb-5">账号
+                    </div>
+                    <input type="text" class="form-control" name="_fm.l._0.a" value=""
+                           placeholder="请输入您的手机号"/>
+                </div>
+                <div class="error-area">
+                </div>
+                <div class="input-line clearfix">
+                    <div class="mb-5">密码
+                    </div>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="请输入您的密码">
+                    <input type="password" id="password" name="$group.password.key"
+                           value="$group.password.value" style="display: none;"/>
+                </div>
+                <div class="error-area">
+                </div>
+                <div class="input-line xn-center clearfix mt-30">
+                    <input type="submit" class="btn btn-primary-long" name="event_submit_do_login" onclick="doLogin()"
+                           value="登录"/>
+                </div>
+                <div class="input-line">
+                    <div class="f-right column-nav mr-5">
+                        <a href="$baseLink.setTarget('findpassword/step1')">忘记密码</a>
+                        <i class="vertical-line"></i>
+                        <a href="$homeLink.setTarget('member/register/step1')">立即注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="xn-width auto">
+    <div class="step-footer-content">
+        <div class="column-nav">
+            <a href="">联系我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">加入我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">免责申明</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">意见反馈</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">友情链接</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">网站地图</a>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="#*recordInfo *#xn-width auto w-150">
+            <span>浙江臻善科技有限公司</span><br/>
+            <span>浙ICP备06018569号-2</span><br/>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/site.js"></script>
+</html>

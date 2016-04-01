@@ -1,0 +1,161 @@
+<header data-am-widget="header"
+        class="am-header am-header-default index-header detail-header">
+    <a href="javascript:history.back(-1)"><i class="am-icon-angle-left am-icon-sm"></i></a>
+    <h1 class="am-header-title">
+        土地推介
+    </h1>
+
+    <div class="am-header-right am-header-nav">
+        #if($passport)
+            <a href="$mobileContent.getURI("loginout")" class="">
+                <i class="am-header-icon am-icon-sign-out"></i>
+            </a>
+        #else
+            <a href="login" class="">
+                <i class="am-header-icon icon-account"></i>
+            </a>
+        #end
+    </div>
+    </div>
+</header>
+<div data-am-widget="slider" class="am-slider am-slider-default index-slider" data-am-slider='{}'>
+    <ul class="am-slides">
+        <li>
+            <img src="$!landRecommend.headImagepath">
+        </li>
+    </ul>
+</div>
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2 index-tabs detail-tabs" style="overflow-x: scroll;">
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="[data-tab-panel-0]">基本信息</a></li>
+        <li class=""><a href="[data-tab-panel-1]">详细介绍</a></li>
+    </ul>
+
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-tabs-bd" >
+        <!--列表标题-->
+        <div data-tab-panel-0 class="am-list-news-bd am-tab-panel am-active">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                <!--列表标题-->
+                <div class="am-list-news-bd">
+                    <ul class="am-list">
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">土地名称</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.name</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">宗地编号</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.landNumber</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">总面积</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.floorSpace 万平方米</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">所在地区</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.provinceName/$!landRecommend.cityName/$!landRecommend.districtName</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">宗地坐落</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.address</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">使用年限</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.sellYear</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">容积率</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.plotRatio</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">建筑密度(%)</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.buildingDensity</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">绿化率(%)</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.greeningRate</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">建筑限高(米)</span>
+                            <span class="am-list-date am-vertical-align-middle">$!landRecommend.maxHeight</span>
+                        </li>
+                        <li class="am-g am-list-item-dated am-vertical-align" style="height: 100%">
+                            <span class="am-list-item-hd am-vertical-align-middle">土地用途</span>
+                            <span class="am-list-date am-vertical-align-middle">$!selectPurpose.get($!landRecommend.planUse)</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div data-tab-panel-1 class="am-list-news-bd am-tab-panel">
+            <div class="detail-intro-inner">
+                <div class="moreIntro">
+                    <div class="more-title">
+                        <span></span>
+                        <h3>更多详情介绍</h3>
+                    </div>
+                    <div class="more-content">
+                        #noescape()  $!landRecommend.content #end
+                    </div>
+                </div>
+                <div class="morePicture">
+                    <div class="more-title">
+                        <span></span>
+                        <h3>更多图片介绍</h3>
+                    </div>
+                    <ul class="am-list">
+                        #foreach($!picpath in $!landRecommend.picPathList)
+                        <li><img src="$!picpath" width="100%" height="30%" alt="地块图片"></li>
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+
+</script>
+<footer data-am-widget="footer"
+        class="am-footer am-footer-default"
+        data-am-footer="{  }">
+##    <div class="am-footer-switch">
+##    <span class="am-footer-ysp" data-rel="mobile"
+##          data-am-modal="{target: '#am-switch-mode'}">
+##          手机版
+##    </span>
+##        <span class="am-footer-divider"> | </span>
+##        <a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+##            电脑版
+##        </a>
+##    </div>
+    <div class="am-footer-miscs ">
+        <p><a href="http://www.yunland.cn/" title="云地网"
+                target="_blank" class="">云地网</a>
+            </p>
+        <p>浙ICP备06018569号-2</p>
+    </div>
+</footer>
+
+<div id="am-footer-modal"
+     class="am-modal am-modal-no-btn am-switch-mode-m am-switch-mode-m-default">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd am-modal-footer-hd">
+            <a href="javascript:void(0)" data-dismiss="modal" class="am-close am-close-spin " data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            您正在浏览的是
+        <span class="am-switch-mode-owner">
+            手机版
+        </span>
+        <span class="am-switch-mode-slogan">
+              为您当前手机订制的移动网站。
+        </span>
+        </div>
+    </div>
+</div>
+

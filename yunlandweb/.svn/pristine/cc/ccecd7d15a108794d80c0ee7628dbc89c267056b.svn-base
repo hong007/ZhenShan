@@ -1,0 +1,10 @@
+package com.xiniunet.single.home.module.screen.statistic;
+
+/**
+ * Created on 2015/7/24.
+ *
+ * @author 金洋
+ * @version 2.5.0
+ */
+public class Query {
+}

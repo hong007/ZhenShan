@@ -1,0 +1,1351 @@
+
+angular.module("xn/template/select.html",[]).run(["$templateCache", function($templateCache){
+    "use strict";
+    $templateCache.put("xn/template/select/xnMultipleSelectTree.html",
+            "<div class='xn-tree-multipselect'>"
+            +"    <div ng-click='showContent($event)'>"
+            +"      <input type='text' class='form-control' name=\"{{name}}\" ng-model='showName' ng-required=\"required \" readonly='readonly'/>"
+            +"      <i class='icon icon-downward-1'></i>"
+            +"    </div>"
+            +"    <div ng-hide=\"isHide\" class='xn-tree-list-div'>"
+            +"        <div class='level-0'>"
+            +"            <div class='btn btn-link f-left' ng-click='doConfirm()'><span>关闭</span></div>"
+            +"            <div class='btn btn-link f-right' ng-click='doConsole()'><span>取消选择</span></div>"
+            +"        </div>"
+            +"        <div class='level-content'>"
+            +"            <div class='level-content-box'>"
+            +"                <div class='level-{{data.level}} xn-tree-item' ng-repeat='data in selectedDataList' ng-click='doChoose(data)'>"
+            +"                    <div class='xn-label-checkbox' ng-style='data.style'>"
+            +"                        <i class='xn-checkbox selected_space' ></i>"
+            +"                        <i class='icon icon-right_3 selected_icon' ng-show='data.isSelected'></i>"
+            +"                        {{data.name}}"
+            +"                    </div>"
+            +"                </div>"
+            +"            </div>"
+            +"        </div>"
+            +"    </div>"
+            +"</div>"
+    );
+    $templateCache.put("xn/template/select/xnSelectTree.html",
+            "<div class='xn-tree-select'>"
+            +"    <input class='form-control' name='{{name}}' id='xn_select_tree_input' ng-model='selectedData.name' ng-required='required' readonly='readonly'/>"
+            +"    <div class='xn-tree-list'>"
+            +"        <div class='cancel_cl' ng-click='closeSelect()'>"
+            +"            <div class='btn btn-link'>取消选择</div>"
+            +"        </div>"
+            +"        <div class='level-content'>"
+            +"        <div class='level-{{data.level}} xn-tree-item' ng-repeat='data in selectedDataList' ng-click='closeSelect(data)'>"
+            +"            <div>{{data.name}}</div>"
+            +"        </div>"
+            +"        </div>"
+            +"    </div>"
+            +"</div>"
+    );
+    $templateCache.put("xn/template/select/lookup.html",
+            "<div id='{{id}}' class='xn_select_outer'><div class='xn_select_outer_div'>"
+            +"  <div class='xn_select_input_div' ng-click='showTable($event)' ng-mouseover='showDelete=true' ng-mouseout='showDelete=false'>"
+            +"      <input type='text' ng-required='required' id='tableText' name='{{name}}' ng-model='showField' class='xn_select_input' readonly='readonly' />"
+            +"      <i class='icon icon-delete' ng-click='deleteData($event)' ng-show=\"showDelete\"></i>"
+            +"      <span class='icon icon-apostrophe'></span>"
+            +"  </div>"
+            +"</div>"
+            +"<div ng-show='vm.showDiv' ng-click='stopEvent($event)' id=\"{{showDivId}}\" class='xn_show_div' ng-style=vm.width >"
+            +"  <div class='content'>"
+            +"       <div class='sort_area'></div>"
+            +"       <div ng-transclude class='transclude_div'></div>"
+            +"       <div class='pagination'>"
+            +"                  <div class='icon icon-up' ng-if=\"options.pageNumber>1\" ng-click='search(\"pre\", $event)'></div>"
+            +"                  <div class='icon icon-up icon-up-disable' ng-if=\"options.pageNumber<=1\"></div>"
+            +"                  <div class='icon icon-down' ng-if=\"options.pageNumber<options.totalCount/options.pageSize\" ng-click='search(\"next\", $event)'></div>"
+            +"                  <div class='icon icon-down icon-down-disable' ng-if=\"options.pageNumber>=options.totalCount/options.pageSize\"></div>"
+            +"       </div>"
+            +"    </div>"
+            +"   <div class='search_div'>"
+            +"          <div class='search_input_div'>"
+            +"               <input ng-keydown=\"find($event)\" type=\"text\" class=\"form-control\" name=\"keyword\" ng-model=\"options.keyword\" placeholder=\"{{placeHolder}}\" autofocus>"
+            +"               <span class='searc_icon_search icon icon-search' ng-click=\"search('', $event)\"></span>"
+            +"          </div>"
+            +"      </div>"
+            +"  </div>"
+            +"</div>"
+    );
+    $templateCache.put("xn/template/select/xnFilterSelect.html",
+            "<div class='xn-filter-select_outer' ng-click='showContent($event)'>"
+            +"  <div class='input_div' ng-mouseover='deleteShow=true' ng-mouseout='deleteShow=false'>"
+            +"      <i class='icon icon-delete' ng-click='deleteData($event)' ng-show='deleteShow'></i>"
+            +"      <i class='icon icon-downward-1'></i>"
+            +"      <input type='text' class='form-control' ng-required='required' name={{name}} ng-model='showVal' readonly='readonly'/>"
+            +"  </div>"
+            +"  <div ng-show='contentDiv' class='content_div_cl'>"
+            +"      <input type='text' name='{{name+\"FilterOption\"}}' ng-click='keepShowContent($event)' ng-model='filterOption' placeholder='请输入要查询的内容'/>"
+            +"      <ul class='content_div_ul_cl'><li class='content_div_li_cl' ng-repeat='data in selectData | xnSearch:filterOption' ng-click='select(data, $event)'>{{data.name}}</li></ul>"
+            +"  </div>"
+            +"</div>"
+    );
+    $templateCache.put("xn/template/select/xnCreateSelect.html",
+        "<div class='xn-create-select_outer' ng-click='showContent($event)'>"
+        +"  <div class='input_div' ng-mouseover='deleteShow=true' ng-mouseout='deleteShow=false'>"
+        +"      <i class='icon icon-delete' ng-click='deleteData($event)' ng-show='deleteShow'></i>"
+        +"      <i class='icon icon-downward-1'></i>"
+        +"      <input type='text' class='form-control' ng-required='required' name={{name}} ng-model='showVal' readonly='readonly'/>"
+        +"  </div>"
+        +"  <div ng-show='contentDiv' class='content_div_cl'>"
+        +"      <ul class='content_div_ul_cl'><li class='content_div_li_cl' ng-repeat='data in selectData' ng-click='select(data, $event)'>{{data.name}}</li></ul>"
+        +"      <div class='content_div_create'><i class='icon icon-add' ng-click='goCreate($event)'></i><a ng-click='goCreate($event)'>{{createInfo}}</a></div>"
+        +"  </div>"
+        +"</div>"
+    );
+    $templateCache.put("xn/template/select/xnFilterInput.html",
+            "<div class='xn-filter-input' id=\"{{xnFilterInputId}}\">"+
+            "    <input type='text' class='form-control' name='{{name}}' ng-model='selectedData.value'  " +
+            "      ng-focus=\"setListShow()\" ng-required='required'/>"+
+            "      <ul class='xn-filter-input-list' ng-hide=\"0>=selectList.length\">" +
+            "           <li  ng-repeat='data in selectList' ng-click='select(data)'>{{data.value}}</li>" +
+            "      </ul>"+
+            "</div>"
+    );
+}]);
+/*ng-blur=\"isShow=false\"*/
+angular.module("xn.directive.select",["xn/template/select.html"])
+    .directive("xnSelectTree", function() {
+        return {
+            restrict:"AE",
+            scope:{
+                selectData :"=selectData",
+                selectedData : "=ngModel",
+                name: "@",
+                required : "@"
+            },
+            required: "?ngModel",
+            templateUrl: "xn/template/select/xnSelectTree.html",
+            link: function(scope, element, attrs) {
+                if(!scope.selectData)
+                    scope.selectData = [];
+
+                if(!scope.required)
+                    scope.required = false;
+
+                if(!scope.name)
+                    scope.name = "selectName";
+
+                angular.element(".xn-tree-list").hide();
+
+                //查找子节点
+                scope.getChild = function(scope, pid, dataList, level){
+                    level ++;
+                    angular.forEach(dataList, function(data){
+                        if(data.parentId === pid){
+                            data.level = level;
+                            scope.selectedDataList.push(data);
+                            scope.getChild(scope, data.id, dataList, level);
+                        }
+                    });
+                };
+
+                //生成树结构
+                scope.doList=function(){
+                    scope.selectedDataList=[];
+                    if(scope.selectData.length>0){
+                        angular.forEach(scope.selectData,function(d){
+                            if(d.parentId == null){
+                                d.level = 0;
+                                scope.selectedDataList.push(d);
+                                scope.getChild(scope, d.id, scope.selectData, d.level);
+                            }
+                        });
+                    }
+                };
+
+                scope.closeSelect = function(data){
+                    scope.selectedData=data;
+                    angular.element(".xn-tree-list").hide();
+                };
+
+                scope.$watch("selectData", function(newVal, oldVal) {
+                    if(angular.isArray(newVal)){
+                        scope.selectData = newVal;
+                        scope.doList();
+                    }
+                });
+
+                //对document绑定一个影藏Div方法
+                angular.element(document).click(function (e) {
+                    if(! angular.element(e.target).is("#xn_select_tree_input")){
+                        angular.element(".xn-tree-list").hide();
+                    }else{
+                        angular.element(".xn-tree-list").toggle();
+                    }
+                });
+            }
+        };
+    })
+    .directive("xnMultipleSelectTree", function() {
+        return {
+            restrict:"AE",
+            scope:{
+                selectData: "=",
+                selectedData: "=ngModel",
+                name: "@",
+                required: "@"
+            },
+            require: "^ngModel",
+            replace: true,
+            link: function($scope, element, attrs, ngModel, fn) {
+                $scope.isHide = true;
+
+                if(!ngModel) {
+                    return ;
+                }
+
+                if(!$scope.selectData) {
+                    $scope.selectData = [];
+                }
+
+                if(!$scope.selectedData) {
+                    $scope.selectedData = [];
+                }
+
+                if(!$scope.required) {
+                    $scope.required = false;
+                }
+
+                //查找子节点
+                $scope.getChild = function($scope, pid, dataList, level, isSelected, isPush){
+                    level ++;
+                    angular.forEach(dataList, function(data){
+                        if(data.parentId === pid){
+                            data.isSelected=isSelected;
+                            if(isPush){
+                                data.level = level;
+                                $scope.selectedDataList.push(data);
+                                data.style = {'margin-left':15*level+'px'};
+                            }
+                            $scope.getChild($scope, data.id, dataList, level, isSelected, isPush);
+                        }
+                    });
+                };
+
+                //生成树结构
+                $scope.doList=function(){
+                    $scope.selectedDataList=[];
+                    $scope.selectDataList = $scope.selectData;
+                    if($scope.selectData.length>0){
+                        angular.forEach($scope.selectData,function(data){
+                            if(data.parentId == null){
+                                data.level = 0;
+                                data.isSelected=false;
+                                $scope.selectedDataList.push(data);
+                                $scope.getChild($scope, data.id, $scope.selectData, data.level, false, true);
+                            }
+                        });
+                    }
+                };
+
+                $scope.doChoose = function(data){
+                    data.isSelected = !data.isSelected;
+                    if(data.isSelected) $scope.selectedData.push(data);
+                    if(data.isSelected==false) {
+                        for(var i= 0, len=$scope.selectedData.length; i<len; i++) {
+                            if($scope.selectedData[i]==data) $scope.selectedData.splice(i, 1);
+                        }
+                    }
+                    $scope.selectedDataName = [];
+                    angular.forEach($scope.selectedData, function (data) {
+                        if(data.isSelected) $scope.selectedDataName.push(data.name);
+                    });
+                    $scope.showName = $scope.selectedDataName.join();
+                };
+
+                $scope.doConfirm = function(){
+                    $scope.isHide = true;
+                };
+
+                $scope.doConsole = function(){
+                    $scope.selectedData = [];
+                };
+
+                $scope.$watch("selectData", function(newVal, oldVal) {
+                    if(angular.isArray(newVal)){
+                        $scope.selectData = newVal;
+                        $scope.doList();
+                        if(0>=newVal.length) {
+                            $scope.selectedData = [];
+                            $scope.showName = "";
+                        } else {
+                            $scope.selectedDataName = [];
+                            for(var i= 0,len=$scope.selectedData.length; i<len; i++) {
+                                var count = 0;
+                                for(var j= 0,l=newVal.length; j<l; j++) {
+                                    if($scope.selectedData[i].id==newVal[j].id) {
+                                        count ++;
+                                    }
+                                }
+                                if(0<count) {
+                                    $scope.selectedDataName.push($scope.selectedData[i].name);
+                                }
+                                if(0>=count) {
+                                    $scope.selectedData.splice(i, 1);
+                                }
+                            }
+                        }
+                    }
+                });
+
+                $scope.$watch("selectedData", function(newVal, oldVal) {
+                    $scope.selectedDataName = [];
+                    if(angular.isArray(newVal) && newVal.length==0) {
+                        $scope.showName = "";
+                        $scope.doList();
+                    }
+                    if(angular.isArray(newVal) && newVal.length>0){
+                        $scope.doConfirm();
+                        for(var i= 0, len=newVal.length; i<len; i++) {
+                            for(var j= 0, len1=$scope.selectData.length; j<len1; j++) {
+                                if($scope.selectData[j].id==newVal[i].id) {
+                                    $scope.selectedDataName.push($scope.selectData[j].name);
+                                    $scope.selectData[j].isSelected = true;
+                                }
+                            }
+                        }
+                        $scope.showName = $scope.selectedDataName.join(",");
+                    }
+                });
+
+                $scope.showContent = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.isHide = !$scope.isHide;
+                };
+
+                angular.element(element).click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                angular.element(document).click(function (e) {
+                    $scope.$apply(function() {
+                        $scope.isHide = true;
+                    });
+                });
+            },
+            templateUrl: "xn/template/select/xnMultipleSelectTree.html"
+        };
+    })
+    .directive("bothListSelect", function() {
+        return {
+            scope: {
+                selectData :"=",
+                selectedData : "=ngModel",
+                title : "@selectTitle",
+                language:"@"
+            },
+            require: "ngModel",
+            restrict:"AEC",
+            template :"<div class='xn_select_panel'>"
+                +"<div class='xn_select_div'>"
+                +"<div class='xn_select_head'>"
+                +"<input type='text' class='filter_input' ng-model='filterOption' name='filterOption' placeholder='{{vm.selectName}} {{title}}'/>"
+                +"</div>"
+                +"<ul ng-show='selectShow' class='xn_select_body_ul'>"
+                +"<li ng-click='changeCl(data.id)' class='xn_select_body_li {{data.cl}}' ng-repeat='data in selectData | xnSearch:filterOption' ng-dblclick='select(data.id)'>{{data.name}}</li>"
+                +"</ul>"
+                +"</div>"
+                +"<div class='xn_select_middle_icondiv'>"
+                +"<div class='pt_20'><i ng-click='getAll()' class='icon icon-rightward_2 xn_select_middle_icon_first'></i></div>"
+                +"<div class='pt_20'><i ng-click='get()' class='icon icon-rightward_1 xn_select_middle_icon_first'></i></div> "
+                +"<div class='pt_30 xn_select_middle_icon_seconde'><i ng-click='remove()' class='icon icon-leftward_1'></i></div>"
+                +"<div class='pt_20 xn_select_middle_icon_seconde'><i ng-click='removeAll()' class='icon icon-leftward_2'></i></div>"
+                +"</div>"
+                +"<div class='xn_select_div'>"
+                +"<div class='xn_select_head' ng-click='selectedShow=!selectedShow'><i ng-if='selectedShow' class='icon icon-downward-1 xn_select_shape'></i><i ng-if='!selectedShow' class='icon icon-rightward xn_select_shape'></i><span class='title_span'>{{vm.selectedName}} {{title}}</span></div>"
+                +"<ul ng-show='selectedShow' class='xn_select_body_ul'><li ng-click='changeCl(dData.id)' class='xn_select_body_li {{dData.cl}}' ng-repeat='dData in selectedData' ng-dblclick='cancel(dData.id)'>{{dData.name}}</li></ul></div>"
+                +"</div>",
+            link: function(scope, element, attres, controller, transcludeFn) {
+                if(scope.selectData==undefined)
+                    scope.selectData = [];
+                if(scope.selectedData==undefined)
+                    scope.selectedData = [];
+                scope.selectShow = true;
+                scope.selectedShow = true;
+                if(!scope.selectData)
+                    scope.selectData = [];
+                if(!scope.selectedData)
+                    scope.selectedData = [];
+
+                scope.vm={
+                    selectName:"请选择",
+                    selectedName:"已选择"
+                };
+                console.log(scope.language)
+
+                if(scope.language=="en"){
+                    console.log(scope.language)
+                    scope.vm={
+                        selectName:"select ",
+                        selectedName:"selected "
+                    };
+                }
+
+                scope.seprateData = function() {
+                    for(var i=0; i<scope.selectData.length; ) {
+                        scope.selectData[i].cl = "";
+                        scope.selectData[i].isChecked = false;
+                        var count = 0;
+                        for(var j=0; j<scope.selectedData.length; j++) {
+                            scope.selectedData[j].cl = "";
+                            scope.selectedData[j].isChecked = false;
+                            if(scope.selectData[i].id==scope.selectedData[j].id)
+                                count++;
+                        }
+                        if(count>0)
+                            scope.selectData.splice(i, 1);
+                        else
+                            i++;
+                    }
+                };
+
+                scope.$watch('selectData', function(newVal, oldVal) {
+                    if(newVal)
+                        scope.seprateData();
+                });
+
+                scope.$watch('selectedData', function(newVal, oldVal) {
+                    if(newVal)
+                        scope.seprateData();
+                });
+
+                //双击选择
+                scope.select = function(id) {
+                    for(var i=0; i<scope.selectData.length; i++) {
+                        if(scope.selectData[i].id==id) {
+                            scope.selectData[i].isChecked = false;
+                            scope.selectData[i].cl = "";
+                            scope.selectedData.push(scope.selectData[i]);
+                            scope.selectData.splice(i, 1);
+                        }
+                    }
+                };
+
+                //双击取消选择
+                scope.cancel = function(id) {
+                    for(var i=0; i<scope.selectedData.length; i++) {
+                        if(scope.selectedData[i].id==id) {
+                            scope.selectedData[i].isChecked = false;
+                            scope.selectedData[i].cl = "";
+                            scope.selectData.push(scope.selectedData[i]);
+                            scope.selectedData.splice(i, 1);
+                        }
+                    }
+                };
+
+                //选中某条数据样式加载
+                scope.changeCl = function(id) {
+                    for(var i=0; i<scope.selectData.length; i++) {
+                        scope.selectData[i].cl = "";
+                        scope.selectData[i].isChecked = false;
+                        if(scope.selectData[i].id==id) {
+                            scope.selectData[i].cl = "xn_selected_li";
+                            scope.selectData[i].isChecked = true;
+                        }
+                    }
+                    for(var i=0; i<scope.selectedData.length; i++) {
+                        scope.selectedData[i].cl = "";
+                        scope.selectedData[i].isChecked = false;
+                        if(scope.selectedData[i].id==id) {
+                            scope.selectedData[i].cl = "xn_selected_li";
+                            scope.selectedData[i].isChecked = true;
+                        }
+                    }
+                };
+
+                //点击右箭头选择
+                scope.get = function() {
+                    for(var i=0; i<scope.selectData.length; ) {
+                        scope.selectData[i].cl = "";
+                        if(scope.selectShow) {
+                            if(scope.selectData[i].isChecked) {
+                                scope.selectData[i].isChecked = false;
+                                scope.selectedData.push(scope.selectData[i]);
+                                scope.selectData.splice(i, 1);
+                            } else {
+                                i++;
+                            }
+                        } else {
+                            scope.selectData[i].isChecked = false;
+                            scope.selectedData.push(scope.selectData[i]);
+                            scope.selectData.splice(i, 1);
+                        }
+                    }
+                };
+
+                //点击左箭头取消选择
+                scope.remove = function() {
+                    for(var i=0; i<scope.selectedData.length; ) {
+                        scope.selectedData[i].cl = "";
+                        if(scope.selectedShow) {
+                            if(scope.selectedData[i].isChecked) {
+                                scope.selectedData[i].isChecked = false;
+                                scope.selectData.push(scope.selectedData[i]);
+                                scope.selectedData.splice(i, 1);
+                            } else {
+                                i++;
+                            }
+                        } else {
+                            scope.selectedData[i].isChecked = false;
+                            scope.selectData.push(scope.selectedData[i]);
+                            scope.selectedData.splice(i, 1);
+                        }
+                    }
+                };
+
+                //选择全部
+                scope.getAll = function() {
+                    for(var i=0; i<scope.selectData.length; ) {
+                        scope.selectData[i].cl = "";
+                        scope.selectData[i].isChecked = false;
+                        scope.selectedData.push(scope.selectData[i]);
+                        scope.selectData.splice(i, 1);
+                    }
+                };
+
+                //移除全部
+                scope.removeAll = function() {
+                    for(var i=0; i<scope.selectedData.length; ) {
+                        scope.selectedData[i].cl = "";
+                        scope.selectedData[i].isChecked = false;
+                        scope.selectData.push(scope.selectedData[i]);
+                        scope.selectedData.splice(i, 1);
+                    }
+                };
+            }
+        }
+    })
+    .directive("bothTreeListSelect", function() {
+        return {
+            scope: {
+                selectData :"=",
+                selectedData : "=ngModel",
+                title : "@selectTitle",
+                language:"@"
+            },
+            require: "ngModel",
+            restrict:"AEC",
+            template :"<div class='xn_tree_select_panel'>"
+                +"<div class='xn_select_div'>"
+                +"<div class='xn_select_head' ng-click='selectShow=!selectShow'>"
+                +"<i ng-if='selectShow' class='icon icon-downward-1 xn_select_shape'></i>"
+                +"<i ng-if='!selectShow' class='icon icon-rightward xn_select_shape'></i>"
+                +"<span class='title_span'>{{vm.selectName}} {{title}}</span>"
+                +"</div>"
+                +"<ul ng-show='selectShow' class='xn_select_body_ul'>"
+                +"<li ng-repeat='data in selectData'> "
+                +"<div ng-click='changeCl(data,\"left\", selectData)' ng-dblclick='select(data, selectData)'class='xn_select_body_li {{data.cl}}'> {{data.name}}</div> "
+                +"<ul class='inner_ul' ng-if='data.children!=undefined && data.children.length>0'> "
+                +"<li ng-repeat='child in data.children'> "
+                +"<div ng-click='changeCl(child, \"left\", data.children)' ng-dblclick='select(child, data.children)'class='xn_select_body_li {{child.cl}} inner_ul_div'>{{child.name}}</div>"
+                +"<ul class='inner_ul' ng-if='child.children!=undefined && child.children.length>0'> "
+                +"<li ng-repeat='ch in child.children'>"
+                +"<div ng-click='changeCl(ch, \"left\", child.children)' ng-dblclick='select(ch, child.children)'class='xn_select_body_li {{ch.cl}} inner_thired_div'>{{ch.name}}</div>"
+                +"</li>"
+                +"</ul>"
+                +"</li>"
+                +"</ul>"
+                +"</li>"
+                +"</ul>"
+                +"</div>"
+                +"<div class='xn_select_middle_icondiv'>"
+                +"<div class='pt_20'><i ng-click='getAll()' class='icon icon-rightward_2 xn_select_middle_icon_first'></i></div>"
+                +"<div class='pt_20'><i ng-click='get(selectData)' class='icon icon-rightward_1 xn_select_middle_icon_first'></i></div> "
+                +"<div class='pt_30 xn_select_middle_icon_seconde'><i ng-click='remove(selectedData)' class='icon icon-leftward_1'></i></div>"
+                +"<div class='pt_20 xn_select_middle_icon_seconde'><i ng-click='removeAll()' class='icon icon-leftward_2'></i></div>"
+                +"</div>"
+                +"<div class='xn_select_div'>"
+                +"<div class='xn_select_head' ng-click='selectedShow=!selectedShow'> "
+                +"<i ng-if='selectedShow' class='icon icon-downward-1 xn_select_shape'></i> "
+                +"<i ng-if='!selectedShow' class='icon icon-rightward xn_select_shape'></i> "
+                +"<span class='title_span'>{{vm.selectedName}} {{title}}</span> "
+                +"</div> "
+                +"<ul ng-show='selectedShow' class='xn_select_body_ul'> "
+                +"<li ng-repeat='dData in selectedData'> "
+                +"<div ng-click='changeCl(dData, \"right\", selectedData)' ng-dblclick='cancel(dData, selectedData)' class='xn_select_body_li {{dData.cl}}'>{{dData.name}}</div> "
+                +"<ul class='inner_ul' ng-if='dData.children!=undefined && dData.children.length>0'> "
+                +"<li ng-repeat='child in dData.children'> "
+                +"<div ng-click='changeCl(child,\"right\", dData.children)' ng-dblclick='cancel(child, dData.children)' class='xn_select_body_li {{child.cl}} inner_ul_div'>{{child.name}}</div>"
+                +"<ul class='inner_ul' ng-if='child.children!=undefined && child.children.length>0'> "
+                +"<li ng-repeat='ch in child.children'>"
+                +"<div ng-click='changeCl(ch, \"right\", child.children)' ng-dblclick='cancel(ch, child.children)'class='xn_select_body_li {{ch.cl}} inner_thired_div'>{{ch.name}}</div>"
+                +"</li>"
+                +"</ul>"
+                +"</li>"
+                +"</ul>"
+                +"</li> "
+                +"</ul> "
+                +"</div>"
+                +"</div>",
+            link: function(scope, element, attres, ngModel, transcludeFn) {
+                if(!ngModel) return ;
+                scope.selectShow = true;
+                scope.selectedShow = true;
+                var collection = [];
+                scope.singleSelect = {};
+                scope.singleSelectList = [];
+                scope.toword = "";
+                scope.type = "init";
+                scope.vm={
+                    selectName:"请选择",
+                    selectedName:"已选择"
+                };
+                console.log(scope.language)
+
+                if(scope.language=="en"){
+                    console.log(scope.language)
+                    scope.vm={
+                        selectName:"select ",
+                        selectedName:"selected "
+                    };
+                }
+
+                if(!scope.selectData) scope.selectData = [];
+                if(!scope.selectedData) scope.selectedData = [];
+
+                //分离数据
+                scope.separateData = function() {
+                    for(var i=0; i<scope.selectData.length; ) {
+                        scope.selectData[i].cl = "";
+                        scope.selectData[i].isChecked = false;
+                        var count = 0;
+                        for(var j=0; j<scope.selectedData.length; j++) {
+                            scope.selectedData[j].cl = "";
+                            scope.selectedData[j].isChecked = false;
+                            if(scope.selectData[i].id==scope.selectedData[j].id) count++;
+                        }
+                        if(count>0) scope.selectData.splice(i, 1);
+                        else  i++;
+                    }
+                };
+
+                scope.$watch('selectData', function(newVal, oldVal) {
+                    if(newVal && newVal.length>0 && scope.type == "init") {
+                        scope.selectList = angular.copy(scope.selectData);
+                        scope.separateData();
+                        scope.createTree();
+                    }
+                });
+
+                scope.$watch('selectedData', function(newVal, oldVal) {
+                    if(newVal && newVal.length>0 && scope.type == "init") {
+                        scope.separateData();
+                        scope.createTree();
+                    }
+                });
+
+                scope.makeTree = function(source, result, select, level, data) {
+                    level = level || 1;
+                    if(!select) {
+                        for(var i=0; i<source.length; ) {
+                            if(!source[i].pId) {
+                                source[i].level = level;
+                                result.push(source[i]);
+                                source.splice(i, 1);
+                            } else {
+                                i++;
+                            }
+                        }
+                        for(var i=0; i<result.length; i++) {
+                            scope.makeSecondTree(source, result[i], level);
+                        }
+                    } else {
+                        if(level==1) {
+                            for(var i=0; i<source.length; ) {
+                                if(source[i].pId==data.id) {
+                                    if(!data.children) data.children = [];
+                                    data.children.push(source[i]);
+                                    source.splice(i, 1);
+                                } else {
+                                    var s = 0;
+                                    if(data.children) {
+                                        for(var j=0; j<data.children.length; j++) {
+                                            if(data.children[j].id==source[i].pId) {
+                                                if(!data.children[j].children) data.children[j].children = [];
+                                                data.children[j].children.push(source[i]);
+                                                source.splice(i, 1);
+                                                s++;
+                                                break;
+                                            }
+                                        }
+                                    } else {
+                                        i++;
+                                    }
+                                    if(s==0) i++;
+                                }
+                            }
+                            result.push(data);
+                            for(var num in source) {
+                                result.push(source[num]);
+                            }
+                        } else if(level==2) {
+                            for(var i=0; i<source.length; ) {
+                                if(source[i].pId==data.id) {
+                                    if(!data.children) data.children = [];
+                                    data.children.push(source[i]);
+                                    source.splice(i, 1);
+                                } else {
+                                    i++;
+                                }
+                            }
+                            for(var i=0; i<source.length; ) {
+                                if(data && source[i].id==data.pId) {
+                                    if(!source[i].children) source[i].children = [];
+                                    source[i].children.push(data);
+                                    data = null;
+                                    break;
+                                } else {
+                                    i++;
+                                }
+                            }
+                            if(data) source.push(data);
+                            for(var num in source) {
+                                result.push(source[num]);
+                            }
+                            source.splice(0, source.length);
+                        } else {
+                            for(var i=0; i<source.length; i++) {
+                                if(source[i].level==2 && source[i].id==data.pId) {
+                                    if(!source[i].children) source[i].children = [];
+                                    source[i].children.push(data);
+                                    data = null;
+                                    break;
+                                }
+                                if(source[i].level==1 && source[i].children) {
+                                    for(var j=0; j<source[i].children.length; j++) {
+                                        if(data && source[i].children[j].id==data.pId) {
+                                            if(!source[i].children[j].children) source[i].children[j].children = [];
+                                            source[i].children[j].children.push(data);
+                                            data = null;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(!data) break;
+                            }
+                            if(data) source.push(data);
+                            for(var num in source) {
+                                result.push(source[num]);
+                            }
+                            source.splice(0, source.length);
+                        }
+                    }
+                };
+
+                scope.makeSecondTree = function(source, data, level) {
+                    level ++;
+                    var list = [];
+                    for(var i=0; i<source.length; ) {
+                        if(source[i].pId==data.id) {
+                            source[i].level = level;
+                            if(!data.children) data.children = [];
+                            data.children.push(source[i]);
+                            list.push(source[i]);
+                            source.splice(i, 1);
+                        } else {
+                            i++;
+                        }
+                    }
+                    for(var i=0; i<list.length; i++) {
+                        scope.makeThirdTree(source, list[i], level);
+                    }
+                };
+
+                scope.makeThirdTree = function(source, data, level) {
+                    level ++;
+                    for(var i=0; i<source.length; ) {
+                        if(source[i].pId==data.id) {
+                            source[i].level = level;
+                            if(!data.children) data.children = [];
+                            data.children.push(source[i]);
+                            source.splice(i, 1);
+                        } else {
+                            i++;
+                        }
+                    }
+                };
+
+                scope.createTree = function() {
+                    collection = angular.copy(scope.selectData);
+                    scope.selectData.splice(0, scope.selectData.length);
+                    scope.makeTree(collection, scope.selectData, false);
+                    collection = angular.copy(scope.selectedData);
+                    scope.selectedData.splice(0, scope.selectedData.length);
+                    scope.makeTree(collection, scope.selectedData, false);
+                };
+
+                //双击选择
+                scope.select = function(data, list) {
+                    scope.type = "select";
+                    for(var i=0; i<list.length; i++) {
+                        if(list[i].id==data.id) {
+                            list[i].isChecked = false;
+                            list[i].cl = "";
+                            list.splice(i, 1);
+                        }
+                    }
+                    collection = [];
+                    collection = scope.selectedData;
+                    scope.selectedData = [];
+                    scope.makeTree(collection, scope.selectedData, true, data.level, data);
+                };
+
+                //双击取消选择
+                scope.cancel = function(data, list) {
+                    scope.type = "select";
+                    for(var i=0; i<list.length; i++) {
+                        if(list[i].id==data.id) {
+                            list[i].isChecked = false;
+                            list[i].cl = "";
+                            list.splice(i, 1);
+                        }
+                    }
+                    collection = [];
+                    collection = scope.selectData;
+                    scope.selectData = [];
+                    scope.makeTree(collection, scope.selectData, true, data.level, data);
+                };
+
+                //选中某条数据样式加载
+                scope.changeCl = function(data, toword, list) {
+                    scope.singleSelect = data;
+                    scope.singleSelectList = list;
+                    scope.toword = toword;
+                    for(var i=0; i<scope.selectData.length; i++) {
+                        scope.selectData[i].cl = "";
+                        scope.selectData[i].isChecked = false;
+                        if(scope.selectData[i].children && scope.selectData[i].children.length>0) {
+                            for(var j=0; j<scope.selectData[i].children.length; j++) {
+                                scope.selectData[i].children[j].cl="";
+                                scope.selectData[i].children[j].isChecked="";
+                                if(scope.selectData[i].children[j].children && scope.selectData[i].children[j].children.length>0) {
+                                    for(var d in scope.selectData[i].children[j].children) {
+                                        scope.selectData[i].children[j].children[d].cl="";
+                                        scope.selectData[i].children[j].children[d].isChecked="";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    for(var i=0; i<scope.selectedData.length; i++) {
+                        scope.selectedData[i].cl = "";
+                        scope.selectedData[i].isChecked = false;
+                        if(scope.selectedData[i].children && scope.selectedData[i].children.length>0) {
+                            for(var j=0; j<scope.selectedData[i].children.length; j++) {
+                                scope.selectedData[i].children[j].cl="";
+                                scope.selectedData[i].children[j].isChecked="";
+                                if(scope.selectedData[i].children[j].children && scope.selectedData[i].children[j].children.length>0) {
+                                    for(var d in scope.selectedData[i].children[j].children) {
+                                        scope.selectedData[i].children[j].children[d].cl="";
+                                        scope.selectedData[i].children[j].children[d].isChecked="";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    data.cl = "xn_selected_li";
+                    data.isChecked = true;
+                };
+
+                //点击右箭头选择
+                scope.get = function(list) {
+                    if(scope.toword=="left") {
+                        scope.select(scope.singleSelect, scope.singleSelectList);
+                    }
+                };
+
+                //点击左箭头取消选择
+                scope.remove = function(list) {
+                    if(scope.toword=="right") {
+                        scope.cancel(scope.singleSelect, scope.singleSelectList);
+                    }
+                };
+
+                //选择全部
+                scope.getAll = function() {
+                    scope.selectData.splice(0, scope.selectData.length);
+                    scope.selectedData.splice(0, scope.selectedData.length);
+                    scope.selectedData = angular.copy(scope.selectList);
+                    scope.createTree();
+                };
+
+                //移除全部
+                scope.removeAll = function() {
+                    scope.selectData.splice(0, scope.selectData.length);
+                    scope.selectedData.splice(0, scope.selectedData.length);
+                    scope.selectData = angular.copy(scope.selectList);
+                    scope.createTree();
+                };
+            }
+        }
+    })
+    .directive("lookup", function() {
+        return {
+            restrict :"AEC",
+            scope: {
+                options : "=",
+                showField : "=",
+                data : "=ngModel",
+                searchParameter:"=",
+                required : "@",
+                name : "@",
+                showWidth : "@",
+                placeHolder : "@"
+            },
+            require: "^ngModel",
+            replace: true,
+            transclude:true,
+            link: function($scope, element, attres, controller, transcludeFn) {
+                $scope.count = 0;
+                $scope.vm={
+                    showDiv:false
+                }
+                /* $scope.showDiv = false;*/
+                $scope.showDelete = false;
+                $scope.options.keyword = "";
+                $scope.options.maxPageSize = 5;
+                var time = new Date().getTime();
+                $scope.id = "xnTableSelect_" + time;
+                $scope.showDivId = "showDiv_" + time;
+
+                if(!$scope.required) {
+                    $scope.required = false;
+                }
+
+                if(!$scope.showField) {
+                    $scope.showField = "";
+                }
+
+                if(!$scope.options.totalCount) {
+                    $scope.options.totalCount = 0;
+                }
+                $scope.vm={};
+                if($scope.showWidth){
+                    $scope.vm.width={width:$scope.showWidth+"px"};
+
+                    console.log($scope.vm);
+                }else{
+                    $scope.vm.width=""
+                }
+
+                //下拉DIV显示和隐藏
+                $scope.showTable = function(e) {
+                    /*  e.preventDefault();
+                     e.stopPropagation();*/
+                    $scope.options.keyword = "";
+                    $scope.options.pageNumber=1;
+                    $scope.vm.showDiv = !$scope.vm.showDiv;
+                    if($scope.vm.showDiv){
+                        $scope.$parent[$scope.options.methodName]($scope.searchParameter)
+                    };
+                };
+
+                $scope.find = function(e) {
+                    if(event.keyCode==13){
+                        e.preventDefault();
+                        $scope.$parent[$scope.options.methodName]($scope.searchParameter);
+                    }
+                };
+
+                //搜索
+                $scope.search = function(str, e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if("pre"==str) $scope.options.pageNumber--;
+                    if("next"==str) $scope.options.pageNumber++;
+                    $scope.$parent[$scope.options.methodName]($scope.searchParameter);
+                };
+
+                //监控关键值
+                $scope.$watch("data", function(newVal, oldVal) {
+                   if(newVal){
+                        $scope.vm.showDiv = false;
+                   }
+                });
+
+                $scope.stopEvent = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
+
+                var getPar = function(tar) {
+                    if(tar.id==$scope.id){
+                        $scope.count++;
+                    }
+                    if(tar.parentElement){
+                        getPar(tar.parentElement);
+                    }
+                };
+                angular.element(document).bind("click", function(e) {
+                    $scope.count = 0;
+                    getPar(e.target);
+                    if($scope.count == 0) {
+                        $scope.$apply(function(){
+                            $scope.vm.showDiv = false;
+                        })
+                    }
+                });
+
+                $scope.deleteData = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.data=undefined;
+                    $scope.showField= "";
+                };
+            },
+            templateUrl: "xn/template/select/lookup.html"
+        }
+    })
+    .directive("xnFilterSelect", function() {
+        return {
+            restrict:"AE",
+            scope:{
+                selectData:"=",
+                selectedData: "=ngModel",
+                name: "@",
+                required: "@"
+            },
+            require: "^ngModel",
+            link: function($scope, element, attres, controller, transcludeFn) {
+                $scope.contentDiv = false;
+                $scope.deleteShow = false;
+                $scope.contentId = new Date().getTime() + "_id";
+
+                if(!$scope.selectData) {
+                    $scope.selectData = [];
+                }
+
+                if(!$scope.required) {
+                    $scope.required = false;
+                }
+
+                if(!$scope.name) {
+                    $scope.name = "selectName";
+                }
+
+                $scope.showContent = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.contentDiv = !$scope.contentDiv;
+                };
+
+                $scope.keepShowContent=function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
+                $scope.select = function(data, e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.selectedData = data;
+                    $scope.showVal = data.name;
+                    $scope.contentDiv = false;
+                    $scope.filterOption = "";
+                };
+
+
+
+
+                $scope.$watch("selectedData",function(){
+                    if($scope.selectedData){
+                        $scope.showVal=$scope.selectedData.name;
+
+                    }
+                });
+
+
+                angular.element(document).bind("click", function (e) {
+                    $scope.$apply(function () {
+                        $scope.contentDiv = false;
+                    });
+                });
+
+                $scope.deleteData = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.showVal = "";
+                    $scope.selectedData = null;
+                };
+
+            },
+            templateUrl: "xn/template/select/xnFilterSelect.html"
+        };
+    })
+    .directive("xnCreateSelect", function() {
+        return {
+            restrict:"AE",
+            scope:{
+                selectData:"=",
+                selectedData: "=ngModel",
+                name: "@",
+                required: "@",
+                createLink: "@",
+                createInfo: "@"
+            },
+            require: "^ngModel",
+            templateUrl: "xn/template/select/xnCreateSelect.html",
+            link: function($scope, element, attrs, controller) {
+                if(!$scope.selectData)
+                    $scope.selectData = [];
+                if(!$scope.required)
+                    $scope.required = false;
+                if(!$scope.name)
+                    $scope.name = "selectName";
+
+                $scope.count = 0;
+                $scope.contentDiv = false;
+                $scope.deleteShow = false;
+                $scope.contentId = new Date().getTime() + "_id";
+
+                $scope.goCreate = function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location = $scope.createLink;
+                }
+
+                $scope.showContent = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.contentDiv = !$scope.contentDiv;
+                };
+
+                $scope.select = function(data,e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.selectedData = data;
+                    $scope.showVal = data.name;
+                    $scope.contentDiv = false;
+                };
+
+                angular.element(document).bind("click", function (e) {
+                    $scope.$apply(function () {
+                        $scope.contentDiv = false;
+                    });
+                });
+
+                $scope.deleteData = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $scope.showVal = "";
+                    $scope.selectedData = null;
+                };
+
+            }
+        };
+    })
+    .directive("xnFilterInput", function() {
+        return {
+            restrict:"AE",
+            scope:{
+                selectList:"=",
+                selectedData: "=ngModel",
+                name: "@",
+                required: "@"
+            },
+            require: "ngModel",
+            templateUrl: "xn/template/select/xnFilterInput.html",
+            link: function(scope, element, attres, controller) {
+                scope.isShow=false;
+
+                if(!scope.selectedData){
+                    scope.selectedData ={"key":"",value:""};
+                }
+                if(!scope.required){
+                    scope.required = false;
+                }
+                if(!scope.name){
+                    scope.name = "selectName";
+                }
+                scope.xnFilterInputId = "inputId"+new Date().getTime();
+                angular.element("#"+scope.xnFilterInputId+" input").live("keydown",function(e){
+                    scope.selectedData.key="";
+                });
+
+                scope.select = function(data){
+                    scope.selectedData =angular.copy(data);
+                    angular.element("#"+scope.xnFilterInputId+" ul").hide();
+                };
+                scope.setListShow = function(){
+                    angular.element("#"+scope.xnFilterInputId+" ul").show();
+                };
+
+
+                var getPar = function(tar) {
+                    if(tar.id==scope.xnFilterInputId){
+                        scope.count++;
+                    }
+                    if(tar.parentElement){
+                        getPar(tar.parentElement);
+                    }
+                };
+                angular.element(document).bind("click", function(e) {
+                    scope.count = 0;
+                    getPar(e.target);
+                    if(scope.count == 0) {
+                        angular.element("#"+scope.xnFilterInputId+" ul").hide();
+                    }
+                });
+            }
+        };
+    })
+    .directive("triggerSelect", [function() {
+        var link = function($scope, element, attrs, ngModel, fn) {
+            if(!ngModel) {
+                return ;
+            }
+
+            var time = new Date().getTime();
+
+            $scope.inputId = "input_"+time;
+
+            $scope.lbShow = false;
+
+            $scope.selectList = [];
+
+            if(!$scope.data) {
+                $scope.data = 0;
+            }
+
+            angular.element("#"+$scope.inputId).ready(function() {
+                if("true"==$scope.readonly) {
+                    angular.element("#"+$scope.inputId).attr("readonly", "");
+                }
+                angular.element("#"+$scope.inputId).attr("name", $scope.name);
+            });
+
+            if(!$scope.selectOption) {
+                $scope.selectOption = [0, 0, 1];
+            }
+
+            if($scope.selectOption) {
+                if(!$scope.selectOption[0]) {
+                    $scope.selectOption[0] = 0;
+                }
+                if(!$scope.selectOption[1]) {
+                    $scope.selectOption[1] = 0;
+                }
+                if(!$scope.selectOption[2]) {
+                    $scope.selectOption[2] = 1;
+                }
+            }
+
+            for(var i=0; i<$scope.selectOption[1]; i++) {
+                if(0==i%$scope.selectOption[2]) {
+                    $scope.selectList.push(i);
+                }
+            }
+
+            $scope.add = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $scope.data = $scope.data-0;
+                if($scope.selectOption[0]==$scope.selectOption[1]) {
+                    $scope.data+=$scope.selectOption[2];
+                } else {
+                    if($scope.selectList && 0<$scope.selectList.length) {
+                        if($scope.data<$scope.selectList[$scope.selectList.length-1]) {
+                            $scope.data+=$scope.selectOption[2];
+                        }
+                    } else {
+                        if($scope.data<$scope.selectOption[1]) {
+                            $scope.data+=$scope.selectOption[2];
+                        }
+                    }
+                }
+            };
+
+            $scope.subtract = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $scope.data = $scope.data-0;
+                if($scope.data>$scope.selectOption[0]) {
+                    if($scope.data>0) {
+                        $scope.data-=$scope.selectOption[2];
+                    }
+                    if(0>=$scope.data && "true"==$scope.minus) {
+                        $scope.data-=$scope.selectOption[2];
+                    }
+                }
+                if($scope.data<=$scope.selectOption[0]) {
+                    if("true"==$scope.minus) {
+                        $scope.data-=$scope.selectOption[2];
+                    }
+                }
+            };
+
+            $scope.select = function(option, e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $scope.data = option;
+                $scope.lbShow=false;
+            };
+
+            angular.element(document).on("click", function() {
+                $scope.$apply(function() {
+                    $scope.lbShow=false;
+                });
+            });
+
+            $scope.keepShow = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            };
+
+            $scope.check = function() {
+                if($scope.data>$scope.selectOption[1]-1) {
+                    $scope.data = $scope.selectOption[1]-1;
+                }
+            };
+
+            $scope.show = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $scope.lbShow=true;
+            };
+        };
+        return {
+            restrict: "AE",
+            scope: {
+                data: "=ngModel",
+                selectOption: "=",
+                name: "@",
+                required: "@",
+                minus: "@",
+                readonly: "@"
+            },
+            require: "^ngModel",
+            link: link,
+            replace: true,
+            template: "<div class='trigger_select_wrap' ng-click='keepShow($event)'>"
+                +"  <div class='input_box'>"
+                +"      <input type='text' id='{{inputId}}' ng-change='check()' ng-click='show($event)' ng-model='data' class='form-control' ng-require='{{required}}'>"
+                +"      <div class='ctrl_wrap'><div class='icon icon-upward-1' ng-click='add($event)'></div><div class='icon icon-downward-1' ng-click='subtract($event)'></div></div>"
+                +"  </div>"
+                +"  <div class='lb' ng-if='selectList && selectList.length>0' ng-show='lbShow'>"
+                +"      <ul>"
+                +"          <li ng-repeat='selectData in selectList' ng-click='select(selectData, $event)'>{{selectData}}</li>"
+                +"      </ul>"
+                +"  </div>"
+                +"</div>"
+        };
+    }])
+    .filter("xnSearch", [
+        function () {
+            return function (arr, key) {
+                if(!key) {
+                    return arr;
+                } else {
+                    var list = [];
+                    for(var i=0; i<arr.length; i++) {
+                        if(arr[i].name.indexOf(key)>=0)
+                            list.push(arr[i]);
+                    }
+                    return list;
+                }
+            };
+        }
+    ]);

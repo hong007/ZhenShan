@@ -1,0 +1,68 @@
+$rundata.setLayout("defaultEdit")
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget("index")" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>找回密码</span>
+    </div>
+</div>
+<div class="simple-edit-content xn-width auto">
+    <div class="simple-edit-content-inner">
+        <div class="step-banner">
+            <div class="step-banner-1-off"><span class="step-banner-word step-1-off">验证账号</span></div>
+            <div class="step-banner-2-on"><span class="step-banner-word step-2 step-active">重置密码</span></div>
+            <div class="step-banner-3"><span class="step-banner-word step-3">完成</span></div>
+        </div>
+        #macro (resetpasswdMessage $field)
+            #if (!$field.valid) $field.message #end
+        #end
+        <form action="" method="post">
+            #set ($group = $form.resetpasswd.defaultInstance)
+            $group.mapTo($reset)
+            <input type="hidden" name="action" value="login_action"/>
+            <div class="step-input">
+                <input type="hidden" name="$group.userId.key" value="$group.userId.value">
+                <div class="input-line">
+                    <label>新 密码：</label>
+                    <input class="form-control" type="password" name="$group.password.key" value="$group.password.value" placeholder="请输入新密码">
+                    <div class="error-area ml-105">#resetpasswdMessage($group.password)</div>
+                </div>
+                <div class="input-line mt_50">
+                    <label>确认密码：</label>
+                    <input class="form-control" type="password" name="$group.confrimpassword.key" value="$group.confrimpassword.value" placeholder="请再次输入新密码">
+                    <div class="error-area ml-105">#resetpasswdMessage($group.confrimpassword)
+                        $!errorMsg
+                    </div>
+                </div>
+                <div class="input-line xn-center clearfix mt-85">
+                    <input type="submit" class="btn btn-primary-long" name="event_submit_do_reset"
+                           value="确认"/>
+##                    <a class="btn btn-primary-long col-sm-offset-1" href="$homeLink.setTarget('findPassport/step3')">确认</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="xn-width auto">
+    <div class="step-footer-content">
+        <div class="column-nav">
+            <a href="">联系我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">加入我们</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">免责申明</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">意见反馈</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">友情链接</a>
+            <i class="vertical-line bg-color-1"></i>
+            <a href="">网站地图</a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="recordInfo">备案信息</div>
+    </div>
+</div>

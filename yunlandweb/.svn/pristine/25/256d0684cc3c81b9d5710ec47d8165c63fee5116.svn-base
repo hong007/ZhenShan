@@ -1,0 +1,20 @@
+# xn-jquery-ui [![spm version](http://spm.xiniunet.com:3000/badge/xn-jquery-ui)](http://spm.xiniunet.com:3000/package/xn-jquery-ui)
+
+---
+
+xn-jquery-ui
+
+## Install
+
+```
+$ spm install xn-jquery-ui --save
+```
+
+## Usage
+
+```js
+var xnJqueryUi = require('xn-jquery-ui');
+// use xnJqueryUi
+```
+
+# jQuery UI - v1.10.3 - 2013-05-03

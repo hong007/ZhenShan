@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>新增土地推介</title>
+<link rel="Shortcut Icon" href="http://www.yunland.cn/yunland/images/favicon.ico"  type="image/x-icon"  >
+<link href="http://www.yunland.cn/yunland/dist/styles/global.min.css" rel="stylesheet">
+<link href="http://www.yunland.cn/yunland/dist/styles/local.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="nav" class="xn_nav">
+    <div class="xn-nav xn-nav-2">
+        <div class="xn-width auto inner_div clearfix">
+            <div class="logo xn-logo clearfix">
+                <a href="http://www.yunland.cn/yunland/index.htm">
+                    <div class="logo-title">
+                        <span class="logo-title-word">后台管理</span>
+                    </div>
+                </a>
+            </div>
+
+            <ul class="clearfix title-ul">
+                <li ng-class="navShow===1?'nav-li-hover':'nav-li'">
+                    <a href="http://www.yunland.cn/yunland/index/ads_slider.htm" target="_self">首页</a>
+                </li>
+                    <li ng-class="navShow===2?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown2=false;" ng-init="showDropdown2=false;" ng-mouseenter="showDropdown2=true;">
+                        <a href="http://www.yunland.cn/yunland/recommend/index.htm" target="_self">土地推介<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-show="showDropdown2">
+                            <li><a href="http://www.yunland.cn/yunland/recommend/index.htm">推介管理</a></li>
+                            <li><a href="http://www.yunland.cn/yunland/recommend/city.htm">城市维护</a></li>
+                            <li><a href="http://www.yunland.cn/yunland/recommend/advertise_maintain.htm">广告维护</a></li>
+                        </ul>
+                    </li>
+                     <li ng-class="navShow===3?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown3=false;" ng-init="showDropdown3=false;" ng-mouseenter="showDropdown3=true;">
+                        <a href="http://www.yunland.cn/yunland/sell/index.htm" target="_self">云地出让<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-show="showDropdown3">
+                            <li><a href="http://www.yunland.cn/yunland/sell/index.htm">出让管理</a></li>
+                            <li><a href="http://www.yunland.cn/yunland/sell/advertise_maintain.htm">广告维护</a></li>
+                        </ul>
+                    </li>
+                    <li ng-class="navShow===4?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown4=false;" ng-init="showDropdown4=false;" ng-mouseenter="showDropdown4=true;">
+                        <a href="http://www.yunland.cn/yunland/transfer/index.htm" target="_self">土地转让<span class="caret"></span></a>
+                        <ul class="dropdown-menu" ng-show="showDropdown4">
+                            <li><a href="http://www.yunland.cn/yunland/transfer/index.htm">转让管理</a></li>
+                            <li><a href="http://www.yunland.cn/yunland/transfer/advertise_maintain.htm">广告维护</a></li>
+                            <li><a href="http://www.yunland.cn/yunland/transfer/post_record.htm">投递记录</a></li>
+                        </ul>
+                    </li>
+                    
+                <li ng-class="navShow===5?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown5=false;" ng-init="showDropdown5=false;" ng-mouseenter="showDropdown5=true;">
+                    <a href="http://www.yunland.cn/yunland/news/index.htm" target="_self">云地动态<span class="caret"></span></a>
+                    <ul class="dropdown-menu" ng-show="showDropdown5">
+                        <li><a href="http://www.yunland.cn/yunland/news/index.htm">云地动态</a></li>
+                        <li><a href="http://www.yunland.cn/yunland/news/footer_maintain.htm">底部信息维护</a></li>
+                    </ul>
+                </li>
+                <li ng-class="navShow===6?'nav-li-hover':'nav-li'" class="dropdown" ng-mouseleave="showDropdown6=false;" ng-init="showDropdown6=false;" ng-mouseenter="showDropdown6=true;">
+                    <a href="http://www.yunland.cn/yunland/member/index.htm" target="_self">用户管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu" ng-show="showDropdown6">
+                        <li><a href="http://www.yunland.cn/yunland/member/index.htm">会员列表</a></li>
+                        <li><a href="http://www.yunland.cn/yunland/member/accounts_management.htm">系统账号</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-li">
+                    <a href="http://www.yunland.cn/" target="_blank">网站预览</a>
+                </li>
+            </ul>
+
+            <div class="xn-header-right info_div">
+                <span class="xn-name f-right welcome">欢迎您
+                    <a class="name_a" href="javascript:" ng-init="showSetting=false" ng-click="showSetting=!showSetting;" ng-mouseenter="showSetting=true;" ng-mouseleave="showSetting=false;">
+                        <span>sysadmin</span><span class="icon icon-downward-2"></span>
+                    </a>
+                </span>
+                <div class="hideSetting" ng-class="showSetting?'showSetting':''" ng-mouseenter="showSetting=true;" ng-mouseleave="showSetting=false;">
+                    <div class="hideSetting-top">
+                    </div>
+                    <div class="hideSetting-content clearfix">
+                        <ul>
+                            <li>
+                                <a title="修改密码" href="http://www.yunland.cn/yunland/password/change.htm">
+                                    <i class="icon icon-tubiaoxiugaimima01"></i>修改密码
+                                </a>
+                            </li>
+                        </ul>
+                        <a class="btn f-right exit btn-danger" href="http://www.yunland.cn/base/loginout.htm">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var selectModel = [
+                    {id:"05",name:'商服用地'},
+                    {id:"051",name:'批发零售用地'},
+                    {id:"052",name:'住宿餐饮用地'},
+                    {id:"053",name:'商务金融用地'},
+                    {id:"054",name:'其他商服用地'},
+                    {id:"06",name:'工矿仓储用地'},
+                    {id:"061",name:'工业用地'},
+                    {id:"062",name:'采矿用地'},
+                    {id:"063",name:'仓储用地'},
+                    {id:"07",name:'住宅用地'},
+                    {id:"08",name:'公共管理与公共服务用地'},
+                    {id:"081",name:'机关团体用地'},
+                    {id:"082",name:'新闻出版用地'},
+                    {id:"083",name:'科教用地'},
+                    {id:"084",name:'医卫慈善用地'},
+                    {id:"085",name:'文体娱乐用地'},
+                    {id:"086",name:'公共设施用地'},
+                    {id:"087",name:'公园与绿地'},
+                    {id:"088",name:'风景名胜设施用地'},
+                    {id:"09",name:'特殊用地'},
+                    {id:"091",name:'军事设施用地'},
+                    {id:"092",name:'使领馆用地'},
+                    {id:"093",name:'监教场所用地'},
+                    {id:"094",name:'宗教用地'},
+                    {id:"095",name:'殡葬用地'},
+                    {id:"10",name:'交通运输用地'},
+                    {id:"102",name:'公路用地'},
+                    {id:"103",name:'街巷用地'},
+                    {id:"104",name:'农村道路'},
+                    {id:"105",name:'机场用地'},
+                    {id:"106",name:'港口码头用地'},
+                    {id:"107",name:'管道运输用地'},
+                    {id:"11",name:'水域及水利设施用地'},
+                    {id:"111",name:'河流水面'},
+                    {id:"112",name:'湖泊水面'},
+                    {id:"113",name:'水库水面'},
+                    {id:"114",name:'坑塘水面'},
+                    {id:"115",name:'沿海滩涂'},
+                    {id:"116",name:'内陆滩涂'},
+                    {id:"117",name:'沟渠'},
+                    {id:"118",name:'水工建筑用地'},
+                    {id:"119",name:'冰川及永久积雪'},
+                    {id:"12",name:'其他土地'},
+                    {id:"121",name:'空闲地'},
+                    {id:"122",name:'设施农用地'},
+                    {id:"123",name:'田坎'},
+                    {id:"124",name:'盐碱地'},
+                    {id:"125",name:'沼泽地'},
+                    {id:"126",name:'沙地'},
+                    {id:"127",name:'裸地'},
+                    {id:"071",name:'高档住宅用地'},
+                    {id:"072",name:'中低价位、中小套型普通商品住房用地'},
+                    {id:"073",name:'其他普通商品住房用地'},
+                    {id:"074",name:'经济适用住房用地'},
+                    {id:"075",name:'廉租住房用地'},
+                    {id:"076",name:'其他住房用地'},
+                    {id:"shangy",name:'商业'},
+                    {id:"zhuz",name:'住宅'},
+                    {id:"zhongh",name:'综合'},
+                    {id:"qiet",name:'其他'},
+                    {id:"077",name:'公共租赁住房用地'},
+            ]
+
+</script>
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("recommend/index")">土地推介</a></li>
+        <li class="active">新增土地推介</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="AddRecommendController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix" style="min-width: 1200px">
+            <div class="edit-content">
+                <div class="recommend-editContent-top clearfix">
+                    <h4 class="recommend-editContent-h4">头部推介图片</h4>
+                    <div>
+                        <div class="xn-input-line  clearfix"  style="width:980px;margin: 0 auto">
+                            <ul class="xn-upload-img xn-upload-img-header clearfix" style="width: 595px;height: 250px ;float: left;margin-right: 20px" >
+                                <input type="file" id="headImageFile" name="headImageFile" ng-click="showHeadImagePicture()" width="114" height="85"
+                                       contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                <li class="clearfix" style="width: 595px;height: 250px" ng-if="recommend.headImagepath == null" onclick="headImageFile.click()">
+                                    <i class="icon icon-add"></i>
+                                    <div class="upload-add-title ng-binding">头部推介图片(建议尺寸：1190*500)</div>
+                                </li>
+                                <img ng-if="recommend.headImagepath != null" onclick="headImageFile.click()"  id="spanImage" alt="请选择图片"
+                                     width="595" height="250" ng-src="{{recommend.headImagepath}}"/>
+                            </ul>
+                            <ul class="xn-upload-img xn-upload-img-header clearfix" style="width: 330px;height: 250px; float: left;" >
+                                <input type="file" id="headImageFileSmall" name="headImageFileSmall" ng-click="showHeadImagePictureSmall()" width="114" height="85"
+                                       contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                <li class="clearfix" style="width: 330px;height: 250px;" ng-if="recommend.headImagepathSmall == null" onclick="headImageFileSmall.click()">
+                                    <i class="icon icon-add"></i>
+                                    <div class="upload-add-title ng-binding">头部推介图片缩略图(建议尺寸:330*250)</div>
+                                </li>
+                                <img ng-if="recommend.headImagepathSmall != null" onclick="headImageFileSmall.click()" id="spanImage" alt="请选择图片"
+                                     width="330" height="250" ng-src="{{recommend.headImagepathSmall}}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">土地基本信息</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">宗地编号：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="number" ng-model="land.landNumber" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">土地名称：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="name" ng-model="land.name" required="required">
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">宗地坐落：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="place" ng-model="land.landLocation" required="required">
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">出让年限：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="limit" ng-model="land.sellYear" required="required" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">容积率：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="plotRatio" ng-model="land.plotRatio" required="required" >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">建筑密度(%)：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="buildingDensity" ng-model="land.buildingDensity" required="required" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">绿化率(%)：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="landscapingRatio" ng-model="land.greeningRate" required="required" >
+                        </div>
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">建筑限高(米)：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="maxHeight" ng-model="land.maxHeight" required="required" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix label-long">
+                        <label class="xn-label"><span class="f-right">土地用途：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        
+                        <div class="xn-input-sm">
+                            <select id="planUse" class="form-control" ng-model="land.planUse">
+                                <option id="zhuz" value="zhuz">住宅用地</option>
+                                <option id="shangy" value="shangy">商业/办公用地</option>
+                                <option id="gongy" value="gongy">工业用地</option>
+                                <option id="zhongh" value="zhongh">综合用地</option>
+                            </select>
+                        </div>
+
+
+                        <div class="tip"></div>
+                        <label class="xn-label"><span class="f-right">宗地总面积(万平方米)：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="area" ng-model="land.floorSpace" required="required" >
+                        </div>
+                    </div>
+                </div>
+                 
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">位置地图</h4>
+                &nbsp;<a href="#" ng-click="clearOverlays()">清除绘画</a>
+                &nbsp;<a id="addDrawingManager" ng-show="drawingManagerShow" href="#" ng-click="addDrawingManager()">添加绘画(双击结束绘制)</a>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">位置：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-lg">
+                            <div xn-location ng-model="land.address" name="address" data-city-id="{{land.address}}"  address=false></div>
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix" style="display: none;">
+                        <label class="xn-label"><span class="f-right">经纬度：</span><i
+                                class="xn-required-i f-right"></i></label>
+
+                        <div class="xn-input-sm">
+                            <input type="text" class="form-control"
+                                   name="coordinate" ng-model="land.location" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <div id="allmap"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">地块图片</h4>
+                <div class="multiple-file"><div xn-attachment-edit ng-model="attachment" name="attachment"></div></div>
+
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">详细介绍</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                           <textarea class="form-control" rows="15" name="landIntro" id="landIntro" ng-model="land.content"
+                                    ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0 ">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5"
+                                                       ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+
+</body>
+<script src="http://www.yunland.cn/yunland/dist/scripts/base.min.js"></script>
+<script src="http://www.yunland.cn/yunland/dist/scripts/global.min.js"></script>
+<script src="http://www.yunland.cn/yunland/dist/scripts/local.min.js"></script>
+<script type="text/javascript" src="http://www.yunland.cn/yunland/vendor/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    /*犀牛ng-app的运用*/
+    angular.element(document).ready(function() {
+        initApp();
+        angular.bootstrap(document.body, ['xn']);
+    });
+    var uploadjson =  'http://www.yunland.cn/base/fileUploadJson.do';
+    var uploadmamagerjson = 'http://www.yunland.cn/base/fileUploadManager.do';
+</script>
+</html>

@@ -1,0 +1,208 @@
+$page.setTitle("编辑成交结果")
+
+<script type="text/javascript">
+    var selectModel2 = [
+        #foreach($param in ${selectLandPurpose.keySet()})
+            {id:"$param",name:'${selectLandPurpose.get($param)}'},
+        #end
+    ]
+
+    var selectModelSellWay = [
+        #foreach($param in ${selectSupplyMethod.keySet()})
+            {id:"$param",name:'${selectSupplyMethod.get($param)}'},
+        #end
+    ]
+
+</script>
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("sell/index")">土地出让</a></li>
+        <li class="active">编辑成交结果</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="EditResultController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix">
+            <div class="edit-content">
+                <h4 class="recommend-editContent-h4">成交结果</h4>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">项目名称：</span><i
+                            class="xn-required-i f-right"></i></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="name" ng-model="result.name" required="required">
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">供地方式：</span><i
+                            class="xn-required-i f-right"></i></label>
+                    <div class="xn-input-sm">
+                        <div xn-filter-select data-select-data="selectDataSellWay" ng-model="land.sellWay" name="operatingUnitSellWay" required="required"></div>
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">项目位置：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="landLocation" ng-model="result.landLocation" >
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">土地使用年限：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="limit" ng-model="result.sellYear">
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">土地用途：</span></label>
+                    <div class="xn-input-sm">
+                        <div xn-filter-select data-select-data="selectData" ng-model="land.planUse" name="operatingUnit" ></div>
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">成交价格(万元)：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="money" ng-model="result.money"  >
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">电子监管号：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="superviseNumber" ng-model="result.superviseNumber"  >
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">面积(万平方米)：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="totalArea" ng-model="result.totalArea"  >
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">土地来源：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="address" ng-model="result.address"  >
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">行业分类：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="industry" ng-model="result.industry"  >
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">土地级别：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="level" ng-model="result.level"  >
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">土地使用权人：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="user" ng-model="result.user"  >
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">容积率上限：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="ratioTop" ng-model="result.ratioTop"  >
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">容积率下限：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="ratioLimit" ng-model="result.ratioLimit"  >
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">约定交地时间：</span></label>
+                    <div class="xn-input-sm openData input-group">
+                        <input type="text" class="form-control" id="deliveryTime" ng-model="result.deliveryTime" name="deliveryTime"
+                               datepicker-popup="yyyy-MM-dd" is-open="deliveryTime" #*max-date="maxDate"*#  datepicker-options="dateOptions"
+                               date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openDeliveryTime($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">约定开工时间：</span></label>
+                    <div class="xn-input-sm openData input-group">
+                        <input type="text" class="form-control" id="buildingTime" ng-model="result.buildingTime" name="buildingTime"
+                               datepicker-popup="yyyy-MM-dd" is-open="buildingTime" #*max-date="maxDate"*#  datepicker-options="dateOptions"
+                               date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openBuildingTime($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">约定竣工时间：</span></label>
+                    <div class="xn-input-sm openData input-group">
+                        <input type="text" class="form-control" id="endTime" ng-model="result.endTime" name="endTime"
+                               datepicker-popup="yyyy-MM-dd" is-open="endTime" #*max-date="maxDate"*#  datepicker-options="dateOptions"
+                               date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openEndTime($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">批准单位：</span></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="approveOffice" ng-model="result.approveOffice"  >
+                    </div>
+                </div>
+                <div class="xn-input-line  clearfix">
+                    <label class="xn-label"><span class="f-right">合同签订日期：</span></label>
+                    <div class="xn-input-sm openData input-group">
+                        <input type="text" class="form-control" id="sigingDate" ng-model="result.sigingDate" name="sigingDate"
+                               datepicker-popup="yyyy-MM-dd" is-open="sigingDate" #*max-date="maxDate"*#  datepicker-options="dateOptions"
+                               date-disabled="disabled(date, mode)"  close-text="关闭" current-text="今天"  clear-text="清除">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"  ng-click="openSigingDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                    <div class="tip"></div>
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">位置地图</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">位置：</span><i
+                                class="xn-required-i f-right"></i></label>
+                        <div class="xn-input-lg">
+                            <div xn-location ng-model="land.address" data-city-id="{{land.address}}"  address=false></div>
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <div >
+                            <input type="hidden" class="form-control"
+                                   name="coordinate" ng-model="land.coordinate" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <div class="map-content">
+                            <div id="allmap"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0 ">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5"
+                                                       ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>

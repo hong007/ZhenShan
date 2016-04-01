@@ -1,0 +1,138 @@
+$page.setTitle("友情链接")
+<div class="main xn-width auto clearfix" ng-controller="LinkController">
+    <h3 class="title"> 管理导航：
+
+        <a  href="javascript:void(0)" ng-click="doAdd()">添加链接</a></h3>
+    <div class="form-layout clearfix">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="info">
+                <th class="xn-text-center col-sm-1">序号</th>
+                <th class="xn-text-center col-sm-9">链接</th>
+                <th class="xn-text-center col-sm-2">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="page in List">
+                <td class="xn-text-center" ng-bind="$index+1"></td>
+                <td class="xn-text-left">{{page.name}}</td>
+                <td class="xn-text-center">
+                    <a  href="javascript:void(0)" ng-click="doEdit(page.id)">修改</a> | <a  href="javascript:void(0)" ng-click="doDelete(page.id)">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot ng-if="vm.totalCount == 0">
+            <tr><td colspan="7" class="xn-text-center">暂无数据</td></tr>
+            </tfoot>
+        </table>
+        <div class="clearfix"></div>
+        <div class="f-left mt_20 mb_10">共{{vm.totalCount}}条</div>
+        <pagination  class="f-right" ng-show="vm.totalCount>vm.pageSize"  ng-change="getList()"  max-size="maxPageSize" total-items="vm.totalCount" ng-model="vm.pageNumber" items-per-page="vm.pageSize"
+                     class="pagination-sm"  boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>
+</div>
+
+
+
+
+<script type="text/ng-template" id="createContent.html">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="modal-header">
+            <h3 class="modal-title">创建链接</h3>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group  clearfix">
+                <label for="title" class="col-sm-3  xn-text-right"><span class="required">*</span>链接名称:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="name" id="name"  ng-model="vm.name"  maxlength="100"  required>
+                </div>
+            </div>
+            <div class="form-group  clearfix">
+                <label for="title" class="col-sm-3  xn-text-right"><span class="required">*</span>链接网址:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="name" id="name"  ng-model="vm.url"  maxlength="100"  required>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-3   xn-text-right" >logo:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="storagePath"   ng-model="vm.storagePath"  >
+                </div>
+            </div>
+            <div class="form-group clearfix">
+
+                <label  for="picture" class="col-sm-offset-3 col-sm-4">
+                    <input type="file" class="col-sm-12 btn btn-default f-left" name="picture" id="pic"
+                           accept={{picAccept}}    >
+                </label>
+                <button class="btn btn-default  f-left" type="submit" ng-click="upload()">上传</button>
+            </div>
+
+            <div class="form-group  clearfix">
+                <label for="title" class="col-sm-3  xn-text-right">描述:</label>
+                <div class="col-sm-7">
+                    <textarea class="form-control" rows="8" name="description" id="description" ng-model="vm.description"
+                            ></textarea>
+                </div>
+            </div>
+            <div class="clearfix error-box col-sm-offset-3 col-sm-7" ng-show="validateForm.$errors.length>0 ">
+                <div class="alert alert-danger">
+                    <i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" xn-submit-enter="doCreate()">创建</button>
+            <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        </div>
+</script>
+<script type="text/ng-template" id="editContent.html">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="modal-header">
+            <h3 class="modal-title">编辑分类</h3>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group  clearfix">
+                <label for="title" class="col-sm-3  xn-text-right"><span class="required">*</span>类别名称:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="name" id="name"  ng-model="vm.name"  maxlength="100"  required>
+                </div>
+            </div>
+            <div class="form-group  clearfix">
+                <label for="title" class="col-sm-3  xn-text-right"><span class="required">*</span>链接网址:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="name" id="name"  ng-model="vm.url"  maxlength="100"  required>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-3   xn-text-right" >缩略片:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="storagePath"   ng-model="vm.storagePath"  >
+                </div>
+            </div>
+            <div class="form-group clearfix">
+
+                <label  for="picture" class="col-sm-offset-3 col-sm-4">
+                    <input type="file" class="col-sm-12 btn btn-default f-left" name="picture" id="pic"
+                           accept={{picAccept}}    >
+                </label>
+                <button class="btn btn-default  f-left" type="submit" ng-click="upload()">上传</button>
+            </div>
+
+
+            <div class="form-group  clearfix">
+                <label for="title" class="col-sm-3  xn-text-right">描述:</label>
+                <div class="col-sm-7">
+                    <textarea class="form-control" rows="8" name="description" id="description" ng-model="vm.description"
+                            ></textarea>
+                </div>
+            </div>
+            <div class="clearfix error-box col-sm-offset-3 col-sm-7" ng-show="validateForm.$errors.length>0 ">
+                <div class="alert alert-danger">
+                    <i class="glyphicon glyphicon-remove-sign mr_5" ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" xn-submit-enter="doEdit()">保存</button>
+            <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        </div>
+</script>

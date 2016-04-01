@@ -1,0 +1,4 @@
+$page.setTitle("后台默认页面")
+<div class="xn-breadcrumb xn-width auto clearfix" ng-controller="MainController">
+        欢迎来到犀牛网络科技后台
+</div>

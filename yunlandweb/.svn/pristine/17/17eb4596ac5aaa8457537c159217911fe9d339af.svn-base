@@ -1,0 +1,29 @@
+
+
+<div  ng-app>
+
+    <div ng-controller="indexContect">
+        <div ng-repeat="aaa in list">
+            {{$index}}
+
+        </div>
+
+    </div>
+
+
+</div>
+<script src="./angular.js"></script>
+<script>
+    function indexContect($scope){
+        $scope.list=[
+            {val:"sda"},
+            {val:"sda"},
+            {val:"sda"},
+            {val:"sda"},
+            {val:"sda"},
+            {val:"sda"}
+        ]
+    }
+
+
+</script>

@@ -1,0 +1,90 @@
+$page.setTitle("新增城市推介")
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("recommend/city")">城市推介</a></li>
+        <li class="active">新增城市推介</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="AddCityController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix" style="min-width: 1200px">
+            <div class="edit-content">
+                <div class="recommend-editContent-top clearfix">
+                    <h4 class="recommend-editContent-h4">城市推介图片</h4>
+                    <div>
+                        <div class="xn-input-line  clearfix"  style="width:980px;margin: 0 auto">
+                            <ul class="xn-upload-img xn-upload-img-header clearfix" style="width: 595px;height: 250px ;float: left;margin-right: 20px" >
+                                <input type="file" id="pictureFile" name="pictureFile" ng-click="showPicture()" width="114" height="85"
+                                       contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                <li class="clearfix" style="width: 595px;height: 250px" ng-if="city.picturePath == null" onclick="pictureFile.click()">
+                                    <i class="icon icon-add"></i>
+                                    <div class="upload-add-title ng-binding">城市推介图片(建议尺寸：1190*500)</div>
+                                </li>
+                                <img ng-if="city.picturePath != null" onclick="pictureFile.click()"  id="spanImage" alt="请选择图片"
+                                     width="595" height="250" ng-src="{{city.picturePath}}"/>
+                            </ul>
+                            <ul class="xn-upload-img xn-upload-img-header clearfix" style="width: 330px;height: 250px; float: left;" >
+                                <input type="file" id="smallPictureFile" name="smallPictureFile" ng-click="showSmallPicture()" width="114" height="85"
+                                       contentEditable="false" style="display:none" accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg"/>
+                                <li class="clearfix" style="width: 330px;height: 250px;" ng-if="city.smallPicturePath == null" onclick="smallPictureFile.click()">
+                                    <i class="icon icon-add"></i>
+                                    <div class="upload-add-title ng-binding">城市推介图片缩略图(建议尺寸:383*215)</div>
+                                </li>
+                                <img ng-if="city.smallPicturePath != null" onclick="smallPictureFile.click()" id="spanImage" alt="请选择图片"
+                                     width="330" height="250" ng-src="{{city.smallPicturePath}}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">土地基本信息</h4>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">添加城市：</span><i
+                                class="xn-required-i f-right"></i></label>
+                        <div class="xn-input-sm" xn-location-city ng-model="cardCity" data-city-id="{{city.cityId}}"></div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <h4 class="recommend-editContent-h4">详细介绍</h4>
+                <div class="land-recommend-list clearfix">
+                    <div class="land-recommend-tab-title position-relative" ng-init="tab=1">
+                        <ul class="clearfix">
+                            <li ng-click="tab=1" ng-class="tab==1?'on':''">城市概况</li>
+                            <li ng-click="tab=2"  ng-class="tab==2?'on':''">城市规划</li>
+                            <li ng-click="tab=3" ng-class="tab==3?'on':''">土地价值</li>
+                            <li ng-click="tab=4" ng-class="tab==4?'on':''">土地出让一览表</li>
+                        </ul>
+                    </div>
+                    <div class="land-recommend-tab-con mt_10">
+                        <div class="land-detail" ng-show="tab==1">
+                                <textarea class="form-control" rows="15" name="landIntro" style="width: 100% ;height: 300px" id="landIntro" ng-model="city.generalContent"></textarea>
+                        </div>
+                        <div class="land-detail" ng-show="tab==2">
+                            <textarea class="form-control" rows="15" name="newsIntro"  style="width: 100%;height: 300px" id="newsIntro" ng-model="city.planContent"></textarea>
+                        </div>
+                        <div class="land-detail" ng-show="tab==3">
+                                <textarea class="form-control" rows="15" name="sellIntro" style="width: 100%;height: 300px" id="sellIntro" ng-model="city.landvalueContent"></textarea>
+                        </div>
+                        <div class="land-detail" ng-show="tab==4">
+                                <textarea class="form-control" rows="15" name="browseIntro"  style="width: 100%;height: 300px" id="browseIntro" ng-model="city.browseContent"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script>
+
+
+</script>

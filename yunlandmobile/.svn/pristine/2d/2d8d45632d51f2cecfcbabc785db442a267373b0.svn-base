@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>注册页面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../../style/base.css">
+<link rel="stylesheet" href="../../style/other.css">
+<link rel="stylesheet" href="../../style/amazeui.min.css">
+
+<script src="../../scripts/jquery.min.js"></script>
+<script src="../../scripts/login-reg.js"></script>
+</head>
+<body>
+  <div class="login-reg-bg">
+    <img src="../../images/reg-bg.jpg"/>
+  </div>
+  <!-- header -->
+  <div class="return-wrap">
+    <a class="return" href="javascript:history.back();"> <i class="am-icon-angle-left am-icon-lg"></i>
+    </a>
+  </div>
+  <!-- header end -->
+  <!-- reg content -->
+  <div class="content-wrap mt-60">
+    <form id="frm_login" method="post" action="" onsubmit="adaptValue();">
+         <div class="item item-username" id="line_phone_number">
+              <input type="text" name="phone_number" class="text-input text-username" placeholder="请输入手机号码" autocomplete="off" id="phone_number" onblur="v_phone_number();" onkeyup="v_phone_number();"/>
+              <div class="none"><span></span></div>
+         </div>
+         <div class="item item-password" id="line_password">
+              <input id="password" name="password" class="text-input text-password" type="password" placeholder="密码" oonblur="v_password();" onkeyup="v_password();"/>
+              <div class="none"><span></span></div>
+         </div>
+         <div class="item item-password_two" id="line_repeat">
+              <input id="repeat" name="repeat" class="text-input text-password" type="password" placeholder="确认密码" value="" onblur="v_repeat();" onkeyup="v_repeat();">
+              <div class="none"><span></span></div>
+         </div>
+         <div class="item item-captcha clearfix">
+              <input id="" class="text-input text-captcha" type="text" placeholder="输入验证码" value="">
+              <button type="button" class="captcha-btn">获取手机验证码</button>
+         </div>
+         <div class="reg-btn-wrap1">
+         <input type="submit" id="submit" class="btn-ty reg-btn-primary" value="注册" disabled="disabled"/>
+         </div>
+         <div class="readagreement-wrap" onclick="onReadAgreementClick();">
+             <input type="checkbox" name="agree" id="agree" onchange="v_submitbutton();" />
+             同意《<a id="readagreement" href="#agreement" onclick="showAgreement();" title="云地网使用协议">云地网使用协议</a>》
+         </div>
+         <div class="no-join">已经是会员？</div>
+         <div class="login-btn-wrap2"><a class="btn-ty login-btn-secondary"href="index.html">登录</a></div>
+  </div>
+  <!-- reg content end -->
+
+</body>
+</html>

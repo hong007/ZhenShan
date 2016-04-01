@@ -1,0 +1,659 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="../../assets/css/amazeui.flat.css">
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/css/other.css">
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/handlebars.min.js"></script>
+
+</head>
+
+<body>
+<!--在这里编写你的代码-->
+    <style>
+    html,
+    body,
+    .page {
+        height: 100%;
+    }
+
+    .am-list {
+        margin: 0;
+    }
+
+    .am-list > li {
+        background: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .pull-action {
+        text-align: center;
+        height: 45px;
+        line-height: 45px;
+        color: #999;
+    }
+
+    .pull-action .am-icon-spin {
+        display: none;
+    }
+
+    .pull-action.loading .am-icon-spin {
+        display: block;
+    }
+
+    .pull-action.loading .pull-label {
+        display: none;
+    }
+</style>
+<header data-am-widget="header"
+        class="am-header am-header-default index-header">
+    <h1 class="am-header-title">
+        云地网
+    </h1>
+
+    <div class="am-header-right am-header-nav">
+                    <a href="http://www.yunland.cn/mobile/loginout" class="">
+                <i class="am-header-icon am-icon-sign-out"></i>
+            </a>
+            </div>
+</header>
+<div data-am-widget="slider" class="am-slider am-slider-default index-slider" data-am-slider='{}'>
+    <ul class="am-slides">
+                    <li>
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/671604497138978816.jpg">
+                        </li>
+                    <li>
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662595643986284544.jpg">
+                        </li>
+                    <li>
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/664349372989181952.jpg">
+                        </li>
+                    <li>
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/662595725544525824.jpg">
+                        </li>
+            </ul>
+            
+</div>
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2 index-tabs">
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="[data-tab-panel-0]">土地推介</a></li>
+        <li class=""><a href="[data-tab-panel-1]">土地供应</a></li>
+        <li class=""><a href="[data-tab-panel-2]">土地需求</a></li>
+    </ul>
+
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-tabs-bd" >
+        <!--列表标题-->
+        <div data-tab-panel-0 id="wrapper" class="am-list-news-bd am-tab-panel am-active">
+            <ul id="events-list0" class="am-list">
+
+            
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="666910381708808192">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=666910381708808192" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/669711412826083328.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=666910381708808192"><h3 class="am-list-item-hd">长龙社区地块</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>四川省</span>
+                        <span>成都市</span>
+                        <span>新都区</span>
+                    </div>
+                    <div class="mtp-3">面积：8.11万平方米</div>
+                    <div class="mtp-3">规划用途：住宅用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669808137767096320">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669808137767096320" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670161877720240128.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669808137767096320"><h3 class="am-list-item-hd">新开渠街地块</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>宁夏回族自治区</span>
+                        <span>银川市</span>
+                        <span>金凤区</span>
+                    </div>
+                    <div class="mtp-3">面积：0.8万平方米</div>
+                    <div class="mtp-3">规划用途：商业/办公用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669807738746179584">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669807738746179584" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670162014668460032.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669807738746179584"><h3 class="am-list-item-hd">满城北街地块</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>宁夏回族自治区</span>
+                        <span>银川市</span>
+                        <span>金凤区</span>
+                    </div>
+                    <div class="mtp-3">面积：0.54万平方米</div>
+                    <div class="mtp-3">规划用途：商业/办公用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669807283114741760">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669807283114741760" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670162154259091456.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669807283114741760"><h3 class="am-list-item-hd">亲水南大街地块</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>宁夏回族自治区</span>
+                        <span>银川市</span>
+                        <span>金凤区</span>
+                    </div>
+                    <div class="mtp-3">面积：11.55万平方米</div>
+                    <div class="mtp-3">规划用途：住宅用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669806393322508288">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669806393322508288" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670130654423683072.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669806393322508288"><h3 class="am-list-item-hd">八一路地块</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>青海省</span>
+                        <span>西宁市</span>
+                        <span>城东区</span>
+                    </div>
+                    <div class="mtp-3">面积：3.59万平方米</div>
+                    <div class="mtp-3">规划用途：住宅用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669691660749639680">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669691660749639680" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670050728102203392.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669691660749639680"><h3 class="am-list-item-hd">长山路南地块一</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>吉林省</span>
+                        <span>长春市</span>
+                        <span>双阳区</span>
+                    </div>
+                    <div class="mtp-3">面积：0.3万平方米</div>
+                    <div class="mtp-3">规划用途：商业/办公用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669691918011469824">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669691918011469824" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670050910969663488.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669691918011469824"><h3 class="am-list-item-hd">鹿乡镇地块二</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>吉林省</span>
+                        <span>长春市</span>
+                        <span>双阳区</span>
+                    </div>
+                    <div class="mtp-3">面积：4.92万平方米</div>
+                    <div class="mtp-3">规划用途：商业/办公用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669692189789786112">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669692189789786112" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/670051070118334464.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669692189789786112"><h3 class="am-list-item-hd">鼎鹿广场东侧地块三</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>吉林省</span>
+                        <span>长春市</span>
+                        <span>双阳区</span>
+                    </div>
+                    <div class="mtp-3">面积：1.91万平方米</div>
+                    <div class="mtp-3">规划用途：商业/办公用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669769444192817152">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669769444192817152" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/669810632442646528.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669769444192817152"><h3 class="am-list-item-hd">甲秀南路地块一</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>贵州省</span>
+                        <span>贵阳市</span>
+                        <span>花溪区</span>
+                    </div>
+                    <div class="mtp-3">面积：0.67万平方米</div>
+                    <div class="mtp-3">规划用途：商业/办公用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="669769926458085376">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id=669769926458085376" class="">
+                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/669810922944335872.jpg" alt="土地图片">
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id=669769926458085376"><h3 class="am-list-item-hd">尖山村地块二</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>贵州省</span>
+                        <span>贵阳市</span>
+                        <span>花溪区</span>
+                    </div>
+                    <div class="mtp-3">面积：6.2万平方米</div>
+                    <div class="mtp-3">规划用途：综合用地</div>
+                </div>
+            </a>
+        </div>
+    </li>
+</ul>
+            <div class="pull-action" id="pageMore0" onclick="addMore('recommend')">
+                点击加载更多
+            </div>
+        </div>
+
+        <div data-tab-panel-1 id="wrapper1" class="am-list-news-bd am-tab-panel">
+            <ul id="events-list1" class="am-list">
+
+            </ul>
+            <div class="pull-action" id="pageMore1" onclick="addMore('supply')">
+                点击加载更多
+            </div>
+        </div>
+
+        <div data-tab-panel-2 id="wrapper2" class="am-list-news-bd am-tab-panel">
+            <ul id="events-list2" class="am-list">
+
+            </ul>
+            <div class="pull-action" id="pageMore2" onclick="addMore('require')">
+                点击加载更多
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer data-am-widget="footer"
+        class="am-footer am-footer-default"
+        data-am-footer="{  }">
+    <div class="again">
+        <div class="clearfix top">
+                <span><a href="http://yunland.cn/2.html" title="关于我们"
+                         class="">关于我们</a></span>
+            <i class="vertical-line bg-color-1"></i>
+                <span><a href="http://yunland.cn/contact.html" title="联系我们"   class="">
+                    联系我们</a></span>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="am-footer-miscs ">
+        <p><a href="http://www.yunland.cn/" title="云地网"
+              target="_blank" class="">云地网</a>
+        </p>
+        <p>浙ICP备06018569号-2<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='float: center;'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256144657%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+            <script>
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "//hm.baidu.com/hm.js?58afcf0578c028f4364b4eb02d8df6e8";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script>
+
+    </div></p>
+    </div>
+</footer>
+<div class="button"data-am-widget="tabs">
+    <span class="information"><a href="#">发布信息</a></span>
+    <i></i>
+    <span class="service"><a href="#">人工客服</a><a href="wtai://wp/mc;13214515930" mce_href="wtai://wp/mc;13214515930">一键拨号</a></span>
+</div>
+<div id="am-footer-modal"
+     class="am-modal am-modal-no-btn am-switch-mode-m am-switch-mode-m-default">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd am-modal-footer-hd">
+            <a href="javascript:void(0)" data-dismiss="modal" class="am-close am-close-spin " data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            您正在浏览的是
+        <span class="am-switch-mode-owner">
+            手机版
+        </span>
+        <span class="am-switch-mode-slogan">
+              为您当前手机订制的移动网站。
+        </span>
+        </div>
+    </div>
+</div>
+<script id="tpi-list-item0" type="text/x-handlebars-template">
+    {{#each this}}
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="{{id}}">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="hotLand?id={{id}}" class="">
+                <img src="{{headImagepath}}" alt="土地图片"/>
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="hotLand?id={{id}}"><h3 class="am-list-item-hd">{{name}}</h3>
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>{{provinceName}}</span>
+                        <span>{{cityName}}</span>
+                        <span>{{districtName}}</span>
+                    </div>
+                    <div class="mtp-3">面积：{{floorSpace}}万平方米</div>
+                    <div class="mtp-3">规划用途：{{planUse}}</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script id="tpi-list-item1" type="text/x-handlebars-template">
+    {{#each this}}
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" data-id="{{id}}">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="landSupply?id={{id}}" class="">
+                <img src="{{picturePath}}" alt="我很囧，你保重....晒晒旅行中的那些囧！"/>
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="landSupply?id={{id}}"><h3 class="am-list-item-hd">{{name}}</h3>
+
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>{{provinceName}}</span>
+                        <span>{{cityName}}</span>
+                        <span>{{districtName}}</span>
+                    </div>
+                    <div class="mtp-3">面积：{{floorSpace}}万平方米</div>
+                    <div class="mtp-3">合作方式：{{cooperationMode}}</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script id="tpi-list-item2" type="text/x-handlebars-template">
+    {{#each this}}
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+        <div class="am-u-sm-5 am-list-thumb">
+            <a href="landRequire?id={{id}}" class="">
+                <img src="{{picturePath}}" alt="我很囧，你保重....晒晒旅行中的那些囧！"/>
+            </a>
+        </div>
+
+        <div class=" am-u-sm-7 am-list-main">
+            <a href="landRequire?id={{id}}"><h3 class="am-list-item-hd">{{title}}</h3>
+
+                <div class="am-list-item-text">
+                    <div class="place-area">
+                        <i class="icon-location"></i>
+                        <span>{{provinceName}}</span>
+                        <span>{{cityName}}</span>
+                        <span>{{districtName}}</span>
+                    </div>
+                    <div class="mtp-3">需求面积：{{demandArea}}万平方米</div>
+                    <div class="mtp-3">规划用途：{{planUse}}</div>
+                </div>
+            </a>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script>
+    var pageIndex0 = 1;
+    var pageIndex1 = 1;
+    var pageIndex2 = 1;
+    var totalPage0 = 0;
+    var totalPage1 = 0;
+    var totalPage2 = 0;
+    var compiler0 = Handlebars.compile($('#tpi-list-item0').html());
+    var compiler1 = Handlebars.compile($('#tpi-list-item1').html());
+    var compiler2 = Handlebars.compile($('#tpi-list-item2').html());
+    function getRecommendList(){
+        $.post('/recommend/api.do', {
+            method: 'api.recommend.land.info.find',
+            pageSize: 10,
+            pageNumber: pageIndex0
+        }, function (data) {
+            var total = data.totalCount;
+            totalPage0 = Math.ceil(Number(total)/10);
+            if(pageIndex0==totalPage0){
+                $("#pageMore0").hide();
+            }
+            var tempdata = [];
+            $.each(data.result,function(index,item){
+                item.planUse = getPlanUse(item.planUse)
+                if(item.name && item.name.length>17){
+                    item.name = item.name.substr(0,17)+'...';
+                }
+                tempdata.push(item);
+            })
+            var html = compiler0(tempdata);
+            $("#events-list0").append(html);
+        }, 'json');
+    };
+    function getSupplyList(){
+        $.post('/transfer/api.do',{
+            method:'api.transfer.land.info.find',
+            pageSize:10,
+            pageNumber: pageIndex1,
+            type:'supply'
+        },function(data){
+            var total = data.totalCount;
+            totalPage1 = Math.ceil(Number(total)/10);
+            if(pageIndex1==totalPage1){
+                $("#pageMore1").hide();
+            }
+            var tempdata = [];
+            $.each(data.result,function(index,item){
+                item.cooperationMode = getCooperationMode(item.cooperationMode)
+                if(item.name && item.name.length>17){
+                    item.name = item.name.substr(0,17)+'...';
+                }
+                tempdata.push(item);
+            })
+            var html = compiler1(tempdata);
+            $("#events-list1").append(html);
+        },'json');
+    }
+    function getRequireList(){
+        $.post('/transfer/api.do',{
+            method:'api.transfer.land.info.find',
+            pageSize:10,
+            pageNumber: pageIndex2,
+            type:'demand'
+        },function(data){
+            var total = data.totalCount;
+            totalPage2 = Math.ceil(Number(total)/10);
+            if(pageIndex2==totalPage2){
+                $("#pageMore2").hide();
+            }
+            var tempdata = [];
+            $.each(data.result,function(index,item){
+                item.planUse = getPlanUse(item.planUse)
+                if(item.title && item.title.length>17){
+                    item.title = item.title.substr(0,17)+'...';
+                }
+                tempdata.push(item);
+            })
+            var html = compiler2(tempdata);
+            $("#events-list2").append(html);
+        },'json');
+    }
+    function addMore(type){
+        if(type=='recommend'){
+            pageIndex0++;
+            getRecommendList();
+        }else if(type=='supply'){
+            pageIndex1++;
+            getSupplyList();
+        }else{
+            pageIndex2++;
+            getRequireList();
+        }
+    }
+    $(function(){
+        getRecommendList();
+        getSupplyList();
+        getRequireList();
+    });
+    var getCooperationMode = function(value){
+        if(!value){
+            return "";
+        }
+        // 查询用途
+        var cooperationModes = [
+                            {key:'1',value:'整体转让'},
+                            {key:'2',value:'控股权转让'},
+                            {key:'3',value:'部分转让'},
+                            {key:'4',value:'股权转让'},
+                            {key:'5',value:'项目融资'},
+                            {key:'6',value:'债权融资'},
+                            {key:'7',value:'租赁融资'},
+                            {key:'0',value:'其他/面谈'},
+                    ]
+        for(var i=0;i<cooperationModes.length;i++){
+            var cooperationMode = cooperationModes[i];
+            if(cooperationMode&&cooperationMode.key==value){
+                return ""+cooperationMode.value;
+            }
+        }
+    }
+
+    //过滤规划用途
+    var getPlanUse = function (value) {
+        if (!value) {
+            return "其他用途";
+        }
+        // 查询用途
+        var planuses = [
+                            {key: 'zhuz', value: '住宅用地'},
+                            {key: 'shangy', value: '商业/办公用地'},
+                            {key: 'gongy', value: '工业用地'},
+                            {key: 'zhongh', value: '综合用地'},
+                            {key: 'other', value: '其他'},
+                    ]
+        for (var i = 0; i < planuses.length; i++) {
+            var planuse = planuses[i];
+            if (planuse && planuse.key == value) {
+                return "" + planuse.value;
+            }
+        }
+        return "其他用途"
+    }
+</script>
+
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="http://www.yunland.cn/mobile/assets/js/modernizr.js"></script>
+<script src="http://www.yunland.cn/mobile/assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="http://www.yunland.cn/mobile/assets/js/amazeui.min.js"></script></body>
+</html>

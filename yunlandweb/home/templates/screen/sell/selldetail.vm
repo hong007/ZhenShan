@@ -1,0 +1,240 @@
+<div class="collect-success">收藏成功！</div>
+<div class="xn-width auto mt_20 mb-50">
+    <div class="detail-content-left">
+        <div class="content-title">
+            <img class="land-picture" src="$!sellLandDetail.picturePath" width="210" height="119" alt="云地网">
+
+            <div class="title-outer" style="width:68%;">
+                <div class="title">
+                #*#if($!{sellLandDetail.name.length()} > 34)
+                    #set($!sellLandDetail.name=$!sellLandDetail.name.substring(0,34))
+                    $!sellLandDetail.name ...
+                #else
+                    $!sellLandDetail.name
+                #end*#
+                    $!sellLandDetail.name
+                </div>
+                <div class="update-time">更新时间：
+                    #if($!sellLandDetail.lastUpdateTime)
+                        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!sellLandDetail.lastUpdateTime)
+                    #else
+                        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!sellLandDetail.approveTime)
+                    #end
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <h3 class="editContent-h3">基本信息</h3>
+        <table class="detail-table word-breakAll">
+            <tr>
+                <td class="table-label xn-center">宗地编号</td>
+                <td class="table-column-tripple">$!sellLandDetail.landNumber</td>
+                <td class="table-label xn-center">所在地区</td>
+                <td class="table-column-tripple">
+                    $!sellLandDetail.provinceName
+                    #if($!sellLandDetail.cityName != '')
+                        /$!sellLandDetail.cityName
+                    #end
+                    #if($!sellLandDetail.districtName != '')
+                        /$!sellLandDetail.districtName
+                    #end
+                </td>
+                <td class="table-label xn-center">宗地坐落</td>
+                <td class="table-column-tripple">$!sellLandDetail.landLocation</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">宗地总面积(万平方米)</td>
+                <td class="table-column-tripple">$!sellLandDetail.floorSpace</td>
+                <td class="table-label xn-center">出让年限</td>
+                <td class="table-column-tripple">$!sellLandDetail.sellYear</td>
+                <td class="table-label xn-center">规划用途</td>
+                <td class="table-column-tripple">$!selectLandPurpose.get($!sellLandDetail.planUse)</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">容积率</td>
+                <td class="table-column-tripple">$!sellLandDetail.plotRatio</td>
+                <td class="table-label xn-center">建筑密度(%)</td>
+                <td class="table-column-tripple">$!sellLandDetail.buildingDensity</td>
+                <td class="table-label xn-center">绿化率(%)</td>
+                <td class="table-column-tripple">$!sellLandDetail.greeningRate</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">建筑限高(米)</td>
+                <td class="table-column-tripple">$!sellLandDetail.maxHeight</td>
+                <td class="table-label xn-center">保证金</td>
+                <td class="table-column-tripple">$!sellLandDetail.deposit</td>
+                <td class="table-label xn-center">投资强度(万元/公顷)</td>
+                <td class="table-column-tripple">$!sellLandDetail.investmentIntensity</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">起始价</td>
+                <td class="table-column-tripple">$!sellLandDetail.startPrice</td>
+                <td class="table-label xn-center">估价报告备案号</td>
+                <td class="table-column-tripple">$!sellLandDetail.priceRecord</td>
+                <td class="table-label xn-center">加价幅度</td>
+                <td class="table-column-tripple">$!sellLandDetail.bidIncrement</td>
+            </tr>
+            <tr>
+                <td class="table-label xn-center">截止日期</td>
+                <td class="table-column-tripple" colspan="5">
+                    #if($!sellLandDetail.endTime)
+                        $!utils.formatMessage("{0, date, yyyy-MM-dd}", $!sellLandDetail.endTime)
+                    #end
+                </td>
+            </tr>
+        </table>
+        <div class="mt_20 mb_20"></div>
+        #if($!sellLandDetail.lands)
+            #foreach($!subLand in $sellLandDetail.lands)
+                <table class="detail-table word-breakAll">
+                    <tr>
+                        <td class="table-label xn-center">宗地编号</td>
+                        <td class="table-column-tripple">$!subLand.landNumber</td>
+                        <td class="table-label xn-center">所在地区</td>
+                        <td class="table-column-tripple">$!subLand.provinceName/$!subLand.cityName
+                            /$!subLand.districtName</td>
+                        <td class="table-label xn-center">宗地坐落</td>
+                        <td class="table-column-tripple">$!subLand.landLocation</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label xn-center">宗地总面积(万平方米)</td>
+                        <td class="table-column-tripple">$!subLand.floorSpace</td>
+                        <td class="table-label xn-center">出让年限</td>
+                        <td class="table-column-tripple">$!subLand.sellYear</td>
+                        <td class="table-label xn-center">规划用途</td>
+                        <td class="table-column-tripple">$!selectLandPurpose.get($!subLand.planUse)</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label xn-center">容积率</td>
+                        <td class="table-column-tripple">$!subLand.plotRatio</td>
+                        <td class="table-label xn-center">建筑密度(%)</td>
+                        <td class="table-column-tripple">$!subLand.buildingDensity</td>
+                        <td class="table-label xn-center">绿化率(%)</td>
+                        <td class="table-column-tripple">$!subLand.greeningRate</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label xn-center">建筑限高(米)</td>
+                        <td class="table-column-tripple">$!subLand.maxHeight</td>
+                        <td class="table-label xn-center">保证金</td>
+                        <td class="table-column-tripple">$!subLand.deposit</td>
+                        <td class="table-label xn-center">投资强度(万元/公顷)</td>
+                        <td class="table-column-tripple">$!subLand.investmentIntensity</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label xn-center">起始价</td>
+                        <td class="table-column-tripple">$!subLand.startPrice</td>
+                        <td class="table-label xn-center">估价报告备案号</td>
+                        <td class="table-column-tripple">$!subLand.priceRecord</td>
+                        <td class="table-label xn-center">加价幅度</td>
+                        <td class="table-column-tripple">$!subLand.bidIncrement</td>
+                    </tr>
+
+                </table>
+                <div class="mt_20 mb_20"></div>
+            #end
+        #end
+        <h3 class="editContent-h3">位置地图</h3>
+
+        <div class="map-content">
+            <div id="allmap"></div>
+        </div>
+        <h3 class="editContent-h3">详细介绍</h3>
+
+        <div class="simple-edit-content">
+            <div class="detail-intro-inner">
+                <div class="moreIntro">
+                    <div class="more-title">
+                        <span></span>
+
+                        <h3>更多详情介绍</h3>
+                    </div>
+                    <div class="more-content">$!sellLandDetail.content</div>
+                </div>
+                #if($!sellLandDetail.lands)
+                    <div class="morePicture">
+                        <div class="more-title">
+                            <span></span>
+
+                            <h3>更多图片介绍</h3>
+                        </div>
+                        <ul>
+                            #foreach($!picture in $!sellLandDetail.picturePaths)
+                                <li><img src="$!picture" width="100%" height="500" alt="地块图片"></li>
+                            #end
+                        </ul>
+                    </div>
+                #end
+            </div>
+        </div>
+    </div>
+    <div class="detail-content-right">
+        <div class="sell-title">你可能感兴趣的出让信息</div>
+        #foreach($!recommend in $sellLandRecommend)
+            <div class="sell-intro-outer">
+                <div class="sell-intro-inner">
+                    <img src="$!recommend.picturePath" width="210" height="119" alt="土地信息">
+
+                    <div class="title">$!recommend.name</div>
+                    <div class="place-area">位置：$!recommend.landLocation</div>
+                    <div class="place-area">面积：$!recommend.floorSpace 万平方米</div>
+                </div>
+                <a class="btn btn-warning" href="selldetail.htm?id=$!recommend.id">点击详情</a>
+            </div>
+        #end
+    </div>
+    <div class="clearfix"></div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var opts = {
+        width: 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title: "云地网提示", // 信息窗口标题
+        enableMessage: true,//设置允许信息窗发送短息
+        message: ""
+    }
+    //添加控件和比例尺
+    var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+    var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+    map.addControl(top_left_control);
+    map.addControl(top_left_navigation);
+    map.addControl(top_right_navigation);
+    map.disableScrollWheelZoom();
+    map.addEventListener("click", function () {
+        map.enableScrollWheelZoom();
+    });
+    var new_point = new BMap.Point(116.404, 39.915);
+    var marker;
+    var point = '$!sellLandDetail.location';
+    if (!point == '') {
+        var temppoint = point.split(',');
+        new_point = new BMap.Point(temppoint[0], temppoint[1]);
+        map.centerAndZoom(new_point, 11);  //根据经纬度定中心点
+        marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        map.panTo(new_point);
+        var infoWindow = new BMap.InfoWindow("土地名称:$sellLandDetail.name", opts);  // 创建信息窗口对象
+        marker.addEventListener("click", function () {
+            map.openInfoWindow(infoWindow, new_point); //开启信息窗口
+        });
+    } else {
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("$sellLandDetail.provinceName$sellLandDetail.cityName$sellLandDetail.districtName$sellLandDetail.address", function (point) {
+            if (point) {
+                map.centerAndZoom(point, 16);
+                marker = new BMap.Marker(point);  // 创建标注
+                map.addOverlay(marker);              // 将标注添加到地图中
+                var infoWindow = new BMap.InfoWindow("土地名称:$sellLandDetail.name", opts);  // 创建信息窗口对象
+                marker.addEventListener("click", function () {
+                    map.openInfoWindow(infoWindow, point); //开启信息窗口
+                });
+            }
+        }, "$sellLandDetail.cityName");
+    }
+</script>

@@ -1,0 +1,337 @@
+##<script type="text/javascript" src="$homeContent.getURI('scripts/news/index.js')"></script>
+<div id="content">
+    <div class="member-content statistic-content xn-width auto clearfix">
+        <div class="content-left">
+            <h3>云地动态</h3>
+            <ul class="member-my" id="tab-ul">
+                <li onclick="site.changeTabs(this,'forAnnoucement')" ><a>公告</a></li>
+                <li onclick="site.changeTabs(this,'forField')" class="click"><a href="#">行业资讯</a></li>
+                <li onclick="site.changeTabs(this,'forActivity')"><a href="#">活动预告</a></li>
+                <li onclick="site.changeTabs(this,'forSubject')"><a href="#">专题报道</a></li>
+            </ul>
+        </div>
+
+        <div class="content-right forNewsTitle">
+            <div class="land-intro-verticleList" id="forAnnoucement">
+                <div id="Annoucementdata">
+                    #foreach($!landDynamic in $landnotices.result)
+                        <div class="single-outer">
+                            <a href="detail.vm?id=$!landDynamic.id'&type=notice'" target="_blank"><img src="$!landDynamic.picturePath"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=$!landDynamic.id&type='notice'"
+                                                      target="_blank">$!landDynamic.title</a></div>
+                                <div class="place-area">发布时间：$!landDynamic.approveTimeStr </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                        #if($!{landDynamic.remarks.length()} > 120)
+                                            <div class="toShowAllDiv">
+                                                <span class="toShowAll">$!landDynamic.remarks</span>
+                                                <span class="toShowAll-arrow"></span>
+                                            </div>
+                                            #set($!landDynamic.remarks=$!landDynamic.remarks.substring(0,120))
+                                            $!landDynamic.remarks ...
+                                        #else
+                                            $!landDynamic.remarks
+                                        #end
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    #end
+                </div>
+
+                #if($landnotices.result.size() > 0)
+                    <div id="orgpagination0" class="pagination"></div>
+                #end
+            </div>
+            <div class="land-intro-verticleList" id="forField" style="display: none;">
+                <div id="infomationdata">
+                    #foreach($!landDynamic in $landinfomations.result)
+                        <div class="single-outer">
+                            <a href="detail.vm?id=$!landDynamic.id&type='inlineInformation'" target="_blank"><img src="$!landDynamic.picturePath"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=$!landDynamic.id&type='inlineInformation'"
+                                                      target="_blank">$!landDynamic.title</a></div>
+                                <div class="place-area">发布时间：$!landDynamic.approveTimeStr </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                        #if($!{landDynamic.remarks.length()} > 120)
+                                            <div class="toShowAllDiv">
+                                                <span class="toShowAll">$!landDynamic.remarks</span>
+                                                <span class="toShowAll-arrow"></span>
+                                            </div>
+                                            #set($!landDynamic.remarks=$!landDynamic.remarks.substring(0,120))
+                                            $!landDynamic.remarks ...
+                                        #else
+                                            $!landDynamic.remarks
+                                        #end
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    #end
+                </div>
+                #if($landinfomations.result.size() > 0 )
+                    <div id="orgpagination1" class="pagination"></div>
+                #end
+
+            </div>
+            <div class="land-intro-verticleList" id="forActivity" style="display: none;">
+                <div id="activitysData">
+                    #foreach($!landDynamic in $landactivitys.result)
+                        <div class="single-outer">
+                            <a href="detail.vm?id=$!landDynamic.id&type='activityForecast'" target="_blank"><img src="$!landDynamic.picturePath"
+                                                                                         width="330" height="200"
+                                                                                         alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail.vm?id=$!landDynamic.id&type='activityForecast'"
+                                                      target="_blank">$!landDynamic.title</a></div>
+                                <div class="place-area">发布时间：$!landDynamic.approveTimeStr </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                        #if($!{landDynamic.remarks.length}> 120)
+                                            <div class="toShowAllDiv">
+                                                <span class="toShowAll">$!landDynamic.remarks</span>
+                                                <span class="toShowAll-arrow"></span>
+                                            </div>
+                                            #set($!landDynamic.remarks=$!landDynamic.remarks.substring(0,120))
+                                            $!landDynamic.remarks ...
+                                        #else
+                                            $!landDynamic.remarks
+                                        #end
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    #end
+                </div>
+                #if($landactivitys.result.size() > 0 )
+                    <div id="orgpagination2" class="pagination"></div>
+                #end
+
+            </div>
+            <div class="land-intro-verticleList" id="forSubject" style="display: none;">
+                <div id="ReportsData">
+                    #foreach($!landDynamic in $landReports.result)
+                        <div class="single-outer">
+                            <a href="detail?id=$!landDynamic.id&type='specialReport'" target="_blank"><img src="$!landDynamic.picturePath"
+                                                                                      width="330" height="200"
+                                                                                      alt="土地信息"></a>
+
+                            <div class="single-inner-middle w-560">
+                                <div class="title"><a href="detail?id=$!landDynamic.id&type='specialReport'"
+                                                      target="_blank">$!landDynamic.title</a></div>
+                                <div class="place-area">发布时间：$!landDynamic.approveTimeStr </div>
+                                <div class="place-area h-80">
+                                    <div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>
+                                    <div class="news-summary toShowAllTd">
+                                        #if($!{landDynamic.remarks.length()} > 120)
+                                            <div class="toShowAllDiv">
+                                                <span class="toShowAll">$!landDynamic.remarks</span>
+                                                <span class="toShowAll-arrow"></span>
+                                            </div>
+                                            #set($!landDynamic.remarks=$!landDynamic.remarks.substring(0,120))
+                                            $!landDynamic.remarks ...
+                                        #else
+                                            $!landDynamic.remarks
+                                        #end
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    #end
+                </div>
+                #if($landReports.result.size()>0)
+                    <div id="orgpagination3" class="pagination"></div>
+                #end
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var readTable = function (elementId, data) {
+        //1 清空当前数据
+        $('#' + elementId).children(".single-outer").remove();
+        // 2 在元素后，添加数据
+        var result = data.result;
+        $(result).each(function (index, item) {
+            var itemremark = item.remarks ? item.remarks : "";
+            if(itemremark.length>120){
+                var html = '<div class="single-outer">' +
+                        '<a href="detail?id=' + item.id + '&type='+item.type+'"><img src="' + item.picturePath + '" width="330" height="200" alt="土地信息"></a>' +
+                        '<div class="single-inner-middle w-560">' +
+                        '<div class="title"><a href="detail?id=' + item.id + '&type='+item.type+'" target="_blank">' + item.title + '</a></div>' +
+                        '<div class="place-area">发布时间：' + item.approveTimeStr + ' </div>' +
+                        '<div class="place-area h-80">' +
+                        '<div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>' +
+                        '<div class="news-summary toShowAllTd">'+
+                        '   <div class="toShowAllDiv">'+
+                        '       <span class="toShowAll">'+itemremark+'</span>'+
+                        '       <span class="toShowAll-arrow"></span>'  +
+                        '   </div>'+ itemremark.substring(0,120)+'...' + '</div>' +
+
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+            }else{
+                var html = '<div class="single-outer">' +
+                        '<a href="detail?id=' + item.id + '&type='+item.type+'"><img src="' + item.picturePath + '" width="330" height="200" alt="土地信息"></a>' +
+                        '<div class="single-inner-middle w-560">' +
+                        '<div class="title"><a href="detail?id=' + item.id + '&type='+item.type+'" target="_blank">' + item.title + '</a></div>' +
+                        '<div class="place-area">发布时间：' + item.approveTimeStr + ' </div>' +
+                        '<div class="place-area h-80">' +
+                        '<div class="f-left wp-12">摘&nbsp;&nbsp;要：</div>' +
+                        '<div class="news-summary">'+ itemremark + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+            }
+
+
+            $('#' + elementId).append(html);
+        })
+        $(".toShowAllTd").hover(function(){
+            $(this).find('div').show();
+        },function(){
+            $(this).find('div').hide();
+        });
+    };
+
+    function pageselectCallback0(page_index, jq){
+        load_list0(page_index);
+        return false;
+    }
+    function createPagination0(page_index, count) {
+        $("#orgpagination0").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback0
+        });
+    }
+    function load_list0(page_index){
+        var data = "{type:'notice',keyword:'$!keyword',businessType: '$!businessType'}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('Annoucementdata', data);
+                    createPagination0(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback1(page_index, jq){
+        load_list1(page_index);
+        return false;
+    }
+    function createPagination1(page_index, count) {
+        $("#orgpagination1").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback1
+        });
+    }
+    function load_list1(page_index){
+        var data = "{type:'inlineInformation',keyword:'$!keyword',businessType: '$!businessType'}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('infomationdata', data);
+                    createPagination1(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback2(page_index, jq){
+        load_list2(page_index);
+        return false;
+    }
+    function createPagination2(page_index, count) {
+        $("#orgpagination2").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback2
+        });
+    }
+    function load_list2(page_index){
+        var data = "{type:'activityForecast',keyword:'$!keyword',businessType: '$!businessType'}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('activitysData', data);
+                    createPagination2(page_index, data.totalCount);
+                }, 'json')
+    }
+
+    function pageselectCallback3(page_index, jq){
+        load_list3(page_index);
+        return false;
+    }
+    function createPagination3(page_index, count) {
+        $("#orgpagination3").pagination(count, {
+            num_edge_entries: 3,
+            num_display_entries: 4,
+            items_per_page: 10,
+            maxentries: count,
+            next_text: '下一页',
+            prev_text: '上一页',
+            current_page: page_index,
+            callback: pageselectCallback3
+        });
+    }
+    function load_list3(page_index){
+        var data = "{type:'specialReport',keyword:'$!keyword',businessType: '$!businessType'}";
+        $.post("/news/api.do",
+                {
+                    method: 'api.new.data.get',
+                    data: data,
+                    pageSize: 10,
+                    pageNumber: (page_index+1)
+                }, function (data) {
+                    readTable('ReportsData', data);
+                    createPagination3(page_index, data.totalCount);
+                }, 'json')
+    }
+    $(function(){
+        load_list0(0);
+        load_list1(0);
+        load_list2(0);
+        load_list3(0);
+        site.changeTabs(this,'forField')
+    });
+</script>

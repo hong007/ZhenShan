@@ -1,0 +1,143 @@
+$rundata.setLayout("defaultEdit")
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget("index")" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>发布土地信息</span>
+    </div>
+</div>
+<form action="$homeLink.setTarget("PublishResource")" method="post">
+    #set ($group = $form.publishinfo.defaultInstance)
+    <div class="edit-content xn-width auto">
+        <div class="edit-content-inner">
+            <div class="land-img-name">
+                <div class="file-div">
+                    <input type="file" class="none" id="imgFile" name="imgFile" onchange="site.upload_pic()"
+                        accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg" contentEditable="false"/>
+                    <img alt="请选择图片"  onclick="imgFile.click()" width="268" height="150"  src=""/>
+##                    <input type="file" id="imgFile" name="imgFile" ng-click="showPicture()" width="114" height="85"
+##                           contentEditable="false" style="display:none"/>
+##                    <img ng-if="employee.photoUrl != null" class="view-img imgFile" id="spanImage" alt="请选择图片"
+##                         onclick="imgFile.click()" width="126" height="180" ng-src="{{employee.photoUrl}}@126w_180h_90q.jpg"/>
+##                    <input type="file"  id="File" name="File" onclick="site.upload_pic()"/>
+##                    <div class="upload-outer-div" id="landPictureUpload" onclick="site.upload_pic()">
+##                        <div class="upload-inner-div">
+##                            <i class="icon icon-add"></i>
+##                        </div>
+##                    </div>
+##                    <img alt="请选择图片" class="upload-img" onclick="site.upload_pic()" id="landPictureImg" width="250"
+##                         height="120"/>
+                    <input type="hidden">
+
+                    <div class="upload-title ng-binding">土地图片（250*120）</div>
+                </div>
+                <div class="verticle-line"></div>
+                <div class="land-name">
+                    <div class="mb-10">地块名称：</div>
+                    <input type="text" class="form-control w-330" name="$group.name.key" value="$group.name.value">
+                </div>
+            </div>
+            <h3 class="editContent-h3">地块基本信息</h3>
+
+            <div class="input-line">
+                <div class="mb-10">土地所在地区：</div>
+                <select class="form-control w-150 mr-50" id="cmbProvince" name="cmbProvince"></select>
+                <select class="form-control w-150 mr-50" id="cmbCity" name="cmbCity"></select>
+                <select class="form-control w-150 mr-50" id="cmbArea" name="cmbArea"></select>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5">位置：</div>
+                    <input type="text" class="form-control" id="address" name="$group.address.key"
+                           value="$group.address.value">
+                    <input type="hidden" id="coordinate" name="coordinate">
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5">预算金额：</div>
+                    <input type="text" class="form-control" name="$group.financingAmount.key"
+                           value="$group.financingAmount.value">
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5">规划用途：</div>
+                    <input type="text" class="form-control" name="$group.planUse.key" value="$group.planUse.value">
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5">合作方式：</div>
+                    <input type="text" class="form-control" name="$group.cooperationMode.key"
+                           value="$group.cooperationMode.value">
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5">使用年限：</div>
+                    <input type="text" class="form-control" name="$group.sellYear.key" value="$group.sellYear.value">
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5">占地面积：</div>
+                    <input type="text" class="form-control" name="$group.floorSpace.key"
+                           value="$group.floorSpace.value">
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5">联系人：</div>
+                    <input type="text" class="form-control" name="$group.contactName.key"
+                           value="$group.contactName.value">
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5">联系电话：</div>
+                    <input type="text" class="form-control" name="$group.contactPhone.key"
+                           value="$group.contactPhone.value">
+                </div>
+            </div>
+            <h3 class="editContent-h3">地块位置</h3>
+
+            <div class="map-content">
+                <div id="allmap"></div>
+            </div>
+            <h3 class="editContent-h3">地块描述</h3>
+
+            <div class="map-content">
+                <textarea class="form-control" rows="20" name="$group.content.key" value="$group.content.value"
+                          id="landIntro"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="input-line xn-center clearfix mt-60">
+        <button class="btn btn-primary col-sm-offset-0" name="event_submit_publishsave">保存</button>
+        <button class="btn btn-warning ml-50" name="event_submit_publishsubmit">提交</button>
+        <a class="btn btn-default ml-50" href="javascript:history.back(-1)">取消</a>
+    </div>
+</form>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript">
+    $(function () {
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea', '江苏', '苏州市');
+        mapInit('allmap', 'cmbProvince', 'cmbCity', 'cmbArea', 'address', 'coordinate');
+        var editItem = [
+            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'link', 'unlink', '|', 'about'
+        ];
+        var editor = KindEditor.create('#landIntro',
+                {
+                    width: "100%",
+                    height: "210px",
+                    items: editItem,
+                    allowFileManager: true,
+                    uploadJson: '',
+                    fileManagerJson: '',
+                }
+        );
+    });
+</script>

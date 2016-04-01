@@ -1,0 +1,21 @@
+# xn-directive-attachment [![spm version](http://spm.xiniunet.com:3000/badge/xn-directive-attachment)](http://spm.xiniunet.com:3000/package/xn-directive-attachment)
+
+---
+
+xn-directive-attachment
+
+## Install
+
+```
+$ spm install xn-directive-attachment --save
+```
+
+## Usage
+
+```js
+var xnDirectiveAttachment = require('xn-directive-attachment');
+// use xnDirectiveAttachment
+```
+
+
+##1.1.0结合了网盘项目

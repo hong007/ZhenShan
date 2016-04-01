@@ -1,0 +1,80 @@
+$page.setTitle("新增政府公告")
+
+<script type="text/javascript">
+    var selectModel = [
+        #foreach($param in ${selectPublicityType.keySet()})
+            {id:"$param",name:'${selectPublicityType.get($param)}'},
+        #end
+    ]
+</script>
+
+<div class="xn-breadcrumb auto  xn-width clearfix ">
+    <ul class="breadcrumb">
+        <li><a class="icon icon-home_page" href="$yunlandLink.setTarget("index")"></a></li>
+        <li><a href="$yunlandLink.setTarget("sell/index")">土地出让</a></li>
+        <li class="active">新增政府公告</li>
+    </ul>
+</div>
+
+<div class="xn-main  auto xn-width  clearfix" id="main" ng-controller="EditPublicityController">
+    <form class="form-horizontal xn-form" role="form" xn-form-validate novalidate name="validateForm">
+        <div class="xn-edit  recommend-editContent clearfix">
+            <div class="edit-content">
+                <div class="xn-input-line  clearfix label-long">
+                    <label class="xn-label"><span class="f-right">类型：</span><i
+                            class="xn-required-i f-right"></i></label>
+                    <div class="xn-input-sm">
+                        <div xn-filter-select data-select-data="selectPublicityType" ng-model="land.type" name="type" required="required"></div>
+                    </div>
+                    <div class="tip"></div>
+                    <label class="xn-label"><span class="f-right">标题：</span><i
+                            class="xn-required-i f-right"></i></label>
+                    <div class="xn-input-sm">
+                        <input type="text" class="form-control"
+                               name="title" ng-model="publicity.title" required="required">
+                    </div>
+                </div>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">位置：</span></label>
+                        <div class="xn-input-lg">
+                            <div xn-location ng-model="land.address" data-city-id="{{land.address}}"  address=false></div>
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix">
+                        <div >
+                            <input type="hidden" class="form-control"
+                                   name="coordinate" ng-model="land.coordinate" >
+                        </div>
+                    </div>
+                    <div class="xn-input-line  clearfix" style="display: none">
+                        <div class="map-content">
+                            <div id="allmap"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="xn-input-line  clearfix">
+                        <label class="xn-label"><span class="f-right">详细介绍：</span></label>
+                        <div class="map-content">
+                            <textarea class="form-control" rows="15" name="sellIntro" id="sellIntro" ng-model="publicity.content"
+                                    ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xn-input-line clearfix" ng-show="validateForm.$errors.length > 0 ">
+                    <div class="alert alert-danger"><i class="glyphicon glyphicon-remove-sign mr_5"
+                                                       ng-click="closeAlert(0,validateForm.$errors)"></i>{{validateForm.$errors[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb_20 clearfix">
+            <button  class="btn btn-primary col-md-2 col-sm-offset-2" xn-form-submit="doSave()">保存</button>
+            <button  class="btn btn-warning col-md-2 col-sm-offset-1" xn-form-submit="doPublish()">发布</button>
+            <a href="javascript:history.back(-1)"  class="btn btn-default col-md-2 col-sm-offset-1">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>

@@ -1,0 +1,296 @@
+$rundata.setLayout("defaultEdit")
+#macro (publishinfoMessage $field)
+    #if (!$field.valid) $field.message #end
+#end
+<script type="text/javascript" src="$homeContent.getURI('scripts/member/publishresource.js')"></script>
+<link rel="stylesheet" href="$homeContent.getURI("vendor/screenshot/css/bootstrap.min.css")">
+<link rel="stylesheet" href="$homeContent.getURI("vendor/screenshot/css/cropper.min.css")">
+<link rel="stylesheet" href="$homeContent.getURI("vendor/screenshot/css/main.css")">
+<div class="header header-simple xn-width auto clearfix">
+    <div class="header-logo">
+        <a href="$homeLink.setTarget("index")" class="xn-text-center">
+            <img src="$homeContent.getURI('/images/logo.png')" width="166" height="81" alt="云地网">
+        </a>
+    </div>
+    <div class="header-title">
+        <i class="vertical-line bg-color-1"></i>
+        <span>发布土地信息</span>
+    </div>
+</div>
+<div  id="crop-avatar" class="forPublishresource">
+<form action="" method="post">
+
+    <input type="hidden" name="action" value="EditResource"/>
+    #set ($group = $form.editsupply.defaultInstance)
+    $group.mapTo($landSupply)
+    <div class="edit-content xn-width auto">
+        <div class="edit-content-inner">
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="avatar-view" title="Change the avatar">
+                    #*<img src="img/picture.jpg" alt="Avatar">*#
+                        <img id="pictureURL" width="268" height="150" />
+                        <input type="hidden" id="tmppiture" name="$group.picturePath.key" value="$group.picturePath.value">
+                    </div>
+                </div>
+                <div class="input-line-right" style="margin-top: 100px">
+                    <div class="mb-10"><i class="xn-required-i"></i>$group.name.displayName ：</div>
+                    <input type="text" class="form-control" style="width: 490px" name="$group.name.key" value="$group.name.value">
+                    <input type="hidden" id="picture" name="$group.pictureId.key" value="$group.pictureId.value"/>
+                    <div class="error-area">#publishinfoMessage ($group.name)</div>
+                </div>
+            </div>
+            #*<div class="land-img-name">
+                <label class="file-div" for="pictureId">
+                    <input type="file" style="width: 0;height: 0 " id="pictureId" name="pictureId" onchange="upload_pic()"
+                           accept="image/png,image/gif,image/bmp,image/jpeg,image/jpg" contentEditable="false"/>
+                    <img alt="请选择图片"  width="268" height="150" id="pictureURL" />
+                    <div class="upload-title ng-binding">土地图片（250*120）</div>
+                    *##*<img alt="请选择图片" style="display: none;"  width="268" height="150" id="pictureURL" src="$group.picturePath.value"/>*##*
+                    <input type="hidden" id="tmppiture" name="$group.picturePath.key" value="$group.picturePath.value">
+                    <div class="upload-outer-div" id="landPictureUpload">
+
+                        *##*<div class="upload-inner-div">
+                            <i class="icon icon-add"></i>
+                        </div>*##*
+                    </div>
+
+                    <input type="hidden" id="picture" name="$group.pictureId.key" value="$group.pictureId.value">
+
+                </label>
+                <div class="verticle-line"></div>
+                <div class="land-name">
+                ##<label class="xn-label long-label"><span class="f-right">公司(个人)名称：</span><i class="xn-required-i xn-location-required f-right"></i></label>
+                    <div class="mb-10"><i class="xn-required-i"></i>$group.name.displayName ：</div>
+                    <input type="text" class="form-control w-330" name="$group.name.key" value="$group.name.value">
+                    <div class="error-area">#publishinfoMessage ($group.name)</div>
+                </div>
+            </div>*#
+            <h3 class="editContent-h3">地块基本信息</h3>
+            <input type="hidden" id="id" name="$group.id.key" value="$group.id.value">
+
+            <div class="input-line">
+                <div class="mb-10"><i class="xn-required-i"></i>土地所在地区：</div>
+                <select class="form-control w-150 mr-50" style="width: 150px;display: inline-block;"  id="cmbProvince" name="$group.provinceId.key" value="$group.provinceId.value"></select>
+                <select class="form-control w-150 mr-50" style="width: 150px;display: inline-block;"  id="cmbCity" name="$group.cityId.key" value="$group.cityId.value"></select>
+                <select class="form-control w-150 mr-50" style="width: 150px;display: inline-block;"  id="cmbArea" name="$group.districtId.key" value="$group.districtId.value"></select>
+                <div class="error-area">
+                    #publishinfoMessage ($group.provinceName)
+                    #publishinfoMessage ($group.cityName)
+                    #publishinfoMessage ($group.districtName)
+                </div>
+            </div>
+
+            <input type="hidden" id="provinceName" name="$group.provinceName.key" value="$group.provinceName.value">
+            <input type="hidden" id="cityName" name="$group.cityName.key" value="$group.cityName.value">
+            <input type="hidden" id="districtName" name="$group.districtName.key" value="$group.districtName.value">
+            <input type="hidden" id="contentId" name="$group.contentId.key" value="$group.contentId.value">
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>位置：</div>
+                    <input type="text" class="form-control" id="address" name="$group.address.key"
+                           value="$group.address.value">
+                    <input type="hidden" id="coordinate" name="coordinate">
+                    <div class="error-area">#publishinfoMessage ($group.address)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5">$group.financingAmount.displayName (万元)：</div>
+                    <input type="text" class="form-control" name="$group.financingAmount.key"
+                           value="$group.financingAmount.value">
+                    <div class="error-area">#publishinfoMessage ($group.financingAmount)</div>
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>$group.planUse.displayName：</div>
+                ##<input type="text" class="form-control" name="$group.planUse.key" value="$group.planUse.value">
+                    <select id="planUse" class="form-control" name="$group.planUse.key" value="$group.planUse.value">
+                        <option value="zhuz"  >住宅用地</option>
+                        <option value="shangy" >商业/办公用地</option>
+                        <option value="gongy" >工业用地</option>
+                        <option value="zhongh" >综合用地</option>
+                    </select>
+                    <div class="error-area">#publishinfoMessage ($group.planUse)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>$group.cooperationMode.displayName：</div>
+                    #select ($group.cooperationMode.key $selectCollaborateMethod $group.cooperationMode.value "-- 请选择合作方式 --")
+                    <div class="error-area">#publishinfoMessage ($group.cooperationMode)</div>
+                ##<input type="text" class="form-control" name="$group.cooperationMode.key"
+                ##       value="$group.cooperationMode.value">
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>$group.sellYear.displayName：</div>
+                    <input type="text" class="form-control" name="$group.sellYear.key" value="$group.sellYear.value">
+                    <div class="error-area">#publishinfoMessage ($group.sellYear)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>占地面积 (万平方米)：</div>
+                    <input type="text" class="form-control" name="$group.floorSpace.key"
+                           value="$group.floorSpace.value">
+                    <div class="error-area">#publishinfoMessage ($group.floorSpace)</div>
+                </div>
+            </div>
+            <div class="input-line clearfix">
+                <div class="input-line-left">
+                    <div class="mb-5"><i class="xn-required-i"></i>联系人：</div>
+                    <input type="text" class="form-control" name="$group.contactName.key"
+                           value="$group.contactName.value">
+                    <div class="error-area">#publishinfoMessage ($group.contactName)</div>
+                </div>
+                <div class="input-line-right">
+                    <div class="mb-5"><i class="xn-required-i"></i>联系电话：</div>
+                    <input type="text" class="form-control" name="$group.contactPhone.key"
+                           value="$group.contactPhone.value">
+                    <div class="error-area">#publishinfoMessage ($group.contactPhone)</div>
+                </div>
+            </div>
+            <h3 class="editContent-h3">地块位置</h3>
+
+            <div class="map-content">
+                <div id="allmap"></div>
+            </div>
+            <h3 class="editContent-h3">地块描述</h3>
+            <div class="map-content">
+                <textarea class="form-control" rows="20" name="$group.content.key" value="$group.content.value"
+                          id="landIntro">
+                            #noescape()$group.content.value #end
+                          </textarea>
+                <div class="error-area">#publishinfoMessage ($group.content)</div>
+            </div>
+            <div>#if($errorMsg) <p style="color: red">$errorMsg</p> #end</div>
+        </div>
+    </div>
+    <div class="input-line xn-center clearfix mt-60">
+        <input type="submit" class="btn btn-warning col-sm-offset-0" style="margin-left: 34.333333%;" name="event_submit_do_submit" value="提交"></input>
+        <input type="submit" class="btn btn-primary ml-50 " name="event_submit_do_save" value="更新"></input>
+        <a class="btn btn-default ml-50" href="javascript:history.back(-1)">取消</a>
+    </div>
+</form>
+
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="avatar-form" action="" enctype="multipart/form-data" method="post">
+                    <div class="modal-header">
+                        <button id="closeButton" type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="avatar-modal-label">请选择上传图片</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="avatar-body">
+
+                            <!-- Upload image and data -->
+                            <div class="avatar-upload">
+                                <input type="hidden" class="avatar-src" name="avatar_src">
+                                <input type="hidden" class="avatar-data" name="avatar_data">
+                                <label for="avatarInput">本地图片</label>
+                                <input type="file" class="avatar-input" id="avatarInput" name="avatar_file">
+                            </div>
+
+                            <!-- Crop and preview -->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div id="avatarImg" class="avatar-wrapper"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="avatar-preview preview-lg"></div>
+                                    <div class="avatar-preview preview-md"></div>
+                                    <div class="avatar-preview preview-sm"></div>
+                                </div>
+                            </div>
+
+                            <div class="row avatar-btns">
+                                <div class="col-md-9">
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="" onclick="upload_pic2()" class="btn btn-primary btn-block avatar-save">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+    <!-- Loading state -->
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+</div>
+
+<script src="$homeContent.getURI("vendor/screenshot/js/jquery.min.js")"></script>
+<script src="$homeContent.getURI("vendor/screenshot/js/bootstrap.min.js")"></script>
+<script src="$homeContent.getURI("vendor/screenshot/js/cropper.min.js")"></script>
+<script src="$homeContent.getURI("vendor/screenshot/js/main.js")"></script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UoGBFm6G6iI6rYiF9uc9NpST"></script>
+<script type="text/javascript">
+    $(function () {
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea', '江苏省', '苏州市','太仓市');
+        mapInit('allmap', 'cmbProvince', 'cmbCity', 'cmbArea', 'address', 'coordinate');
+        var editItem = [
+            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/','image','multiimage','|',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'link', 'unlink', '|', 'about'
+        ];
+        var editor = KindEditor.create('#landIntro',
+                {
+                    width: "100%",
+                    height: "210px",
+                    items: editItem,
+                    allowFileManager: false,
+                    uploadJson: '../../upload/fileUploadJson.do',
+                }
+        );
+
+
+       /* var data ='';
+        editor.html(data);*/
+        $("#pictureURL").attr("src",'$group.picturePath.value');
+        $("#tmppiture").val('$group.picturePath.value');
+        $("#planUse").val('$group.planUse.value');
+
+        // 合作方式
+        $("#cooperationMode").val($group.cooperationMode.value);
+
+        var provinceName ;
+        var cityName ;
+        var districtName ;
+
+
+        $("#cmbProvince").val('$group.provinceId.value');
+        changeProvince();
+        $("#cmbCity").val('$group.cityId.value');
+        changeCity();
+        $("#cmbArea").val('$group.districtId.value');
+        mapInit('allmap', 'cmbProvince', 'cmbCity', 'cmbArea', 'address', 'coordinate');
+
+        $("#cmbProvince").change(function() {
+            var proviceId = $("#cmbProvince  option:selected").val();
+            provinceName = $("#cmbProvince  option:selected").html();
+            selectArea();
+        });
+        $("#cmbCity").change(function() {
+            selectArea();
+        });
+        $("#cmbArea").change(function() {
+            selectArea();
+        });
+
+        var selectArea = function(){
+            provinceName = $("#cmbProvince  option:selected").html();
+            cityName = $("#cmbCity  option:selected").html();
+            districtName =  $("#cmbArea  option:selected").html();
+            $("#cityName").val(cityName);
+            $("#districtName").val(districtName);
+            $("#provinceName").val(provinceName);
+        }
+
+        $('select').addClass('form-control');
+
+    })
+</script>

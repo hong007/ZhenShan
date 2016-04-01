@@ -1,0 +1,39 @@
+{
+  "name": "xn-directive-common",
+  "version": "1.0.11",
+  "description": "common direcitve",
+  "keywords": [
+    "xn",
+    "directive-common",
+    "xn-directive-common"
+  ],
+  "homepage": "",
+  "author": "Jason",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+      "angular": "1.3.9",
+      "jquery": "1.7.2",
+      "angular-ui": "1.0.0",
+      "xn-icon-common": "1.0.0"
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  },
+  "devDependencies": {
+    "spm": "3"
+  },
+  "scripts": {
+    "test": "spm test",
+    "build": "spm build"
+  }
+}

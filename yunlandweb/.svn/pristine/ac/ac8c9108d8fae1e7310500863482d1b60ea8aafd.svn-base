@@ -1,0 +1,2595 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+<title>云地网-互联网土地市场</title>
+<meta name="keywords" content="互联网土地，土地市场，土地转让，土地需求，土地招拍挂，土地大数据，土地出让" />
+<meta name="baidu-tc-verification" content="603d83a919284665b24e4b750b78b75d" />
+<meta name="description" content="云地网是国内第一个真正意义上的全产业链互联网土地交易和金融服务平台，交易范围涵盖土地一级市场、土地二级市场、农村土地流转。为交易双方提供包括信息服务、交易服务、金融服务等互联网创新服务，提升土地价值，激发土地财富">
+<metahttp-equiv ="X-UA-Compatible" content="IE=8"><!--以IE8模式渲染-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="../../styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/index.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/other.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/member.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/list.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/manhuaDate.1.0.css"/>
+
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/mmGrid.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/theme/bootstrap/mmGrid-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/mmgrid/mmPaginator.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/s3Slider/styles.css">
+<link rel="stylesheet" type="text/css" href="../../vendor/p3Slider/zsucai.css">
+<link rel="stylesheet" type="text/css" href="../../styles/popup.css">
+
+
+<script  type="text/javascript"  src="../../scripts/jquery.min.js"></script>
+<script  type="text/javascript"  src="../../scripts/jsAddress.js"></script>
+
+</head>
+<body style="background:#f1f2f4;">
+<!-- Top -->
+<div id="header">
+    <div class="header-welcome">
+        <div class="xn-width auto">
+            <div class="f-left" style="height: 30px;width: 60%;">
+                <span class="f-left">您好 ， 欢迎来到云地，咨询热线：</span>
+                <div class="phone">
+                    <span class="icon-phone"></span>
+                    0571-81902006
+                </div>
+            </div>
+            <div class="f-right column-nav">
+                    <a class="pr-20" href="http://www.yunland.cn/base/login?v=1.0-SNAPSHOT">登录</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/home/../member/register/step1?v=1.0-SNAPSHOT">注册</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a class="pr-20" href="http://www.yunland.cn/news/informationdetail?type=newComer&amp;v=1.0-SNAPSHOT">新手指引</a>
+                    <i class="vertical-line bg-color-1"></i>
+                    <a href="#">合作机构</a>
+            </div>
+        </div>
+    </div>
+    <div class="header xn-width auto clearfix">
+        <div class="header-logo">
+            <a href="http://www.yunland.cn/index.htm" class="xn-text-center">
+                <img src="../../images/logo-3.png" width="140" height="90"alt="云地网">
+            </a>
+        </div>
+        <div class="header-search">
+            <div class="search-nav">
+                <ul>
+                    <li class="active" id="nav-recommend" onclick="site.changeTab(this,'forLandInfo','forLandNews','recommend')">
+                        <a>土地推介</a>
+                    </li>
+                    <li id="nav-sell" onclick="site.changeTab(this,'forLandInfo','forLandNews','sell')">
+                        <a>土地出让</a>
+                    </li>
+                    <li id="nav-transfer" onclick="site.changeTab(this,'forLandInfo','forLandNews','transfer')">
+                        <a>土地转让</a>
+                    </li>
+                    
+                    <li id="nav-news" onclick="site.changeTab(this,'forLandNews','forLandInfo','news')">
+                        <a>土地动态</a>
+                    </li>
+                </ul>
+            </div>
+                <div id="forLandInfo" class="search-outer clearfix">
+                    <div class="search-content" >
+                        <div>
+                        <ul>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbProvince" name="cmbProvince"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" id="cmbCity" name="cmbCity"></select>
+                            </li>
+                            <li>
+                                <select class="select-input2 wp-100" name="purpose" id="purpose">
+                                    <option value=''>规划用途</option>
+                                    <option value="zhuz"> 住宅用地 </option>
+                                    <option value="shangy"> 商业/办公用地 </option>
+                                    <option value="gongy"> 工业用地 </option>
+                                    <option value="zhongh"> 综合用地 </option>
+                                    <option value="other"> 其他 </option>
+                                </select>
+                            </li>
+                            <li id="sellMethod_li"></li>
+                        </ul>
+
+                        <button class="search-btn" id="searchAbutton" type="submit">
+                        <span>搜索</span>
+                        </button>
+                        </div>
+                        <div>
+                        <input type="text" id="keyword" name="keyword" class="form-control home-keyword clearfix" placeholder="输入关键字（地块名/宗地号/位置等）">
+                        
+                        <input type="hidden" id="businessType" name="businessType" class="form-control wp-94 clearfix">
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="selectB" action="../news/index">
+                <div id="forLandNews" class="search-landnews" style="display: none;">
+                    <input name="keyword" type="text" placeholder="请输入关键词" value=""/>
+                    <input type="hidden" value="news" name="businessType">
+                    <button  type="submit" class="search-btn" id="searchBbutton">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div class="header-QRCode">
+            <img src="../../images/erweima-2.png" width="90" height="90" alt="二维码">
+        </div>
+
+    </div>
+    <div class="header-nav">
+        <div class="xn-width auto clearfix">
+<ul class="clearfix header-nav-ul">
+                <li class="active">
+                    <a href="index.htm" target="_self">首页</a>
+                </li>
+                <li class="$activerecommend">
+                    <a href="recommend/index.html" target="_self">云地推介</a>
+                </li>
+                <li class="$activesell">
+                    <a href="transfer/index.html" target="_self">土地转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="project/index.html" target="_self">项目转让</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="overseas/index.html" target="_self">海外地产</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="sell/announcement.html" target="_self">土地招拍挂</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="transfer/index.html" target="_self">需求信息</a>
+                </li>
+                <li class="$activestatistic">
+                    <a href="statistic/index.html" target="_self">云地大数据</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="information/index.html" target="_self">云地资讯</a>
+                </li>
+                <li class="$activetransfer">
+                    <a href="report/index.html" target="_self">云地报告</a>
+                </li>
+                 <li class="$activetransfer">
+                    <a href="#" target="_self">城市更新</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="newnav xn-width auto clearfix">
+        <ul>
+           <li>找地块:</li>
+           <li><a href="#">住宅用地</a></li>
+           <li><a href="#">商业用地</a></li>
+           <li><a href="#">工业用地</a></li>
+           <li class="mr-29"><a href="#">综合用地</a></li>
+           <i>|</i>
+           <li>找项目:</li>
+           <li><a href="#">住宅</a></li>
+           <li><a href="#">酒店</a></li>
+           <li><a href="#">写字楼</a></li>
+           <li><a href="#">商业</a></li>
+           <li class="mr-29"><a href="#">厂房仓库</a></li>
+           <i>|</i>
+           <li>热门城市:</li>
+           <li><a href="#">北京</a></li>
+           <li><a href="#">上海</a></li>
+           <li><a href="#">广州</a></li>
+           <li><a href="#">深圳</a></li>
+        </ul>
+        <div class="map-icon f-right" style="display:none"><a href="#">地图找地</a></div>
+    </div>
+</div>
+<script type="text/javascript">
+ addressInit('cmbProvince', 'cmbCity', 'cmbArea','86');
+    //加载所有的数据
+    var sellmethod = function(type){
+        if(type=="sell") {
+            var options = '<select class="select-input2 wp-100" name="sellmethod" id="sellmethod"><option value="">出让方式</option>';
+                            options += '<option value="21"> 招标 </option>'
+                            options += '<option value="22"> 拍卖 </option>'
+                            options += '<option value="23"> 挂牌 </option>'
+                            options += '<option value="1"> 划拨 </option>'
+                            options += '<option value="2"> 招拍挂 </option>'
+                            options += '<option value="3"> 协议 </option>'
+                            options += '<option value="4"> 租赁 </option>'
+                            options += '<option value="5"> 作价出资或入 </option>'
+                            options += '<option value="6"> 授权经营 </option>'
+                            options +='</select>'
+        }else if(type=="transfer"){
+            var options = '<select class="select-input2 wp-100" name="sellmethod" id="sellmethod"><option value="">合作方式</option>';
+                            options += '<option value="1"> 整体转让 </option>'
+                            options += '<option value="2"> 控股权转让 </option>'
+                            options += '<option value="3"> 部分转让 </option>'
+                            options += '<option value="4"> 股权转让 </option>'
+                            options += '<option value="5"> 项目融资 </option>'
+                            options += '<option value="6"> 债权融资 </option>'
+                            options += '<option value="7"> 租赁融资 </option>'
+                            options += '<option value="0"> 其他/面谈 </option>'
+                            options +='</select>'
+        }
+        $("#sellMethod_li").append(options);
+    }
+    var businessType = '';
+//    alert(businessType);
+    $(function(){
+        if($("#nav-"+businessType)){
+            $("#nav-"+businessType).addClass('active');
+            $("#nav-"+businessType).siblings().removeClass('active');
+            if(businessType=='news'){
+                $("#forLandNews").show();
+                $("#forLandInfo").hide();
+            }else{
+                $("#forLandNews").hide();
+                $("#forLandInfo").show();
+                if(businessType=='sell'||businessType=='transfer'){
+                    $("#sellMethod_li").empty();
+                    sellmethod(businessType);
+                }
+            }
+        }
+        $("#keyword").val('');
+        $("#cmbProvince").val('');
+        $("#cmbCity").val('');
+        $("#cmbArea").val('');
+        $("#purpose").val('');
+        $("#sellmethod").val('');
+        var cp = '';
+        if(''!=cp || null!=cp){
+            addressInit('cmbProvince', 'cmbCity', 'cmbArea','','','');
+        }
+        $("#businessType").data("currenttab",'');
+    });
+</script>
+<!-- Top 结束 -->
+<!--<iframe src="../control/header.html" frameborder=0 width=100% height=193 marginheight=0 marginwidth=0 scrolling=no></iframe>-->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/validate/jquery.validate.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="$homeContent.getURI('vendor/validate/jquery.validate.js')"></script>
+<div id="login">
+<div class="login-head detail-slider-xin f-left" id="focus">
+    <div id="trippleArrowLeft2" class="arrow-left-xin"></div>
+    <div id="trippleArrowRight2" class="arrow-right-xin"></div>
+    <ul>
+                    <li>
+                <a target="_blank" class="picimglink" href="http://yunland.cn/transfer/index.htm"
+                   style="background:  center top no-repeat;">
+                <img  style="width:920px; height:260px;"src="../../images/652431692107485184.jpg"/>
+                </a>
+            </li>
+                    <li>
+                <a target="_blank" class="picimglink" href="http://yunland.cn/recommend/index.htm"
+                   style="background: url(../../images/banner1.png) center top no-repeat;">
+
+                </a>
+            </li>
+                    <li>
+                <a target="_blank" class="picimglink" href="http://yunland.cn/sell/index.htm"
+                   style="background: url('http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/652031109156442112.jpg') center top no-repeat;">
+
+                </a>
+            </li>
+                    <li>
+                <a target="_blank" class="picimglink" href="http://www.yunland.cn/recommend/indexDetail?id=646965630377267200"
+                   style="background: url('http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/652788200095748096.jpg') center top no-repeat;">
+
+                </a>
+            </li>
+                    <li>
+                <a target="_blank" class="picimglink" href="http://yunland.cn/news/detail?id=633938126297239552&amp;type=notice"
+                   style="background: url('http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/646518082894172160.jpg') center top no-repeat;">
+
+                </a>
+            </li>
+            </ul>
+    <div class="btnBg  auto clearfix">
+        <div class="list-circle" style="display:none;">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                    </div>
+    </div>
+</div>
+<div class="banner-text-right f-right">
+        <div class="button-con bg p-relative">
+            <div class="button button-x f-left"><a class="color"href="member/admin/publishresource.html"><p>发布土地</p></a></div>
+            <div class="button button-x f-right"><a class="color" href="member/admin/publishrequirement.html"><p class="demand">发布需求</p></a></div>
+            <div class="button f-left"><a href="member/admin/publishresource.html"><p class="login1">立即登录</p></a></div>
+            <div class="button f-right"><a href="member/admin/publishrequirement.html"><p class="registered">马上注册</p></a></div>
+        </div>
+        <div class="text-con">
+            <div class="title-qg"><p>全国土地市场动态</p></div>
+            <div class="jinri-con">
+                <div class="jinri-wrap f-left">
+                    <span class="jinri">今日</span>
+                </div>
+                <div class="f-left">
+                    <p>出让公告：<span>13</span>条，推出土地<span>44</span>宗</p>
+                    <p>成交公示：<span>27</span>条，土地成交<span>45</span>宗</p>
+                    <p>签订出让合同和划拨决定书等<span>58</span>份</p>
+                </div>
+            </div>
+            <div class="jinri-con">
+                <div class="jinri-wrap f-left">
+                    <span class="jinri">本月</span>
+                </div>
+                <div class="f-left">
+                    <p>出让公告：<span>13</span>条，推出土地<span>44</span>宗</p>
+                    <p>成交公示：<span>27111</span>条，土地成交<span>451111</span>宗</p>
+                    <p>签订出让合同和划拨决定书等<span>58</span>份</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="clearfix"></div>
+    <div class="btnBg  auto clearfix">
+        <div class="list-circle">
+                <span></span>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="xn-width-xin auto middle-content">
+
+
+<!--热点城市-->
+<div class="clearfix hot-topic mt_10 bg">
+    <div class="con-module-l f-left" style="width:786px;">
+    <div class="yun-dynamic">
+        <div class="theme clearfix">
+            <a class="f-left" target="_blank" href="recommend/index">土地旗舰店</a>
+            <div class="name f-left">
+               <a href="#">长三角</a>
+                <i>|</i>
+               <a href="#">珠三角</a>
+               <i>|</i>
+               <a href="#">京津翼</a>
+               <i>|</i>
+               <a href="#">长江经济带</a>
+               <i>|</i>
+               <a href="#">中西部</a>
+               <i>|</i>
+               <a href="#">东北三省</a>
+            </div>
+            <span class="more"><a href="recommend/index.html" target="_blank">更多＞＞</a></span>
+        </div>
+    </div>
+    <div class="theme-line" style="width:766px;"></div>
+    <div class="wrapper top-main clearfix dynamic-details" style="padding-bottom:12px;">
+        <div class="main">
+            <div class="slide">
+                <ul class="slide-ul clearfix">
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                        <span class="header-title f-left">1江苏&bull;盐城盐城<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src='../../images/re1.jpg'
+                                         alt=热门土地/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">2湘潭市&bull;湘潭县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re2.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">3金华市&bull;金华县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re3.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">4嘉兴市&bull;嘉兴县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re4.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">5安康市&bull;安康县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re5.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">6盐城市&bull;盐城县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re6.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">7盐城市&bull;盐城县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re6.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                        <span class="header-title f-left">8盐城市&bull;盐城县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re6.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                </ul>
+            </div>
+        </div>
+</div>
+    </div>
+    <div class="con-module-r f-right">
+    <ul class="transfer tabs1">
+        <li class="active"><a href="#tab1">优选地块</a></li>
+        <li><a href="#tab2">工业</a></li>
+        <li><a href="#tab3">商业</a></li>
+        <li><a href="#tab4">住宅</a></li>
+        <li><a href="#tab5">综合</a></li>
+    </ul>
+            <div class="pt-10">
+            <div id="tab1" class="tab_content1">
+                            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-6">省份</th>
+                    <th class="xn-col-sm-9">地块名称</th>
+                    <th class="xn-col-sm-6">面积<span style="font-size:12px;">（万m<sup>2</sup>）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                                 <em>新疆维吾</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东11111111</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                                    <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                              <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                              <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                     <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                              <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div id="tab2" class="tab_content1 slide" style="display:none">
+                                            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-6">省份</th>
+                    <th class="xn-col-sm-9">地块名称</th>
+                    <th class="xn-col-sm-6">面积<span style="font-size:12px;">（万m<sup>2</sup>）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                             <em>江西省 /九江2222...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                                    <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                             <em>江西省 /九江2222...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                                        <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            </div>
+            <div id="tab3" class="tab_content1 slide" style="display:none">
+                                                            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-6">省份</th>
+                    <th class="xn-col-sm-9">地块名称</th>
+                    <th class="xn-col-sm-6">面积<span style="font-size:12px;">（万m<sup>2</sup>）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            新疆维吾尔自...
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                                    <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                                         <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                              <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+
+                </tbody>
+            </table>
+             
+            </div>
+            <div id="tab4" class="tab_content1 slide" style="display:none">
+                                                            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-6">省份</th>
+                    <th class="xn-col-sm-9">地块名称</th>
+                    <th class="xn-col-sm-6">面积<span style="font-size:12px;">（万m<sup>2</sup>）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            新疆维吾尔自...
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                                    <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                                         <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                              <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            </div>
+            <div id="tab5" class="tab_content1 slide" style="display:none">
+                                                            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="xn-col-sm-6">省份</th>
+                    <th class="xn-col-sm-9">地块名称</th>
+                    <th class="xn-col-sm-6">面积<span style="font-size:12px;">（万m<sup>2</sup>）</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            新疆维吾尔自...
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>9999999</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                                    <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                            </a>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">经济开发区西区、铁东路以东、北环路以南</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                           <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                                         <tr>
+                        <td>
+                         <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                              <em>经济开发区西区、铁东...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>
+                        <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">江西省 /九江市 /瑞昌市</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>江西省 /九江2222...</em>
+                        </td>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                             <div class="toShowAllDiv">
+                                 <span class="toShowAll">新疆维吾尔自治区111111</span>
+                                 <span class="toShowAll-arrow"></span>
+                             </div>
+                            <em>经济开发区西区、铁东22222...</em>
+                            </a>
+                        </td>
+                        <td>3.61</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            
+            <!--tab 切换代码-->
+            <script type="text/javascript">  
+			$(document).ready(function() {  
+			  
+				//Default Action  
+				$(".tab_content1").hide(); //Hide all content  
+				$("ul.tabs1 li:first").addClass("active").show(); //Activate first tab  
+				$(".tab_content1:first").show(); //Show first tab content  
+				  
+				//On Click Event  
+				$("ul.tabs1 li").click(function() {  
+					$("ul.tabs1 li").removeClass("active"); //Remove any "active" class  
+					$(this).addClass("active"); //Add "active" class to selected tab  
+					$(".tab_content1").hide(); //Hide all tab content  
+					var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content  
+					$(activeTab).fadeIn(); //Fade in the active content  
+					return false;  
+				});  
+			  
+			});  
+			</script>  
+        </div>
+     </div>     
+</div>
+</div>
+<!--热点城市 结束-->
+
+<!--土地转让 需求信息-->
+<div class="clearfix mt_10 bg">
+    <div class="con-module-l f-left" style="width:786px;">
+    <div class="yun-dynamic clearfix">
+        <div class="theme f-left"><a target="_blank" href="transfer/index">土地大卖场</a></div>
+        <div class="name f-left">
+           <a href="#">住宅用地</a>
+            <i>|</i>
+           <a href="#">商业用地</a>
+           <i>|</i>
+           <a href="#">工业用地</a>
+           <i>|</i>
+           <a href="#">综合用地</a>
+        </div>
+        <div class="title title-xin f-right clearfix">
+             <a href="#" class="release-btn">发布土地</a>
+            <span class="more" style="margin-top:2px"><a href="transfer/index.html" target="_blank">更多＞＞</a></span>
+        </div>
+    </div>
+    <div class="theme-line" style="width:766px;"></div>
+    <div class="dynamic-details">
+        <div class="details-top">
+            <div class="clearfix"></div>
+            <div class="main-text f-left">
+                <div class="con-top clearfix">
+                    <div class="tu"><a href="#"><img src="../../images/details-tu.jpg" width="187" height="105"/></a></div>
+                    <div class="details">
+                        <h3>
+                            <a href="#">重庆垫江县牡丹湖南侧243亩重庆地块整体转让</a>
+                            <img src="../../images/recommended-icon.jpg"/>
+                        </h3>
+                        <p style="padding-top: 2px;">整体转让<span>面议</span></p>
+                        <p>住宅用地<span>162008.22㎡</span></p>
+                        <p><span><a href="#">详情</a></span></p>
+                    </div>
+                </div>
+                <div class="con-bottom mt_10">
+                    <ul>
+                       <li><a class="li-type" href="#">商办</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                       <li><a class="li-type" href="#">住宅</a> | <a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                       <li><a class="li-type" href="#">综合</a> | <a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-text f-right">
+                <div class="con-top clearfix">
+                    <div class="tu"><a href="#"><img src="../../images/details-tu.jpg" width="187" height="105"/></a></div>
+                    <div class="details">
+                        <h3>
+                            <a href="#">重庆垫江县牡丹湖南侧243亩重庆地块整体转让</a>
+                            <img src="../../images/recommended-icon.jpg"/>
+                        </h3>
+                        <p style="padding-top: 2px;">整体转让<span>面议</span></p>
+                        <p>住宅用地<span>162008.22㎡</span></p>
+                        <p><span><a href="#">详情</a></span></p>
+                    </div>
+                </div>
+                <div class="con-bottom mt_10">
+                    <ul>
+                       <li><a class="li-type" href="#">商办</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                       <li><a class="li-type" href="#">住宅</a> | <a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                       <li><a class="li-type" href="#">综合</a> | <a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <div class="con-module-r f-right">
+        <div class="yun-dynamic clearfix"style="padding:5px 0 0">
+            <div class="theme f-left"><a target="_blank" href="transfer/index">需求信息</a></div>
+            <div class="title title-xin f-right clearfix">
+                 <a href="#" class="release-btn">发布需求</a>
+                <span class="more" style="margin-top:2px"><a href="transfer/index.html" target="_blank">更多＞＞</a></span>
+            </div>
+         </div>
+         <div class="theme-line" style="width:394px; margin-left:0"></div>
+         <div class="main-text">
+             <div class=" clearfix">
+                 <div class="tu2"><a href="#"><img src="../../images/picture_02.png" width="192" height="105"/></a></div>
+                 <div class="tu2 ml-10"><a href="#"><img src="../../images/picture_02.png" width="192" height="105"/></a></div>
+             </div>
+             <div class="con-bottom mt_10">
+                <ul>
+                   <li><a class="li-type" href="#">商办</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                       <li><a class="li-type" href="#">住宅</a> | <a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                       <li><a class="li-type" href="#">综合</a> | <a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--土地转让 需求信息 结束-->
+
+<!--项目转让 园区招商-->
+<div class="clearfix mt_10 bg">
+    <div class="con-module-l f-left" style="width:786px;">
+    <div class="yun-dynamic clearfix">
+        <div class="theme f-left"><a target="_blank" href="transfer/index">项目转让</a></div>
+        <div class="name f-left">
+           <a href="#">住宅</a>
+            <i>|</i>
+           <a href="#">商业办公</a>
+           <i>|</i>
+           <a href="#">工业厂房</a>
+           <i>|</i>
+           <a href="#">酒店</a>
+           <i>|</i>
+           <a href="#">写字楼</a>
+        </div>
+        <div class="title title-xin f-right clearfix">
+             <a href="#" class="release-btn">发布项目</a>
+            <span class="more" style="margin-top:2px"><a href="transfer/index.html" target="_blank">更多＞＞</a></span>
+        </div>
+    </div>
+    <div class="theme-line" style="width:766px;"></div>
+    <div class="dynamic-details">
+        <div class="details-top">
+            <div class="clearfix"></div>
+            <div class="main-text f-left">
+                <div class="con-top clearfix">
+                    <div class="tu"><a href="#"><img src="../../images/details-tu.jpg" width="187" height="105"/></a></div>
+                    <div class="details">
+                        <h3>
+                            <a href="#">重庆垫江县牡丹湖南侧243亩重庆地块整体转让</a>
+                            <img src="../../images/recommended-icon.jpg"/>
+                        </h3>
+                        <p style="padding-top: 2px;">整体转让<span>面议</span></p>
+                        <p>住宅用地<span>162008.22㎡</span></p>
+                        <p><span><a href="#">详情</a></span></p>
+                    </div>
+                </div>
+                <div class="con-bottom mt_10">
+                    <ul>
+                       <li><a class="li-type" href="#">商办</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                       <li><a class="li-type" href="#">住宅</a> | <a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                       <li><a class="li-type" href="#">综合</a> | <a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-text f-right">
+                <div class="con-top clearfix">
+                    <div class="tu"><a href="#"><img src="../../images/details-tu.jpg" width="187" height="105"/></a></div>
+                    <div class="details">
+                        <h3>
+                            <a href="#">重庆垫江县牡丹湖南侧243亩重庆地块整体转让</a>
+                            <img src="../../images/recommended-icon.jpg"/>
+                        </h3>
+                        <p style="padding-top: 2px;">整体转让<span>面议</span></p>
+                        <p>住宅用地<span>162008.22㎡</span></p>
+                        <p><span><a href="#">详情</a></span></p>
+                    </div>
+                </div>
+                <div class="con-bottom mt_10">
+                    <ul>
+                       <li><a class="li-type" href="#">商办</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                       <li><a class="li-type" href="#">住宅</a> | <a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                       <li><a class="li-type" href="#">综合</a> | <a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <div class="con-module-r f-right">
+        <div class="yun-dynamic clearfix" style="padding:3px 0 0">
+            <div class="theme f-left"><a target="_blank" href="transfer/index">园区招商</a></div>
+            <div class="title title-xin f-right clearfix">
+                <span class="more"><a href="transfer/index.html" target="_blank">更多＞＞</a></span>
+            </div>
+         </div>
+         <div class="theme-line" style="width:394px;margin-left:0"></div>
+         <div class="main-text">
+             <div class=" clearfix">
+                 <div class="tu2"><a href="#"><img src="../../images/658539876857548800.jpg" width="192" height="105"/></a></div>
+                 <div class="tu2 ml-10"><a href="#"><img src="../../images/658539876857548800.jpg" width="192" height="105"/></a></div>
+             </div>
+             <div class="con-bottom mt_10">
+                <ul>
+                   <li><a class="li-type" href="#">商办</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                       <li><a class="li-type" href="#">住宅</a> | <a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                       <li><a class="li-type" href="#">综合</a> | <a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                       <li><a class="li-type" href="#">工业</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--项目转让 园区招商 结束-->
+
+<!--海外土地-->
+<div class="clearfix mt_10 bg ">
+    <div class="con-module-l f-left" style="width:786px;">
+    <div class="yun-dynamic">
+        <div class="theme clearfix">
+            <a class="f-left" target="_blank" href="recommend/index">海外土地</a>
+            <div class="name f-left">
+               <a href="#">美国</a>
+                <i>|</i>
+               <a href="#">加拿大</a>
+               <i>|</i>
+               <a href="#">澳大利亚</a>
+               <i>|</i>
+               <a href="#">马来西亚</a>
+            </div>
+            <span class="more"><a href="recommend/index.html" target="_blank">更多＞＞</a></span>
+        </div>
+    </div>
+    <div class="theme-line" style="width:766px;"></div>
+    <div class="wrapper top-main clearfix dynamic-details" style="padding-bottom:12px;">
+        <div class="main">
+            <div class="slide">
+                <ul class="slide-ul clearfix">
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                        <span class="header-title f-left">江苏&bull;盐城盐城<i class="vertical-line"></i></span>百慕大三角111111
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src='../../images/re1.jpg'
+                                         alt=热门土地/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">湘潭市&bull;湘潭县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re2.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">金华市&bull;金华县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re3.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">嘉兴市&bull;嘉兴县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re4.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">安康市&bull;安康县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re5.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">盐城市&bull;盐城县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re6.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class="mr-10 index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                    <span class="header-title f-left">盐城市&bull;盐城县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re6.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                            <li class=" index-tip">
+                                <div class="tip_xin" >
+                                    <a href="#">
+                                        <span class="header-title f-left">盐城市&bull;盐城县<i class="vertical-line"></i></span><span>8</span>宗土地推介
+                                    </a>
+                                </div>
+                                <a target="_blank" class="picimglink" href="recommend/indexDetail?id=$!recommendCity.id">
+                                    <img width="184" height="106" src="../../images/re6.jpg"
+                                         alt="热门土地"/>
+                                </a>
+                            </li>
+                </ul>
+            </div>
+        </div>
+</div>
+    </div>
+    <div class="con-module-r f-right">
+            <div class="yun-dynamic clearfix" style="padding:3px 0 0">
+            <div class="theme f-left"><a target="_blank" href="transfer/index">海外土地</a></div>
+            <div class="title title-xin f-right clearfix">
+                <span class="more"><a href="transfer/index.html" target="_blank">更多＞＞</a></span>
+            </div>
+         </div>
+        <div class="theme-line" style="width:394px; margin-left:0"></div>
+         <div class="main-text f-left">
+            <div class="con-top clearfix">
+                <div class="tu"><a href="#"><img src="../../images/details-tu.jpg" width="187" height="105"/></a></div>
+                
+                <div class="text-con pl_10 f-right" style="width:180px;">
+                        <h3><a href="#">云地网第一届线下对接会</a></h3>
+                        <p><span>摘要：</span>地块位于河南省商丘市梁园区平原办事处，东至长路公司，北至梁园区道路运输管理医院。</p>
+                </div>
+                
+            </div>
+            <div class="con-bottom mt_10">
+                <ul class="li-icon-none">
+                   <li><a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                   <li><a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                   <li><a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                   <li><a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                   <li><a href="#">荆州监利县老城区绝版60亩和105亩辅导费商住地</a></li>
+                   <li><a href="#">四川成都青白江区凤祥大道以北搞的鬼祥大以北37用</a></li>
+                   <li><a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>     
+</div>
+<!--海外土地 结束-->
+
+<!--云地对接 云地动态-->
+<div class="clearfix mt_10 bg ">
+    <div class="con-module-l f-left" style="width:786px;">
+    <div class="yun-dynamic clearfix">
+         <div class="theme clearfix">
+            <a class="f-left" target="_blank" href="recommend/index">城市更新</a>
+            <ul class="tabs transfer">
+                <li class="active"><a href="#tab6">资讯</a></li>
+                <li><a href="#tab7">处理案例</a></li>
+                <li><a href="#tab8">法律法规</a></li>
+            </ul>
+            <span class="more"><a href="recommend/index.html" target="_blank">更多＞＞</a></span>
+        </div>
+    </div>
+    <div class="theme-line" style="width:766px;"></div>
+    <div id="tab6" class="tab_content">
+    <div class="dynamic-details">
+        <div class="details-top">
+            <div class="clearfix"></div>
+            <div class="main-text f-left">
+                <div class="docking-con f-left clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h2><a href="#">云地网第一届线下对接会111111111111111111111</a></h2>
+                        <p><span>摘要:</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘...</p>
+                    </div>
+                </div>
+                <div class="docking-con f-right ml-10 clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h2><a href="#">【政府公告】云地网第一届线下对接会</a></h2>
+                        <p><span>摘要:</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘...</p>
+                    </div>
+                </div>
+                <div class="docking-con f-left mt_10 clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h2><a href="#">云地网第一届线下对接会</a></h2>
+                        <p><span>摘要:</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘...</p>
+                    </div>
+                </div>
+                <div class="docking-con f-right ml-10 mt_10 clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h2><a href="#">云地网第一届线下对接会</a></h2>
+                        <p><span>摘要:</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <div id="tab7" class="tab_content">
+    <div class="dynamic-details">
+        <div class="details-top">
+            <div class="clearfix"></div>
+            <div class="main-text f-left">
+                <div class="docking-con f-left clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h3><a href="#">云地网第一届线下对接会111111111111111111111</a></h3>
+                        <p>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘市明大置业有限公司，北至梁园区道...<a href="#">[详情]</a></p>
+                    </div>
+                </div>
+                <div class="docking-con f-right ml-10 clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h3><a href="#">云地网第一届线下对接会</a></h3>
+                        <p>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘市明大置业有限公司，北至梁园区道...<a href="#">[详情]</a></p>
+                    </div>
+                </div>
+                <div class="docking-con f-left mt_10 clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h3><a href="#">云地网第一届线下对接会</a></h3>
+                        <p>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘市明大置业有限公司，北至梁园区道...<a href="#">[详情]</a></p>
+                    </div>
+                </div>
+                <div class="docking-con f-right ml-10 mt_10 clearfix">
+                    <div class="tu3 f-left"><a href="#"><img src="../../images/image_04.png" width="160" height="100"/></a></div>
+                    <div class="text-con f-right">
+                        <h3><a href="#">云地网第一届线下对接会</a></h3>
+                        <p>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘市明大置业有限公司，北至梁园区道...<a href="#">[详情]</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <div id="tab8" class="tab_content">
+    <div class="dynamic-details">
+        <div class="details-top">
+            <div class="clearfix"></div>
+            <div class="main-text f-left">
+                <ul class="laws f-left">
+                   <li class="laws-title">中央法规</li>
+                   <li class="bg"><a href="#" title="《国务院闲置土地处理办法》1">·《国务院闲置土地处理办法》1111111111111111111111111</a>[2016-02-17]</li>
+                   <li><a href="#" title="《国务院闲置土地处理办法》2">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                   <li class="bg"><a href="#" title="《国务院闲置土地处理办法》3">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                   <li><a href="#" title="《国务院闲置土地处理办法》4">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                   <li class="bg"><a href="#" title="《国务院闲置土地处理办法》5">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                </ul>
+                <ul class="laws f-right ml-10">
+                   <li class="laws-title">地方法规</li>
+                   <li class="bg"><a href="#" title="《国务院闲置土地处理办法》1">·《国务院闲置土地处理办法》1111111111111111111111111</a>[2016-02-17]</li>
+                   <li><a href="#" title="《国务院闲置土地处理办法》2">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                   <li class="bg"><a href="#" title="《国务院闲置土地处理办法》3">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                   <li><a href="#" title="《国务院闲置土地处理办法》4">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                   <li class="bg"><a href="#" title="《国务院闲置土地处理办法》5">·《国务院闲置土地处理办法》</a>[2016-02-17]</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    </div>
+    <div class="con-module-r f-right">
+        <div class="yun-dynamic clearfix" style="padding:5px 0 0">
+            <div class="theme f-left"><a target="_blank" href="transfer/index">云地资讯</a></div>
+            <div class="title title-xin f-right clearfix">
+                <span class="more"><a href="transfer/index.html" target="_blank">更多＞＞</a></span>
+            </div>
+         </div>
+         <div class="theme-line" style="width:394px; margin-left:0"></div>
+         <div class="main-text dynamic-details clearfix" style="padding:0">
+             
+           <div>  
+           <div class="details-left f-left" id="newsMiddle">
+            <ul class="xn-change">
+                    <li class="clearfix p-relative">
+                        <div class="img-left">
+                            <a target="_blank" href="news/detail?id=$!landnew.id&type=$landnew.type">
+                                <img src="../../images/658539876857548800.jpg" width="165" height="90">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="img-left">
+                            <a target="_blank" href="news/detail?id=$!landnew.id&type=$landnew.type">
+                                <img src="../../images/658889984140775424.jpg" width="165" height="90">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="img-left">
+                            <a target="_blank" href="news/detail?id=$!landnew.id&type=$landnew.type">
+                                <img src="../../images/658887828947996672.jpg" width="165" height="90">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="img-left">
+                            <a target="_blank" href="news/detail?id=$!landnew.id&type=$landnew.type">
+                                <img src="../../images/658886130909188096.jpg" width="165" height="90">
+                            </a>
+                        </div>
+                    </li>
+            </ul>
+            <div class="list-blue">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+        </div>
+            <div class="text-con pl_10 f-right">
+                <h3><a href="#">云地网第一届线下对接会1111111111111111111111</a></h3>
+                <p><span>摘要：</span>地块位于河南省商丘市梁园区平原街道办事处，东至长征路，西至商丘市明大置业有限公司，北至梁园区道路运输...</p>
+            </div>
+        </div>     
+             <div class="con-bottom mt_10">
+                <ul>
+                   <li><a class="li-type" href="#">头条</a> | <a href="#">湖北武汉江岸区后湖片区58亩商业用地辅导费出让1111111</a></li>
+                   <li><a class="li-type" href="#">数据</a> | <a href="#">杭州萧山临浦高速出口23亩工业用地整体烦都烦出售</a></li>
+                   <li><a class="li-type" href="#">分析</a> | <a href="#">湖南湘潭高新区28亩工业用地含全新厂房办</a></li>
+                   <li><a class="li-type" href="#">报告</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                   <li><a class="li-type" href="#">专题</a> | <a href="#">天津天山高科发顺丰说服对方发生大幅度放大基地</a></li>
+                </ul>
+            </div>
+             
+             
+        </div>
+    </div>
+</div>
+<!--云地对接 云地动态 结束-->
+
+<!--招拍挂 拍卖会-->
+<div class="clearfix mt_10 bg ">
+    <div class="con-module-l f-left" style="width:786px;">
+        <div class="yun-dynamic clearfix">
+             <div class="theme clearfix">
+                <a class="f-left" target="_blank" href="recommend/index">招拍挂</a>
+                <ul class="transfer">
+                    <li class="click new">供地计划</li>
+                    <li class="result">出让公告</li>
+                    <li class="notices">地块公示</li>
+                    <li class="announcement">结果公告</li>
+                </ul>
+                <span class="more"><a href="recommend/index.html" target="_blank">更多＞＞</a></span>
+            </div>
+        </div>
+        <div class="theme-line" style="width:766px;"></div>
+        <div class="dynamic-details">
+            
+            <div id="table1" style="width: 766px;">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th class="xn-col-sm-6">行政区</th>
+                        <th class="xn-col-sm-16">地块名称</th>
+                        <th class="xn-col-sm-4">发布时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>新疆维吾尔自治区</td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                 <div class="toShowAllDiv">
+                                     <span class="toShowAll">新疆维吾尔自治区</span>
+                                     <span class="toShowAll-arrow"></span>
+                                 </div>
+                                &nbsp;经济开发区西区、铁东路以东、北环路以南
+                                </a>
+                            </td>
+                            <td>2015-12-12</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>
+                                        江西省 /九江市 /瑞昌市
+                            </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                 <div class="toShowAllDiv">
+                                     <span class="toShowAll">新疆维吾尔自治区</span>
+                                     <span class="toShowAll-arrow"></span>
+                                 </div>
+                                &nbsp;经济开发区西区、铁东路以东、北环路以南
+                                </a>
+                            </td>
+                            <td>2015-04-27</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                        新疆维吾尔自治区
+                            </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                 <div class="toShowAllDiv">
+                                     <span class="toShowAll">新疆维吾尔自治区</span>
+                                     <span class="toShowAll-arrow"></span>
+                                 </div>
+                                &nbsp;经济开发区西区、铁东路以东、北环路以南
+                                </a>
+                            </td>
+                            <td>2015-04-27</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>
+                                        江西省 /九江市 /瑞昌市
+                            </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                 <div class="toShowAllDiv">
+                                     <span class="toShowAll">新疆维吾尔自治区</span>
+                                     <span class="toShowAll-arrow"></span>
+                                 </div>
+                                &nbsp;经济开发区西区、铁东路以东、北环路以南
+                                </a>
+                            </td>
+                            <td>2015-04-27</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                        新疆维吾尔自治区
+                            </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                 <div class="toShowAllDiv">
+                                     <span class="toShowAll">新疆维吾尔自治区</span>
+                                     <span class="toShowAll-arrow"></span>
+                                 </div>
+                                &nbsp;经济开发区西区、铁东路以东、北环路以南
+                                </a>
+                            </td>
+                            <td>2015-04-27</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>
+                                        江西省 /九江市 /瑞昌市
+                            </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                 <div class="toShowAllDiv">
+                                     <span class="toShowAll">新疆维吾尔自治区</span>
+                                     <span class="toShowAll-arrow"></span>
+                                 </div>
+                                &nbsp;经济开发区西区、铁东路以东、北环路以南
+                                </a>
+                            </td>
+                            <td>2015-04-27</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <div id="table2" style="width: 766px;">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th class="xn-col-sm-10">行政区</th>
+                        <th class="xn-col-sm-13">地块位置</th>
+                        <th class="xn-col-sm-5">出让方式</th>
+                        <th class="xn-col-sm-6">规划用途</th>
+                        <th class="xn-col-sm-6">面积（m²）</th>
+                        <th class="xn-col-sm-6">截止日期</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv">
+                                   <span class="toShowAll">云南朋川天府投资有限公司</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   云南朋川天府投资 
+                            </a>
+                        </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv2">
+                                   <span class="toShowAll">宣威市城双路</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   宣威市城双路 
+                               </a>
+                            </td>
+                            <td>拍卖</td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>2010-06-10</td>
+                        </tr>
+                        <tr class="bg2">
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv">
+                                   <span class="toShowAll">云南朋川天府投资有限公司</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   云南朋川天府投资 
+                            </a>
+                        </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv2">
+                                   <span class="toShowAll">宣威市城双路</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   宣威市城双路 
+                            </a>
+                            </td>
+                            <td>拍卖</td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>2010-06-10</td>
+                        </tr>
+                        <tr>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv">
+                                   <span class="toShowAll">云南朋川天府投资有限公司</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   云南朋川天府投资 
+                            </a>
+                        </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv2">
+                                   <span class="toShowAll">宣威市城双路</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   宣威市城双路 
+                            </a>
+                            </td>
+                            <td>拍卖</td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>2010-06-10</td>
+                        </tr>
+                        <tr class="bg2">
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv">
+                                   <span class="toShowAll">云南朋川天府投资有限公司</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   云南朋川天府投资 
+                            </a>
+                        </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv2">
+                                   <span class="toShowAll">宣威市城双路</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   宣威市城双路 
+                            </a>
+                            </td>
+                            <td>拍卖</td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>2010-06-10</td>
+                        </tr>
+                        <tr>
+                        <td>
+                           <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv">
+                                   <span class="toShowAll">云南朋川天府投资有限公司</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   云南朋川天府投资 
+                            </a>
+                        </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv2">
+                                   <span class="toShowAll">宣威市城双路</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   宣威市城双路 
+                            </a>
+                            </td>
+                            <td>拍卖</td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>2010-06-10</td>
+                        </tr>
+                        <tr class="bg2">
+                        <td>
+                            <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv">
+                                   <span class="toShowAll">云南朋川天府投资有限公司</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   云南朋川天府投资 
+                            </a>
+                        </td>
+                            <td>
+                               <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                               <div class="toShowAllDiv2">
+                                   <span class="toShowAll">宣威市城双路</span>
+                                   <span class="toShowAll-arrow"></span>
+                               </div>
+                                   宣威市城双路 
+                            </a>
+                            </td>
+                            <td>拍卖</td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>2010-06-10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="table3" class="forNotice" style="width: 766px;">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th class="xn-col-sm-10">行政区</th>
+                        <th class="xn-col-sm-13">地块位置</th>
+                        <th class="xn-col-sm-6">规划用途</th>
+                        <th class="xn-col-sm-5">成交价</th>
+                        <th class="xn-col-sm-6">面积（m²）</th>
+                        <th class="xn-col-sm-6">受让单位</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>999999</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>999999</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr>
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>999999</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>999999</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr>
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>999999</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>999999</td>
+                            <td>999999</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="table4" class="forNotice" style="width: 766px;">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th class="xn-col-sm-10">行政区</th>
+                        <th class="xn-col-sm-13">地块位置</th>
+                        <th class="xn-col-sm-6">规划用途</th>
+                        <th class="xn-col-sm-5">成交价</th>
+                        <th class="xn-col-sm-6">面积（m²）</th>
+                        <th class="xn-col-sm-6">受让单位</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>100000</td>
+                            <td>100000</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>100000</td>
+                            <td>100000</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr>
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>100000</td>
+                            <td>100000</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>100000</td>
+                            <td>100000</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr>
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>100000</td>
+                            <td>100000</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                        <tr class="bg2">
+                            <td>河南省商丘市宁陵县</td>
+                            <td style="text-align: left;">
+                                <a class="toShowAllTd" href="sell/selldetail?id=$!landSell.id" target="_blank">
+                                   <div class="toShowAllDiv2">
+                                       <span class="toShowAll">宁陵县国土资源局国有土地使用权挂牌出让公告(宁供告字[2015]11号)</span>
+                                       <span class="toShowAll-arrow"></span>
+                                   </div>
+                                       宁陵县国土资源局国有土地使用权... 
+                                </a>
+                            </td>
+                            <td>住房用地</td>
+                            <td>100000</td>
+                            <td>100000</td>
+                            <td>云地网互联网</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="con-module-r f-right" style="width:394px;">
+        <div class="yun-dynamic clearfix" style="padding:5px 0 0">
+            <div class="theme f-left"><a target="_blank" href="transfer/index">拍卖会最新预告</a></div>
+            <div class="title title-xin f-right clearfix">
+                <span class="more"><a href="#" target="_blank">更多＞＞</a></span>
+            </div>
+         </div>
+         <div class="theme-line" style="width:394px; margin-left:0"></div>
+         <div class="trailer mt_10">
+             <ul>
+                <li>
+                <span class="text_left">[南京]<a href="#">桥林工业虎团</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[北京]<a href="#">朝阳小区7号楼盘</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[杭州]<a href="#">澳博中心段元</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[南京]<a href="#">桥林工业虎团</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[北京]<a href="#">桥林工业虎团</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[南京]<a href="#">桥林工业虎团</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[北京]<a href="#">朝阳小区7号楼盘</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[杭州]<a href="#">澳博中心段元</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+                <li>
+                <span class="text_left">[南京]<a href="#">桥林工业虎团</a></span>
+                <span class="text_right">12/7</span>
+                </li>
+             </ul>
+         </div>
+    </div>
+</div>
+<!--招拍挂 拍卖会 结束-->
+
+<!-- 广告 轮播 -->
+<div class="advertisement">
+    <div id="slider2" class="slider" style="left:0px; top:0px; right:0px;">
+        <!--<ul class="sliderContent">
+                <li class="sliderImage">
+                    <a href="$!transferbuttom.url" target="_blank"><img
+                            src="../../images/652030941300396032.jpg"
+                            width="100%" height="150"
+                            alt="$!transferbuttom.name"></a>
+                </li>
+            <div class="clear sliderImage"></div>
+        </ul>-->
+    </div>
+</div>
+<div class="advertisement">
+    <div id="slider1" class="slider" style="left:0px; top:0px; right:0px;">
+        <!--<ul class="sliderContent">
+           <li class="sliderImage">
+              <a href="$!sellbuttom.url" target="_blank"><img src="../../images/652030941300396032.jpg" width="100%" height="150" alt="$!sellbuttom.name"></a>
+           </li>
+           <div class="clear sliderImage"></div>
+        </ul>-->
+    </div>
+</div>
+<!-- 广告 轮播 结束-->                        
+            
+<div class="bottom-banner">
+    <div class="xn-width auto">
+        <img src="../../images/introduction2.png" width="1190" height="110">
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="http://www.yunland.cn/base/scripts/controllers/login.js"></script>
+<script type="text/javascript" src="http://www.yunland.cn/base/scripts/md5/md5.js"></script>
+
+
+<script type="text/javascript">
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            window.location.href = '$mobileContent.getURI("/index")';
+        }
+    }
+    $(function () {
+        //广告位置图片切换
+        $('#slider1').s3Slider({
+            timeOut: 5000
+        });
+        $('#slider2').s3Slider({
+            timeOut: 5000
+        });
+        $(".toShowAllTd").hover(function () {
+            $(this).find('div').show();
+        }, function () {
+            $(this).find('div').hide();
+        });
+        browserRedirect();
+    });
+
+    //信息hover显示
+//    $(function(){
+//
+//        $(".index-img-con").find(".tip").css("display","none");
+//        $(".supply li").hover(function(){
+//            var indexli= $(this).index();
+//            $(this).find(".tip").show().siblings().find(".tip").hide();
+//        },function(){
+//            $(".index-img-con").find(".tip").css("display","none");
+//        });
+//    })
+
+
+</script>
+<!--footer start -->
+<iframe src="../control/footer.html" frameborder=0 width=100% height=305 marginheight=0 marginwidth=0 scrolling=no></iframe>
+</div>
+</body>
+
+<script  type="text/javascript"  src="../../scripts/index.js"></script>
+<script  type="text/javascript"  src="../../scripts/site.js"></script>
+<script  type="text/javascript"  src="../../scripts/popup.js"></script>
+<!-- 日期控件 -->
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/My97DatePicker/WdatePicker.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/datejs.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/scripts/ui.tab.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/plugins.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/json2.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmGrid.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript"  src="http://www.yunland.cn/home/vendor/mmgrid/mmPaginator.js?v=1.0-SNAPSHOT"></script>
+<script  type="text/javascript"  src="http://www.yunland.cn/home/scripts/index.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/pagination/jquery.pagination.js?v=1.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://www.yunland.cn/home/vendor/s3Slider/s3Slider.js?v=1.0-SNAPSHOT"></script>
+</html>

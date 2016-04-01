@@ -1,0 +1,501 @@
+<div class="xn-width auto list-page">
+    <div class="login-head detail-slider" id="focus">
+        <ul>
+        ##            <li><img src="$homeContent.getURI('/images/test.png')" width="100%" height="350" alt="头部推介图片"></li>
+        ##            <li><img src="$homeContent.getURI('/images/test2.png')" width="100%" height="350" alt="头部推介图片"></li>
+        ##            <li><img src="$homeContent.getURI('/images/recommend-default.png')" width="100%" height="350" alt="头部推介图片"></li>
+            #foreach($!sellbuttom in $!sellbuttoms)
+                <li>
+                    <a target="_blank" class="picimglink" href="$!sellbuttom.url">
+                        <img src="$!sellbuttom.picturePath" width="100%" height="350" alt="$!sellbuttom.name">
+                    </a>
+                </li>
+            #end
+        </ul>
+        <div class="btnBg xn-width auto">
+            <div class="list-circle">
+                #foreach($!sellbuttom in $!sellbuttoms)
+                    <span></span>
+                #end
+            </div>
+        </div>
+    </div>
+    <div class="search-nav">
+        <ul>
+            <li>
+                <a href="$homeLink.setTarget('sell/index')">地块信息</a>
+            </li>
+            <li class="active">
+                <a href="$homeLink.setTarget('sell/result')">成交结果</a>
+            </li>
+            <li>
+                <a href="$homeLink.setTarget('sell/announcement')">政府公告</a>
+            </li>
+        </ul>
+    </div>
+    <div class="search-line"></div>
+    <div class="w1200">
+        <div class="list-screen">
+            <div class="screen-top" style="position:relative;"><span class="password-span">关键词<input id="mykeyword" type="text"
+                                                                               placeholder="请输入关键词"/></span><span
+                                                                                                               class="btn btn-short"
+                                                                                                               id="query">搜索</span>
+            </div>
+            <div style="padding:10px 30px 10px 10px;">
+                <div class="screen-term">
+                    <div class="selectNumberScreen">
+                        <div id="selectList" class="screenBox screenBackground">
+                            <dl class="listIndex" attr="terminal_brand_s">
+                                <dt id="region">所在地区</dt>
+                                <dd data-more=true style="width: 980px;">
+                                    #*<label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>*#
+                                    #foreach($param in ${selectProvince.keySet()})
+                                        #if($velocityCount <7)
+                                            <label>
+                                                <input name="radio2" type="radio" value="$param"
+                                                       style="display: none;"/>
+                                                <a href="javascript:;" values2="" values1="" value="$param"
+                                                   attrval="${selectProvince.get($param)}">${selectProvince.get($param)}</a>
+                                            </label>
+                                        #end
+                                    #end
+                                    <span class="more" id="regionMore"><em class="open"></em>更多</span>
+                                </dd>
+                            </dl>
+
+                            <dl class="listIndex more-none more-region" attr="terminal_brand_s" style="display:none;border:none">
+                                <dt id="region" style='visibility:hidden'>所在地区</dt>
+                                <dd>
+                                    #*<label style='visibility:hidden'><a href="javascript:;" values2="" values1=""
+                                                                        attrval="不限">不限</a></label>*#
+
+                                    <form action="" method="get">
+                                        #foreach($param in ${selectProvince.keySet()})
+                                            #if($velocityCount >=7 && $velocityCount<14)
+                                                <label>
+                                                    <input name="radio2" type="radio" value="$param"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="$param"
+                                                       attrval="${selectProvince.get($param)}">${selectProvince.get($param)}</a>
+                                                </label>
+                                            #end
+                                        #end
+                                    </form>
+                            </dl>
+                            <dl class="listIndex more-none more-region" attr="terminal_brand_s" style="display:none;border:none">
+                                <dt id="region" style='visibility:hidden'>所在地区</dt>
+                                <dd>
+                                    #*<label style='visibility:hidden'><a href="javascript:;" values2="" values1=""
+                                                                        attrval="不限">不限</a></label>*#
+
+                                    <form action="" method="get">
+                                        #foreach($param in ${selectProvince.keySet()})
+                                            #if($velocityCount >=14 && $velocityCount<21)
+                                                <label>
+                                                    <input name="radio2" type="radio" value="$param"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="$param"
+                                                       attrval="${selectProvince.get($param)}">${selectProvince.get($param)}</a>
+                                                </label>
+                                            #end
+                                        #end
+                                    </form>
+                            </dl>
+                            <dl class="listIndex more-none more-region" attr="terminal_brand_s" style="display:none;border:none">
+                                <dt id="region" style='visibility:hidden'>所在地区</dt>
+                                <dd>
+                                    #*<label style='visibility:hidden'><a href="javascript:;" values2="" values1=""
+                                                                        attrval="不限">不限</a></label>*#
+
+                                    <form action="" method="get">
+                                        #foreach($param in ${selectProvince.keySet()})
+                                            #if($velocityCount >=21 && $velocityCount<28)
+                                                <label>
+                                                    <input name="radio2" type="radio" value="$param"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="$param"
+                                                       attrval="${selectProvince.get($param)}">${selectProvince.get($param)}</a>
+                                                </label>
+                                            #end
+                                        #end
+                                    </form>
+                            </dl>
+                            <dl class="listIndex more-none more-region" attr="terminal_brand_s" style="display:none;border:none">
+                                <dt id="region" style='visibility:hidden'>所在地区</dt>
+                                <dd>
+                                    #*<label style='visibility:hidden'><a href="javascript:;" values2="" values1=""
+                                                                        attrval="不限">不限</a></label>*#
+
+                                    <form action="" method="get">
+                                        #foreach($param in ${selectProvince.keySet()})
+                                            #if($velocityCount >=28 && $velocityCount<32)
+                                                <label>
+                                                    <input name="radio2" type="radio" value="$param"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="$param"
+                                                       attrval="${selectProvince.get($param)}">${selectProvince.get($param)}</a>
+                                                </label>
+                                            #end
+                                        #end
+                                    </form>
+                            </dl>
+                            <dl class="listIndex more-none more-region" attr="terminal_brand_s" style="display:none;border:none">
+                                <dt id="region" style='visibility:hidden'>所在地区</dt>
+                                <dd>
+                                    #*<label style='visibility:hidden'><a href="javascript:;" values2="" values1=""
+                                                                        attrval="不限">不限</a></label>*#
+
+                                    <form action="" method="get">
+                                        #foreach($param in ${selectProvince.keySet()})
+                                            #if($velocityCount >=32 && $velocityCount<35)
+                                                <label>
+                                                    <input name="radio2" type="radio" value="$param"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="$param"
+                                                       attrval="${selectProvince.get($param)}">${selectProvince.get($param)}</a>
+                                                </label>
+                                            #end
+                                        #end
+                                    </form>
+                            </dl>
+
+                            <dl class="listIndex" attr="">
+                                <dt id="purpose">规划用途</dt>
+                                <dd data-more=true style="width: 980px;">
+                                    #*<label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>*#
+                                    #*#foreach($param in ${selectLandPurpose.keySet()})
+                                        #if($velocityCount <5)
+                                            <label>
+                                                <input name="radio2" type="radio" value="$param"
+                                                       style="display: none;"/>
+                                                <a href="javascript:;" values2="" values1="" value="$param"
+                                                   attrval="${selectLandPurpose.get($param)}">${selectLandPurpose.get($param)}</a>
+                                            </label>
+                                        #end
+                                    #end
+                                    <span class="more" id="purposeMore"><em class="open"></em>更多</span>*#
+                                    <label>
+                                        <input name="radio2" type="radio" value="07" style="display: none;"/>
+                                        <a href="javascript:;" values2="" values1="" value="07"
+                                           attrval="住宅用地">住宅用地</a>
+                                    </label>
+                                    <label>
+                                        <input name="radio2" type="radio" value="shangy" style="display: none;"/>
+                                        <a href="javascript:;" values2="" values1="" value="shangy"
+                                           attrval="商业办公用地">商业办公用地</a>
+                                    </label>
+                                    <label>
+                                        <input name="radio2" type="radio" value="061" style="display: none;"/>
+                                        <a href="javascript:;" values2="" values1="" value="061"
+                                           attrval="工业用地">工业用地</a>
+                                    </label>
+                                    <label>
+                                        <input name="radio2" type="radio" value="063" style="display: none;"/>
+                                        <a href="javascript:;" values2="" values1="" value="063"
+                                           attrval="仓储用地">仓储用地</a>
+                                    </label>
+                                    <label>
+                                        <input name="radio2" type="radio" value="zhongh" style="display: none;"/>
+                                        <a href="javascript:;" values2="" values1="" value="zhongh"
+                                           attrval="综合用地">综合用地</a>
+                                    </label>
+                                    <label>
+                                        <input name="radio2" type="radio" value="other" style="display: none;"/>
+                                        <a href="javascript:;" values2="" values1="" value="other"
+                                           attrval="其他用地">其他用地</a>
+                                    </label>
+                                </dd>
+                            </dl>
+
+                            #*<dl class="listIndex more-none more-purpose" attr="terminal_brand_s" style="display:none;border:none">
+                                <dt id="purpose" style='visibility:hidden'>规划用途</dt>
+                                <dd>
+                                    ##<label style='visibility:hidden'><a href="javascript:;" values2="" values1=""
+                                    ##                                    attrval="不限">不限</a></label>
+
+                                    <form action="" method="get">
+                                        #foreach($param in ${selectLandPurpose.keySet()})
+                                            #if($velocityCount >=8)
+                                                <label>
+                                                    <input name="radio2" type="radio" value="$param"
+                                                           style="display: none;"/>
+                                                    <a href="javascript:;" values2="" values1="" value="$param"
+                                                       attrval="${selectLandPurpose.get($param)}">${selectLandPurpose.get($param)}</a>
+                                                </label>
+                                            #end
+                                        #end
+                                    </form>
+                            </dl>*#
+
+                            <dl class="listIndex" attr="">
+                                <dt id="landArea">占地面积</dt>
+                                <dd>
+                                    #*<label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>*#
+                                    #foreach($param in ${selectLandArea.keySet()})
+                                        <label>
+                                            <input name="radio2" type="radio" value="$param" style="display: none;"/>
+                                            <a href="javascript:;" values2="" values1="" value="$param"
+                                               attrval="${selectLandArea.get($param)}">${selectLandArea.get($param)}</a>
+                                        </label>
+                                    #end
+                                    #*<div class="custom">
+                                        <input name="" type="text" class="custext1"/>
+                                        &nbsp;-&nbsp;
+                                        <input name="" type="text" class="custext2"/>
+                                        <span>万平米</span>
+                                        <input name="" type="button" class="cusbtn"/>
+                                    </div>*#
+                                </dd>
+                            </dl>
+                            <dl class="listIndex" attr="">
+                                <dt id="sellMethod">出让方式</dt>
+                                <dd style="width: 980px;">
+                                    #*<label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>*#
+                                    #foreach($param in ${selectSupplyMethod.keySet()})
+##                                        #if($velocityCount <5)
+                                            <label>
+                                                <input name="radio2" type="radio" value="$param"
+                                                       style="display: none;"/>
+                                                <a href="javascript:;" values2="" values1="" value="$param"
+                                                   attrval="${selectSupplyMethod.get($param)}">${selectSupplyMethod.get($param)}</a>
+                                            </label>
+##                                        #end
+                                    #end
+##                                    <span class="more" id="sellMethodMore"><em class="open"></em>更多</span>
+                                </dd>
+                            </dl>
+
+                            <dl class="listIndex" attr="">
+                                <dt id="publishTime">发布时间</dt>
+                                <dd>
+                                    #*<label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>*#
+                                    #foreach($param in ${selectTime.keySet()})
+                                        <label>
+                                            <input name="radio2" type="radio" value="$param" style="display: none;"/>
+                                            <a href="javascript:;" values2="" values1="" value="$param"
+                                               attrval="${selectTime.get($param)}">${selectTime.get($param)}</a>
+                                        </label>
+                                    #end
+                                   #* <div class="custom">
+                                        <input name="" type="text" class="custext"/>
+                                        <span>天内</span>
+                                        <input name="" type="button" class="cusbtn"/>
+                                    </div>*#
+                                </dd>
+                            </dl>
+                            <dl class="listIndex" attr="">
+                                <dt id="tradingTime">交易时间</dt>
+                                <dd>
+                                    #*<label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>*#
+                                    #foreach($param in ${selectTime.keySet()})
+                                        <label>
+                                            <input name="radio2" type="radio" value="$param" style="display: none;"/>
+                                            <a href="javascript:;" values2="" values1="" value="$param"
+                                               attrval="${selectTime.get($param)}">${selectTime.get($param)}</a>
+                                        </label>
+                                    #end
+                                    #*<div class="custom">
+                                        <input name="" type="text" class="custext"/>
+                                        <span>天内</span>
+                                        <input name="" type="button" class="cusbtn"/>
+                                    </div>*#
+                                </dd>
+                            </dl>
+                            <dl class="listIndex" attr="">
+                                <dt id="number">电子监管号</dt>
+                                <dd>
+                                    <div class="custom special">
+                                        <input name="" type="text" class="custext"/>
+                                        <span></span>
+                                        <input name="" type="button" class="cusbtn"/>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hasBeenSelected clearfix">
+                <div style="float:right;" class="eliminateCriteria">【清空全部】</div>
+                <dl>
+                    <dt>已选条件：</dt>
+                    <dd style="DISPLAY: none" class=clearDd>
+                        <div class=clearList></div>
+                </dl>
+            </div>
+            <script type="text/javascript" src="$homeContent.getURI('scripts/shaixuan.js')"></script>
+            <script type="text/javascript" src="$homeContent.getURI('vendor/mmgrid/json2.js')"></script>
+        </div>
+    </div>
+    <div class="content-main">
+        <table id="resourceTable" class="mmg" width="100%">
+
+        </table>
+    </div>
+    <div id="pg" style="text-align: right;"></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tab = new $.fn.tab({
+            tabList: "#demo1 .ui-tab-container .ui-tab-list li",
+            contentList: "#demo1 .ui-tab-container .ui-tab-content"
+        });
+        var tab = new $.fn.tab({
+            tabList: "#demo1 .ui-tab-container .ui-tab-list2 li",
+            contentList: "#demo1 .ui-tab-container .ui-tab-content2"
+        });
+        $(".land-intro-list li:last").css("margin-right", "0px");
+
+        $("#selectList").find("#regionMore").toggle(function () {
+            $(this).addClass("more_bg");
+            $(".more-region").show();
+        }, function () {
+            $(this).removeClass("more_bg");
+            $(".more-region").hide();
+        });
+
+        $("#selectList").find("#purposeMore").toggle(function () {
+            $(this).addClass("more_bg");
+            $(".more-purpose").show();
+        }, function () {
+            $(this).removeClass("more_bg");
+            $(".more-purpose").hide();
+        });
+
+        $("#selectList").find("#sellMethodMore").toggle(function () {
+            $(this).addClass("more_bg");
+            $(".more-sellMethod").show();
+        }, function () {
+            $(this).removeClass("more_bg");
+            $(".more-sellMethod").hide();
+        });
+
+        var taboy_box = $(".lefttable-list");
+        taboy_box.children("tbody").find("tr:gt(2)").hide();
+        $(".leftbox-morea").toggle(function () {
+                    $(this).parent().prev().find("tr").show();
+                    $(this).addClass("more-i")
+                }, function () {
+                    $(this).removeClass("more-i");
+                    $(this).parent().prev().children("tbody").find("tr:gt(2)").hide();
+                }
+        );
+        var getsellmodel = function (modelvalue) {
+            if (!modelvalue) {
+                return "";
+            }
+            var sellmodels = [
+                #foreach($param in ${selectSupplyMethod.keySet()})
+                    {key: '$param', value: '${selectSupplyMethod.get($param)}'},
+                #end
+            ]
+        ##
+            for (var i = 0; i < sellmodels.length; i++) {
+                var sellmodel = sellmodels[i];
+                if (sellmodel && sellmodel.key == modelvalue) {
+                    return "" + sellmodel.value;
+                }
+            }
+        }
+
+        var getPlanUse = function (value) {
+            if (!value) {
+                return "";
+            }
+            // 查询用途
+            var planuses = [
+                #foreach($param in ${selectLandPurpose.keySet()})
+                    {key: '$param', value: '${selectLandPurpose.get($param)}'},
+                #end
+            ]
+            for (var i = 0; i < planuses.length; i++) {
+                var planuse = planuses[i];
+                if (planuse && planuse.key == value) {
+                    return "" + planuse.value;
+                }
+            }
+        }
+
+        var cols = [
+            {
+                title: '地块名称', name: 'name', align: 'center', renderer: function (val, item) {
+                return '<a href="resultdetail?id=' + item.id + '" target="_blank" title='+val+'>' + val + '</a>'
+            }
+            },
+            {title: '位置', name: 'address', align: 'center',renderer:function(val){
+                return '<span title='+val+'>'+val+'</span>';
+            }},
+            {title: '面积(万平方米)', name: 'totalArea',align: 'center'},
+            {
+                title: '用途', name: 'planUse',align: 'center', renderer: function (val) {
+                var value = getPlanUse(val);
+                return '<span title='+value+'>'+value+'</span>';
+            }
+            },
+            {
+                title: '出让方式', name: 'supplyType', width:'10px', align:'center', renderer: function (val) {
+                var value = getsellmodel(val);
+                return "<span title='"+value+"'>" + value + "</span>";
+            }
+            },
+            //{ title:'合作方式', name:'cooperationMode' , align:'right',   type: 'number'},
+            {title: '出让期限(年)', name: 'sellYear', type: 'number',align: 'center',renderer: function (val){
+                return "<span title='"+val+"'>" + val + "</span>";
+            }},
+            {title: '土地使用人', name: 'user',align: 'center'},
+            {title: '成交总价(万元)', name: 'money', align: 'center', type: 'number'}
+            //{ title:'状态', name:'status' ,align:'right', type: 'number'},
+            //{ title:'操作', name:'' , align:'center', lockWidth:true, lockDisplay: true, renderer: function(val){
+            //    return '<a class="view">查看</a>| <a class="delete">删除</a>'
+            //}}
+        ];
+        var mmg = $('.mmg').mmGrid({
+            height: 800,
+            width: 1170,
+            cols: cols,
+            url: '/sell/api.do',
+            method: 'post',
+            nowrap:true,
+            remoteSort: true,
+            root: 'result',
+            fullWidthRows: true,
+            loadingText: '云地网提醒您,数据正在努力加载中...',
+            loadErrorText: '云地网提醒您,数据加载异常...',
+            autoLoad: true,
+            indexCol: true,
+            indexColWidth: 30,
+            plugins: [
+                $('#pg').mmPaginator()
+            ],
+            params: function () {
+                return {
+                    method: 'api.sell.result.find',
+                    data:$('#query').data("data")
+                }
+            }
+        });
+
+        $("#query").click(function () {
+            //拼装查询结果
+            var keyword = $('#mykeyword').val();
+            var data = {};
+            data.keyword = keyword;
+            data.selectvalue = selectResult();
+            $('#query').data("data",JSON.stringify(data));
+            mmg.load({data: JSON.stringify(data)});
+
+////            console.log(data);
+////
+////            data.push({keyword:keyword});
+//            $.ajax({ type: "post",//使用get方法访问后台
+//                dataType: "json",//返回json格式的数据
+//                url:'/sell/api.do',
+//                data:{method:'api.sell.result.find',data:data},
+//                success: function(msg){
+//                    console.log(msg);
+//                }
+//            })
+        });
+    });
+</script>

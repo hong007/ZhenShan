@@ -1,0 +1,36 @@
+<div class="login-header">
+    <div class="am-g">
+        <a href="javascript:history.back(-1)"><span class="am-icon-angle-left am-icon-lg"></span></a>
+        <span class="login-header-title">找回密码</span>
+    </div>
+</div>
+<div class="am-g login-content">
+    <div>
+        #macro (resetpasswdMessage $field)
+            #if (!$field.valid) $field.message #end
+        #end
+
+        <img src="$mobileContent.getURI("image/logo.png")">
+        <form method="post" class="am-form">
+            #set ($group = $form.resetpasswd.defaultInstance)
+            $group.mapTo($reset)
+            <input type="hidden" name="action" value="login_action"/>
+            <div class="login-edit">
+                <input type="hidden" name="$group.userId.key" value="$group.userId.value">
+                <div class="login-input-line">
+                    <input type="password" name="$group.password.key" value="$group.password.value" placeholder="重置密码">
+                </div>
+                <hr>
+                <div class="login-input-line">
+                    <input type="password" name="$group.confrimpassword.key" value="$group.confrimpassword.value" placeholder="确认密码">
+                </div>
+            </div>
+            <div style="color: red;font-size: 1.4rem;">
+                #resetpasswdMessage($group.password)
+                #resetpasswdMessage($group.confrimpassword)
+                $!errorMsg
+            </div>
+            <input type="submit" class="am-btn am-btn-primary am-btn-block am-radius mt-20" name="event_submit_do_reset" value="确认"/>
+        </form>
+    </div>
+</div>

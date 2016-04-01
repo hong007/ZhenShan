@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../../style/base.css">
+<link rel="stylesheet" href="../../style/other.css">
+<link rel="stylesheet" href="../../style/amazeui.min.css">
+</head>
+
+<body>
+<div class="login-reg-bg"><img src="../../images/reg-bg.jpg"/></div>
+<!-- header -->
+<div class="return-wrap"><a class="return" href="javascript:history.back();"><i class="am-icon-angle-left am-icon-lg"></i></a></div>
+<!-- header end -->
+<!-- reg content -->
+<div class="content-wrap mt-60">
+    <form id="frm_login" method="post" action="">
+         <div class="item item-username">
+              <input id="username" class="text-input text-username" type="text" placeholder="请输入手机号" value="" name="username">
+         </div>
+         <div class="item item-password">
+              <input id="ptext" class="text-input text-password" type="password" placeholder="密码" value="" name="username">
+         </div>
+         <div class="item item-password_two">
+              <input id="ptext_two" class="text-input text-password" type="password" placeholder="确认密码" value="" name="username">
+         </div>
+         <div class="item item-captcha">
+              <input id="" class="text-input text-captcha" type="text" placeholder="输入验证码" value="">
+              <button type="button" class="captcha-btn">获取手机验证码</button>
+         </div>
+         <div class="reg-btn-wrap1"><a class="btn-ty reg-btn-primary" href="javascript:;">注册</a></div>
+         <div class="no-join">已经是会员？</div>
+         <div class="login-btn-wrap2"><a class="btn-ty login-btn-secondary"href="index.html">登录</a></div>
+    </form>
+</div>
+<!-- reg content end -->
+</body>
+</html>
