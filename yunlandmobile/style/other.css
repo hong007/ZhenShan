@@ -164,40 +164,105 @@ font-size:40px; background:#369; color:#eee;}
 input[type=submit]:disabled {background:#999; cursor:no-drop;}
 .readagreement-wrap {margin:20px 30px!important; color: #f99;font-size: 16px;}
 
+
 /* 筛选 */
 .screening {
 	position: relative;
-	height: 42px;
+	height: 36px;
 	border-top: solid 1px #e5e5e5;
 	background-color: #fff;
-	padding-right: 10px;
+	padding: 10px 10px 0;
 }
 .screening .current {
 	float: left;
 	width: 100%;
 	text-align: left;
 	color: #0fdebd;
-	height: 28px;
-	line-height: 28px;
-	overflow: hidden;
-	padding: 10px 0 0 10px;
+	height: 25px;
+	line-height: 25px;
+	/*overflow: hidden;*/
+	/*padding: 10px 0 0 10px;*/
 	font-size: 16px;
 }
 .screening .current span{
 	color: #202020;
 	margin-left: 3px;
 }
-.screening .current a{
+.screening .current>a {
 	border-radius: 5px;
-	border:1px solid #1fe0c1;
-	padding:4px 11px;
+	border: 1px solid #1fe0c1;
+	padding: 4px 11px;
 	font-size: 12px;
-	height: 17px;
-	line-height: 17px;
-	color:#1fe0c1;
+	height: 14px;
+	line-height: 14px;
+	color: #1fe0c1;
 	float: right;
-	margin-right: 20px;
+	/*margin-right: 10px;*/
 }
+.current .current-infor{
+	float: left;
+	width: 80%;
+}
+.current .current-infor p{
+	position: relative;
+	width: auto;
+	float:left;
+	margin-right: 3px;
+	padding-right: 5px;
+	height: 25px;
+	line-height: 25px;
+}
+.current .current-infor .transferp{
+	border-right: 2px solid #aaa;
+}
+.current .current-infor .transferp:hover{
+	cursor: pointer;
+}
+.current .current-infor .transferp::before{
+	content: "";
+	position: absolute;
+	left: 34px;
+	top: 25px;
+	width: 0;
+	height: 0;
+	border:6px solid transparent;
+	border-top:6px solid #333;
+}
+.current .current-infor .transferp:hover:before{
+	border:none;
+}
+
+.typemenu{
+	/*display: none;*/
+	position: absolute;
+	top: 52px;
+	left: 8px;
+	border:1px solid #0fdebd;
+	border-radius: 10px;
+	padding: 10px;
+	z-index: 999;
+	background: #fff;
+	width: 30%;
+	transition:  5s;
+}
+.typemenu li a{
+	display: inline-block;
+	width: 90%;
+	padding: 2px 5px;
+	color: #666;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.typemenu li a:hover{
+	background: #ecf6ff;
+	cursor: pointer;
+}
+.current .current-infor .transferp:hover+ .typemenu{
+	display: block;
+}
+
+
 /* icon */
 .arrow, .cb, .rb {
 	background-image: url(icon.png);
@@ -390,42 +455,7 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 	opacity: 0.8;
 	filter: alpha(opacity=80);
 }
-/*删选按钮*/
-.current{
-	height: 28px;
-	line-height: 28px;
-	overflow: hidden;
-	padding-top: 10px;
-}
-.screening .current a{
-	border-radius: 5px;
-	border:1px solid #1fe0c1;
-	padding:4px 11px;
-	font-size: 12px;
-	height: 17px;
-	line-height: 17px;
-	color:#1fe0c1;
-	float: right;
-	margin-right: 10px;
-}
-/*删选按钮*/
-.current {
-	height: 28px;
-	line-height: 28px;
-	overflow: hidden;
-	padding-top: 10px;
-}
-.screening .current a {
-	border-radius: 5px;
-	border: 1px solid #1fe0c1;
-	padding: 4px 11px;
-	font-size: 12px;
-	height: 17px;
-	line-height: 17px;
-	color: #1fe0c1;
-	float: right;
-	margin-right: 10px;
-}
+
 /*推介土地样式*/
 .follow{
 	width: 100%;

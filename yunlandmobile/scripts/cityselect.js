@@ -26,30 +26,22 @@ var addressInit = function(cmbP, cmbC, cmbA, defaultP, defaultC, defaultA) {
 var cmdAddOption = function(cmb, id, str, obj) {
     var html = "";
     var subMenu;
-    var liN = $(".category>li").length;
-    
-    
-    if (areaData[i].id == 86 || areaData[i].id == 110000 || areaData[i].id == 120000 || areaData[i].id == 310000 || areaData[i].id == 500000) {
-        html += '<li data-role=\"province\" data-id=' + areaData[i].id + '>' + '<a><b>' + areaData[i].name + '</b></a>' + '</li>';
-        // $(".category").append(html);
-        $(".category:last-child").append(html);
-    } else {
-        html += '<li data-role=\"province\" data-id=' + areaData[i].id + '>' + '<b>' + areaData[i].name + '</b>' + '<ul class=\"category-child clear\" id=' + areaData[i].id + '></ul>' + '</li>';
-        // $(".category").append(html);
-        $(".category:last-child").append(html);
+    if(areaData[i].id==86 || areaData[i].id==110000 || areaData[i].id==120000 || areaData[i].id==310000||areaData[i].id==500000){
+        html += '<li data-role=\"province\" data-id=' + areaData[i].id + '>' + '<a><b>' + areaData[i].name + '</b></a>' +'</li>';
+    $(".category1").append(html);
+    }else{
+         html += '<li data-role=\"province\" data-id=' + areaData[i].id + '>' + '<b>' + areaData[i].name + '</b>' + '<ul class=\"category-child clear\" id='+areaData[i].id+'></ul>'+'</li>';
+    $(".category1").append(html);
     }
-    if (liN == 4 || liN > 0 && liN % 4 == 0) {
-        $(".column-body").append("<ul class=\"category clearfix\"></ul>")
-    }
+   
 }
-
 var cmdAddOption2 = function(cmb, id, str, obj) {
     var html = "";
     var categoryId;
-    categoryId = areaData[i].id.toString().substr(0, 2) + "0000";
+    categoryId=areaData[i].id.toString().substr(0,2)+"0000";
 
     html += '<li data-role=\"city\" id=' + areaData[i].id + '>' + '<a><b>' + areaData[i].name + '</b></a>' + '</li>';
-    $("#" + categoryId + '').append(html);
+    $("#"+categoryId+'').append(html);
 }
 var changeProvince = function(cIndex, cDataId) {
     var str = cDataId;
