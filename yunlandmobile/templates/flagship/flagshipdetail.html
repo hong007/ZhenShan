@@ -7,8 +7,13 @@
 
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/index.css">
-    <link rel="stylesheet" href="../../style/other.css">
+    <link rel="stylesheet" href="../../style/other.css"> 
+
+    <!-- 弹框轮播 -->
+    <link rel="stylesheet" href="../../plugin/lightGallery/lightGallery.css" />
+
     <script src="../../scripts/jquery.js"></script>
+    <script src="../../plugin/lightGallery/lightGallery.min.js"></script>
     <script src="../../scripts/touchslider.dev.js"></script>
     <script src="../../scripts/role.js"></script>
     <style type="text/css">
@@ -32,6 +37,12 @@
         <script type="text/javascript">
             $(function () {
                 $("#toTop").scrollToTop(1000);
+                // 弹出框轮播图
+                $("#slider").lightGallery({
+                    loop: true,
+                    auto: true,
+                    pause: 4000
+                });
             });
         </script>
         <!-- header -->
@@ -47,13 +58,67 @@
         <!-- header end -->
          <div class="subheader">
             <div class="follow clearfix">
+                <!-- 轮播图 -->
+                <div class="rolling">
+                    <ul id="slider" class="gallery">
+                        <li data-src="../../images/658886130909188096.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/709557502827958272.jpg" title="信息图" />
+                            </a>
+                        </li>
+                        <li data-src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193721866653696.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193721866653696.jpg" title="信息图" />
+                            </a>
+                        </li>
+                        <li data-src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193662475309056.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193662475309056.jpg" title="信息图" />
+                            </a>
+                        </li>
+                        <li data-src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193759393091584.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193759393091584.jpg" title="信息图" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="rounddot">
+                        <a href="javascript:;" class="active" id="380"></a>
+                        <a href="javascript:;" id="418"></a>
+                        <a href="javascript:;" id="417"></a>
+                        <a href="javascript:;" id="413"></a>
+                    </div>
+                </div>
+                <script>
+                    console = window.console || { dir: new Function(), log: new Function() };
+                    var active = 0,
+                    as = document.getElementById('rounddot').getElementsByTagName('a');
+                    for (var i = 0; i < as.length; i++) {
+                        (function () {
+                            var j = i;
+                            as[i].onclick = function () {
+                                t4.slide(j);
+                                return false;
+                            }
+                        })();
+                    }
+
+                    var t4 = new TouchSlider({
+                        id: 'slider', speed: 600, timeout: 6000, before: function (index) {
+                            as[active].className = '';
+                            active = index;
+                            as[active].className = 'active';
+                        }
+                    });
+                </script>
+                <!-- 轮播图 end-->
                 <!-- <a class="return-link" href="index.html" id="returnA"></a> -->
-                <div class="return-wrap">
-                <a class="return" href="javascript:history.back();">
-                    <i class="am-icon-lg"></i>
-                </a>
-            </div>
-                <ul class="subheader-cont">
+                <!-- <div class="return-wrap">
+                    <a class="return" href="javascript:history.back();">
+                        <i class="am-icon-lg"></i>
+                    </a>
+                </div> -->
+                <!-- <ul class="subheader-cont">
                     <li>
                         <a href="" id="followA">
                             <span>
@@ -74,7 +139,7 @@
                             <br>浏览量
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
         <div class="tf-cont">

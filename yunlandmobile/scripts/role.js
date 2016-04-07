@@ -16,6 +16,12 @@ $(function() {
         $(this).hide();
         $("body").removeClass('sideBox-open');
     });
+
+    // 下拉选框
+    $(".transferp").click(function(){
+        $(".typemenu").toggle();
+        $(this).toggleClass("tr-active");
+    })
 });
 
 /*$(function(){

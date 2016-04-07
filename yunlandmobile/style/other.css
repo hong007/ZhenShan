@@ -226,24 +226,39 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 	width: 0;
 	height: 0;
 	border:6px solid transparent;
+	/*border-top:6px solid #333;*/
+}
+.current .current-infor .tr-active::before{
 	border-top:6px solid #333;
 }
-.current .current-infor .transferp:hover:before{
+/*.current .current-infor .transferp:hover:before{
 	border:none;
-}
+}*/
 
 .typemenu{
-	/*display: none;*/
+	display: none;
 	position: absolute;
 	top: 52px;
 	left: 8px;
-	border:1px solid #0fdebd;
+	border:1px solid #94d28d;
 	border-radius: 10px;
 	padding: 10px;
 	z-index: 999;
 	background: #fff;
 	width: 30%;
-	transition:  5s;
+	/*background-image: url(../images/triangle.png);	
+	background-repeat: no-repeat; 
+	background-position: 34px 35px;*/
+}
+.typemenu .imgli {
+	position: absolute;
+	top: -17px;
+	left: 29px;
+	z-index: 99999;
+}
+.typemenu .imgli img{
+	width: 20px;
+	height: auto;
 }
 .typemenu li a{
 	display: inline-block;
@@ -258,10 +273,6 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 	background: #ecf6ff;
 	cursor: pointer;
 }
-.current .current-infor .transferp:hover+ .typemenu{
-	display: block;
-}
-
 
 /* icon */
 .arrow, .cb, .rb {
@@ -457,6 +468,9 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 }
 
 /*推介土地样式*/
+.subheader{
+	/*position: relative;*/
+}
 .follow{
 	width: 100%;
 	background:url(../images/658886130909188096.jpg) no-repeat ; 
@@ -470,6 +484,9 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 	float: right;
 	/*margin-right: 10px;*/
 	margin-top: 25px;
+	/*position: absolute;
+	right: 30px;
+	top: 40px;*/
 }
 .follow .subheader-cont li{
 	float: left;
@@ -552,7 +569,7 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 	text-align: center;
 	font-weight: 600;
 	font-size: 14px;
-	margin-bottom:3px;
+	margin:4px 0 3px 0;
 }
 .cr{
 	color: #eb8780;
