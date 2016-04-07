@@ -245,19 +245,6 @@ input[type=submit]:disabled {background:#999; cursor:no-drop;}
 	width: 30%;
 	transition:  5s;
 }
-.typemenu{
-	/*display: none;*/
-	position: absolute;
-	top: 52px;
-	left: 8px;
-	border:1px solid #0fdebd;
-	border-radius: 10px;
-	padding: 10px;
-	z-index: 999;
-	background: #fff;
-	width: 30%;
-	transition:  5s;
-}
 .typemenu li a{
 	display: inline-block;
 	width: 90%;
