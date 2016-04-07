@@ -1,0 +1,782 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>移动端-云地首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../style/base.css">
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/other.css">
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/touchslider.dev.js"></script>
+    <script src="../scripts/role.js"></script>
+
+</head>
+
+<body>
+    <div class="containBox" id="containBox">
+        <div class="containBox_bg" style="height:100%; display: none;"></div>
+        <a href="#top" id="toTop">
+            <img src="../images/toTop-icon.png" />
+        </a>
+        <script type="text/javascript">
+            $(function () {
+                $("#toTop").scrollToTop(1000);
+            });
+        </script>
+        <!-- header -->
+        <div class="header">
+            <a id="panelSwitch" class="menu-wrap navBtn" href="#">
+                <i class="menu"><img src="../images/icon-menu.png" /></i>
+            </a> <i class="logo"><img src="../images/yunland-logo.jpg" /></i>
+            <a class="login-wrap" href="#">
+                <i class="login">
+                    <img src="../images/icon-account.png" />
+                </i>
+            </a>
+        </div>
+        <!-- header end -->
+        <!-- 轮播图 -->
+        <div class="rolling">
+            <ul id="slider">
+                <li>
+                    <a href="#">
+                        <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/709557502827958272.jpg" title="信息图" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193721866653696.jpg" title="信息图" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193662475309056.jpg" title="信息图" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193759393091584.jpg" title="信息图" />
+                    </a>
+                </li>
+            </ul>
+            <div id="rounddot">
+                <a href="javascript:;" class="active" id="380"></a>
+                <a href="javascript:;" id="418"></a>
+                <a href="javascript:;" id="417"></a>
+                <a href="javascript:;" id="413"></a>
+            </div>
+        </div>
+        <script>
+            console = window.console || { dir: new Function(), log: new Function() };
+            var active = 0,
+            as = document.getElementById('rounddot').getElementsByTagName('a');
+            for (var i = 0; i < as.length; i++) {
+                (function () {
+                    var j = i;
+                    as[i].onclick = function () {
+                        t4.slide(j);
+                        return false;
+                    }
+                })();
+            }
+
+            var t4 = new TouchSlider({
+                id: 'slider', speed: 600, timeout: 6000, before: function (index) {
+                    as[active].className = '';
+                    active = index;
+                    as[active].className = 'active';
+                }
+            });
+        </script>
+        <!-- 轮播图 end-->
+        <!-- 导航 -->
+        <div class="nav clearfix">
+            <a class="entry-link" href="flagship/index.html">
+                <img src="../images/flagship-icon.png" />
+                <span>旗舰店</span>
+            </a>
+            <a class="entry-link" href="transfer/index.html">
+                <img src="../images/mail-icon.png" />
+                <span>大卖场</span>
+            </a>
+            <a class="entry-link" href="#">
+                <img src="../images/auction-icon.png" />
+                <span>招拍挂</span>
+            </a>
+            <a class="entry-link" href="#">
+                <img src="../images/demand-icon.png" />
+                <span>需求信息</span>
+            </a>
+        </div>
+        <!-- 导航 end -->
+        <!-- 内容 -->
+        <div class="entry-title">
+            <div class="home-recommended">
+                <i class="i1"></i>
+                旗舰店
+            </div>
+            <div class="title b1">
+                土地旗舰店
+                <img class="line" src="../images/line3.png" />
+            </div>
+        </div>
+        <div class="land-con">
+            <ul class="flagship clearfix">
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">萧山区国土资源局1111111111111111111</p>
+                            <p class="land-number">
+                                地块宗数：
+                                <i>20</i>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">萧山区国土资源局</p>
+                            <p class="land-number">
+                                地块宗数：
+                                <i>20</i>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">萧山区国土资源局</p>
+                            <p class="land-number">
+                                地块宗数：
+                                <i>20</i>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">萧山区国土资源局</p>
+                            <p class="land-number">
+                                地块宗数：
+                                <i>20</i>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+        <div class="entry-title">
+            <div class="home-recommended">
+                <i class="i2"></i>
+                大卖场
+            </div>
+            <div class="title b2">
+                土地大卖场
+                <img class="line" src="../images/line3.png" />
+                </span>
+            </div>
+        </div>
+        <div class="land-con">
+            <ul class="clearfix">
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/shang-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhai-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/gong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+        <div class="entry-title">
+            <div class="title b2">
+                项目大卖场
+                <img class="line" src="../images/line3.png" />
+            </div>
+        </div>
+        <div class="land-con">
+            <ul class="clearfix">
+                <li>
+                    <div class="land-wrap">
+                        <a class="layer" href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/shang-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                        <img class="lable-icon" src="../images/lable-icon.png" />
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhai-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/gong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+        <div class="entry-title">
+            <div class="title b2">
+                海外大卖场
+                <img class="line" src="../images/line3.png" />
+            </div>
+        </div>
+        <div class="land-con">
+            <ul class="clearfix">
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/shang-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhai-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/gong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-img">
+                                <img src="../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+        <div class="entry-title">
+            <div class="home-recommended">
+                <i class="i3"></i>
+                招拍挂
+            </div>
+            <div class="title b3">
+                土地招拍挂
+                <img class="line" src="../images/line3.png" />
+            </div>
+        </div>
+        <div class="land-con land-list">
+            <ul>
+                <li>
+                    <div class="land-wrap">
+                        <a class="layer" href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/shang-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                <span class="years">500万年</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                        <img class="lable-icon" src="../images/lable-icon.png" />
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhai-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                <span class="years">500万年</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/gong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                <span class="years">500万年</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                <span class="years">500万年</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+        <div class="entry-title">
+            <div class="home-recommended">
+                <i class="i4"></i>
+                需求信息
+            </div>
+            <div class="title b4">
+                需求信息
+                <img class="line" src="../images/line3.png" />
+                </span>
+            </div>
+        </div>
+        <div class="land-con land-list">
+            <ul>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/shang-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area fl-no">155万m²</span>
+                                <span class="xq-years">20年</span>
+                                <span class="my">面议</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhai-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area fl-no">155万m²</span>
+                                <span class="xq-years">20年</span>
+                                <span class="my">50万</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/gong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area fl-no">155万m²</span>
+                                <span class="xq-years">20年</span>
+                                <span class="my">面议</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="#">
+                            <p class="land-title">
+                                <i>
+                                    <img src="../images/zhong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area fl-no">155万m²</span>
+                                <span class="xq-years">20年</span>
+                                <span class="my">面议</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+        <!-- 内容 end -->
+        <!-- foot -->
+        <div class="foot">
+            <div class="mt-10 clearfix">
+                <a href="login/reg.html" class="btn fl">注册</a>
+                <a href="login/index.html" class="btn fr active">登录</a>
+            </div>
+            <div class="phone">云地网客服电话：0571—81902006</div>
+            <div>
+                <a class="phone-btn" href="javascript:;">
+                    <span class="phone-icon">
+                        <img src="../images/phone-icon.png" />
+                    </span>
+                    拨打客服电话
+                </a>
+            </div>
+            <ul class="foot-links">
+                <li>
+                    <a href="javascript:;">关于云地</a>
+                </li>
+                <li>
+                    <a href="javascript:;">合作机构</a>
+                </li>
+                <li>
+                    <a href="javascript:;">合作方式</a>
+                </li>
+            </ul>
+            <div class="copyright">
+                <img src="../images/China.jpg" />
+                © 2016 yunland.Inc.  保留所有权利
+            </div>
+            <div class="icp">
+                <span class="fl">所属：浙江臻善科技有限公司</span>
+                <span class="fr">浙ICP备06018569号-2</span>
+            </div>
+        </div>
+        <!-- foot end-->
+    </div>
+    <!-- 侧边栏 -->
+    <div class="side" id="jquery-accordion-menu">
+        <i class="icon-uimini">云地网</i>
+        <ul id="nav-list" class="main-nav mt-15">
+            <li>
+                <a class="active" href="flagship/index.html">
+                    <i>
+                        <img src="../images/menu-icon2.png" />
+                    </i>
+                    土地旗舰店
+                </a> <em></em>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../images/menu-icon3.png" />
+                    </i>
+                    云地大卖场
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="transfer/index.html">土地大卖场</a> <em></em>
+                    </li>
+                    <li>
+                        <a href="#">项目大卖场</a>
+                        <em></em>
+                    </li>
+                    <li>
+                        <a href="#">海外大卖场</a>
+                        <em></em>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../images/menu-icon4.png" />
+                    </i>
+                    土地旗舰店
+                </a>
+                <em></em>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../images/menu-icon5.png" />
+                    </i>
+                    土地旗舰店
+                </a>
+                <em></em>
+            </li>
+        </ul>
+        <div class="propaganda-btn">
+            <a class="btn fl" href="javascript:;">发布信息</a>
+            <a class="btn fr btn-color" href="javascript:;">发布土地</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+        });
+        $(function () {
+            //顶部导航切换
+            $("#nav-list li").click(function () {
+                $("#nav-list li.active").removeClass("active")
+                $(this).addClass("active");
+            })
+        })
+    </script>
+    <!-- 侧边栏 end -->
+</body>
+</html>

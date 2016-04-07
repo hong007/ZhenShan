@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择地区</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../../style/area.css">
+</head>
+<body>
+    <div class="column">
+        <!-- <div class="column-head">
+            <h2 class="column-title">热门城市</h2>
+        </div> -->
+        <div class="column-body">
+            <ul class="category category1 clearfix"></ul>
+        </div>
+    </div>
+    <script src="../../scripts/jquery.js"></script>
+    <script src="../../scripts/cityselect.js"></script>
+    <script type="text/javascript">
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea', '86');
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".category li").each(function () {
+                var curIndex = $(this).index();
+                var curDataId = $(this).data("id");
+                changeProvince(curIndex, curDataId);
+            })
+            $(".category>li").click(function () {
+                $(".category li.active").removeClass("active");
+                $(this).toggleClass("active");
+                var curD = $(this).attr("data-id");
+                $("#" + curD).toggle().closest("li").siblings("li").find(".category-child").hide();
+                if ($("#" + curD).is(":hidden")) {
+                    // alert("隐藏了");
+                    $(".category li.active").removeClass("active");
+
+                }
+            })
+            // $(".category>li").click(function () {
+            //     $(".category li.active").removeClass("active");
+            //     $(this).toggleClass("active").find("a").attr("href","javascript:history.back()")
+            //     var curD = $(this).attr("data-id");
+            //     if (curD==86 || curD==110000 || curD==120000 || curD==310000) {
+            //         // $(this).toggleClass("active");
+            //         $(".category-child").hide();
+            //     }else{
+            //         $("#" + curD).toggle().closest("li").siblings("li").find(".category-child").hide();
+            //     }
+                
+            //     if ($("#" + curD).is(":hidden")) {
+            //         // alert("隐藏了");
+            //         $(".category li.active").removeClass("active");
+
+            //     }
+            // // $(this).find("a").attr("href","javascript:history.back()")
+            // })
+        })
+    </script>
+</body>
+</html>
