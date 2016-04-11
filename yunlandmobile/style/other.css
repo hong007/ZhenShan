@@ -283,6 +283,9 @@ border:none;
 	font-size: 1.6rem;
 	border-bottom: 1px solid #dcdcdc;
 }
+.typemenu li .active{
+	background: #ecf6ff;
+}
 .typemenu li a:hover {
 	background: #ecf6ff;
 	cursor: pointer;
