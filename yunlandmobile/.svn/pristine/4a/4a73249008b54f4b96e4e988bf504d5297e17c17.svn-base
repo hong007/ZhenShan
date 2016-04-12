@@ -1,0 +1,242 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>云地网——土地大卖场</title>
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/index.css">
+    <link rel="stylesheet" href="../../style/other.css">
+    <link rel="stylesheet" href="../../style/iconfont.css">
+
+    <script type="text/javascript" src="../../scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../../scripts/touchslider.dev.js"></script>
+    <script type="text/javascript" src="../../scripts/role.js"></script>
+</head>
+
+<body>
+    <div class="containBox" id="containBox">
+        <div class="containBox_bg" style="height:100%; display: none;"></div>
+        <!-- header -->
+        <div class="header">
+            <a id="panelSwitch" class="menu-wrap navBtn" href="javascript:void(0);">
+                <i class="menu"><img src="../../images/icon-menu.png" /></i>
+            </a> <i class="logo"><img src="../../images/yunland-logo.jpg" /></i>
+            <a class="login-wrap" href="#">
+                <i class="login">
+                    <img src="../../images/icon-account.png" />
+                </i>
+            </a>
+        </div>
+        <!-- header end -->
+        <!-- 筛选 -->
+        <div class="screening">
+            <div class="current clearfix">
+                <div class="current-infor">
+                    <p class="transferp tr-active">
+                        土地大卖场
+                    </p>
+                    <ul class="typemenu">
+                        <li class="imgli"><img src="../../images/triangle.png"></li>
+                        <li><a class="active" href="transfer/index.html">土地大卖场</a></li>
+                        <li><a href="../project/index.html">项目大卖场</a></li>
+                        <li><a href="">农地流转</a></li>
+                    </ul>
+                    <span>全国&nbsp;&middot;&nbsp;商业用地</span>
+                </div>
+
+                <a href="choosearea.html">筛选</a>
+            </div>
+            <!-- <div id="test1" style="float:right; margin: 5px 0 0;">
+                <input type="hidden" class="province" value="010000" />
+                <input type="hidden" class="city" value="010100" />
+                <div name="province" type="selectbox" style="z-index:2;">
+                    <div class="opts"></div>
+                </div>
+                <div name="city" type="selectbox" style="z-index:2;">
+                    <div class="opts"></div>
+                </div>
+                <div name="area" type="selectbox" style="z-index:2;display:none">
+                    <div class="opts"></div>
+                </div>
+            </div> -->
+        </div>
+        <!-- 筛选 end -->
+        <!-- 内容 -->
+        <div class="land-con">
+            <ul class="clearfix">
+                <li>
+                    <div class="land-wrap">
+                        <a href="transferdetail.html">
+                            <p class="land-img">
+                                <img src="../../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../../images/shang-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="transferdetail.html">
+                            <p class="land-img">
+                                <img src="../../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../../images/zhai-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="transferdetail.html">
+                            <p class="land-img">
+                                <img src="../../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../../images/gong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="transferdetail.html">
+                            <p class="land-img">
+                                <img src="../../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i>
+                                    <img src="../../images/zhong-icon.png" />
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="page clearfix">
+                <p class="prev">
+                    <i class="icon-prev"></i>
+                    <a href="javaxcript:;">上一页</a>
+                </p>
+                <p class="sum">
+                    <span>1</span>
+                    /
+                    <span>100</span>
+                </p>
+                <p class="next">
+                    <a href="javaxcript:;">下一页</a>
+                    <i class="icon-next"></i>
+                </p>
+            </div>
+        </div>
+        <!-- 内容 end -->
+    </div>
+    <!-- 侧边栏 -->
+    <div class="side" id="jquery-accordion-menu">
+        <i class="icon-uimini">云地网</i>
+        <ul id="nav-list" class="main-nav mt-15">
+            <li>
+                <a class="active" href="flagship/index.html">
+                    <i>
+                        <img src="../../images/menu-icon2.png" />
+                    </i>
+                    土地旗舰店
+                </a> <em></em>
+            </li>
+            <li>
+                <a href="transfer/index.html">
+                    <i>
+                        <img src="../../images/menu-icon3.png" />
+                    </i>
+                    云地大卖场
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">土地大卖场</a> <em></em>
+                    </li>
+                    <li>
+                        <a href="#">项目大卖场</a>
+                        <em></em>
+                    </li>
+                    <li>
+                        <a href="#">海外大卖场</a>
+                        <em></em>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../../images/menu-icon4.png" />
+                    </i>
+                    土地旗舰店
+                </a>
+                <em></em>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../../images/menu-icon5.png" />
+                    </i>
+                    土地旗舰店
+                </a>
+                <em></em>
+            </li>
+        </ul>
+        <div class="propaganda-btn">
+            <a class="btn fl" href="javascript:;">发布信息</a>
+            <a class="btn fr btn-color" href="javascript:;">发布土地</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+        });
+        $(function () {
+            //顶部导航切换
+            $("#nav-list li").click(function () {
+                $("#nav-list li.active").removeClass("active")
+                $(this).addClass("active");
+            })
+        })
+    </script>
+    <!-- 侧边栏 end -->
+</body>
+</html>
