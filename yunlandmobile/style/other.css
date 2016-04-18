@@ -237,8 +237,10 @@ input[type=submit]:disabled {
 .current .current-infor .transferp::before {
 	content: "";
 	position: absolute;
-	left: 43px;
+	left: 50%;
+	/*left: 43px;*/
 	top: 25px;
+	margin-left: -10px;
 	width: 0;
 	height: 0;
 	border: 6px solid transparent;	/*border-top:6px solid #333;*/
@@ -273,6 +275,7 @@ border:none;
 .typemenu .imgli img {
 	width: 20px;
 	height: auto;
+	margin-left: -10px;
 }
 .typemenu li a {
 	display: inline-block;
@@ -622,6 +625,9 @@ border:none;
 	text-align: left;
 	color:;
 	font-size: 1.3rem;
+}
+.tf-menu .colorred{
+	color: #FE918E;
 }
 .tf-cont-block h2:before {
 	content: "";

@@ -1,0 +1,341 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>云地网-出让土地详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/index.css">
+    <link rel="stylesheet" href="../../style/other.css">
+
+    <!-- 弹框轮播 -->
+    <link rel="stylesheet" href="../../plugin/lightGallery/lightGallery.min.css" />
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../plugin/lightGallery/lightGallery.min.js"></script>
+    <script src="../../scripts/touchslider.dev.js"></script>
+    <script src="../../scripts/role.js"></script>
+    <style type="text/css">
+        .foot {
+            border: none;
+        }
+
+            .foot .phone {
+                text-align: left;
+                font-size: 12px;
+                margin-bottom: -8px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="containBox" id="containBox">
+        <div class="containBox_bg" style="height:100%; display: none;"></div>
+        <a href="#top" id="toTop">
+            <img src="../../images/toTop-icon.png" />
+        </a>
+        <script type="text/javascript">
+            $(function () {
+                $("#toTop").scrollToTop(1000);
+
+                // 弹出框轮播图
+                $("#slider").lightGallery({
+                    loop: true,
+                    auto: true,
+                    pause: 4000
+                });
+            });
+        </script>
+        <!-- header -->
+        <div class="header">
+            <a id="panelSwitch" class="menu-wrap navBtn" href="javascript:void(0);">
+                <i class="menu"><img src="../../images/icon-menu.png" /></i>
+            </a> <i class="logo"><img src="../../images/yunland-logo.jpg" /></i>
+            <a class="login-wrap" href="#">
+                <i class="login">
+                    <img src="../../images/icon-account.png" />
+                </i>
+            </a>
+        </div>
+        <!-- header end -->
+        <div class="subheader">
+            <div class="follow clearfix">
+                <!-- 轮播图 -->
+                <div class="rolling">
+                    <ul id="slider" class="gallery">
+                        <li data-src="../../images/658886130909188096.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/709557502827958272.jpg" title="信息图" />
+                            </a>
+                        </li>
+                        <li data-src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193721866653696.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193721866653696.jpg" title="信息图" />
+                            </a>
+                        </li>
+                        <li data-src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193662475309056.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193662475309056.jpg" title="信息图" />
+                            </a>
+                        </li>
+                        <li data-src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193759393091584.jpg">
+                            <a href="#">
+                                <img src="http://yunland.oss-cn-hangzhou.aliyuncs.com/photo/708193759393091584.jpg" title="信息图" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="rounddot">
+                        <a href="javascript:;" class="active" id="380"></a>
+                        <a href="javascript:;" id="418"></a>
+                        <a href="javascript:;" id="417"></a>
+                        <a href="javascript:;" id="413"></a>
+                    </div>
+                </div>
+                <script>
+                    console = window.console || { dir: new Function(), log: new Function() };
+                    var active = 0,
+                    as = document.getElementById('rounddot').getElementsByTagName('a');
+                    for (var i = 0; i < as.length; i++) {
+                        (function () {
+                            var j = i;
+                            as[i].onclick = function () {
+                                t4.slide(j);
+                                return false;
+                            }
+                        })();
+                    }
+
+                    var t4 = new TouchSlider({
+                        id: 'slider', speed: 600, timeout: 6000, before: function (index) {
+                            as[active].className = '';
+                            active = index;
+                            as[active].className = 'active';
+                        }
+                    });
+                </script>
+                <!-- 轮播图 end-->
+                <!-- <a class="return-link" href="index.html" id="returnA"></a> -->
+                <!-- <div class="return-wrap">
+                    <a class="return" href="javascript:history.back();">
+                        <i class="am-icon-lg"></i>
+                    </a>
+                </div> -->
+                <!-- <ul class="subheader-cont">
+                    <li>
+                        <a href="" id="followA">
+                            <span>
+                                <img src="../../images/follow.png">
+                            </span>
+                            <br>关注
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>1000</span>
+                            <br>关注度
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>100</span>
+                            <br>浏览量
+                        </a>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+        <div class="tf-cont">
+            <div class="headerinfor clearfix">
+                <h2>天津津南区姚家荡地区**路左侧地块</h2>
+                <ul class="tf-menu">
+                    <li>
+                        交易状态：
+                        <span>未成交</span>
+                    </li>
+                    <li>
+                        更新时间：
+                        <span>2016-03-23</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tf-cont-block tf-baseinfor clearfix">
+                <h2>基本信息</h2>
+
+                <ul class="tf-menu clearfix">
+                    <p>
+                        所在位置：
+                        <span>**省/天津市/津南区</span>
+                    </p>
+                    <p>
+                        位置：
+                        <span>姚家荡地区**路左侧**路南侧</span>
+                    </p>
+                    <li>
+                        土地用途：
+                        <span class="cr">商业用地</span>
+                    </li>
+                    <li>
+                        面积：
+                        <span>200平方米</span>
+                    </li>
+                    <li>
+                        出让年限：
+                        <span class="cr">60年</span>
+                    </li>
+                    <li>
+                        报价：
+                        <span>2000万</span>
+                    </li>
+                    <li>
+                        联系人
+                        <span>蒋先生</span>
+                    </li>
+                    <li>
+                        合作方式：
+                        <span>股权转让</span>
+                    </li>
+                    <li>
+                        联系方式：
+                        <span>137****3785</span>
+                    </li>
+                    <li>
+                        浏览数：
+                        <span>300</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tf-cont-block inforintro">
+                <h2>详情介绍</h2>
+                <div class="detail">
+                    <ul class="tf-menu clearfix">
+                        <p>
+                            所在位置：
+                            <span>**省/天津市/津南区</span>
+                        </p>
+                        <p>
+                            位置：
+                            <span>姚家荡地区**路左侧**路南侧</span>
+                        </p>
+                        <li>
+                            土地用途：
+                            <span>商业用地</span>
+                        </li>
+                        <li>
+                            面积：
+                            <span>200公顷</span>
+                        </li>
+                        <li>
+                            出让年限：
+                            <span>60年</span>
+                        </li>
+                        <li>
+                            容积率：
+                            <span>1.0 &lt;R&lt;2.0</span>
+                        </li>
+                        <li>
+                            建筑密度：
+                            <span>20%</span>
+                        </li>
+                        <li>
+                            绿化率：
+                            <span>35%</span>
+                        </li>
+                        <li>
+                            建筑限高：
+                            <span>100米</span>
+                        </li>
+                        <li>
+                            浏览数：
+                            <span>300</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- foot -->
+        <div class="foot">
+            <div class="phone">了解更多信息，请咨询云地网客服电话:0571-81902006</div>
+            <div>
+                <a class="phone-btn" href="javascript:;">
+                    <span class="phone-icon">
+                        <img src="../../images/phone-icon.png" />
+                    </span>
+                    拨打客服电话
+                </a>
+            </div>
+        </div>
+        <!-- foot end-->
+    </div>
+    <!-- 侧边栏 -->
+    <div class="side" id="jquery-accordion-menu">
+        <i class="icon-uimini">云地网</i>
+        <ul id="nav-list" class="main-nav mt-15">
+            <li>
+                <a class="active" href="flagship/index.html">
+                    <i>
+                        <img src="../../images/menu-icon2.png" />
+                    </i>
+                    土地旗舰店
+                </a> <em></em>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../../images/menu-icon3.png" />
+                    </i>
+                    云地大卖场
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">土地大卖场</a> <em></em>
+                    </li>
+                    <li>
+                        <a href="#">项目大卖场</a>
+                        <em></em>
+                    </li>
+                    <li>
+                        <a href="#">海外大卖场</a>
+                        <em></em>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../../images/menu-icon4.png" />
+                    </i>
+                    土地旗舰店
+                </a>
+                <em></em>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="../../images/menu-icon5.png" />
+                    </i>
+                    土地旗舰店
+                </a>
+                <em></em>
+            </li>
+        </ul>
+        <div class="propaganda-btn">
+            <a class="btn fl" href="javascript:;">发布信息</a>
+            <a class="btn fr btn-color" href="javascript:;">发布土地</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+        });
+        $(function () {
+            //顶部导航切换
+            $("#nav-list li").click(function () {
+                $("#nav-list li.active").removeClass("active")
+                $(this).addClass("active");
+            })
+        })
+    </script>
+    <!-- 侧边栏 end -->
+</body>
+</html>
