@@ -263,12 +263,6 @@ body.panel-active {
 .land-con .land-wrap .land-title .icon-zong{
 	background: #EB4F38;
 }
-.land-con .land-wrap .land-title .icon-nong{
-	background: #53DA92;
-}
-.land-con .land-wrap .land-title .icon-ying{
-	background: #ED75CF;
-}
 .land-con .land-wrap .land-title i img {
 	width: 100%;
 	height: 100%;

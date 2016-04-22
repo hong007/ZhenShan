@@ -239,7 +239,6 @@ input[type=submit]:disabled {
 .current .current-infor {
 	float: left;
 	width: 80%;
-	padding-left: 10px;
 }
 .current .current-infor p {
 	position: relative;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>云地网——土地大卖场</title>
+    <title>云地网——农地流转</title>
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/other.css">
@@ -34,15 +34,15 @@
             <div class="current clearfix">
                 <div class="current-infor">
                     <p class="transferp tr-active">
-                        项目大卖场
+                        农地流转
                     </p>
                     <ul class="typemenu">
                         <li class="imgli"><img src="../../images/triangle.png"></li>
                         <li><a href="../transfer/index.html">土地大卖场</a></li>
-                        <li><a class="active" href="javascript:void(0);">项目大卖场</a></li>
-                        <li><a href="../farmland/farmlandindex.html">农地流转</a></li>
+                        <li><a href="../project/projectindex.html">项目大卖场</a></li>
+                        <li><a href="javascript:void(0);"  class="active">农地流转</a></li>
                     </ul>
-                    <span>全国&nbsp;&middot;&nbsp;物业类型</span>
+                    <span>全国&nbsp;&middot;&nbsp;农地流转</span>
                 </div>
 
                 <a href="choosearea.html">筛选</a>
@@ -54,13 +54,35 @@
             <ul class="clearfix">
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
+                        <a class="layer" href="farmlanddetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-shang">商
+                                <i class="icon icon-shang">
                                     <!-- <img src="../images/shang-icon.png" /> -->
+                                </i>
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                500万元
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                        <img class="lable-icon" src="../../images/lable-icon.png">
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="farmlanddetail.html">
+                            <p class="land-img">
+                                <img src="../../images/658886130909188096.jpg" />
+                            </p>
+                            <p class="land-title">
+                                <i class="icon icon-zhai">
+                                    <!-- <img src="../images/zhai-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -75,33 +97,12 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
+                        <a href="farmlanddetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-zhai">宅
-                                    <!-- <img src="../images/zhai-icon.png" /> -->
-                                </i>                            
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                500万元
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="land-wrap">
-                        <a href="projectdetail.html">
-                            <p class="land-img">
-                                <img src="../../images/658886130909188096.jpg" />
-                            </p>
-                            <p class="land-title">
-                                <i class="icon icon-gong">工
+                                <i class="icon icon-gong">
                                     <!-- <img src="../images/gong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
@@ -117,12 +118,12 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a class="layer" href="projectdetail.html">
+                        <a href="farmlanddetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-zong">综
+                                <i class="icon icon-zong">
                                     <!-- <img src="../images/zhong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
@@ -134,7 +135,6 @@
                             <p class="land-region">杭州市-萧山区</p>
                             <p class="date">2016年12月12日</p>
                         </a>
-                        <img class="lable-icon" src="../../images/lable-icon.png">
                     </div>
                 </li>
             </ul>

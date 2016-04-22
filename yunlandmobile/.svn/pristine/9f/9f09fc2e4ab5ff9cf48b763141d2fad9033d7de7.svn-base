@@ -1,93 +1,109 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
+    <title>移动端-推介地块</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>云地网——土地大卖场</title>
+
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/other.css">
-    <link rel="stylesheet" href="../../style/iconfont.css">
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/touchslider.dev.js"></script>
+    <script src="../../scripts/role.js"></script>
 
-    <script type="text/javascript" src="../../scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="../../scripts/touchslider.dev.js"></script>
-    <script type="text/javascript" src="../../scripts/role.js"></script>
 </head>
 
 <body>
     <div class="containBox" id="containBox">
         <div class="containBox_bg" style="height:100%; display: none;"></div>
+        <a href="#top" id="toTop">
+            <img src="../../images/toTop-icon.png" />
+        </a>
+        <script type="text/javascript">
+            $(function () {
+                $("#toTop").scrollToTop(1000);
+            });
+        </script>
         <!-- header -->
         <div class="header">
-            <a id="panelSwitch" class="menu-wrap navBtn" href="javascript:void(0);">
-                <i class="menu"><img src="../../images/icon-menu.png" /></i>
-            </a> <i class="logo"><img src="../../images/yunland-logo.jpg" /></i>
+            <a id="panelSwitch" class="menu-wrap navBtn" href="javascript:void(0);"> <i class="menu"><img src="../../images/icon-menu.png" /></i> 
+            </a> <i class="logo"><img src="../../images/yunland-logo.jpg" /></i> 
             <a class="login-wrap" href="#">
                 <i class="login">
                     <img src="../../images/icon-account.png" />
                 </i>
             </a>
         </div>
-        <!-- header end -->
-        <!-- 筛选 -->
-        <div class="screening">
-            <div class="current clearfix">
-                <div class="current-infor">
-                    <p class="transferp tr-active">
-                        项目大卖场
-                    </p>
-                    <ul class="typemenu">
-                        <li class="imgli"><img src="../../images/triangle.png"></li>
-                        <li><a href="../transfer/index.html">土地大卖场</a></li>
-                        <li><a class="active" href="javascript:void(0);">项目大卖场</a></li>
-                        <li><a href="../farmland/farmlandindex.html">农地流转</a></li>
-                    </ul>
-                    <span>全国&nbsp;&middot;&nbsp;物业类型</span>
-                </div>
-
-                <a href="choosearea.html">筛选</a>
+        <div class="subheader">
+            <div class="follow clearfix">
+                <!-- <a class="return-link" href="index.html" id="returnA"></a> -->
+                <div class="return-wrap">
+                <a class="return" href="javascript:history.back();">
+                    <i class="am-icon-lg"></i>
+                </a>
+            </div>
+                <ul class="subheader-cont">
+                    <li>
+                        <a href="" id="followA">
+                            <span class="icon icon-follown">
+                                <!-- <img src="../../images/follow.png"> -->
+                                </span>
+                            <br>关注</a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>1000</span>
+                            <br>关注度</a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>100</span>
+                            <br>浏览量</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- 筛选 end -->
         <!-- 内容 -->
-        <div class="land-con">
-            <ul class="clearfix">
+        <div class="entry-title">
+            <div class="title b3">
+                出让地块
+                <img class="line" src="../../images/line3.png" />
+            </div>
+        </div>
+       <div class="land-con land-list">
+            <ul>
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
-                            <p class="land-img">
-                                <img src="../../images/658886130909188096.jpg" />
-                            </p>
+                        <a class="layer" href="flagshipdetail.html">
                             <p class="land-title">
-                                <i class="icon icon-shang">商
+                                <i class="icon icon-shang">
                                     <!-- <img src="../images/shang-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
                             <p class="area-price">
                                 <span class="area">155万m²</span>
-                                500万元
+                                <span class="years">500万年</span>
                             </p>
                             <p class="land-region">杭州市-萧山区</p>
                             <p class="date">2016年12月12日</p>
                         </a>
+                        <img class="lable-icon" src="../../images/lable-icon.png" />
                     </div>
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
-                            <p class="land-img">
-                                <img src="../../images/658886130909188096.jpg" />
-                            </p>
+                        <a href="flagshipdetail.html">
                             <p class="land-title">
-                                <i class="icon icon-zhai">宅
+                                <i class="icon icon-zhai">
                                     <!-- <img src="../images/zhai-icon.png" /> -->
-                                </i>                            
+                                </i>
                                 萧山区国土资源局
                             </p>
                             <p class="area-price">
                                 <span class="area">155万m²</span>
-                                500万元
+                                <span class="years">500万年</span>
                             </p>
                             <p class="land-region">杭州市-萧山区</p>
                             <p class="date">2016年12月12日</p>
@@ -96,19 +112,16 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
-                            <p class="land-img">
-                                <img src="../../images/658886130909188096.jpg" />
-                            </p>
+                        <a href="flagshipdetail.html">
                             <p class="land-title">
-                                <i class="icon icon-gong">工
+                                <i class="icon icon-gong">
                                     <!-- <img src="../images/gong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
                             <p class="area-price">
                                 <span class="area">155万m²</span>
-                                500万元
+                                <span class="years">500万年</span>
                             </p>
                             <p class="land-region">杭州市-萧山区</p>
                             <p class="date">2016年12月12日</p>
@@ -117,24 +130,20 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a class="layer" href="projectdetail.html">
-                            <p class="land-img">
-                                <img src="../../images/658886130909188096.jpg" />
-                            </p>
+                        <a href="flagshipdetail.html">
                             <p class="land-title">
-                                <i class="icon icon-zong">综
+                                <i class="icon icon-zong">
                                     <!-- <img src="../images/zhong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
                             <p class="area-price">
                                 <span class="area">155万m²</span>
-                                500万元
+                                <span class="years">500万年</span>
                             </p>
                             <p class="land-region">杭州市-萧山区</p>
                             <p class="date">2016年12月12日</p>
                         </a>
-                        <img class="lable-icon" src="../../images/lable-icon.png">
                     </div>
                 </li>
             </ul>
@@ -154,14 +163,13 @@
                 </p>
             </div>
         </div>
-        <!-- 内容 end -->
-    </div>
+        <!-- 内容 end --> </div>
     <!-- 侧边栏 -->
     <div class="side" id="jquery-accordion-menu">
         <i class="icon-uimini">云地网</i>
         <ul id="nav-list" class="main-nav mt-15">
             <li>
-                <a class="active" href="flagship/index.html">
+                <a class="active" href="javascript:;">
                     <i>
                         <img src="../../images/menu-icon2.png" />
                     </i>
@@ -169,7 +177,7 @@
                 </a> <em></em>
             </li>
             <li>
-                <a href="transfer/index.html">
+                <a href="#">
                     <i>
                         <img src="../../images/menu-icon3.png" />
                     </i>
@@ -214,14 +222,14 @@
         </div>
     </div>
     <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
-        });
+        // jQuery(document).ready(function () {
+        //     jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+        // });
         $(function () {
-            //顶部导航切换
-            $("#nav-list li").click(function () {
-                $("#nav-list li.active").removeClass("active")
-                $(this).addClass("active");
+            $("#followA").click(function(){
+                alert("关注成功");
+                // $(this).children("span").remove();
+                // $("#followA span").css({"background-color":"red"});
             })
         })
     </script>

@@ -46,8 +46,9 @@
                 <ul class="subheader-cont">
                     <li>
                         <a href="" id="followA">
-                            <span>
-                                <img src="../../images/follow.png"></span>
+                            <span class="icon icon-follown">
+                                <!-- <img src="../../images/follow.png"> -->
+                                </span>
                             <br>关注</a>
                     </li>
                     <li>
@@ -70,14 +71,14 @@
                 <img class="line" src="../../images/line3.png" />
             </div>
         </div>
-        <div class="land-con land-list">
+       <div class="land-con land-list">
             <ul>
                 <li>
                     <div class="land-wrap">
                         <a class="layer" href="flagshipdetail.html">
                             <p class="land-title">
-                                <i>
-                                    <img src="../../images/shang-icon.png" />
+                                <i class="icon icon-shang">商
+                                    <!-- <img src="../images/shang-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -95,8 +96,26 @@
                     <div class="land-wrap">
                         <a href="flagshipdetail.html">
                             <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhai-icon.png" />
+                                <i class="icon icon-zhai">宅
+                                    <!-- <img src="../images/zhai-icon.png" /> -->
+                                </i>                            
+                                萧山区国土资源局
+                            </p>
+                            <p class="area-price">
+                                <span class="area">155万m²</span>
+                                <span class="years">500万年</span>
+                            </p>
+                            <p class="land-region">杭州市-萧山区</p>
+                            <p class="date">2016年12月12日</p>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="land-wrap">
+                        <a href="flagshipdetail.html">
+                            <p class="land-title">
+                                <i class="icon icon-gong">工
+                                    <!-- <img src="../images/gong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -113,111 +132,8 @@
                     <div class="land-wrap">
                         <a href="flagshipdetail.html">
                             <p class="land-title">
-                                <i>
-                                    <img src="../../images/gong-icon.png" />
-                                </i>
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                <span class="years">500万年</span>
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="land-wrap">
-                        <a href="flagshipdetail.html">
-                            <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhong-icon.png" />
-                                </i>
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                <span class="years">500万年</span>
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li><li>
-                    <div class="land-wrap">
-                        <a href="flagshipdetail.html">
-                            <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhong-icon.png" />
-                                </i>
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                <span class="years">500万年</span>
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li><li>
-                    <div class="land-wrap">
-                        <a href="flagshipdetail.html">
-                            <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhong-icon.png" />
-                                </i>
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                <span class="years">500万年</span>
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li><li>
-                    <div class="land-wrap">
-                        <a href="flagshipdetail.html">
-                            <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhong-icon.png" />
-                                </i>
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                <span class="years">500万年</span>
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li><li>
-                    <div class="land-wrap">
-                        <a href="flagshipdetail.html">
-                            <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhong-icon.png" />
-                                </i>
-                                萧山区国土资源局
-                            </p>
-                            <p class="area-price">
-                                <span class="area">155万m²</span>
-                                <span class="years">500万年</span>
-                            </p>
-                            <p class="land-region">杭州市-萧山区</p>
-                            <p class="date">2016年12月12日</p>
-                        </a>
-                    </div>
-                </li><li>
-                    <div class="land-wrap">
-                        <a href="flagshipdetail.html">
-                            <p class="land-title">
-                                <i>
-                                    <img src="../../images/zhong-icon.png" />
+                                <i class="icon icon-zong">综
+                                    <!-- <img src="../images/zhong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -233,7 +149,7 @@
             </ul>
             <div class="page clearfix">
                 <p class="prev">
-                    <i class="icon-prev"></i>
+                    <i class="icon icon-prev"></i>
                     <a href="javaxcript:;">上一页</a>
                 </p>
                 <p class="sum">
@@ -243,7 +159,7 @@
                 </p>
                 <p class="next">
                     <a href="javaxcript:;">下一页</a>
-                    <i class="icon-next"></i>
+                    <i class="icon icon-next"></i>
                 </p>
             </div>
         </div>

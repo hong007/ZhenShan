@@ -34,19 +34,32 @@
             <div class="current clearfix">
                 <div class="current-infor">
                     <p class="transferp tr-active">
-                        项目大卖场
+                        土地大卖场
                     </p>
                     <ul class="typemenu">
                         <li class="imgli"><img src="../../images/triangle.png"></li>
-                        <li><a href="../transfer/index.html">土地大卖场</a></li>
-                        <li><a class="active" href="javascript:void(0);">项目大卖场</a></li>
+                        <li><a class="active" href="javascript:void(0);">土地大卖场</a></li>
+                        <li><a href="../project/projectindex.html">项目大卖场</a></li>
                         <li><a href="../farmland/farmlandindex.html">农地流转</a></li>
                     </ul>
-                    <span>全国&nbsp;&middot;&nbsp;物业类型</span>
+                    <span>全国&nbsp;&middot;&nbsp;商业用地</span>
                 </div>
 
                 <a href="choosearea.html">筛选</a>
             </div>
+            <!-- <div id="test1" style="float:right; margin: 5px 0 0;">
+                <input type="hidden" class="province" value="010000" />
+                <input type="hidden" class="city" value="010100" />
+                <div name="province" type="selectbox" style="z-index:2;">
+                    <div class="opts"></div>
+                </div>
+                <div name="city" type="selectbox" style="z-index:2;">
+                    <div class="opts"></div>
+                </div>
+                <div name="area" type="selectbox" style="z-index:2;display:none">
+                    <div class="opts"></div>
+                </div>
+            </div> -->
         </div>
         <!-- 筛选 end -->
         <!-- 内容 -->
@@ -54,12 +67,12 @@
             <ul class="clearfix">
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-shang">商
+                                <i class="icon icon-shang">
                                     <!-- <img src="../images/shang-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
@@ -75,14 +88,14 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-zhai">宅
+                                <i class="icon icon-zhai">
                                     <!-- <img src="../images/zhai-icon.png" /> -->
-                                </i>                            
+                                </i>
                                 萧山区国土资源局
                             </p>
                             <p class="area-price">
@@ -96,12 +109,12 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="projectdetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-gong">工
+                                <i class="icon icon-gong">
                                     <!-- <img src="../images/gong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
@@ -117,12 +130,12 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a class="layer" href="projectdetail.html">
+                        <a class="layer" href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-zong">综
+                                <i class="icon icon-zong">
                                     <!-- <img src="../images/zhong-icon.png" /> -->
                                 </i>
                                 萧山区国土资源局
