@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>云地网——需求信息</title>
+    <title>云地网——土地大卖场</title>
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/other.css">
@@ -33,13 +33,19 @@
         <div class="screening">
             <div class="current clearfix">
                 <div class="current-infor">
-                    <p>
-                        需求信息&nbsp;&nbsp;&middot;
+                    <p class="transferp tr-active">
+                        项目大卖场
                     </p>
-                    <span>全国</span>
+                    <ul class="typemenu">
+                        <li class="imgli"><img src="../../images/triangle.png"></li>
+                        <li><a href="../transfer/index.html">土地大卖场</a></li>
+                        <li><a class="active" href="javascript:void(0);">项目大卖场</a></li>
+                        <li><a href="../farmland/farmlandindex.html">农地流转</a></li>
+                    </ul>
+                    <span>全国&nbsp;&middot;&nbsp;物业类型</span>
                 </div>
 
-                <a href="../flagship/choosearea.html">筛选</a>
+                <a href="choosearea.html">筛选</a>
             </div>
         </div>
         <!-- 筛选 end -->
@@ -48,13 +54,13 @@
             <ul class="clearfix">
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="projectdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-shang">
-                                    <!-- <img src="../images/shang-icon.png" /> -->
+                                <i>
+                                    <img src="../../images/shang-icon.png" />
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -69,13 +75,13 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="projectdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-zhai">
-                                    <!-- <img src="../images/zhai-icon.png" /> -->
+                                <i>
+                                    <img src="../../images/zhai-icon.png" />
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -90,13 +96,13 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="projectdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-gong">
-                                    <!-- <img src="../images/gong-icon.png" /> -->
+                                <i>
+                                    <img src="../../images/gong-icon.png" />
                                 </i>
                                 萧山区国土资源局
                             </p>
@@ -111,13 +117,13 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="projectdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
                             <p class="land-title">
-                                <i class="icon icon-zong">
-                                    <!-- <img src="../images/zhong-icon.png" /> -->
+                                <i>
+                                    <img src="../../images/zhong-icon.png" />
                                 </i>
                                 萧山区国土资源局
                             </p>

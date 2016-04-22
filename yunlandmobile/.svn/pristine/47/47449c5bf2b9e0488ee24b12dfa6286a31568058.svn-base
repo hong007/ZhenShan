@@ -200,9 +200,7 @@ body.panel-active {
 .land-con .land-wrap .land-region {
 	margin-left: 4px;
 	padding-left: 12px;
-	/*background: url(../images/coordinates-icon1.png) no-repeat left center;*/
-	background: url(../images/sprite-icon.png) no-repeat left center;
-	background-position: -125px -97px;
+	background: url(../images/coordinates-icon1.png) no-repeat left center;
 	color: #0e76d5;
 }
 .land-con .more {
@@ -222,31 +220,12 @@ body.panel-active {
 }
 .land-con .land-wrap .land-title i {
 	position: absolute;
-	/*top: 5px;
+	top: 5px;
 	left: 4px;
-	width: 14px;
-	height: 14px;*/
-	top: -2px;
-	left: -2px;
-	width: 28px;
-	height: 28px;
 	margin-right: 4px;
 	display: inline-block;
-	
-	background: url(../images/sprite-icon.png) no-repeat left center;
-	transform: scale(0.5);
-}
-.land-con .land-wrap .land-title .icon-shang{
-	background-position: -10px -10px;
-}
-.land-con .land-wrap .land-title .icon-gong{
-	background-position: -10px -69px;
-}
-.land-con .land-wrap .land-title .icon-zhai{
-	background-position: -10px -125px;
-}
-.land-con .land-wrap .land-title .icon-zong{
-	background-position: -10px -184px;
+	width: 14px;
+	height: 14px;
 }
 .land-con .land-wrap .land-title i img {
 	width: 100%;
@@ -286,9 +265,7 @@ body.panel-active {
 .land-con .land-wrap .date {
 	margin-left: 4px;
 	padding-left: 12px;
-	/*background: url(../images/date-icon.png) no-repeat left center;*/
-	background: url(../images/sprite-icon.png) no-repeat left center;
-	background-position: -123px -129px;
+	background: url(../images/date-icon.png) no-repeat left center;
 	color: #949494;
 }
 .land-list ul>li {

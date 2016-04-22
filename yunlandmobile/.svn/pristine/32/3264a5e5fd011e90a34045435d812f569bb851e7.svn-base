@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>云地网——需求信息</title>
+    <title>云地网——土地大卖场</title>
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/other.css">
@@ -33,14 +33,33 @@
         <div class="screening">
             <div class="current clearfix">
                 <div class="current-infor">
-                    <p>
-                        需求信息&nbsp;&nbsp;&middot;
+                    <p class="transferp tr-active">
+                        项目大卖场
                     </p>
-                    <span>全国</span>
+                    <ul class="typemenu">
+                        <li class="imgli"><img src="../../images/triangle.png"></li>
+                        <li><a href="../transfer/index.html">土地大卖场</a></li>
+                        <li><a class="active" href="project/index.html">项目大卖场</a></li>
+                        <li><a href="">农地流转</a></li>
+                    </ul>
+                    <span>全国&nbsp;&middot;&nbsp;物业类型</span>
                 </div>
 
-                <a href="../flagship/choosearea.html">筛选</a>
+                <a href="choosearea.html">筛选</a>
             </div>
+            <!-- <div id="test1" style="float:right; margin: 5px 0 0;">
+                <input type="hidden" class="province" value="010000" />
+                <input type="hidden" class="city" value="010100" />
+                <div name="province" type="selectbox" style="z-index:2;">
+                    <div class="opts"></div>
+                </div>
+                <div name="city" type="selectbox" style="z-index:2;">
+                    <div class="opts"></div>
+                </div>
+                <div name="area" type="selectbox" style="z-index:2;display:none">
+                    <div class="opts"></div>
+                </div>
+            </div> -->
         </div>
         <!-- 筛选 end -->
         <!-- 内容 -->
@@ -48,7 +67,7 @@
             <ul class="clearfix">
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
@@ -69,7 +88,7 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
@@ -90,7 +109,7 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
@@ -111,7 +130,7 @@
                 </li>
                 <li>
                     <div class="land-wrap">
-                        <a href="requireddetail.html">
+                        <a href="transferdetail.html">
                             <p class="land-img">
                                 <img src="../../images/658886130909188096.jpg" />
                             </p>
