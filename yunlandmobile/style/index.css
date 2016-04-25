@@ -448,7 +448,8 @@ body.panel-active {
 	display: none;
 	opacity: 0;
 	/*background-color: #b5c9ca;*/
-	background: url(../images/sidebar-bg_02.jpg) no-repeat fixed top center;
+	/*background: url(../images/sidebar-bg_02.jpg) no-repeat fixed top center;*/
+	background-color:#191919;
 	z-index: 980;
 	background-size: 100% auto;
 	-webkit-transform: translate3d(0, 0, 0);
@@ -464,7 +465,11 @@ body.panel-active {
 	font-size: 1.8rem;
 	color: #fff;
 	text-align: center;
-	background: url(../images/menu-title-bg.png) repeat;
+	/*background: url(../images/menu-title-bg.png) repeat;*/
+	background-color:#06cdf0;
+}
+.side .main-nav{
+	margin-top: 2px;
 }
 .side .main-nav li {
 	margin-bottom: 2px;
@@ -478,7 +483,23 @@ body.panel-active {
 	text-align: left;
 	font-size: 1.5rem;
 	color: #fff;
-	background-color: rgba(250,250,250,0.1);
+	/*background-color: rgba(250,250,250,0.1);*/
+	background-color: #2f2f2f;
+}
+.side .main-nav li .color01{
+	color: #06cdf0;
+}
+.side .main-nav li .color02{
+	color: #ffc000;
+}
+.side .main-nav li .color03{
+	color: #ff9000;
+}
+.side .main-nav li .color04{
+	color: #3396ff;
+}
+.side .main-nav li .color05{
+	color: #207c5b;
 }
 .side .main-nav li a i {
 	float: left;
@@ -515,11 +536,11 @@ body.panel-active {
 	-ms-transform: rotate(-180deg);
 	-moz-transform: rotate(-180deg);
 	-webkit-transform: rotate(-180deg);
-	transform: rotate(-180deg)
+	transform: rotate(-180deg);
 	/*-ms-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg)*/
+	transform: rotate(90deg);*/
 }
 .side ul.main-nav li em {
 	float: right;

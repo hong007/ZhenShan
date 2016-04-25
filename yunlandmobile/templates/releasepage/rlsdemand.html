@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>云地网——发布需求</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../../style/base.css">
+	<link rel="stylesheet" href="../../style/index.css">
+	<link rel="stylesheet" href="../../style/other.css">
+	<link rel="stylesheet" href="../../style/rls.css">
+
+	<script src="../../scripts/jquery.min.js"></script>
+	<script src="../../scripts/touchslider.dev.js"></script>
+</head>
+<body>
+	<!-- 侧边栏 -->
+	<div class="side" id="jquery-accordion-menu"> <i class="icon-uimini">云地网</i>
+		<ul id="nav-list" class="main-nav mt-15">
+			<li>
+				<a class="active color01" href="./index.html"> <i><img src="../../images/menu-icon1.png" /></i> 
+					首页
+				</a> <em></em>
+			</li>
+			<li>
+				<a href="flagship/index.html" class="color02">
+					<i><img src="../../images/menu-icon2.png" /></i> 
+					土地旗舰店
+				</a> <em></em>
+			</li>
+			<li>
+				<a href="transfer/index.html" class="color03">
+					<i>
+						<img src="../../images/menu-icon3.png" />
+					</i>
+					云地大卖场
+				</a>
+				<ul class="submenu">
+					<li>
+						<a href="transfer/index.html">土地大卖场</a>
+						<em></em>
+					</li>
+					<li>
+						<a href="project/index.html">项目大卖场</a>
+						<em></em>
+					</li>
+					<li>
+						<a href="#">海外大卖场</a>
+						<em></em>
+					</li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="sell/sellindex.html" class="color04">
+					<i>
+						<img src="../../images/menu-icon4.png" />
+					</i>
+					土地招拍挂
+				</a>
+				<em></em>
+			</li>
+			<li>
+				<a href="required/requiredindex.html" class="color05">
+					<i>
+						<img src="../../images/menu-icon5.png" />
+					</i>
+					需求信息
+				</a>
+				<em></em>
+			</li>
+		</ul>
+		<div class="propaganda-btn">
+			<a class="btn fl btn-color" href="javascript:;">发布需求</a>
+			<a class="btn fr" href="javascript:;">发布土地</a>
+		</div>
+	</div>
+	<!-- 侧边栏 end -->
+	<div class="containBox" id="containBox">
+		<!-- header -->
+		<div class="header">
+			<a id="panelSwitch" class="menu-wrap navBtn" href="javascript:void(0);">
+				<i class="menu">
+					<img src="../../images/icon-menu.png" />
+				</i>
+			</a>
+			<i class="logo">
+				<img src="../../images/yunland-logo.jpg" />
+			</i>
+			<a class="login-wrap" href="#">
+				<i class="login">
+					<img src="../../images/icon-account.png" />
+				</i>
+			</a>
+		</div>
+		<div class="rls-banner">
+			<img src="../../images/rlsbanner.png"></div>
+		<!-- header end -->
+		<!-- <a href="#top" id="toTop">
+		<img src="../../images/toTop-icon.png" />
+	</a>
+	-->
+	<div class="rls-content">
+		<div class="rls-tab">
+			<div class="rls-tab-list">
+				<p>
+					<span id="rlsLand" class="span-active">发布土地</span>
+					<span id="rlsDemand">发布需求</span>
+				</p>
+			</div>
+			<div class="rls-tal-cont">
+				<form class="rls-demand">
+					<ul>
+						<li>请填写基本信息，云地网专员会马上联系您！</li>
+						<li>
+							<label>所在省份</label>
+							<select class="rls-select" id="province">
+								<option option="option01">省份</option>
+								<option option="option02">浙江省</option>
+								<option option="option03">江苏省</option>
+							</select>
+							<select class="rls-select" id="city">
+								<option option="option01">城市</option>
+								<option option="option02">杭州</option>
+								<option option="option03">宁波</option>
+							</select>
+						</li>
+						<li>
+							<label>所在单位</label>
+							<input type="text" id="unitName" />
+						</li>
+						<li>
+							<label>姓名</label>
+							<input type="text" id="userName" />
+						</li>
+						<li>
+							<label>联系电话</label>
+							<input type="phone" id="userPhone" />
+							<span class="errortip">手机号码格式错误</span>
+						</li>
+					</ul>
+					<button type="submit" class="submit-msg" id="submitBtn">提交信息</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 内容 end -->
+<!-- foot -->
+<div class="foot">
+	<div class="phone">云地网客服电话：0571—81902006</div>
+	<div>
+		<a class="phone-btn" href="javascript:;">
+			<span class="phone-icon">
+				<img src="../../images/phone-icon.png" />
+			</span>
+			拨打客服电话
+		</a>
+	</div>
+	<ul class="foot-links">
+		<li>
+			<a href="javascript:;">关于云地</a>
+		</li>
+		<li>
+			<a href="javascript:;">合作机构</a>
+		</li>
+		<li>
+			<a href="javascript:;">合作方式</a>
+		</li>
+	</ul>
+	<div class="copyright">
+		<img src="../../images/China.jpg" />
+		© 2016 yunland.Inc.  保留所有权利
+	</div>
+	<div class="icp">
+		<span class="fl">所属：浙江臻善科技有限公司</span>
+		<span class="fr">浙ICP备06018569号-2</span>
+	</div>
+</div>
+<!-- foot end-->
+</body>
+</html>

@@ -1,0 +1,108 @@
+.rls-banner img{
+	width: 100%;
+	height: auto;
+}
+.rls-content{
+	padding:0 15px;
+}
+.rls-tab{
+	width: 100%;
+}
+.rls-tab-list p{
+	text-align: center;
+	font-size: 16px;
+	margin-bottom: 15px;
+	/*color: */
+}
+.rls-tab-list p span{
+	position: relative;
+}
+.rls-tab-list p span:first-child{
+	margin-right: 30px;
+}
+.rls-tab-list p .span-active{
+	color: #f15f5f;
+}
+.rls-tab-list p .span-active:after{
+	content: "";
+	position: absolute;
+	top: 24px;
+	left: 50%;
+	margin-left: -8px;
+	display: inline-block;
+	height: 0;
+	border-bottom: 2px solid #f15f5f; 
+	width: 16px;
+}
+.rls-tal-cont{
+	width: 100%;
+}
+.rls-tal-cont ul{
+	background: #fff;
+	width: 100%;
+	border:1px solid #ddd;
+	padding-left: 20px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	overflow: hidden;
+}
+.rls-tal-cont ul li{
+	padding-right: 30px;
+	width: 100%;
+	height: 36px;
+	line-height: 36px;
+	position: relative;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.rls-tal-cont ul li:first-child{
+	white-space: nowrap;
+	margin-left: -10px;
+}
+.rls-select{
+	width: 37%;
+	height: 25px;
+	line-height: 25px;
+}
+.rls-tal-cont ul li input{
+	width: 75%;
+	height: 23px;
+	line-height: 23px;
+	padding:0;
+	border:1px solid #ddd;
+}
+.rls-tal-cont ul li label{
+	width: 20%;
+	display: inline-block;
+	min-width: 50px;
+	height: 23px;
+	line-height: 23px;
+}
+.errortip{
+	display: block;
+	/*position: absolute;
+	top: 36px;
+	right: 0;*/
+	float: right;
+	height: 20px;
+	line-height: 20px;
+	margin-top: -5px;
+	color: #f15f5f;
+	font-size: 1.1rem;
+}
+.submit-msg{
+	width: 100%;
+	position: relative;
+	display:block;
+	margin: 10px 0;
+	height: 44px;
+	line-height: 44px;
+	padding:0;
+	border-radius: 3px;
+	font-size: 1.8rem;
+	color: #fff;
+	text-align: center;
+	background-color: #fb5757;
+	border:none;
+}
